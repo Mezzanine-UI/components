@@ -17,7 +17,7 @@
   "targetDefaults": {
     "nx-release-publish": {
       "options": {
-        "packageRoot": "dist/packages/{projectName}"
+        "packageRoot": "dist/apps/{projectName}"
       }
     }
   },
