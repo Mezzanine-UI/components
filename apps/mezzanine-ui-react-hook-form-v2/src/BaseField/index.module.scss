@@ -1,0 +1,70 @@
+@use '@mezzanine-ui/system/palette';
+
+.host {
+  --width: initial;
+
+  margin: 0;
+
+  &.specifiedWidth {
+    width: var(--width);
+  }
+
+  .wrapper {
+    width: 100%;
+
+    .labelWrapper {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 4px;
+      margin-bottom: 4px;
+    }
+
+    .label {
+      align-items: center;
+      margin-bottom: 0;
+      flex: 1;
+
+      &.basicLabel {
+        color: palette.color(text-secondary);
+      }
+    }
+
+    .field {
+      width: 100%;
+
+      :first-child[class^='mzn-text-field'] {
+        min-width: unset;
+      }
+
+      .hintsWrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        margin-top: 4px;
+
+        .hintWrapper {
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          gap: 4px;
+        }
+      }
+    }
+
+    &.horizontal {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+
+      .labelWrapper {
+        margin-bottom: 0;
+      }
+
+      .field {
+        flex: 1;
+        width: unset;
+      }
+    }
+  }
+}

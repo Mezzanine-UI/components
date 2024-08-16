@@ -2,34 +2,45 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
+import dts from 'vite-plugin-dts';
+import { resolve } from 'path';
 
 export default defineConfig({
   root: __dirname,
   cacheDir: '../../node_modules/.vite/apps/mezzanine-ui-react-hook-form-v2',
-
-  server: {
-    port: 4200,
-    host: 'localhost',
-  },
-
-  preview: {
-    port: 4300,
-    host: 'localhost',
-  },
-
-  plugins: [react(), nxViteTsPaths()],
-
-  // Uncomment this if you are using workers.
-  // worker: {
-  //  plugins: [ nxViteTsPaths() ],
-  // },
-
+  plugins: [
+    react(),
+    nxViteTsPaths(),
+    dts({
+      entryRoot: 'src',
+      tsconfigPath: resolve(__dirname, 'tsconfig.app.json'),
+    }),
+  ],
   build: {
-    outDir: '../../dist/apps/mezzanine-ui-react-hook-form-v2',
-    emptyOutDir: true,
     reportCompressedSize: true,
-    commonjsOptions: {
-      transformMixedEsModules: true,
+    lib: {
+      entry: 'src/index.ts',
+      name: '@mezzanine-ui/react-hook-form-v2',
+      fileName: 'index',
+      formats: ['es', 'cjs'],
     },
+    rollupOptions: {
+      external: [
+        'react',
+        'react-hook-form',
+        'lodash',
+        '@mezzanine-ui/system',
+        '@mezzanine-ui/icons',
+        '@mezzanine-ui/react',
+        '@hookform/error-message',
+      ],
+      output: {
+        externalLiveBindings: false,
+      },
+    },
+    outDir: '../../dist/apps/@mezzanine-ui/react-hook-form-v2',
+    // commonjsOptions: {
+    //   transformMixedEsModules: true,
+    // },
   },
 });
