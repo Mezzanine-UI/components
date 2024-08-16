@@ -12,6 +12,7 @@ export default {
             && !name.includes('e2e')
             && projectType == 'application'
         )),
+        'release',
       ],
     ],
   },
