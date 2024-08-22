@@ -4,8 +4,7 @@
   "files.exclude": {
     "**/.git": true,
     "**/.DS_Store": true,
-    "**/node_modules": true,
-    "**/dist": true
+    "**/node_modules": true
   },
   "files.watcherExclude": {
     "**/.git/objects/**": true,
@@ -13,6 +12,5 @@
     "**/node_modules/**": true,
     "**/tmp/**": true,
     "**/dist/**": true
-  },
-  "cSpell.words": ["nantou"]
+  }
 }
