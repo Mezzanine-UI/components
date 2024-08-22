@@ -4,8 +4,23 @@
   "main": "index.js",
   "module": "index.mjs",
   "typings": "index.d.ts",
+  "peerDependencies": {
+    "@hookform/error-message": "2.0.1",
+    "@mezzanine-ui/core": "0.15.2",
+    "@mezzanine-ui/icons": "0.15.2",
+    "@mezzanine-ui/react": "0.15.2",
+    "@mezzanine-ui/system": "0.15.2",
+    "lodash": "4.17.21",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "react-hook-form": "7.52.2",
+    "tslib": "2.6.3"
+  },
   "dependencies": {
     "@hookform/error-message": "2.0.1",
+    "tslib": "2.6.3"
+  },
+  "devDependencies": {
     "@mezzanine-ui/core": "0.15.2",
     "@mezzanine-ui/icons": "0.15.2",
     "@mezzanine-ui/react": "0.15.2",
