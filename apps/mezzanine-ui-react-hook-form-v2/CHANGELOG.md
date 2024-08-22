@@ -1,3 +1,15 @@
+## 0.0.7 (2024-08-22)
+
+
+### 🩹 Fixes
+
+- dependencies
+
+
+### ❤️  Thank You
+
+- TingTing
+
 ## 0.0.6 (2024-08-22)
 
 This was a version bump only for @mezzanine-ui/react-hook-form-v2 to align it with other projects, there were no code changes.
