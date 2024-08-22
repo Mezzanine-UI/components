@@ -5,6 +5,7 @@
   "private": true,
   "scripts": {
     "build": "nx run-many -t build",
+    "tag": "nx release patch -p @mezzanine-ui/react-hook-form-v2",
     "release": "nx release publish",
     "prepare": "husky"
   },
