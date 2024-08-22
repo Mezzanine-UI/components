@@ -2352,9 +2352,10 @@ __metadata:
     "@commitlint/config-conventional": "npm:^19.2.2"
     "@commitlint/config-nx-scopes": "npm:^19.3.1"
     "@hookform/error-message": "npm:^2.0.1"
-    "@mezzanine-ui/icons": "npm:^0.15.0"
-    "@mezzanine-ui/react": "npm:^0.15.0"
-    "@mezzanine-ui/system": "npm:^0.15.0"
+    "@mezzanine-ui/core": "npm:^0.15.2"
+    "@mezzanine-ui/icons": "npm:^0.15.2"
+    "@mezzanine-ui/react": "npm:^0.15.2"
+    "@mezzanine-ui/system": "npm:^0.15.2"
     "@nx/eslint": "npm:19.5.7"
     "@nx/eslint-plugin": "npm:19.5.7"
     "@nx/jest": "npm:19.5.7"
@@ -2405,12 +2406,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@mezzanine-ui/core@npm:^0.15.0":
-  version: 0.15.0
-  resolution: "@mezzanine-ui/core@npm:0.15.0"
+"@mezzanine-ui/core@npm:^0.15.2":
+  version: 0.15.2
+  resolution: "@mezzanine-ui/core@npm:0.15.2"
   dependencies:
-    "@mezzanine-ui/icons": "npm:^0.15.0"
-    "@mezzanine-ui/system": "npm:^0.15.0"
+    "@mezzanine-ui/icons": "npm:^0.15.2"
+    "@mezzanine-ui/system": "npm:^0.15.2"
     lodash: "npm:^4.17.21"
     tslib: "npm:^2.4.1"
   peerDependencies:
@@ -2425,25 +2426,25 @@ __metadata:
       optional: true
     moment:
       optional: true
-  checksum: 10c0/59c2e9e29d8e9b7fb275476e305ab686ac25e59f3566c14496a292184c7ed66dee2e205b4adf741e512fb91b1e8775003ead63637dca43474d08df6141ca2f56
+  checksum: 10c0/ed8439a190e31f53f812ae020449bf6344ec6f3669a837a5d70dd361edb6bf23abc1bf6f3dfddf59dbdef98b30c0562f9ba76cdea187a8a7749cb384ab1af6e3
   languageName: node
   linkType: hard
 
-"@mezzanine-ui/icons@npm:^0.15.0":
-  version: 0.15.0
-  resolution: "@mezzanine-ui/icons@npm:0.15.0"
-  checksum: 10c0/17534972e402f8be4a86421db4c5236207ead2b7118d87c7dfb58fc6b7dbcb49409fc2f9b7e58c7da5b61c6cd48dcf59dd0f7ce5b0f5d3bf026c392f56319a78
+"@mezzanine-ui/icons@npm:^0.15.2":
+  version: 0.15.2
+  resolution: "@mezzanine-ui/icons@npm:0.15.2"
+  checksum: 10c0/13fae3250ce0066becf379a7f730231cd9c965d38ce1150f2b6a181ca208d1bc07ccfe9dc13f48e6d901a53fb54e8ffd4ccdeb165216b4bb0a2ad4e9b1346adc
   languageName: node
   linkType: hard
 
-"@mezzanine-ui/react@npm:^0.15.0":
-  version: 0.15.0
-  resolution: "@mezzanine-ui/react@npm:0.15.0"
+"@mezzanine-ui/react@npm:^0.15.2":
+  version: 0.15.2
+  resolution: "@mezzanine-ui/react@npm:0.15.2"
   dependencies:
     "@hello-pangea/dnd": "npm:^16.6.0"
-    "@mezzanine-ui/core": "npm:^0.15.0"
-    "@mezzanine-ui/icons": "npm:^0.15.0"
-    "@mezzanine-ui/system": "npm:^0.15.0"
+    "@mezzanine-ui/core": "npm:^0.15.2"
+    "@mezzanine-ui/icons": "npm:^0.15.2"
+    "@mezzanine-ui/system": "npm:^0.15.2"
     "@popperjs/core": "npm:^2.11.6"
     "@types/react-transition-group": "npm:^4.4.8"
     clsx: "npm:^2.1.1"
@@ -2455,16 +2456,16 @@ __metadata:
     lodash: ">=4"
     react: ">=18"
     react-dom: ">=18"
-  checksum: 10c0/557475a56b247383e7763ede6f6c302dd43af2e3b9df73bf238603b41e818225e948873848c65031db805e3a68a15a48c1c7dbd2ef1fd80339b1e151bb5a5fc8
+  checksum: 10c0/f69fbad89410c22739b0595a247be4894b658eaa26d7a2a3989e853e618006ffc30db635bdc17973d9bdd253b1db0f46ca687f1e44056be59aae1ab010bad13d
   languageName: node
   linkType: hard
 
-"@mezzanine-ui/system@npm:^0.15.0":
-  version: 0.15.0
-  resolution: "@mezzanine-ui/system@npm:0.15.0"
+"@mezzanine-ui/system@npm:^0.15.2":
+  version: 0.15.2
+  resolution: "@mezzanine-ui/system@npm:0.15.2"
   dependencies:
     tslib: "npm:^2.1.0"
-  checksum: 10c0/dd009e4690c9b1bd47218805a1e12345fbf437e407527c00886891f6eb0138265f001df5bd4773a1ec085f5b3d91c1f2c110865081649a1d3494d258254faddc
+  checksum: 10c0/63411fe60c1a0968ee16d5fe61584802eee2a4c88e23987b486e182948f74831b50b0e5754784f6a5661be7090811f1834ab6ecb1b3bedfe03143644f04fd267
   languageName: node
   linkType: hard
 
