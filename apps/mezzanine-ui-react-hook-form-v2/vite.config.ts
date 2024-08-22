@@ -27,12 +27,15 @@ export default defineConfig({
     rollupOptions: {
       external: [
         'react',
+        'react-dom',
         'react-hook-form',
         'lodash',
         '@mezzanine-ui/system',
         '@mezzanine-ui/icons',
         '@mezzanine-ui/react',
+        '@mezzanine-ui/core',
         '@hookform/error-message',
+        'tslib',
       ],
       output: {
         externalLiveBindings: false,
