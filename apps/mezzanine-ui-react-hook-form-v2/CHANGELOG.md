@@ -1,3 +1,15 @@
+## 0.0.9 (2024-08-22)
+
+
+### 🚀 Features
+
+- date time picker field
+
+
+### ❤️  Thank You
+
+- TingTing
+
 ## 0.0.8 (2024-08-22)
 
 This was a version bump only for @mezzanine-ui/react-hook-form-v2 to align it with other projects, there were no code changes.
