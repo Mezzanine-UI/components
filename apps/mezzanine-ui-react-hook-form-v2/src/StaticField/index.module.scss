@@ -1,0 +1,17 @@
+.host {
+  width: 100%;
+
+  &.specifiedWidth {
+    width: var(--width);
+  }
+
+  input[type='number'] {
+    appearance: textfield;
+
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+      appearance: none;
+      margin: 0;
+    }
+  }
+}

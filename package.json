@@ -3,6 +3,10 @@
   "version": "0.0.0",
   "license": "MIT",
   "private": true,
+  "scripts": {
+    "build": "nx run-many -t build",
+    "prepare": "husky"
+  },
   "dependencies": {
     "@hookform/error-message": "^2.0.1",
     "@mezzanine-ui/icons": "^0.15.0",
@@ -64,8 +68,5 @@
   "resolutions": {
     "eslint": "^8"
   },
-  "packageManager": "yarn@4.4.0",
-  "scripts": {
-    "prepare": "husky"
-  }
+  "packageManager": "yarn@4.4.0"
 }

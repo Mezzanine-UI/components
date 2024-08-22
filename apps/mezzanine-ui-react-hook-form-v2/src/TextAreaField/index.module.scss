@@ -1,0 +1,16 @@
+.host {
+  width: 100%;
+
+  &.specifiedWidth {
+    width: var(--width);
+  }
+
+  .preview {
+    white-space: pre-line;
+  }
+
+  .input {
+    height: var(--height);
+    min-height: unset;
+  }
+}
