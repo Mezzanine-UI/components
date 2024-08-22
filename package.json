@@ -5,6 +5,7 @@
   "private": true,
   "scripts": {
     "build": "nx run-many -t build",
+    "release": "nx release publish",
     "prepare": "husky"
   },
   "dependencies": {
