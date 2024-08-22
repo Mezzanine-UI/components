@@ -4,7 +4,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "patch": "nx release patch -p @mezzanine-ui/react-hook-form-v2",
+    "tag": "nx release patch -p @mezzanine-ui/react-hook-form-v2",
     "build": "nx run-many -t build",
     "release": "nx release publish",
     "prepare": "husky"
