@@ -1,8 +1,9 @@
 {
   "name": "@mezzanine-ui/react-hook-form-v2",
   "version": "0.0.8",
-  "main": "index.js",
-  "module": "index.js",
+  "main": "index.cjs",
+  "module": "index.mjs",
+  "type": "module",
   "typings": "index.d.ts",
   "peerDependencies": {
     "@hookform/error-message": "2.0.1",
