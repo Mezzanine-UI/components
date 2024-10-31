@@ -1,0 +1,9 @@
+@use '~@mezzanine-ui/system/palette';
+
+.host {
+  .uploadPicture {
+    img {
+      object-fit: var(--object-fit);
+    }
+  }
+}

@@ -1,0 +1,17 @@
+.host {
+  width: 100%;
+
+  &.specifiedWidth {
+    width: var(--width);
+  }
+
+  .fieldWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    .uploadButton {
+      align-self: self-start;
+    }
+  }
+}

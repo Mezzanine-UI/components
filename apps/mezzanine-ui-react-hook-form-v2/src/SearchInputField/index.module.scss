@@ -1,0 +1,9 @@
+@use '~@mezzanine-ui/system/palette';
+
+.host {
+  width: 100%;
+
+  .icon {
+    color: palette.color(text-secondary);
+  }
+}
