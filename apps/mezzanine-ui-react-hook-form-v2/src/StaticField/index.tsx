@@ -25,6 +25,8 @@ export const StaticField: HookFormFieldComponent<StaticFieldProps> = ({
   required,
   style,
   errorMsgRender,
+  horizontal,
+  hints,
 }) => {
   const { control: contextControl } = useFormContext();
 
@@ -45,6 +47,8 @@ export const StaticField: HookFormFieldComponent<StaticFieldProps> = ({
       label={label}
       width={width}
       errorMsgRender={errorMsgRender}
+      horizontal={horizontal}
+      hints={hints}
     >
       <Typography variant="body1" color="text-primary">
         {watchValue}

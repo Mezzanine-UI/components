@@ -25,6 +25,8 @@ export const RadioGroupField: HookFormFieldComponent<RadioGroupFieldProps> = ({
   size,
   className,
   groupClassName,
+  horizontal,
+  hints,
 }) => {
   const { setValue } = useFormContext();
 
@@ -45,6 +47,8 @@ export const RadioGroupField: HookFormFieldComponent<RadioGroupFieldProps> = ({
       className={className}
       name={registerName}
       required={required}
+      horizontal={horizontal}
+      hints={hints}
     >
       <RadioGroup
         defaultValue={defaultValue}

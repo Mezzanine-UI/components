@@ -42,6 +42,8 @@ export const AutoCompleteSingleField: HookFormFieldComponent<
   disabledErrMsg,
   errorMsgRender,
   onChange: onChangeProp,
+  horizontal,
+  hints,
   ...props
 }) => {
   const {
@@ -81,6 +83,8 @@ export const AutoCompleteSingleField: HookFormFieldComponent<
       width={width}
       disabledErrMsg={disabledErrMsg}
       errorMsgRender={errorMsgRender}
+      horizontal={horizontal}
+      hints={hints}
       className={cx(classes.host, className)}
     >
       <AutoComplete

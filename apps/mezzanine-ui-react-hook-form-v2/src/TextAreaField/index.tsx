@@ -42,6 +42,8 @@ export const TextAreaField: HookFormFieldComponent<TextAreaFieldProps> = ({
   disabledErrMsg,
   errorMsgRender,
   onChange: onChangeProp,
+  horizontal,
+  hints,
   ...props
 }) => {
   const { control: contextControl, register: contextRegister } =
@@ -82,6 +84,8 @@ export const TextAreaField: HookFormFieldComponent<TextAreaFieldProps> = ({
       width={width}
       disabledErrMsg={disabledErrMsg}
       errorMsgRender={errorMsgRender}
+      horizontal={horizontal}
+      hints={hints}
     >
       <Textarea
         {...props}

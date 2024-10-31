@@ -14,7 +14,6 @@ export type InputFieldProps<T extends FieldValues = FieldValues> =
       minLength?: number;
       width?: number;
       inputClassName?: string;
-      hints?: string[];
     }
   >;
 
@@ -35,7 +34,6 @@ export const InputField: HookFormFieldComponent<InputFieldProps> = ({
   min,
   minLength,
   name,
-  hints,
   placeholder = '請輸入...',
   prefix,
   pattern,
@@ -50,6 +48,8 @@ export const InputField: HookFormFieldComponent<InputFieldProps> = ({
   tagsProps,
   type,
   errorMsgRender,
+  horizontal,
+  hints,
   onChange: onChangeProp,
   ...prop
 }) => {
@@ -93,11 +93,11 @@ export const InputField: HookFormFieldComponent<InputFieldProps> = ({
     }
 
     if (maxLength) {
-      return `${watchValue.length}/${maxLength}`;
+      return `${watchValue?.length ?? 0}/${maxLength}`;
     }
 
     return undefined;
-  }, [maxLength, remarkProps, watchValue.length]);
+  }, [maxLength, remarkProps, watchValue?.length]);
 
   return (
     <BaseField
@@ -110,8 +110,9 @@ export const InputField: HookFormFieldComponent<InputFieldProps> = ({
       disabled={disabled}
       label={label}
       width={width}
-      hints={hints}
       errorMsgRender={errorMsgRender}
+      horizontal={horizontal}
+      hints={hints}
     >
       <Input
         {...registration}

@@ -1,4 +1,4 @@
-@use '@mezzanine-ui/system/palette';
+@use '~@mezzanine-ui/system/palette';
 
 .host {
   --width: initial;
@@ -27,6 +27,13 @@
 
       &.basicLabel {
         color: palette.color(text-secondary);
+      }
+
+      .requiredMark {
+        vertical-align: top;
+        display: inline-block;
+        margin-left: 4px;
+        font-weight: 500;
       }
     }
 

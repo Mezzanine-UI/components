@@ -5,8 +5,8 @@ import {
   useFormState,
   useWatch,
 } from 'react-hook-form';
-import { BaseField } from '../BaseField';
 import { HookFormFieldComponent, HookFormFieldProps } from '../typing';
+import { BaseField } from '../BaseField';
 import classes from './index.module.scss';
 
 export type DateTimePickerFieldProps = HookFormFieldProps<
@@ -16,7 +16,9 @@ export type DateTimePickerFieldProps = HookFormFieldProps<
   width?: number;
 };
 
-const DateTimePickerField: HookFormFieldComponent<DateTimePickerFieldProps> = ({
+export const DateTimePickerField: HookFormFieldComponent<
+  DateTimePickerFieldProps
+> = ({
   clearable = true,
   className,
   control,
@@ -47,6 +49,8 @@ const DateTimePickerField: HookFormFieldComponent<DateTimePickerFieldProps> = ({
   disabledErrMsg,
   errorMsgRender,
   onChange: onChangeProp,
+  horizontal,
+  hints,
   ...props
 }) => {
   const {
@@ -87,6 +91,8 @@ const DateTimePickerField: HookFormFieldComponent<DateTimePickerFieldProps> = ({
       className={cx(classes.host, width && classes.specifiedWidth, className)}
       disabledErrMsg={disabledErrMsg}
       errorMsgRender={errorMsgRender}
+      horizontal={horizontal}
+      hints={hints}
     >
       <DateTimePicker
         {...props}
@@ -115,5 +121,3 @@ const DateTimePickerField: HookFormFieldComponent<DateTimePickerFieldProps> = ({
     </BaseField>
   );
 };
-
-export default DateTimePickerField;

@@ -76,7 +76,6 @@ export const BaseField: FC<BaseFieldProps> = ({
       className={cx(classes.host, width && classes.specifiedWidth, className)}
       style={baseFieldStyleVar}
       disabled={disabled}
-      required={required}
       severity={isError ? 'error' : undefined}
     >
       <div
@@ -93,6 +92,15 @@ export const BaseField: FC<BaseFieldProps> = ({
               remarkIcon={remarkIcon}
             >
               {label}
+              {required && (
+                <Typography
+                  variant="caption"
+                  color="error"
+                  className={classes.requiredMark}
+                >
+                  *
+                </Typography>
+              )}
             </FormLabel>
           </div>
         )}

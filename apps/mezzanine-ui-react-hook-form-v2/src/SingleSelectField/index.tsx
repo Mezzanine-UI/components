@@ -8,7 +8,7 @@ import classes from './index.module.scss';
 
 export type SingleSelectFieldProps = HookFormFieldProps<
   FieldValues,
-  Omit<SelectSingleProps, 'defaultValue'>,
+  Omit<SelectSingleProps, 'defaultValue' | 'mode'>,
   {
     width?: number;
     options: SelectValue[];
@@ -45,6 +45,7 @@ export const SingleSelectField: HookFormFieldComponent<
   onChange: onChangeProp,
   disabledErrMsg,
   horizontal,
+  hints,
   ...restProps
 }) => {
   const {
@@ -91,6 +92,7 @@ export const SingleSelectField: HookFormFieldComponent<
       disabledErrMsg={disabledErrMsg}
       errorMsgRender={errorMsgRender}
       horizontal={horizontal}
+      hints={hints}
     >
       <Select
         {...restProps}

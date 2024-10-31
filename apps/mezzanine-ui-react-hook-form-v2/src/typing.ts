@@ -29,6 +29,8 @@ export interface FieldProps<Type extends FieldValues>
   type?: HTMLInputTypeAttribute;
   fullWidth?: boolean;
   errorMsgRender?: ErrorMessageFn;
+  horizontal?: boolean;
+  hints?: string[];
 }
 
 export interface RegisteredFieldProps<Type extends FieldValues>
@@ -47,3 +49,15 @@ export type HookFormFieldProps<
 
 export type HookFormFieldComponent<Props extends FieldValues> =
   React.FunctionComponent<Props>;
+
+export type OptionItemType<ID extends string = string> = {
+  id: ID;
+  name: string;
+};
+
+export type OptionItemsType = OptionItemType[];
+
+export type OptionItemGroupsType = {
+  label: string;
+  options: OptionItemsType;
+}[];
