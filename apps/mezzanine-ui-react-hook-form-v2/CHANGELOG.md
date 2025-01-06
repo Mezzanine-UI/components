@@ -1,3 +1,17 @@
+## 0.0.11 (2025-01-06)
+
+
+### 🚀 Features
+
+- more fields
+
+- more fields
+
+
+### ❤️  Thank You
+
+- TingTing
+
 ## 0.0.10 (2024-08-22)
 
 This was a version bump only for @mezzanine-ui/react-hook-form-v2 to align it with other projects, there were no code changes.
