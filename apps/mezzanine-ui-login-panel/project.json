@@ -1,0 +1,20 @@
+{
+  "name": "@mezzanine-ui/login-panel",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/mezzanine-ui-login-panel/src",
+  "projectType": "application",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project mezzanine-ui-login-panel --web",
+  "targets": {
+    "build": {
+      "executor": "@nx/vite:build",
+      "options": {
+        "outputPath": "dist/apps/@mezzanine-ui/login-panel",
+        "configFile": "apps/mezzanine-ui-login-panel/vite.config.ts",
+        "generatePackageJson": true,
+        "includeDevDependenciesInPackageJson": false
+      },
+      "configurations": {}
+    }
+  }
+}

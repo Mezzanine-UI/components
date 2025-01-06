@@ -1992,7 +1992,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@hookform/error-message@npm:^2.0.1":
+"@hookform/error-message@npm:2.0.1, @hookform/error-message@npm:^2.0.1":
   version: 2.0.1
   resolution: "@hookform/error-message@npm:2.0.1"
   peerDependencies:
@@ -2000,6 +2000,15 @@ __metadata:
     react-dom: ">=16.8.0"
     react-hook-form: ^7.0.0
   checksum: 10c0/6b608bcdbd797ddb7c6cfc8c42b6bbac40066181a0c582b1f1a342bfa65fa7e8329cdb8e869a76e33988cd46fe8623d521ea597231b9d33e1f0ba3288e36c58e
+  languageName: node
+  linkType: hard
+
+"@hookform/resolvers@npm:3.9.1":
+  version: 3.9.1
+  resolution: "@hookform/resolvers@npm:3.9.1"
+  peerDependencies:
+    react-hook-form: ^7.0.0
+  checksum: 10c0/8a4056db3860b12ee30921ba352996104d6ae75ac45996d4c8b6df429e07ee73f5b87c82a22a15403789213f6f52f5fead1c2637b26ef624068b68d213362cd1
   languageName: node
   linkType: hard
 
@@ -2352,9 +2361,11 @@ __metadata:
     "@commitlint/config-conventional": "npm:^19.2.2"
     "@commitlint/config-nx-scopes": "npm:^19.3.1"
     "@hookform/error-message": "npm:^2.0.1"
+    "@hookform/resolvers": "npm:3.9.1"
     "@mezzanine-ui/core": "npm:^0.15.2"
     "@mezzanine-ui/icons": "npm:^0.15.2"
     "@mezzanine-ui/react": "npm:^0.15.2"
+    "@mezzanine-ui/react-hook-form-v2": "npm:0.0.13"
     "@mezzanine-ui/system": "npm:^0.15.2"
     "@nx/eslint": "npm:19.5.7"
     "@nx/eslint-plugin": "npm:19.5.7"
@@ -2403,6 +2414,7 @@ __metadata:
     vite: "npm:^5.4.0"
     vite-plugin-dts: "npm:^4.0.3"
     vitest: "npm:^2.0.5"
+    yup: "npm:1.6.1"
   languageName: unknown
   linkType: soft
 
@@ -2434,6 +2446,27 @@ __metadata:
   version: 0.15.2
   resolution: "@mezzanine-ui/icons@npm:0.15.2"
   checksum: 10c0/13fae3250ce0066becf379a7f730231cd9c965d38ce1150f2b6a181ca208d1bc07ccfe9dc13f48e6d901a53fb54e8ffd4ccdeb165216b4bb0a2ad4e9b1346adc
+  languageName: node
+  linkType: hard
+
+"@mezzanine-ui/react-hook-form-v2@npm:0.0.13":
+  version: 0.0.13
+  resolution: "@mezzanine-ui/react-hook-form-v2@npm:0.0.13"
+  dependencies:
+    "@hookform/error-message": "npm:2.0.1"
+    tslib: "npm:2.6.3"
+  peerDependencies:
+    "@hookform/error-message": 2.0.1
+    "@mezzanine-ui/core": 0.15.2
+    "@mezzanine-ui/icons": 0.15.2
+    "@mezzanine-ui/react": 0.15.2
+    "@mezzanine-ui/system": 0.15.2
+    lodash: 4.17.21
+    react: 18.3.1
+    react-dom: 18.3.1
+    react-hook-form: 7.52.2
+    tslib: 2.6.3
+  checksum: 10c0/99232b9dbe06e2a61932a671a8d59b1432364915f949f99cafdc68e245798c7130cfe010d9fc9f95e2bc8c57a937d45f21b5f6df32ef6b7130eb6d63a3f8a47b
   languageName: node
   linkType: hard
 
@@ -11332,6 +11365,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"property-expr@npm:^2.0.5":
+  version: 2.0.6
+  resolution: "property-expr@npm:2.0.6"
+  checksum: 10c0/69b7da15038a1146d6447c69c445306f66a33c425271235bb20507f1846dbf9577a8f9dfafe8acbfcb66f924b270157f155248308f026a68758f35fc72265b3c
+  languageName: node
+  linkType: hard
+
 "proxy-from-env@npm:^1.1.0":
   version: 1.1.0
   resolution: "proxy-from-env@npm:1.1.0"
@@ -12717,6 +12757,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"tiny-case@npm:^1.0.3":
+  version: 1.0.3
+  resolution: "tiny-case@npm:1.0.3"
+  checksum: 10c0/c0cbed35884a322265e2cd61ff435168d1ea523f88bf3864ce14a238ae9169e732649776964283a66e4eb882e655992081d4daf8c865042e2233425866111b35
+  languageName: node
+  linkType: hard
+
 "tiny-invariant@npm:^1.0.6":
   version: 1.3.3
   resolution: "tiny-invariant@npm:1.3.3"
@@ -12796,6 +12843,13 @@ __metadata:
     "@tokenizer/token": "npm:^0.3.0"
     ieee754: "npm:^1.2.1"
   checksum: 10c0/cb671b2b52271362816d22b7a076082b0da033cd7807992b81ae53cfd8541bd013ac29e455c3c7a8bb4f88aa1c5315a12353c3599b7f568df238d3c1723f9d8d
+  languageName: node
+  linkType: hard
+
+"toposort@npm:^2.0.2":
+  version: 2.0.2
+  resolution: "toposort@npm:2.0.2"
+  checksum: 10c0/ab9ca91fce4b972ccae9e2f539d755bf799a0c7eb60da07fd985fce0f14c159ed1e92305ff55697693b5bc13e300f5417db90e2593b127d421c9f6c440950222
   languageName: node
   linkType: hard
 
@@ -12990,7 +13044,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tslib@npm:^2.0.3, tslib@npm:^2.1.0, tslib@npm:^2.3.0, tslib@npm:^2.4.0, tslib@npm:^2.4.1, tslib@npm:^2.6.3":
+"tslib@npm:2.6.3, tslib@npm:^2.0.3, tslib@npm:^2.1.0, tslib@npm:^2.3.0, tslib@npm:^2.4.0, tslib@npm:^2.4.1, tslib@npm:^2.6.3":
   version: 2.6.3
   resolution: "tslib@npm:2.6.3"
   checksum: 10c0/2598aef53d9dbe711af75522464b2104724d6467b26a60f2bdac8297d2b5f1f6b86a71f61717384aa8fd897240467aaa7bcc36a0700a0faf751293d1331db39a
@@ -13031,6 +13085,13 @@ __metadata:
   version: 0.21.3
   resolution: "type-fest@npm:0.21.3"
   checksum: 10c0/902bd57bfa30d51d4779b641c2bc403cdf1371fb9c91d3c058b0133694fcfdb817aef07a47f40faf79039eecbaa39ee9d3c532deff244f3a19ce68cea71a61e8
+  languageName: node
+  linkType: hard
+
+"type-fest@npm:^2.19.0":
+  version: 2.19.0
+  resolution: "type-fest@npm:2.19.0"
+  checksum: 10c0/a5a7ecf2e654251613218c215c7493574594951c08e52ab9881c9df6a6da0aeca7528c213c622bc374b4e0cb5c443aa3ab758da4e3c959783ce884c3194e12cb
   languageName: node
   linkType: hard
 
@@ -13911,5 +13972,17 @@ __metadata:
   version: 1.1.1
   resolution: "yocto-queue@npm:1.1.1"
   checksum: 10c0/cb287fe5e6acfa82690acb43c283de34e945c571a78a939774f6eaba7c285bacdf6c90fbc16ce530060863984c906d2b4c6ceb069c94d1e0a06d5f2b458e2a92
+  languageName: node
+  linkType: hard
+
+"yup@npm:1.6.1":
+  version: 1.6.1
+  resolution: "yup@npm:1.6.1"
+  dependencies:
+    property-expr: "npm:^2.0.5"
+    tiny-case: "npm:^1.0.3"
+    toposort: "npm:^2.0.2"
+    type-fest: "npm:^2.19.0"
+  checksum: 10c0/84c2b53996e8001041239cf2719851719f67063ec7cd843067df73562353216f5ad4f8a222319696882d5a6058e528fade1e463c59d70cbffb41b99cd0d7571b
   languageName: node
   linkType: hard
