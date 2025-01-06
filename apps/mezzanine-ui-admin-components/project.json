@@ -1,0 +1,20 @@
+{
+  "name": "@mezzanine-ui/admin-components",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/mezzanine-ui-admin-components/src",
+  "projectType": "application",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project mezzanine-ui-admin-components --web",
+  "targets": {
+    "build": {
+      "executor": "@nx/vite:build",
+      "options": {
+        "outputPath": "dist/apps/@mezzanine-ui/admin-components",
+        "configFile": "apps/mezzanine-ui-admin-components/vite.config.ts",
+        "generatePackageJson": true,
+        "includeDevDependenciesInPackageJson": false
+      },
+      "configurations": {}
+    }
+  }
+}

@@ -6,6 +6,7 @@
   "scripts": {
     "tag:react-hook-form-v2": "nx release patch -p @mezzanine-ui/react-hook-form-v2",
     "tag:login-panel": "nx release patch -p @mezzanine-ui/login-panel",
+    "tag:admin-components": "nx release patch -p @mezzanine-ui/admin-components",
     "build": "nx run-many -t build",
     "release": "nx release publish",
     "prepare": "husky"

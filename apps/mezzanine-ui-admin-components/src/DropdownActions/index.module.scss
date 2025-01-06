@@ -1,0 +1,9 @@
+@use '@mezzanine-ui/system/palette';
+
+.menu {
+  min-width: 160px;
+
+  .dangerItem {
+    color: palette.color(error-dark);
+  }
+}
