@@ -10,7 +10,7 @@ import FormFooter from './FormFooter';
 import classes from './index.module.scss';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export interface FormWrapperProps<T extends FieldValues = FieldValues>
+export interface FormFieldsWrapperProps<T extends FieldValues = FieldValues>
   extends Omit<
     React.DetailedHTMLProps<
       React.FormHTMLAttributes<HTMLFormElement>,
@@ -48,7 +48,7 @@ export interface FormWrapperProps<T extends FieldValues = FieldValues>
   onCancel?: (values: T) => Promise<void>;
 }
 
-export const FormWrapper = <T extends FieldValues>({
+export const FormFieldsWrapper = <T extends FieldValues>({
   methods,
   children,
   onSubmit = () => {
@@ -74,7 +74,7 @@ export const FormWrapper = <T extends FieldValues>({
   onClickAction,
   onCancel,
   ...other
-}: FormWrapperProps<T>) => {
+}: FormFieldsWrapperProps<T>) => {
   const layoutStyleVar = useMemo(
     () =>
       ({
