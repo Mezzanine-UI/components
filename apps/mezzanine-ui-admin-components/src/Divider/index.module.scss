@@ -1,0 +1,7 @@
+@use '@mezzanine-ui/system/palette';
+
+.host {
+  width: 100%;
+  min-height: 1px;
+  background-color: palette.color(divider);
+}

@@ -1,0 +1,22 @@
+@use '@mezzanine-ui/system/palette';
+
+.host {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 4px;
+
+  &.alignStart {
+    align-items: flex-start;
+  }
+
+  .text {
+    white-space: pre-line;
+  }
+}
+
+.hints {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}

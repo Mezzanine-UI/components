@@ -16,6 +16,7 @@
     "@hookform/resolvers": "3.9.1",
     "@mezzanine-ui/core": "^0.15.2",
     "@mezzanine-ui/icons": "^0.15.2",
+    "@mezzanine-ui/login-panel": "0.0.13",
     "@mezzanine-ui/react": "^0.15.2",
     "@mezzanine-ui/react-hook-form-v2": "0.0.13",
     "@mezzanine-ui/system": "^0.15.2",

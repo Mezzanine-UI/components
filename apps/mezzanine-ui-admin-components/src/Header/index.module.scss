@@ -1,0 +1,67 @@
+@use '@mezzanine-ui/system/palette';
+
+.host {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--header-height);
+  background-color: palette.color(primary);
+  border-color: palette.color(divider);
+  padding: 0 40px;
+  max-height: unset;
+  z-index: 15;
+
+  .burgerBtn {
+    margin-right: 40px;
+  }
+
+  .appBarSupport {
+    .dropdownBtn {
+      padding: 4px;
+      margin: 0;
+
+      .iconsContainer {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 12px;
+
+        .dropdownIcon {
+          transition: transform 0.3s ease-in-out;
+
+          &.open {
+            transform: rotate(180deg);
+          }
+        }
+      }
+    }
+
+    .menu {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 350px;
+      padding: 0;
+      max-height: unset;
+
+      .infoWrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        align-self: stretch;
+        gap: 8px;
+        padding: 32px 40px;
+
+        .changeButton {
+          width: 100%;
+          margin-top: 16px;
+        }
+      }
+
+      .logoutButton {
+        width: 100%;
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+.host {
+  .main {
+    .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      padding-left: 0;
+      padding-top: var(--header-height);
+      transition: padding-left 0.3s ease-in-out;
+      min-height: 100svh;
+
+      &.expanded {
+        padding-left: var(--sidebar-width);
+      }
+    }
+  }
+}
