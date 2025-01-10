@@ -1,6 +1,6 @@
 {
   "name": "@mezzanine-ui/login-panel",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "main": "index.cjs",
   "module": "index.js",
   "type": "module",
@@ -30,7 +30,7 @@
     "@mezzanine-ui/core": "0.15.2",
     "@mezzanine-ui/icons": "0.15.2",
     "@mezzanine-ui/react": "0.15.2",
-    "@mezzanine-ui/react-hook-form-v2": "0.0.13",
+    "@mezzanine-ui/react-hook-form-v2": "0.0.14",
     "@mezzanine-ui/system": "0.15.2",
     "lodash": "4.17.21",
     "react": "18.3.1",
