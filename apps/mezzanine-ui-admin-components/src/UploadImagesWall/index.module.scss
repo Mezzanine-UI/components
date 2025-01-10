@@ -1,0 +1,45 @@
+@use '@mezzanine-ui/system/palette';
+
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 8px;
+
+  .limitHint {
+    margin-bottom: 16px;
+  }
+
+  .imagesSection {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    .wallImagesWrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 24px;
+
+      .wallImageItem {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        background-color: palette.color(bg);
+        border: 1px solid palette.color(border);
+
+        .wallImage {
+          object-fit: contain;
+        }
+      }
+    }
+
+    .actionsWrapper {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 16px;
+    }
+  }
+}
