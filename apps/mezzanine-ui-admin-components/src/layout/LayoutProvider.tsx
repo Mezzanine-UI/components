@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
-import { useCallback, useState, createContext } from 'react';
+import { FC, ReactNode, useCallback, useState, createContext } from 'react';
 
 interface LayoutContextTypes {
   expanded: boolean;
@@ -17,7 +17,7 @@ export const LayoutContext = createContext<LayoutContextTypes>(
   LayoutContextDefaultValues,
 );
 
-const LayoutProvider: FC = ({ children }) => {
+const LayoutProvider: FC<{ children?: ReactNode }> = ({ children }) => {
   const [expanded, setExpanded] = useState<boolean>(true);
 
   const toggleSidebar = useCallback(() => {
