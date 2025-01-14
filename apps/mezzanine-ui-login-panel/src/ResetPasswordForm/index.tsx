@@ -16,7 +16,7 @@ import classes from './index.module.scss';
 interface ResetPasswordFormProps {
   logo: ReactNode;
   passwordLength: number;
-  generationLimit: number;
+  generationLimit?: number;
   onChangePassword: ({
     values,
   }: {
@@ -84,7 +84,7 @@ export const ResetPasswordForm: FC<ResetPasswordFormProps> = ({
     <div className={classes.root}>
       <div className={classes.logoWrapper}>
         {logo}
-        <Typography variant="h2" color="text-primary" align="center">
+        <Typography variant="h3" color="text-primary" align="center">
           密碼重置
         </Typography>
         <Typography variant="h5" color="text-primary" align="center">
@@ -107,12 +107,19 @@ export const ResetPasswordForm: FC<ResetPasswordFormProps> = ({
               inputClassName={classes.input}
               disabledErrMsg
             />
-            <PasswordHint
-              passwordValue={values.password}
-              passwordLength={passwordLength}
-              generationLimit={generationLimit}
-              showGenerationLimitHint
-            />
+            {generationLimit ? (
+              <PasswordHint
+                passwordValue={values.password}
+                passwordLength={passwordLength}
+                generationLimit={generationLimit}
+                showGenerationLimitHint
+              />
+            ) : (
+              <PasswordHint
+                passwordValue={values.password}
+                passwordLength={passwordLength}
+              />
+            )}
           </div>
           <PasswordField
             registerName="confirmPassword"

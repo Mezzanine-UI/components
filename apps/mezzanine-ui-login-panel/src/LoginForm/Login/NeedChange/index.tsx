@@ -20,7 +20,7 @@ interface NeedChangeProps {
   mode: NeedChangePasswordMode;
   logo: ReactNode;
   passwordLength: number;
-  generationLimit: number;
+  generationLimit?: number;
   keepPasswordDaysLimit: number;
   onNeedChangePassword: ({
     values,
@@ -100,14 +100,14 @@ const NeedChange: FC<NeedChangeProps> = ({
       <div className={classes.logoWrapper}>
         {logo}
         {mode === NeedChangePasswordMode.FIRST && (
-          <Typography variant="h2" color="text-primary" align="center">
+          <Typography variant="h3" color="text-primary" align="center">
             歡迎啟用帳號！
             <br />
             請設定密碼
           </Typography>
         )}
         {mode === NeedChangePasswordMode.TOO_LONG && (
-          <Typography variant="h2" color="text-primary" align="center">
+          <Typography variant="h3" color="text-primary" align="center">
             {`密碼超過${keepPasswordDaysLimit}天未更新了哦！`}
             <br />
             來更新密碼吧！
@@ -133,12 +133,21 @@ const NeedChange: FC<NeedChangeProps> = ({
               inputClassName={classes.input}
               disabledErrMsg
             />
-            <PasswordHint
-              passwordValue={values.password}
-              passwordLength={passwordLength}
-              generationLimit={generationLimit}
-              showGenerationLimitHint={mode === NeedChangePasswordMode.TOO_LONG}
-            />
+            {generationLimit ? (
+              <PasswordHint
+                passwordValue={values.password}
+                passwordLength={passwordLength}
+                generationLimit={generationLimit}
+                showGenerationLimitHint={
+                  mode === NeedChangePasswordMode.TOO_LONG
+                }
+              />
+            ) : (
+              <PasswordHint
+                passwordValue={values.password}
+                passwordLength={passwordLength}
+              />
+            )}
           </div>
           <PasswordField
             registerName="confirmPassword"

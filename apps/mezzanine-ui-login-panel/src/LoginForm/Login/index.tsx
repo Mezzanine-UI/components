@@ -18,8 +18,9 @@ import General from './General';
 interface LoginProps {
   logo: ReactNode;
   passwordLength: number;
-  generationLimit: number;
+  generationLimit?: number;
   keepPasswordDaysLimit: number;
+  generalLoginText?: string;
   onLogin: ({
     values,
     needChangePassword,
@@ -52,6 +53,7 @@ const Login: FC<LoginProps> = ({
   passwordLength,
   generationLimit,
   keepPasswordDaysLimit,
+  generalLoginText,
   onLogin: onLoginProps,
   onNeedChangePassword,
   setCurrentPage,
@@ -109,7 +111,12 @@ const Login: FC<LoginProps> = ({
   }
 
   return (
-    <General logo={logo} onLogin={onLogin} setCurrentPage={setCurrentPage} />
+    <General
+      logo={logo}
+      generalLoginText={generalLoginText}
+      onLogin={onLogin}
+      setCurrentPage={setCurrentPage}
+    />
   );
 };
 

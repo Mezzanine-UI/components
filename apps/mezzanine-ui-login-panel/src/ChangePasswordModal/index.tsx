@@ -90,7 +90,7 @@ export const ChangePasswordModal: FC<ChangePasswordModalProps> = ({
     <div className={classes.root}>
       <div className={classes.logoWrapper}>
         {logo}
-        <Typography variant="h2" color="text-primary" align="center">
+        <Typography variant="h3" color="text-primary" align="center">
           更改密碼
         </Typography>
         <Typography variant="h5" color="text-primary" align="center">

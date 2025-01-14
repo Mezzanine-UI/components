@@ -18,11 +18,17 @@ import classes from './index.module.scss';
 
 interface LoginProps {
   logo: ReactNode;
+  generalLoginText?: string;
   onLogin: ({ values }: { values: LoginFormValues }) => Promise<void>;
   setCurrentPage: Dispatch<SetStateAction<LoginPageEnum>>;
 }
 
-const Login: FC<LoginProps> = ({ logo, onLogin, setCurrentPage }) => {
+const Login: FC<LoginProps> = ({
+  logo,
+  generalLoginText = '登入',
+  onLogin,
+  setCurrentPage,
+}) => {
   const methods = useForm<LoginFormValues>({
     defaultValues: {
       account: '',
@@ -46,13 +52,13 @@ const Login: FC<LoginProps> = ({ logo, onLogin, setCurrentPage }) => {
 
   return (
     <div className={classes.root}>
-      <div className={classes.logoWrapper}>{logo}</div>
       <FormFieldsWrapper
         methods={methods}
         onSubmit={onSubmit}
         className={classes.formWrapper}
       >
-        <Typography variant="h2" color="text-primary" align="center">
+        <div className={classes.logoWrapper}>{logo}</div>
+        <Typography variant="h3" color="text-primary" align="center">
           帳號登入
         </Typography>
         <div className={classes.blockWrapper}>
@@ -81,7 +87,7 @@ const Login: FC<LoginProps> = ({ logo, onLogin, setCurrentPage }) => {
             loading={submitting}
             disabled={!(values.account && values.password) || submitting}
           >
-            登入
+            {generalLoginText}
           </Button>
           <Button
             type="button"

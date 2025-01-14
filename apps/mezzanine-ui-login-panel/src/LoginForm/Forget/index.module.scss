@@ -1,10 +1,7 @@
 @use '@mezzanine-ui/system/palette';
 
 .root {
-  display: flex;
-  flex-direction: column;
-  padding: 40px 20px;
-  gap: 24px;
+  padding: 40px;
   border: 1px solid palette.color(border);
   background-color: #fff;
   box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.1);
@@ -13,28 +10,32 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+    &.success {
+      margin-bottom: 12px;
+    }
   }
 
   .formWrapper {
-    width: 440px;
+    width: 400px;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 24px;
 
-    .blockWrapper {
-      width: 400px;
+    .blocksWrapper {
+      align-self: stretch;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 16px;
-    }
+      gap: 40px;
 
-    .inputWrapper {
-      margin-bottom: 10px;
-
-      .input {
-        width: 400px;
+      .blockWrapper {
+        align-self: stretch;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
       }
     }
 

@@ -10,11 +10,11 @@ import {
 } from './typing';
 
 interface LoginFormProps {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   logo: ReactNode;
   passwordLength?: number;
   generationLimit?: number;
   keepPasswordDaysLimit?: number;
+  generalLoginText?: string;
   onLogin: ({
     values,
     needChangePassword,
@@ -49,8 +49,9 @@ interface LoginFormProps {
 export const LoginForm: FC<LoginFormProps> = ({
   logo,
   passwordLength = 10,
-  generationLimit = 6,
+  generationLimit,
   keepPasswordDaysLimit = 60,
+  generalLoginText,
   onLogin,
   onNeedChangePassword,
   onSendForgetAccount,
@@ -67,6 +68,7 @@ export const LoginForm: FC<LoginFormProps> = ({
           passwordLength={passwordLength}
           generationLimit={generationLimit}
           keepPasswordDaysLimit={keepPasswordDaysLimit}
+          generalLoginText={generalLoginText}
           onLogin={onLogin}
           onNeedChangePassword={onNeedChangePassword}
           setCurrentPage={setCurrentPage}

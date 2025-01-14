@@ -73,50 +73,52 @@ const Forget: FC<ForgetProps> = ({
 
   return (
     <div className={classes.root}>
-      <div className={classes.logoWrapper}>{logo}</div>
       <FormFieldsWrapper
         methods={methods}
         onSubmit={onSubmit}
         className={classes.formWrapper}
       >
-        <Typography variant="h2" color="text-primary" align="center">
+        <div className={classes.logoWrapper}>{logo}</div>
+        <Typography variant="h3" color="text-primary" align="center">
           重新設定密碼
         </Typography>
         <Typography variant="h5" color="text-primary" align="center">
-          請輸入註冊時使用的email帳號，密碼重置URL將發送至該信箱
+          請輸入註冊時使用的email帳號，
+          <br />
+          密碼重置URL將發送至該信箱
         </Typography>
-        <div className={classes.blockWrapper}>
-          <InputField
-            registerName="account"
-            label="帳號"
-            size="large"
-            placeholder="輸入帳號 e.g. example@email.com"
-            className={classes.inputWrapper}
-            inputClassName={classes.input}
-          />
-        </div>
-        <div className={classes.blockWrapper}>
-          <Button
-            type="submit"
-            variant="contained"
-            size="large"
-            className={classes.button}
-            loading={submitting}
-            disabled={!values.account || submitting}
-          >
-            送出
-          </Button>
-          <Button
-            type="button"
-            variant="text"
-            size="large"
-            className={classes.button}
-            onClick={() => {
-              setCurrentPage(LoginPageEnum.LOGIN);
-            }}
-          >
-            返回登入頁面
-          </Button>
+        <div className={classes.blocksWrapper}>
+          <div className={classes.blockWrapper}>
+            <InputField
+              registerName="account"
+              label="帳號"
+              size="large"
+              placeholder="輸入帳號 e.g. example@email.com"
+            />
+          </div>
+          <div className={classes.blockWrapper}>
+            <Button
+              type="submit"
+              variant="contained"
+              size="large"
+              className={classes.button}
+              loading={submitting}
+              disabled={!values.account || submitting}
+            >
+              送出
+            </Button>
+            <Button
+              type="button"
+              variant="text"
+              size="large"
+              className={classes.button}
+              onClick={() => {
+                setCurrentPage(LoginPageEnum.LOGIN);
+              }}
+            >
+              返回登入頁面
+            </Button>
+          </div>
         </div>
       </FormFieldsWrapper>
     </div>

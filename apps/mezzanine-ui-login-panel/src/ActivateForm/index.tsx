@@ -82,7 +82,7 @@ export const ActivateForm: FC<ActivateFormProps> = ({
     <div className={classes.root}>
       <div className={classes.logoWrapper}>
         {logo}
-        <Typography variant="h2" color="text-primary" align="center">
+        <Typography variant="h3" color="text-primary" align="center">
           歡迎啟用帳號！
           <br />
           請設定密碼

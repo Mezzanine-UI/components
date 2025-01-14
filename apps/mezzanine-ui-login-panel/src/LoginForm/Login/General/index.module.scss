@@ -1,10 +1,7 @@
 @use '@mezzanine-ui/system/palette';
 
 .root {
-  display: flex;
-  flex-direction: column;
   padding: 40px;
-  gap: 24px;
   border: 1px solid palette.color(border);
   background-color: #fff;
   box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.1);
