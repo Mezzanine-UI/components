@@ -1,3 +1,7 @@
+## 0.0.15 (2025-01-14)
+
+This was a version bump only for @mezzanine-ui/login-panel to align it with other projects, there were no code changes.
+
 ## 0.0.14 (2025-01-10)
 
 
