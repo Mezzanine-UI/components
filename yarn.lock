@@ -2364,9 +2364,9 @@ __metadata:
     "@hookform/resolvers": "npm:3.9.1"
     "@mezzanine-ui/core": "npm:^0.15.2"
     "@mezzanine-ui/icons": "npm:^0.15.2"
-    "@mezzanine-ui/login-panel": "npm:0.0.15"
+    "@mezzanine-ui/login-panel": "npm:0.0.16"
     "@mezzanine-ui/react": "npm:^0.15.2"
-    "@mezzanine-ui/react-hook-form-v2": "npm:0.0.15"
+    "@mezzanine-ui/react-hook-form-v2": "npm:0.0.16"
     "@mezzanine-ui/system": "npm:^0.15.2"
     "@nx/eslint": "npm:19.5.7"
     "@nx/eslint-plugin": "npm:19.5.7"
@@ -2452,9 +2452,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mezzanine-ui/login-panel@npm:0.0.15":
-  version: 0.0.15
-  resolution: "@mezzanine-ui/login-panel@npm:0.0.15"
+"@mezzanine-ui/login-panel@npm:0.0.16":
+  version: 0.0.16
+  resolution: "@mezzanine-ui/login-panel@npm:0.0.16"
   dependencies:
     "@hookform/error-message": "npm:2.0.1"
     "@hookform/resolvers": "npm:3.9.1"
@@ -2466,7 +2466,7 @@ __metadata:
     "@mezzanine-ui/core": 0.15.2
     "@mezzanine-ui/icons": 0.15.2
     "@mezzanine-ui/react": 0.15.2
-    "@mezzanine-ui/react-hook-form-v2": 0.0.15
+    "@mezzanine-ui/react-hook-form-v2": 0.0.16
     "@mezzanine-ui/system": 0.15.2
     lodash: 4.17.21
     react: 18.3.1
@@ -2474,13 +2474,13 @@ __metadata:
     react-hook-form: 7.52.2
     tslib: 2.6.3
     yup: 1.6.1
-  checksum: 10c0/90bc4750f349cc44eb8d1f3a1e17d531c77e41798dd9bfbb832fac8ba5b1a67bb1b4bd8c571e3b9a3df80782e20e05120d3b3800eaaee140b55abfbfcbf32854
+  checksum: 10c0/788d06ddaca6ff0477c99ed611d994aa36d950cb147ff48217f4d2f45b1f7dd209b2f72446ec0fa6ce83bc3a152f5fd67c367a89c5f38553040f00f9047d5a0f
   languageName: node
   linkType: hard
 
-"@mezzanine-ui/react-hook-form-v2@npm:0.0.15":
-  version: 0.0.15
-  resolution: "@mezzanine-ui/react-hook-form-v2@npm:0.0.15"
+"@mezzanine-ui/react-hook-form-v2@npm:0.0.16":
+  version: 0.0.16
+  resolution: "@mezzanine-ui/react-hook-form-v2@npm:0.0.16"
   dependencies:
     "@hookform/error-message": "npm:2.0.1"
     tslib: "npm:2.6.3"
@@ -2495,7 +2495,7 @@ __metadata:
     react-dom: 18.3.1
     react-hook-form: 7.52.2
     tslib: 2.6.3
-  checksum: 10c0/beac175e88b9a039c92f870d5fb691b300d6ddb7018d1e5f39a9d2ab10bd2911b45cf2ae077ed31f1b972160b994480e6f7823fba1080289ae5b07954220aa70
+  checksum: 10c0/94b9b2f2abd43a264719e3ec7e019b45e358342abc9a6bc418a302d5ce51824a1b043876236aefd6b29f7d78ebd9f1a1a2e10a17236169dbab76fca42e2a7de7
   languageName: node
   linkType: hard
 
