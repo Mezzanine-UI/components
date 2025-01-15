@@ -26,6 +26,16 @@ export const Default: Story = {
     controls: { include: [] },
   },
   render: function Render(args) {
-    return <ActivateForm {...args} />;
+    return (
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
+        <ActivateForm {...args} />
+      </div>
+    );
   },
 };
