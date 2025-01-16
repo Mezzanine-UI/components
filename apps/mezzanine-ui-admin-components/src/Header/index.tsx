@@ -13,7 +13,7 @@ import {
 } from '@mezzanine-ui/react';
 import { MenuIcon, ProfileIcon, ChevronDownIcon } from '@mezzanine-ui/icons';
 import {
-  ChangePasswordModal,
+  ChangePasswordForm,
   ChangePasswordFormValues,
 } from '@mezzanine-ui/login-panel';
 import { useLayout } from '../layout/useLayout';
@@ -85,7 +85,7 @@ export const Header: FC<HeaderProps> = ({
                       disableCloseOnBackdropClick: true,
                       hideCloseIcon: true,
                       children: (
-                        <ChangePasswordModal
+                        <ChangePasswordForm
                           logo={changePasswordModalConfig.logo}
                           passwordLength={
                             changePasswordModalConfig.passwordLength

@@ -2754,9 +2754,9 @@ __metadata:
     "@hookform/resolvers": "npm:3.9.1"
     "@mezzanine-ui/core": "npm:^0.15.2"
     "@mezzanine-ui/icons": "npm:^0.15.2"
-    "@mezzanine-ui/login-panel": "npm:0.0.16"
+    "@mezzanine-ui/login-panel": "npm:0.0.17"
     "@mezzanine-ui/react": "npm:^0.15.2"
-    "@mezzanine-ui/react-hook-form-v2": "npm:0.0.16"
+    "@mezzanine-ui/react-hook-form-v2": "npm:0.0.17"
     "@mezzanine-ui/system": "npm:^0.15.2"
     "@nx/eslint": "npm:20.3.1"
     "@nx/eslint-plugin": "npm:20.3.1"
@@ -2850,12 +2850,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mezzanine-ui/login-panel@npm:0.0.16":
-  version: 0.0.16
-  resolution: "@mezzanine-ui/login-panel@npm:0.0.16"
+"@mezzanine-ui/login-panel@npm:0.0.17":
+  version: 0.0.17
+  resolution: "@mezzanine-ui/login-panel@npm:0.0.17"
   dependencies:
     "@hookform/error-message": "npm:2.0.1"
     "@hookform/resolvers": "npm:3.9.1"
+    "@storybook/react": "npm:8.4.7"
     tslib: "npm:2.6.3"
     yup: "npm:1.6.1"
   peerDependencies:
@@ -2864,7 +2865,7 @@ __metadata:
     "@mezzanine-ui/core": 0.15.2
     "@mezzanine-ui/icons": 0.15.2
     "@mezzanine-ui/react": 0.15.2
-    "@mezzanine-ui/react-hook-form-v2": 0.0.16
+    "@mezzanine-ui/react-hook-form-v2": 0.0.17
     "@mezzanine-ui/system": 0.15.2
     lodash: 4.17.21
     react: 18.3.1
@@ -2872,13 +2873,13 @@ __metadata:
     react-hook-form: 7.52.2
     tslib: 2.6.3
     yup: 1.6.1
-  checksum: 10c0/788d06ddaca6ff0477c99ed611d994aa36d950cb147ff48217f4d2f45b1f7dd209b2f72446ec0fa6ce83bc3a152f5fd67c367a89c5f38553040f00f9047d5a0f
+  checksum: 10c0/5592ea2a9cae6abdfbed5850b71fdac0aeb10d9c893cd52b823a7e76d13e5c594d797c228ec980f1a65bd37d3745ec9ba8ad7b95f2210d5473e3cefbf744eb7d
   languageName: node
   linkType: hard
 
-"@mezzanine-ui/react-hook-form-v2@npm:0.0.16":
-  version: 0.0.16
-  resolution: "@mezzanine-ui/react-hook-form-v2@npm:0.0.16"
+"@mezzanine-ui/react-hook-form-v2@npm:0.0.17":
+  version: 0.0.17
+  resolution: "@mezzanine-ui/react-hook-form-v2@npm:0.0.17"
   dependencies:
     "@hookform/error-message": "npm:2.0.1"
     tslib: "npm:2.6.3"
@@ -2893,7 +2894,7 @@ __metadata:
     react-dom: 18.3.1
     react-hook-form: 7.52.2
     tslib: 2.6.3
-  checksum: 10c0/94b9b2f2abd43a264719e3ec7e019b45e358342abc9a6bc418a302d5ce51824a1b043876236aefd6b29f7d78ebd9f1a1a2e10a17236169dbab76fca42e2a7de7
+  checksum: 10c0/ef5b4137758a3eb5e5e46fbfe36349841d0fd4012aceeff23a4a65e624aad503b3834e3162302a7bc0a07deaa57960a0eab6036bd3d21d108a3d776bf7a274c1
   languageName: node
   linkType: hard
 
