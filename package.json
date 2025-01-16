@@ -44,6 +44,7 @@
     "@nx/vite": "20.3.1",
     "@nx/web": "20.3.1",
     "@nx/workspace": "20.3.1",
+    "@storybook/addon-actions": "8.4.7",
     "@storybook/addon-essentials": "8.4.7",
     "@storybook/addon-interactions": "8.4.7",
     "@storybook/core-server": "8.4.7",

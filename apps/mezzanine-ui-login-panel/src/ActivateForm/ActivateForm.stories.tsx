@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 import { ActivateForm } from './index';
 
 const meta = {
@@ -14,13 +15,11 @@ export const Default: Story = {
     logo: <div>logo</div>,
     passwordLength: 10,
     onChangePassword: async (values) => {
-      console.log('onChangePassword', values);
+      action('onChangePassword')(values);
       return true;
     },
     account: 'admin@rytass.com',
-    onBack: () => {
-      console.log('onBack');
-    },
+    onBack: action('onBack'),
   },
   parameters: {
     controls: {
