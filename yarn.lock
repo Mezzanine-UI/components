@@ -2754,9 +2754,9 @@ __metadata:
     "@hookform/resolvers": "npm:3.9.1"
     "@mezzanine-ui/core": "npm:^0.15.2"
     "@mezzanine-ui/icons": "npm:^0.15.2"
-    "@mezzanine-ui/login-panel": "npm:0.0.17"
+    "@mezzanine-ui/login-panel": "npm:0.0.18"
     "@mezzanine-ui/react": "npm:^0.15.2"
-    "@mezzanine-ui/react-hook-form-v2": "npm:0.0.17"
+    "@mezzanine-ui/react-hook-form-v2": "npm:0.0.18"
     "@mezzanine-ui/system": "npm:^0.15.2"
     "@nx/eslint": "npm:20.3.1"
     "@nx/eslint-plugin": "npm:20.3.1"
@@ -2772,6 +2772,7 @@ __metadata:
     "@storybook/addon-essentials": "npm:8.4.7"
     "@storybook/addon-storysource": "npm:8.4.7"
     "@storybook/core-server": "npm:8.4.7"
+    "@storybook/react": "npm:8.4.7"
     "@storybook/react-vite": "npm:8.4.7"
     "@swc-node/register": "npm:~1.10.9"
     "@swc/cli": "npm:~0.4.0"
@@ -2850,13 +2851,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mezzanine-ui/login-panel@npm:0.0.17":
-  version: 0.0.17
-  resolution: "@mezzanine-ui/login-panel@npm:0.0.17"
+"@mezzanine-ui/login-panel@npm:0.0.18":
+  version: 0.0.18
+  resolution: "@mezzanine-ui/login-panel@npm:0.0.18"
   dependencies:
     "@hookform/error-message": "npm:2.0.1"
     "@hookform/resolvers": "npm:3.9.1"
-    "@storybook/react": "npm:8.4.7"
     tslib: "npm:2.6.3"
     yup: "npm:1.6.1"
   peerDependencies:
@@ -2865,7 +2865,7 @@ __metadata:
     "@mezzanine-ui/core": 0.15.2
     "@mezzanine-ui/icons": 0.15.2
     "@mezzanine-ui/react": 0.15.2
-    "@mezzanine-ui/react-hook-form-v2": 0.0.17
+    "@mezzanine-ui/react-hook-form-v2": 0.0.18
     "@mezzanine-ui/system": 0.15.2
     lodash: 4.17.21
     react: 18.3.1
@@ -2873,13 +2873,13 @@ __metadata:
     react-hook-form: 7.52.2
     tslib: 2.6.3
     yup: 1.6.1
-  checksum: 10c0/5592ea2a9cae6abdfbed5850b71fdac0aeb10d9c893cd52b823a7e76d13e5c594d797c228ec980f1a65bd37d3745ec9ba8ad7b95f2210d5473e3cefbf744eb7d
+  checksum: 10c0/6bb89d104c8016a2e5ecd80071ae312e68886188685525aae11b9c33e00b410bd317daa17a15fd97327a6ecfd6ddca8089067094ea6b92f54b818ae73d3bbd78
   languageName: node
   linkType: hard
 
-"@mezzanine-ui/react-hook-form-v2@npm:0.0.17":
-  version: 0.0.17
-  resolution: "@mezzanine-ui/react-hook-form-v2@npm:0.0.17"
+"@mezzanine-ui/react-hook-form-v2@npm:0.0.18":
+  version: 0.0.18
+  resolution: "@mezzanine-ui/react-hook-form-v2@npm:0.0.18"
   dependencies:
     "@hookform/error-message": "npm:2.0.1"
     tslib: "npm:2.6.3"
@@ -2894,7 +2894,7 @@ __metadata:
     react-dom: 18.3.1
     react-hook-form: 7.52.2
     tslib: 2.6.3
-  checksum: 10c0/ef5b4137758a3eb5e5e46fbfe36349841d0fd4012aceeff23a4a65e624aad503b3834e3162302a7bc0a07deaa57960a0eab6036bd3d21d108a3d776bf7a274c1
+  checksum: 10c0/9dc13b0d705b61833ebf936efd932086ffb54c2f4b99728c40717e3a13e3fc4dc9f0f733a0d9816c6bb10c83feb18da740a173431ca8b5f1474c6a38de4ef86d
   languageName: node
   linkType: hard
 
