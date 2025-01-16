@@ -8,24 +8,28 @@ import {
 import { generatePasswordRegRxp } from '../utils/validation';
 import classes from './index.module.scss';
 
-interface PasswordHintWithLimitProps {
+interface PasswordHintProps {
+  /**
+   * 密碼值，若不符合規則會變為紅色文字
+   */
   passwordValue: string;
+  /**
+   * 密碼至少需要的長度
+   */
   passwordLength: number;
-  generationLimit: number;
-  showGenerationLimitHint: boolean;
+  /**
+   * 密碼不可與前 `number` 代重複
+   */
+  generationLimit?: number;
+  /**
+   * 是否顯示 `generationLimit`
+   */
+  showGenerationLimitHint?: boolean;
 }
 
-interface PasswordHintWithoutLimitProps {
-  passwordValue: string;
-  passwordLength: number;
-  generationLimit?: undefined;
-  showGenerationLimitHint?: false;
-}
-
-type PasswordHintProps =
-  | PasswordHintWithLimitProps
-  | PasswordHintWithoutLimitProps;
-
+/**
+ * 密碼規則提示，必須要有 `passwordLength` 個字，且包含至少一個大寫字母、小寫字母、數字、符號
+ */
 export const PasswordHint: FC<PasswordHintProps> = ({
   passwordValue,
   passwordLength,
