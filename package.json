@@ -47,6 +47,7 @@
     "@storybook/addon-actions": "8.4.7",
     "@storybook/addon-essentials": "8.4.7",
     "@storybook/addon-interactions": "8.4.7",
+    "@storybook/addon-storysource": "8.4.7",
     "@storybook/core-server": "8.4.7",
     "@storybook/react-vite": "8.4.7",
     "@swc-node/register": "~1.10.9",
