@@ -16,6 +16,11 @@ export default defineConfig({
       tsconfigPath: resolve(__dirname, 'tsconfig.app.json'),
     }),
   ],
+  resolve: {
+    alias: {
+      '~@mezzanine-ui': '@mezzanine-ui',
+    },
+  },
   build: {
     reportCompressedSize: true,
     lib: {
