@@ -23,7 +23,9 @@ export const Default: Story = {
     },
   },
   parameters: {
-    controls: { include: [] },
+    controls: {
+      include: ['passwordLength', 'account'],
+    },
   },
   render: function Render(args) {
     return (
