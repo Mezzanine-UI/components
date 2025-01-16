@@ -2775,6 +2775,7 @@ __metadata:
     "@nx/web": "npm:20.3.1"
     "@nx/workspace": "npm:20.3.1"
     "@storybook/addon-actions": "npm:8.4.7"
+    "@storybook/addon-docs": "npm:8.4.7"
     "@storybook/addon-essentials": "npm:8.4.7"
     "@storybook/addon-interactions": "npm:8.4.7"
     "@storybook/addon-storysource": "npm:8.4.7"

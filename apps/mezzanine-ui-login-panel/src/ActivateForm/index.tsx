@@ -14,14 +14,29 @@ import Success from './Success';
 import classes from './index.module.scss';
 
 interface ActivateFormProps {
+  /**
+   * 放置 logo
+   */
   logo: ReactNode;
+  /**
+   * 密碼至少需要的長度
+   */
   passwordLength: number;
+  /**
+   * 送出時觸發，return true 代表更新成功
+   */
   onChangePassword: ({
     values,
   }: {
     values: ActivateFormValues;
   }) => Promise<boolean>;
+  /**
+   * 顯示帳號
+   */
   account: string;
+  /**
+   * 成功後返回
+   */
   onBack: VoidFunction;
 }
 
@@ -32,6 +47,9 @@ const formSchema: Yup.ObjectSchema<ActivateFormValues> = Yup.object({
     .oneOf([Yup.ref('password')], '密碼不一致'),
 });
 
+/**
+ * 後台啟用帳號 UI 元件
+ */
 export const ActivateForm: FC<ActivateFormProps> = ({
   logo,
   passwordLength,

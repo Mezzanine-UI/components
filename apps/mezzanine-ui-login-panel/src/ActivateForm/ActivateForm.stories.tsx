@@ -12,7 +12,20 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    logo: <div>logo</div>,
+    logo: (
+      <div
+        style={{
+          width: 134,
+          height: 100,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          border: '1px solid #212121',
+        }}
+      >
+        Logo
+      </div>
+    ),
     passwordLength: 10,
     onChangePassword: async (values) => {
       action('onChangePassword')(values);
