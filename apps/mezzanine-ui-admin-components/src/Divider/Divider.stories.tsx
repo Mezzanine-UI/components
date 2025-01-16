@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { Typography } from '@mezzanine-ui/react';
 import { Divider } from './index';
 
 const meta = {
@@ -15,6 +16,16 @@ export const Default: Story = {
     controls: { include: [] },
   },
   render: function Render(args) {
-    return <Divider {...args} />;
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+        <Typography variant="h2" color="primary">
+          上文
+        </Typography>
+        <Divider {...args} />
+        <Typography variant="h2" color="primary">
+          下文
+        </Typography>
+      </div>
+    );
   },
 };
