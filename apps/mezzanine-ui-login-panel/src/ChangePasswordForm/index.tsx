@@ -13,7 +13,7 @@ import * as Yup from 'yup';
 import Success from './Success';
 import classes from './index.module.scss';
 
-interface ChangePasswordModalProps {
+interface ChangePasswordFormProps {
   logo: ReactNode;
   passwordLength: number;
   generationLimit?: number;
@@ -36,7 +36,7 @@ const formSchema: Yup.ObjectSchema<ChangePasswordFormValues> = Yup.object({
     .oneOf([Yup.ref('password')], '密碼不一致'),
 });
 
-export const ChangePasswordModal: FC<ChangePasswordModalProps> = ({
+export const ChangePasswordForm: FC<ChangePasswordFormProps> = ({
   logo,
   passwordLength,
   generationLimit,
