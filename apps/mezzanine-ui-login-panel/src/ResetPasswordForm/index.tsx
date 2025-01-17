@@ -14,15 +14,33 @@ import Success from './Success';
 import classes from './index.module.scss';
 
 interface ResetPasswordFormProps {
+  /**
+   * 放置 logo
+   */
   logo: ReactNode;
+  /**
+   * 密碼至少需要的長度
+   */
   passwordLength: number;
+  /**
+   * 密碼不可與前 `number` 代重複
+   */
   generationLimit?: number;
+  /**
+   * 送出時觸發，return true 代表更新成功
+   */
   onChangePassword: ({
     values,
   }: {
     values: ResetPasswordFormValues;
   }) => Promise<boolean>;
+  /**
+   * 顯示帳號
+   */
   account: string;
+  /**
+   * 成功後返回
+   */
   onBack: VoidFunction;
 }
 
@@ -33,6 +51,9 @@ const formSchema: Yup.ObjectSchema<ResetPasswordFormValues> = Yup.object({
     .oneOf([Yup.ref('password')], '密碼不一致'),
 });
 
+/**
+ * 後台重設密碼 UI 元件
+ */
 export const ResetPasswordForm: FC<ResetPasswordFormProps> = ({
   logo,
   passwordLength,
