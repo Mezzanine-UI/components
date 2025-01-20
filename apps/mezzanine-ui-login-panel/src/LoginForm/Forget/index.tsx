@@ -94,6 +94,8 @@ const Forget: FC<ForgetProps> = ({
               label="帳號"
               size="large"
               placeholder="輸入帳號 e.g. example@email.com"
+              className={classes.inputWrapper}
+              inputClassName={classes.input}
             />
           </div>
           <div className={classes.blockWrapper}>
