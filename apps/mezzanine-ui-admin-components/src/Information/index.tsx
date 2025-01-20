@@ -9,10 +9,23 @@ import {
 import classes from './index.module.scss';
 
 interface InformationProps {
+  /**
+   * 資訊模式，icon、顏色會不同
+   */
   mode?: 'info' | 'success' | 'warning' | 'error';
+  /**
+   * 文字
+   */
   text: string;
+  /**
+   * 兩行以上時，icon 是否對齊上方
+   */
   alignStart?: boolean;
 }
+
+/**
+ * 資訊文字
+ */
 export const Information: FC<InformationProps> = ({
   mode = 'info',
   text,
