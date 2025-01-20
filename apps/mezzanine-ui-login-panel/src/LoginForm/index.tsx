@@ -63,6 +63,9 @@ interface LoginFormProps {
   }) => Promise<boolean>;
 }
 
+/**
+ * 後台登入 UI 元件
+ */
 export const LoginForm: FC<LoginFormProps> = ({
   logo,
   passwordLength = 10,
