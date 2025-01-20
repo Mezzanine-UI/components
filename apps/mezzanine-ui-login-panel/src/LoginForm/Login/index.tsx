@@ -26,15 +26,7 @@ interface LoginProps {
     needChangePassword,
   }: {
     values: LoginFormValues;
-    needChangePassword: ({
-      account,
-      password,
-      mode,
-    }: {
-      account: string;
-      password: string;
-      mode: NeedChangePasswordMode;
-    }) => void;
+    needChangePassword: ({ mode }: { mode: NeedChangePasswordMode }) => void;
   }) => Promise<void>;
   onNeedChangePassword: ({
     values,
@@ -72,10 +64,10 @@ const Login: FC<LoginProps> = ({
     async ({ values }: { values: LoginFormValues }) => {
       onLoginProps({
         values,
-        needChangePassword: ({ account, password, mode }) => {
+        needChangePassword: ({ mode }) => {
           setNeedChangePasswordParams({
-            account,
-            password,
+            account: values.account,
+            password: values.password,
             mode,
           });
         },

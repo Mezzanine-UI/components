@@ -89,10 +89,69 @@ export const NeedChangePasswordFirstActivate: Story = {
     keepPasswordDaysLimit: 60,
     generalLoginText: undefined,
     onLogin: async ({ values, needChangePassword }) => {
+      action('onLogin')(values);
       needChangePassword({
-        account: values.account,
-        password: values.password,
         mode: NeedChangePasswordMode.FIRST,
+      });
+    },
+    onNeedChangePassword: async ({ values, account, oldPassword }) => {
+      action('onNeedChangePassword')({ values, account, oldPassword });
+      return true;
+    },
+    onSendForgetAccount: async ({ values }) => {
+      action('onSendForgetAccount')(values);
+      return true;
+    },
+  },
+  parameters: {
+    controls: {
+      include: [
+        'passwordLength',
+        'generationLimit',
+        'keepPasswordDaysLimit',
+        'generalLoginText',
+      ],
+    },
+  },
+  render: function Render(args) {
+    return (
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
+        <LoginForm {...args} />
+      </div>
+    );
+  },
+};
+
+export const NeedChangePasswordTooLong: Story = {
+  args: {
+    logo: (
+      <div
+        style={{
+          width: 134,
+          height: 100,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          border: '1px solid #212121',
+        }}
+      >
+        Logo
+      </div>
+    ),
+    passwordLength: 10,
+    generationLimit: undefined,
+    keepPasswordDaysLimit: 60,
+    generalLoginText: undefined,
+    onLogin: async ({ values, needChangePassword }) => {
+      action('onLogin')(values);
+      needChangePassword({
+        mode: NeedChangePasswordMode.TOO_LONG,
       });
     },
     onNeedChangePassword: async ({ values, account, oldPassword }) => {

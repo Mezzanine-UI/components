@@ -20,15 +20,7 @@ interface LoginFormProps {
     needChangePassword,
   }: {
     values: LoginFormValues;
-    needChangePassword: ({
-      account,
-      password,
-      mode,
-    }: {
-      account: string;
-      password: string;
-      mode: NeedChangePasswordMode;
-    }) => void;
+    needChangePassword: ({ mode }: { mode: NeedChangePasswordMode }) => void;
   }) => Promise<void>;
   onNeedChangePassword: ({
     values,
