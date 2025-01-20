@@ -2754,7 +2754,7 @@ __metadata:
     "@hookform/resolvers": "npm:3.9.1"
     "@mezzanine-ui/core": "npm:^0.15.2"
     "@mezzanine-ui/icons": "npm:^0.15.2"
-    "@mezzanine-ui/login-panel": "npm:0.0.18"
+    "@mezzanine-ui/login-panel": "npm:0.0.19"
     "@mezzanine-ui/react": "npm:^0.15.2"
     "@mezzanine-ui/react-hook-form-v2": "npm:0.0.18"
     "@mezzanine-ui/system": "npm:^0.15.2"
@@ -2851,9 +2851,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mezzanine-ui/login-panel@npm:0.0.18":
-  version: 0.0.18
-  resolution: "@mezzanine-ui/login-panel@npm:0.0.18"
+"@mezzanine-ui/login-panel@npm:0.0.19":
+  version: 0.0.19
+  resolution: "@mezzanine-ui/login-panel@npm:0.0.19"
   dependencies:
     "@hookform/error-message": "npm:2.0.1"
     "@hookform/resolvers": "npm:3.9.1"
@@ -2873,7 +2873,7 @@ __metadata:
     react-hook-form: 7.52.2
     tslib: 2.6.3
     yup: 1.6.1
-  checksum: 10c0/6bb89d104c8016a2e5ecd80071ae312e68886188685525aae11b9c33e00b410bd317daa17a15fd97327a6ecfd6ddca8089067094ea6b92f54b818ae73d3bbd78
+  checksum: 10c0/5501be9218157651d401db3b73e777f9bc8d73c6f17834dfa28acc4dc9224ba218f8c2972a10d1e2cac7efdd982ebb516e2ad3eb2ef17c763dd0a02cdb4bbab0
   languageName: node
   linkType: hard
 
