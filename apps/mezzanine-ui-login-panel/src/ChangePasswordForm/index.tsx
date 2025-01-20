@@ -14,17 +14,41 @@ import Success from './Success';
 import classes from './index.module.scss';
 
 interface ChangePasswordFormProps {
+  /**
+   * 放置 logo
+   */
   logo: ReactNode;
+  /**
+   * 密碼至少需要的長度
+   */
   passwordLength: number;
+  /**
+   * 密碼不可與前 `number` 代重複
+   */
   generationLimit?: number;
+  /**
+   * 是否顯示 `generationLimit`
+   */
   showGenerationLimitHint?: boolean;
+  /**
+   * 送出時觸發，return true 代表更新成功
+   */
   onChangePassword: ({
     values,
   }: {
     values: ChangePasswordFormValues;
   }) => Promise<boolean>;
+  /**
+   * 顯示帳號
+   */
   account: string;
+  /**
+   * 取消時觸發
+   */
   onCancel: VoidFunction;
+  /**
+   * 成功後返回
+   */
   onBack: VoidFunction;
 }
 
@@ -36,6 +60,9 @@ const formSchema: Yup.ObjectSchema<ChangePasswordFormValues> = Yup.object({
     .oneOf([Yup.ref('password')], '密碼不一致'),
 });
 
+/**
+ * 後台更換密碼 UI 元件，建議搭配 modal
+ */
 export const ChangePasswordForm: FC<ChangePasswordFormProps> = ({
   logo,
   passwordLength,
