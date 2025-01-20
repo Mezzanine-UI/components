@@ -27,7 +27,7 @@ export const Default: Story = {
       </div>
     ),
     passwordLength: 10,
-    onChangePassword: async (values) => {
+    onChangePassword: async ({ values }) => {
       action('onChangePassword')(values);
       return true;
     },
