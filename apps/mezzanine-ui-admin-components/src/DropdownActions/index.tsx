@@ -21,16 +21,43 @@ export type DropdownItemType = {
 export type DropdownItemsType = DropdownItemType[];
 
 interface DropdownActionsProps {
+  /**
+   * 選單元素
+   */
   items: DropdownItemsType;
+  /**
+   * 按鈕 icon
+   */
   icon?: IconDefinition;
+  /**
+   * 選單排版
+   */
   placement?: Placement;
+  /**
+   * 按鈕 class name
+   */
   className?: string;
+  /**
+   * 選單 class name
+   */
   menuClassName?: string;
+  /**
+   * icon class name
+   */
   iconClassName?: string;
+  /**
+   * 選單是否 disablePortal
+   */
   disablePortal?: boolean;
+  /**
+   * 按鈕是否 disabled
+   */
   disabled?: boolean;
 }
 
+/**
+ * 下拉式選單按鈕
+ */
 export const DropdownActions: FC<DropdownActionsProps> = ({
   items,
   icon = MoreVerticalIcon,
