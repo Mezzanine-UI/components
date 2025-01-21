@@ -84,17 +84,3 @@ export const Information: FC<InformationProps> = ({
     </div>
   );
 };
-
-export interface HintsProps {
-  hints: string[];
-}
-
-export const Hints: FC<HintsProps> = ({ hints }) => {
-  return (
-    <div className={classes.hints}>
-      {hints.map((h, index) => (
-        <Information key={index} text={h} />
-      ))}
-    </div>
-  );
-};

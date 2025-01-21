@@ -12,6 +12,7 @@ export * from './Sidebar';
 export * from './AdminTable';
 export * from './PageWrapper';
 export * from './DropdownActions';
+export * from './Hints';
 export * from './Information';
 export * from './Divider';
 export * from './UploadImagesWall';

@@ -9,7 +9,7 @@ import {
 import { EditIcon } from '@mezzanine-ui/icons';
 import { useFieldArray, useWatch } from 'react-hook-form';
 import { useDialog } from '../dialog/useDialog';
-import { Hints } from '../Information';
+import { Hints } from '../Hints';
 import ImagesWallModal from './ImagesWallModal';
 import { UploadImagesWallFormValues } from './typing';
 import classes from './index.module.scss';

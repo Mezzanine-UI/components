@@ -3,7 +3,7 @@ import { Typography } from '@mezzanine-ui/react';
 import { Size } from '@mezzanine-ui/system/size';
 import { InputField, UploadImageField } from '@mezzanine-ui/react-hook-form-v2';
 import { Divider } from '../../Divider';
-import { Hints } from '../../Information';
+import { Hints } from '../../Hints';
 import classes from './index.module.scss';
 
 interface ArticleShareFormProps {
