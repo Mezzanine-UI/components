@@ -80,6 +80,22 @@ export const Default: Story = {
     dataSource,
     columns,
     loading: false,
+    actions: (source) => [
+      {
+        text: '普通',
+        onClick: () => {
+          action('普通')(source);
+        },
+      },
+      {
+        text: '危險',
+        danger: true,
+        onClick: () => {
+          action('危險')(source);
+        },
+      },
+    ],
+    actionsDisabled: (source) => source.id === '1',
     pagination: {
       current: 1,
       total: dataSource.length,
