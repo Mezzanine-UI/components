@@ -1,3 +1,9 @@
+## 0.0.21 (2025-01-22)
+
+### 🚀 Features
+
+- 優化 UploadImagesWall 排版
+
 ## 0.0.20 (2025-01-22)
 
 ### 🚀 Breaking Change
