@@ -21,11 +21,34 @@ import { useModal } from '../modal/useModal';
 import classes from './index.module.scss';
 
 export interface HeaderProps {
+  /**
+   * header class
+   */
   headerClassName?: string;
+  /**
+   * 放置 logo
+   */
   logo: ReactNode;
+  /**
+   * 顯示角色
+   */
   role: string;
+  /**
+   * 顯示帳號
+   */
   account: string;
+  /**
+   * 登出時觸發
+   */
   onLogout: () => Promise<void>;
+  /**
+   * logo: 放置更換密碼 modal 的 logo;
+   * passwordLength: 密碼至少需要的長度;
+   * generationLimit: 密碼不可與前 `number` 代重複;
+   * showGenerationLimitHint: 是否顯示 `generationLimit`;
+   * onChangePassword: 送出時觸發，return true 代表更新成功;
+   * onBack: 成功後返回;
+   */
   changePasswordModalConfig: {
     logo: ReactNode;
     passwordLength: number;
