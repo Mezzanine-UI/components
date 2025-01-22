@@ -15,15 +15,39 @@ import { UploadImagesWallFormValues } from './typing';
 import classes from './index.module.scss';
 
 export interface UploadImagesWallProps {
+  /**
+   * field name
+   */
   registerName: string;
+  /**
+   * 圖片大小上限
+   */
   limit: number;
+  /**
+   * 圖片數量上限
+   */
   maxLength: number;
+  /**
+   * 上傳器提示文字
+   */
   hints: string[];
+  /**
+   * 是否 disabled
+   */
   disabled?: boolean;
+  /**
+   * 上傳時觸發
+   */
   upload: (file: File) => Promise<{ id: string }>;
+  /**
+   * 圖片 domain
+   */
   fileHost: string;
 }
 
+/**
+ * 後台圖輯上傳器
+ */
 export const UploadImagesWall: FC<UploadImagesWallProps> = ({
   registerName,
   limit,
@@ -48,9 +72,14 @@ export const UploadImagesWall: FC<UploadImagesWallProps> = ({
     name: registerName,
   });
 
-  const imagesWallValue: UploadImagesWallFormValues[] = useWatch({
+  const imagesWallWatchValue: UploadImagesWallFormValues[] = useWatch({
     name: registerName,
   });
+
+  const imagesWallValue = useMemo(
+    () => imagesWallWatchValue ?? [],
+    [imagesWallWatchValue],
+  );
 
   const [temporaryImages, setTemporaryImages] =
     useState<UploadImagesWallFormValues[]>(imagesWallValue);

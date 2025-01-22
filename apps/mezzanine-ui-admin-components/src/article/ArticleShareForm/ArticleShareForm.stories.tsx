@@ -12,6 +12,19 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
+function getBase64(file: File): Promise<string> {
+  return new Promise((resolve) => {
+    const reader = new FileReader();
+
+    reader.readAsDataURL(file);
+
+    reader.onload = () => {
+      const baseURL = reader.result as string;
+      resolve(baseURL);
+    };
+  });
+}
+
 export const Default: Story = {
   args: {
     sectionTitle: '基本資訊',
@@ -31,7 +44,7 @@ export const Default: Story = {
       placeholder: '請輸入英文標題',
       size: 'medium',
       maxLength: 50,
-      hints: ['中'],
+      hints: ['中等大小'],
       required: false,
     },
     twAuthor: {
@@ -47,11 +60,13 @@ export const Default: Story = {
       height: 240,
       label: '封面',
       registerName: 'cover',
-      fileHost: '/files',
+      fileHost: '',
       upload: async (file) => {
         action('upload')(file);
+        const baseURL = await getBase64(file);
+
         return {
-          id: 'cover id',
+          id: baseURL,
         };
       },
       required: true,
