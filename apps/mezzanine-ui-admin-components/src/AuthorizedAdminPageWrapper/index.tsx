@@ -22,7 +22,7 @@ interface AuthorizedAdminPageWrapperProps {
 }
 
 /**
- * 後台登入後基本框架，包涵 header、sidebar 元件與 layout、dialog、modal provider
+ * 後台登入後基本框架，包含 header、sidebar 元件與 layout、dialog、modal provider
  */
 export const AuthorizedAdminPageWrapper: FC<
   AuthorizedAdminPageWrapperProps & HeaderProps & SidebarProps

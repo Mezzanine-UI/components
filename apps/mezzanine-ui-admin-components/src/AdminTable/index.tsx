@@ -53,6 +53,9 @@ export type AdminTableProps<T extends TableDataSourceWithID> =
   | AdminTableWithTabsProps<T>
   | AdminTableWithoutTabsProps<T>;
 
+/**
+ * 後台 Table 元件，包含自定義 filters 與 tabs
+ */
 export const AdminTable = <T extends TableDataSourceWithID>({
   dataSource,
   columns: columnsProps,

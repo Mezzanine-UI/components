@@ -7,8 +7,17 @@ import { Hints } from '../../Hints';
 import classes from './index.module.scss';
 
 interface ArticleShareFormProps {
+  /**
+   * 基本資訊標題
+   */
   sectionTitle?: string;
+  /**
+   * 上傳封面標題
+   */
   uploadSectionTitle?: string;
+  /**
+   * 中文標題 field 設定
+   */
   twTitle: {
     registerName: string;
     size?: Size;
@@ -18,6 +27,9 @@ interface ArticleShareFormProps {
     hints?: string[];
     required?: boolean;
   };
+  /**
+   * 英文標題 field 設定
+   */
   enTitle?: {
     registerName: string;
     size?: Size;
@@ -27,6 +39,9 @@ interface ArticleShareFormProps {
     hints?: string[];
     required?: boolean;
   };
+  /**
+   * 中文作者 field 設定
+   */
   twAuthor?: {
     registerName: string;
     size?: Size;
@@ -36,6 +51,9 @@ interface ArticleShareFormProps {
     hints?: string[];
     required?: boolean;
   };
+  /**
+   * 英文作者 field 設定
+   */
   enAuthor?: {
     registerName: string;
     size?: Size;
@@ -45,6 +63,9 @@ interface ArticleShareFormProps {
     hints?: string[];
     required?: boolean;
   };
+  /**
+   * 封面 field 設定
+   */
   cover: {
     width?: number;
     height?: number;
@@ -56,6 +77,9 @@ interface ArticleShareFormProps {
     upload: (file: File) => Promise<{ id: string }>;
     required?: boolean;
   };
+  /**
+   * 中文 alt field 設定
+   */
   twAlt: {
     registerName: string;
     size?: Size;
@@ -65,6 +89,9 @@ interface ArticleShareFormProps {
     hints?: string[];
     required?: boolean;
   };
+  /**
+   * 英文 alt field 設定
+   */
   enAlt?: {
     registerName: string;
     size?: Size;
@@ -74,9 +101,15 @@ interface ArticleShareFormProps {
     hints?: string[];
     required?: boolean;
   };
+  /**
+   * 封面 field 提示文字
+   */
   coverHints?: string[];
 }
 
+/**
+ * 文章基本資訊表單
+ */
 export const ArticleShareForm: FC<ArticleShareFormProps> = ({
   sectionTitle = '基本資訊',
   uploadSectionTitle = '上傳封面',
