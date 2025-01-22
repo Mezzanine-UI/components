@@ -1,3 +1,9 @@
+## 0.0.22 (2025-01-22)
+
+### 🚀 Features
+
+- useLayout return LayoutContextValues type
+
 ## 0.0.21 (2025-01-22)
 
 ### 🚀 Features

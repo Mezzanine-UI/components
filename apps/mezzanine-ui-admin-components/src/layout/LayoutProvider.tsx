@@ -1,21 +1,21 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 import { FC, ReactNode, useCallback, useState, createContext } from 'react';
 
-interface LayoutContextTypes {
+export interface LayoutContextValues {
   sidebarWidth: number;
   sidebarExpanded: boolean;
   toggleSidebar: () => void;
   setSidebarStatus: (status: boolean) => void;
 }
 
-const LayoutContextDefaultValues: LayoutContextTypes = {
+const LayoutContextDefaultValues: LayoutContextValues = {
   sidebarWidth: 0,
   sidebarExpanded: true,
   toggleSidebar: () => {},
   setSidebarStatus: () => {},
 };
 
-export const LayoutContext = createContext<LayoutContextTypes>(
+export const LayoutContext = createContext<LayoutContextValues>(
   LayoutContextDefaultValues,
 );
 
