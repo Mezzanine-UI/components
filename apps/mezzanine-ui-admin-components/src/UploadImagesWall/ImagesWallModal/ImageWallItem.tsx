@@ -8,7 +8,7 @@ import classes from './index.module.scss';
 
 interface ImageWallItemProps {
   registerName: string;
-  fileHost: string;
+  setFileUrl: (fileId: string) => string;
   onRemove: VoidFunction;
   swap: UseFieldArraySwap;
   index: number;
@@ -16,7 +16,7 @@ interface ImageWallItemProps {
 
 const ImageWallItem: FC<ImageWallItemProps> = ({
   registerName,
-  fileHost,
+  setFileUrl,
   onRemove,
   swap,
   index,
@@ -54,7 +54,7 @@ const ImageWallItem: FC<ImageWallItemProps> = ({
         >
           <div className={classes.wallImageWrapper}>
             <img
-              src={`${fileHost}/${value.fileId}`}
+              src={setFileUrl(value.fileId)}
               alt=""
               className={classes.wallImage}
             />

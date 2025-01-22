@@ -40,9 +40,9 @@ export interface UploadImagesWallProps {
    */
   upload: (file: File) => Promise<{ id: string }>;
   /**
-   * 圖片 domain
+   * 設定圖片 url
    */
-  fileHost: string;
+  setFileUrl: (fileId: string) => string;
 }
 
 /**
@@ -55,7 +55,7 @@ export const UploadImagesWall: FC<UploadImagesWallProps> = ({
   hints,
   disabled,
   upload,
-  fileHost,
+  setFileUrl,
 }) => {
   const [loading, setLoading] = useState<boolean>(false);
   const { openDialog } = useDialog();
@@ -181,7 +181,7 @@ export const UploadImagesWall: FC<UploadImagesWallProps> = ({
               {imagesWallValue.map((i) => (
                 <div className={classes.wallImageItem}>
                   <img
-                    src={`${fileHost}/${i.fileId}`}
+                    src={setFileUrl(i.fileId)}
                     alt=""
                     className={classes.wallImage}
                   />
@@ -233,7 +233,7 @@ export const UploadImagesWall: FC<UploadImagesWallProps> = ({
         temporaryImages={temporaryImages}
         limit={limit}
         maxLength={maxLength}
-        fileHost={fileHost}
+        setFileUrl={setFileUrl}
         onCancel={onClose}
         onConfirm={(values: UploadImagesWallFormValues[]) => {
           onClose();

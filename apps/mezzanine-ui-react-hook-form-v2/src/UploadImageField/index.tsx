@@ -20,7 +20,7 @@ export type UploadImageFieldProps<T extends FieldValues = FieldValues> =
     T,
     UploadPictureProps,
     {
-      fileHost: string;
+      setFileUrl: (fileId: string) => string;
       fieldClassName?: string;
       width?: number;
       height?: number;
@@ -41,7 +41,7 @@ export const UploadImageField: HookFormFieldComponent<
   disabled,
   disabledErrMsg,
   label,
-  fileHost,
+  setFileUrl,
   width,
   height,
   objectFit = 'cover',
@@ -84,14 +84,14 @@ export const UploadImageField: HookFormFieldComponent<
       return upload(file)
         .then((d) => {
           setValue(registerName, d.id, { shouldDirty: true });
-          return `${fileHost}/${d.id}`;
+          return setFileUrl(d.id);
         })
         .catch(() => {
           Message.error('上傳失敗');
           throw new Error('上傳失敗');
         });
     },
-    [MAX_SIZE, upload, limit, setValue, registerName, fileHost],
+    [MAX_SIZE, upload, limit, setValue, registerName, setFileUrl],
   );
 
   return (
@@ -121,7 +121,7 @@ export const UploadImageField: HookFormFieldComponent<
           ...styleVar,
         }}
         disabled={disabled}
-        defaultValue={watchValue ? `${fileHost}/${watchValue}` : undefined}
+        defaultValue={watchValue ? setFileUrl(watchValue) : undefined}
       />
     </BaseField>
   );

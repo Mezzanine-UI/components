@@ -32,7 +32,7 @@ export const Default: Story = {
     limit: 20,
     maxLength: 12,
     hints: ['檔案格式：限 JPG 或 PNG', '檔案大小：不可大於 20 MB'],
-    fileHost: '',
+    setFileUrl: (fileId) => fileId,
     upload: async (file) => {
       action('upload')(file);
       const baseURL = await getBase64(file);

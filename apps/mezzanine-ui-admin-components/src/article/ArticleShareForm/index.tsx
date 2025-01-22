@@ -71,7 +71,7 @@ interface ArticleShareFormProps {
     height?: number;
     registerName: string;
     label: string;
-    fileHost: string;
+    setFileUrl: (fileId: string) => string;
     objectFit?: 'contain' | 'cover';
     limit?: number;
     upload: (file: File) => Promise<{ id: string }>;
@@ -181,7 +181,7 @@ export const ArticleShareForm: FC<ArticleShareFormProps> = ({
         width={cover.width}
         height={cover.height}
         objectFit={cover.objectFit}
-        fileHost={cover.fileHost}
+        setFileUrl={cover.setFileUrl}
         upload={cover.upload}
         required={cover.required}
       />

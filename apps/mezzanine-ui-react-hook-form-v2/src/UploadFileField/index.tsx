@@ -12,7 +12,7 @@ export type UploadFileFieldProps<T extends FieldValues = FieldValues> =
     T,
     object,
     {
-      fileHost: string;
+      setFileUrl: (fileId: string) => string;
       buttonText?: string;
       width?: number;
       multiple?: boolean;
@@ -28,7 +28,7 @@ export const UploadFileField: FC<UploadFileFieldProps> = ({
   buttonText = '新增檔案',
   className,
   disabledErrMsg,
-  fileHost,
+  setFileUrl,
   width,
   style,
   remark,
@@ -123,7 +123,7 @@ export const UploadFileField: FC<UploadFileFieldProps> = ({
               size="large"
               name={field.fileName}
               onDownload={() => {
-                window.open(`${fileHost}/${field.fileId}`, '_blank');
+                window.open(setFileUrl(field.fileId), '_blank');
               }}
               onDelete={() => {
                 remove(index);

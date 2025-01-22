@@ -22,7 +22,7 @@ interface ModalMainProps {
   temporaryImages: UploadImagesWallFormValues[];
   limit: number;
   maxLength: number;
-  fileHost: string;
+  setFileUrl: (fileId: string) => string;
   onCancel: VoidFunction;
   onConfirm: (values: UploadImagesWallFormValues[]) => void;
   upload: (file: File) => Promise<{ id: string }>;
@@ -33,7 +33,7 @@ const ModalMain: FC<ModalMainProps> = ({
   temporaryImages,
   limit,
   maxLength,
-  fileHost,
+  setFileUrl,
   onCancel,
   onConfirm,
   upload,
@@ -107,7 +107,7 @@ const ModalMain: FC<ModalMainProps> = ({
                 <ImageWallItem
                   key={`${f.id}-${index}`}
                   registerName={`images.${index}`}
-                  fileHost={fileHost}
+                  setFileUrl={setFileUrl}
                   onRemove={() => {
                     remove(index);
                   }}

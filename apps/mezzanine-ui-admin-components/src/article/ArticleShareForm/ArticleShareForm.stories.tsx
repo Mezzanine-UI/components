@@ -60,7 +60,7 @@ export const Default: Story = {
       height: 240,
       label: '封面',
       registerName: 'cover',
-      fileHost: '',
+      setFileUrl: (fileId) => fileId,
       upload: async (file) => {
         action('upload')(file);
         const baseURL = await getBase64(file);
