@@ -45,7 +45,9 @@
         background-color: palette.color(bg);
 
         .wallImage {
-          object-fit: contain;
+          position: absolute;
+          width: 100%;
+          height: 100%;
         }
       }
 

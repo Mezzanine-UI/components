@@ -12,6 +12,7 @@ interface ImageWallItemProps {
   onRemove: VoidFunction;
   swap: UseFieldArraySwap;
   index: number;
+  objectFit: 'cover' | 'contain';
 }
 
 const ImageWallItem: FC<ImageWallItemProps> = ({
@@ -20,6 +21,7 @@ const ImageWallItem: FC<ImageWallItemProps> = ({
   onRemove,
   swap,
   index,
+  objectFit,
 }) => {
   const [{ isDragging }, drag, dragPreview] = useDrag(() => ({
     type: 'WallItem',
@@ -56,6 +58,7 @@ const ImageWallItem: FC<ImageWallItemProps> = ({
             <img
               src={setFileUrl(value.fileId)}
               alt=""
+              style={{ objectFit }}
               className={classes.wallImage}
             />
           </div>

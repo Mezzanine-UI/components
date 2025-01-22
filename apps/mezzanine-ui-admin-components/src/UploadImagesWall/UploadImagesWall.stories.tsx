@@ -41,10 +41,11 @@ export const Default: Story = {
         id: baseURL,
       };
     },
+    objectFit: 'cover',
   },
   parameters: {
     controls: {
-      include: [],
+      include: ['limit', 'maxLength', 'hints', 'objectFit'],
     },
   },
   render: function Render(args) {

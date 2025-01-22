@@ -26,6 +26,7 @@ interface ModalMainProps {
   onCancel: VoidFunction;
   onConfirm: (values: UploadImagesWallFormValues[]) => void;
   upload: (file: File) => Promise<{ id: string }>;
+  objectFit: 'cover' | 'contain';
 }
 
 const ModalMain: FC<ModalMainProps> = ({
@@ -37,6 +38,7 @@ const ModalMain: FC<ModalMainProps> = ({
   onCancel,
   onConfirm,
   upload,
+  objectFit,
 }) => {
   const [loading, setLoading] = useState<boolean>(false);
   const { handleSubmit } = useFormContext<ImagesWallModalFormValues>();
@@ -113,6 +115,7 @@ const ModalMain: FC<ModalMainProps> = ({
                   }}
                   swap={swap}
                   index={index}
+                  objectFit={objectFit}
                 />
               ))}
             </div>

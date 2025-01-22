@@ -43,6 +43,10 @@ export interface UploadImagesWallProps {
    * 設定圖片 url
    */
   setFileUrl: (fileId: string) => string;
+  /**
+   * 圖片 object-fit
+   */
+  objectFit?: 'contain' | 'cover';
 }
 
 /**
@@ -56,6 +60,7 @@ export const UploadImagesWall: FC<UploadImagesWallProps> = ({
   disabled,
   upload,
   setFileUrl,
+  objectFit = 'cover',
 }) => {
   const [loading, setLoading] = useState<boolean>(false);
   const { openDialog } = useDialog();
@@ -183,6 +188,7 @@ export const UploadImagesWall: FC<UploadImagesWallProps> = ({
                   <img
                     src={setFileUrl(i.fileId)}
                     alt=""
+                    style={{ objectFit }}
                     className={classes.wallImage}
                   />
                 </div>
@@ -240,6 +246,7 @@ export const UploadImagesWall: FC<UploadImagesWallProps> = ({
           replace(values);
         }}
         upload={upload}
+        objectFit={objectFit}
       />
     </>
   );

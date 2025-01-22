@@ -16,6 +16,7 @@ interface ImagesWallModalProps {
   onCancel: VoidFunction;
   onConfirm: (values: UploadImagesWallFormValues[]) => void;
   upload: (file: File) => Promise<{ id: string }>;
+  objectFit: 'cover' | 'contain';
 }
 
 const ImagesWallModal: FC<ImagesWallModalProps> = ({
@@ -28,6 +29,7 @@ const ImagesWallModal: FC<ImagesWallModalProps> = ({
   onCancel,
   onConfirm,
   upload,
+  objectFit,
 }) => {
   const methods = useForm<ImagesWallModalFormValues>();
 
@@ -48,6 +50,7 @@ const ImagesWallModal: FC<ImagesWallModalProps> = ({
           onCancel={onCancel}
           onConfirm={onConfirm}
           upload={upload}
+          objectFit={objectFit}
         />
       </FormFieldsWrapper>
     </Modal>
