@@ -24,7 +24,7 @@ export interface SidebarProps {
  * 後台側邊路徑選單
  */
 export const Sidebar: FC<SidebarProps> = ({ navigationChildren, onPush }) => {
-  const { expanded } = useLayout();
+  const { sidebarExpanded } = useLayout();
 
   const handleClickNavigation = (key: Key | null | undefined) => {
     const path = key as string;
@@ -35,7 +35,7 @@ export const Sidebar: FC<SidebarProps> = ({ navigationChildren, onPush }) => {
   return (
     <AppBar
       className={cx(classes.host, {
-        [classes.expanded]: expanded,
+        [classes.sidebarExpanded]: sidebarExpanded,
       })}
       orientation="vertical"
     >

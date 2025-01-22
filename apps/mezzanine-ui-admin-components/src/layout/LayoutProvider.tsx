@@ -2,13 +2,15 @@
 import { FC, ReactNode, useCallback, useState, createContext } from 'react';
 
 interface LayoutContextTypes {
-  expanded: boolean;
+  sidebarWidth: number;
+  sidebarExpanded: boolean;
   toggleSidebar: () => void;
   setSidebarStatus: (status: boolean) => void;
 }
 
 const LayoutContextDefaultValues: LayoutContextTypes = {
-  expanded: true,
+  sidebarWidth: 0,
+  sidebarExpanded: true,
   toggleSidebar: () => {},
   setSidebarStatus: () => {},
 };
@@ -17,8 +19,11 @@ export const LayoutContext = createContext<LayoutContextTypes>(
   LayoutContextDefaultValues,
 );
 
-const LayoutProvider: FC<{ children?: ReactNode }> = ({ children }) => {
-  const [expanded, setExpanded] = useState<boolean>(true);
+const LayoutProvider: FC<{ sidebarWidth: number; children?: ReactNode }> = ({
+  sidebarWidth,
+  children,
+}) => {
+  const [sidebarExpanded, setExpanded] = useState<boolean>(true);
 
   const toggleSidebar = useCallback(() => {
     setExpanded((s) => !s);
@@ -30,7 +35,8 @@ const LayoutProvider: FC<{ children?: ReactNode }> = ({ children }) => {
   return (
     <LayoutContext.Provider
       value={{
-        expanded,
+        sidebarWidth,
+        sidebarExpanded,
         toggleSidebar,
         setSidebarStatus,
       }}

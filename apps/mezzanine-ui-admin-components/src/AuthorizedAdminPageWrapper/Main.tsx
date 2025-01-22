@@ -20,7 +20,7 @@ const Main: FC<
   navigationChildren,
   onPush,
 }) => {
-  const { expanded } = useLayout();
+  const { sidebarExpanded } = useLayout();
 
   return (
     <div style={layoutStyleVar} className={classes.host}>
@@ -36,7 +36,7 @@ const Main: FC<
         <Sidebar navigationChildren={navigationChildren} onPush={onPush} />
         <div
           className={cx(classes.container, {
-            [classes.expanded]: expanded,
+            [classes.sidebarExpanded]: sidebarExpanded,
           })}
         >
           {children}

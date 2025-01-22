@@ -49,7 +49,7 @@ export const AuthorizedAdminPageWrapper: FC<
   );
 
   return (
-    <LayoutProvider>
+    <LayoutProvider sidebarWidth={sidebarWidth}>
       <DialogProvider>
         <ModalProvider>
           <Main

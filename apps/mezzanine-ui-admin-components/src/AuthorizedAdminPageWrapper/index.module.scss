@@ -10,7 +10,7 @@
       transition: padding-left 0.3s ease-in-out;
       min-height: 100svh;
 
-      &.expanded {
+      &.sidebarExpanded {
         padding-left: var(--sidebar-width);
       }
     }
