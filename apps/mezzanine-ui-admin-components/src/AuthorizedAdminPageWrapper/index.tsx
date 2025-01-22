@@ -6,13 +6,26 @@ import { HeaderProps } from '../Header';
 import { SidebarProps } from '../Sidebar';
 import Main from './Main';
 
+interface AuthorizedAdminPageWrapperProps {
+  /**
+   * 頁面元素
+   */
+  children?: ReactNode;
+  /**
+   * header 高度
+   */
+  headerHeight?: number;
+  /**
+   * sidebar 寬度
+   */
+  sidebarWidth?: number;
+}
+
+/**
+ * 後台登入後基本框架，包涵 header、sidebar 元件與 layout、dialog、modal provider
+ */
 export const AuthorizedAdminPageWrapper: FC<
-  {
-    children?: ReactNode;
-    headerHeight?: number;
-    sidebarWidth?: number;
-  } & HeaderProps &
-    SidebarProps
+  AuthorizedAdminPageWrapperProps & HeaderProps & SidebarProps
 > = ({
   children,
   headerHeight = 64,
