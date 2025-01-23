@@ -18,7 +18,7 @@ export interface FormFooterProps<T extends FieldValues = FieldValues> {
   onCancel?: (values: T) => Promise<void>;
   submitting: boolean;
   // stepper
-  steps?: string[];
+  steps?: { id: string; name: string }[];
   activeStep?: number;
   setActiveStep?: (activeStep: number) => void;
   disableNextButton?: ({

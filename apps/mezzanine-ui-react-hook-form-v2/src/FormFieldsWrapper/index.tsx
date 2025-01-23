@@ -22,7 +22,7 @@ export interface FormFieldsWrapperProps<T extends FieldValues = FieldValues>
   children: ReactNode;
   onSubmit?: SubmitHandler<T>;
   // stepper
-  steps?: string[];
+  steps?: { id: string; name: string }[];
   activeStep?: number;
   setActiveStep?: (activeStep: number) => void;
   disableNextButton?: ({
@@ -100,7 +100,7 @@ export const FormFieldsWrapper = <T extends FieldValues>({
         {steps && steps.length > 0 && (
           <Stepper className={classes.stepper} activeStep={activeStep}>
             {steps.map((step) => (
-              <Step key={step} title={step} />
+              <Step key={step.id} title={step.name} />
             ))}
           </Stepper>
         )}
