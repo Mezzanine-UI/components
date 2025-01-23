@@ -1,12 +1,25 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { ReactNode, useState, useMemo } from 'react';
+import { Button } from '@mezzanine-ui/react';
 import { action } from '@storybook/addon-actions';
 import { useForm } from 'react-hook-form';
 import { InputField } from '../InputField';
 import { FormFieldsWrapper } from './index';
 
 const StoryWrapper = ({ children }: { children: ReactNode }) => {
-  return <div>{children}</div>;
+  return (
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'flex-start',
+        justifyContent: 'flex-start',
+        gap: 16,
+      }}
+    >
+      {children}
+    </div>
+  );
 };
 
 const meta = {
@@ -40,24 +53,60 @@ export const Default: Story = {
     });
 
     return (
-      <StoryWrapper>
-        <FormFieldsWrapper
-          methods={methods}
-          haveFooter
-          onSubmit={async (values) => {
-            action('onSubmit')(values);
-          }}
-          submitButtonText="送出文字"
-          onCancel={async (values) => {
-            action('onCancel')(values);
-          }}
-          cancelButtonText="取消文字"
-        >
+      <FormFieldsWrapper
+        methods={methods}
+        onSubmit={async (values) => {
+          action('onSubmit')(values);
+        }}
+      >
+        <StoryWrapper>
           <InputField label="input1" registerName="input1" required />
           <InputField label="input2" registerName="input2" required />
           <InputField label="input3" registerName="input3" required />
-        </FormFieldsWrapper>
-      </StoryWrapper>
+          <Button type="submit" variant="contained" size="large">
+            Submit
+          </Button>
+        </StoryWrapper>
+      </FormFieldsWrapper>
+    );
+  },
+};
+
+export const WthFooter: Story = {
+  args: {
+    children: undefined,
+  },
+  parameters: {
+    controls: { include: [] },
+  },
+  render: function Render() {
+    const methods = useForm<DemoFormValues>({
+      defaultValues: {
+        input1: '111',
+        input2: '222',
+        input3: '333',
+      },
+    });
+
+    return (
+      <FormFieldsWrapper
+        methods={methods}
+        haveFooter
+        onSubmit={async (values) => {
+          action('onSubmit')(values);
+        }}
+        submitButtonText="送出文字"
+        onCancel={async (values) => {
+          action('onCancel')(values);
+        }}
+        cancelButtonText="取消文字"
+      >
+        <StoryWrapper>
+          <InputField label="input1" registerName="input1" required />
+          <InputField label="input2" registerName="input2" required />
+          <InputField label="input3" registerName="input3" required />
+        </StoryWrapper>
+      </FormFieldsWrapper>
     );
   },
 };
@@ -79,28 +128,28 @@ export const WithAction: Story = {
     });
 
     return (
-      <StoryWrapper>
-        <FormFieldsWrapper
-          methods={methods}
-          haveFooter
-          onSubmit={async (values) => {
-            action('onSubmit')(values);
-          }}
-          submitButtonText="送出文字"
-          onCancel={async (values) => {
-            action('onCancel')(values);
-          }}
-          cancelButtonText="取消文字"
-          onClickAction={async (values) => {
-            action('onClickAction')(values);
-          }}
-          actionButtonText="左側文字"
-        >
+      <FormFieldsWrapper
+        methods={methods}
+        haveFooter
+        onSubmit={async (values) => {
+          action('onSubmit')(values);
+        }}
+        submitButtonText="送出文字"
+        onCancel={async (values) => {
+          action('onCancel')(values);
+        }}
+        cancelButtonText="取消文字"
+        onClickAction={async (values) => {
+          action('onClickAction')(values);
+        }}
+        actionButtonText="左側文字"
+      >
+        <StoryWrapper>
           <InputField label="input1" registerName="input1" required />
           <InputField label="input2" registerName="input2" required />
           <InputField label="input3" registerName="input3" required />
-        </FormFieldsWrapper>
-      </StoryWrapper>
+        </StoryWrapper>
+      </FormFieldsWrapper>
     );
   },
 };
@@ -122,37 +171,37 @@ export const Disable: Story = {
     });
 
     return (
-      <StoryWrapper>
-        <FormFieldsWrapper
-          methods={methods}
-          haveFooter
-          onSubmit={async (values) => {
-            action('onSubmit')(values);
-          }}
-          submitButtonText="送出文字"
-          disableSubmitButton={(values) =>
-            !values.input1 || !values.input2 || !values.input3
-          }
-          onCancel={async (values) => {
-            action('onCancel')(values);
-          }}
-          cancelButtonText="取消文字"
-          disableCancelButton={(values) =>
-            !!(values.input1 && values.input2 && values.input3)
-          }
-          onClickAction={async (values) => {
-            action('onClickAction')(values);
-          }}
-          actionButtonText="左側文字"
-          disableActionButton={(values) =>
-            !values.input1 || !values.input2 || !values.input3
-          }
-        >
+      <FormFieldsWrapper
+        methods={methods}
+        haveFooter
+        onSubmit={async (values) => {
+          action('onSubmit')(values);
+        }}
+        submitButtonText="送出文字"
+        disableSubmitButton={(values) =>
+          !values.input1 || !values.input2 || !values.input3
+        }
+        onCancel={async (values) => {
+          action('onCancel')(values);
+        }}
+        cancelButtonText="取消文字"
+        disableCancelButton={(values) =>
+          !!(values.input1 && values.input2 && values.input3)
+        }
+        onClickAction={async (values) => {
+          action('onClickAction')(values);
+        }}
+        actionButtonText="左側文字"
+        disableActionButton={(values) =>
+          !values.input1 || !values.input2 || !values.input3
+        }
+      >
+        <StoryWrapper>
           <InputField label="input1" registerName="input1" required />
           <InputField label="input2" registerName="input2" required />
           <InputField label="input3" registerName="input3" required />
-        </FormFieldsWrapper>
-      </StoryWrapper>
+        </StoryWrapper>
+      </FormFieldsWrapper>
     );
   },
 };
@@ -228,46 +277,44 @@ export const WithTab: Story = {
     }, [activeStep]);
 
     return (
-      <StoryWrapper>
-        <FormFieldsWrapper
-          methods={methods}
-          haveFooter
-          onSubmit={async (values) => {
-            action('onSubmit')(values);
-          }}
-          submitButtonText="送出文字"
-          disableSubmitButton={(values) =>
-            !values.input1 || !values.input2 || !values.input3
+      <FormFieldsWrapper
+        methods={methods}
+        haveFooter
+        onSubmit={async (values) => {
+          action('onSubmit')(values);
+        }}
+        submitButtonText="送出文字"
+        disableSubmitButton={(values) =>
+          !values.input1 || !values.input2 || !values.input3
+        }
+        onCancel={async (values) => {
+          action('onCancel')(values);
+        }}
+        cancelButtonText="取消文字"
+        onClickAction={async (values) => {
+          action('onClickAction')(values);
+        }}
+        actionButtonText="左側文字"
+        steps={steps}
+        activeStep={activeStep}
+        setActiveStep={(s) => {
+          setActiveStep(s);
+        }}
+        disableNextButton={({ values, activeStep }) => {
+          switch (activeStep) {
+            case 0:
+              return !values.input1;
+
+            case 1:
+              return !values.input2;
+
+            default:
+              return false;
           }
-          onCancel={async (values) => {
-            action('onCancel')(values);
-          }}
-          cancelButtonText="取消文字"
-          onClickAction={async (values) => {
-            action('onClickAction')(values);
-          }}
-          actionButtonText="左側文字"
-          steps={steps}
-          activeStep={activeStep}
-          setActiveStep={(s) => {
-            setActiveStep(s);
-          }}
-          disableNextButton={({ values, activeStep }) => {
-            switch (activeStep) {
-              case 0:
-                return !values.input1;
-
-              case 1:
-                return !values.input2;
-
-              default:
-                return false;
-            }
-          }}
-        >
-          {fieldComponent}
-        </FormFieldsWrapper>
-      </StoryWrapper>
+        }}
+      >
+        <StoryWrapper>{fieldComponent}</StoryWrapper>
+      </FormFieldsWrapper>
     );
   },
 };
