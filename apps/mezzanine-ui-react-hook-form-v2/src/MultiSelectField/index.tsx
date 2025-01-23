@@ -93,7 +93,9 @@ export const MultiSelectField: HookFormFieldComponent<
 
         const newOptions = await onFetchMore();
 
-        setOptions((prev) => [...prev, ...newOptions]);
+        if (newOptions.length > 0) {
+          setOptions((prev) => [...prev, ...newOptions]);
+        }
 
         setFetchLoading(false);
       }
