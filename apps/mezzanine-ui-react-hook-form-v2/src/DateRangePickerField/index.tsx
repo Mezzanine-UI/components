@@ -14,7 +14,9 @@ import classes from './index.module.scss';
 export type DateRangePickerFieldProps = HookFormFieldProps<
   FieldValues,
   DateRangePickerProps
->;
+> & {
+  width?: number;
+};
 
 export const DateRangePickerField: HookFormFieldComponent<
   DateRangePickerFieldProps
@@ -29,6 +31,7 @@ export const DateRangePickerField: HookFormFieldComponent<
   inputToPlaceholder = 'yyyy-mm-dd',
   isDateDisabled,
   label,
+  width,
   mode,
   onCalendarToggle,
   readOnly,
@@ -86,6 +89,7 @@ export const DateRangePickerField: HookFormFieldComponent<
       label={label}
       name={registerName}
       remark={remark}
+      width={width}
       required={required}
       horizontal={horizontal}
       hints={hints}
