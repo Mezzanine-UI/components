@@ -1,25 +1,26 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useForm } from 'react-hook-form';
 import { FormFieldsWrapper } from '../FormFieldsWrapper';
-import { StaticField } from './index';
+import { TextAreaField } from './index';
 
 const meta = {
-  component: StaticField,
-} satisfies Meta<typeof StaticField>;
+  component: TextAreaField,
+} satisfies Meta<typeof TextAreaField>;
 
 export default meta;
 
 type Story = StoryObj<typeof meta>;
 
 interface DemoFormValues {
-  static: string;
+  text: string;
 }
 
 export const Default: Story = {
   args: {
-    registerName: 'static',
+    registerName: 'text',
     label: '標籤',
-    width: 200,
+    width: 360,
+    height: 150,
     remark: 'remark',
     hints: ['提示1', '提示2'],
     required: false,
@@ -27,19 +28,27 @@ export const Default: Story = {
   },
   parameters: {
     controls: {
-      include: ['label', 'width', 'remark', 'hints', 'required', 'horizontal'],
+      include: [
+        'label',
+        'width',
+        'height',
+        'remark',
+        'hints',
+        'required',
+        'horizontal',
+      ],
     },
   },
   render: function Render(args) {
     const methods = useForm<DemoFormValues>({
       defaultValues: {
-        static: 'Static Value',
+        text: '',
       },
     });
 
     return (
       <FormFieldsWrapper methods={methods}>
-        <StaticField {...args} />
+        <TextAreaField {...args} />
       </FormFieldsWrapper>
     );
   },
