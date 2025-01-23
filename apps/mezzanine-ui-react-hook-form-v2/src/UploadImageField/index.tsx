@@ -52,6 +52,8 @@ export const UploadImageField: HookFormFieldComponent<
   style,
   limit = 3,
   upload,
+  horizontal,
+  hints,
 }) => {
   const styleVar = {
     '--object-fit': objectFit,
@@ -106,6 +108,8 @@ export const UploadImageField: HookFormFieldComponent<
       remark={remark}
       disabled={disabled}
       label={name || label}
+      horizontal={horizontal}
+      hints={hints}
     >
       <UploadPicture
         className={classes.uploadPicture}
