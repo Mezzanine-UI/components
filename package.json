@@ -67,6 +67,7 @@
     "@vitejs/plugin-react": "^4.3.1",
     "@vitest/ui": "^2.0.5",
     "babel-jest": "^29.7.0",
+    "dayjs": "^1.11.13",
     "eslint": "~9.9.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-import": "2.29.1",

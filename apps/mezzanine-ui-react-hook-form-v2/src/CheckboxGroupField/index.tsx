@@ -47,6 +47,8 @@ export const CheckboxGroupField: HookFormFieldComponent<
   errorMsgRender,
   onChange: onChangeProp,
   required,
+  horizontal,
+  hints,
   ...props
 }) => {
   const { control: contextControl, setValue, clearErrors } = useFormContext();
@@ -78,6 +80,8 @@ export const CheckboxGroupField: HookFormFieldComponent<
       fullWidth={fullWidth}
       disabledErrMsg={disabledErrMsg}
       errorMsgRender={errorMsgRender}
+      horizontal={horizontal}
+      hints={hints}
     >
       <CheckboxGroup
         {...props}
