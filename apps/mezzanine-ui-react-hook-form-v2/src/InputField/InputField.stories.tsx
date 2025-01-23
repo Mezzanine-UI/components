@@ -18,6 +18,7 @@ interface DemoFormValues {
 export const Default: Story = {
   args: {
     registerName: 'inputName',
+    placeholder: '輸入文字',
     label: '標籤',
     width: 360,
     remark: 'remark',
@@ -39,6 +40,7 @@ export const Default: Story = {
   parameters: {
     controls: {
       include: [
+        'placeholder',
         'label',
         'width',
         'remark',

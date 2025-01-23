@@ -1,45 +1,56 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useForm } from 'react-hook-form';
+import { Radio } from '@mezzanine-ui/react';
 import { FormFieldsWrapper } from '../FormFieldsWrapper';
-import { TextAreaField } from './index';
+import { RadioGroupField } from './index';
 
 const meta = {
-  component: TextAreaField,
-} satisfies Meta<typeof TextAreaField>;
+  component: RadioGroupField,
+} satisfies Meta<typeof RadioGroupField>;
 
 export default meta;
 
 type Story = StoryObj<typeof meta>;
 
 interface DemoFormValues {
-  text: string;
+  radioName: string;
 }
 
 export const Default: Story = {
   args: {
-    registerName: 'text',
-    placeholder: '輸入文字',
+    registerName: 'radioName',
     label: '標籤',
-    width: 360,
-    height: 150,
     remark: 'remark',
+    size: 'medium',
     hints: ['提示1', '提示2'],
+    orientation: 'horizontal',
     disabled: false,
-    clearable: true,
     required: false,
     horizontal: false,
+  },
+  argTypes: {
+    size: {
+      control: {
+        type: 'radio',
+      },
+      options: ['large', 'medium', 'small'],
+    },
+    orientation: {
+      control: {
+        type: 'radio',
+      },
+      options: ['horizontal', 'vertical'],
+    },
   },
   parameters: {
     controls: {
       include: [
-        'placeholder',
         'label',
-        'width',
-        'height',
         'remark',
+        'size',
         'hints',
+        'orientation',
         'disabled',
-        'clearable',
         'required',
         'horizontal',
       ],
@@ -48,13 +59,17 @@ export const Default: Story = {
   render: function Render(args) {
     const methods = useForm<DemoFormValues>({
       defaultValues: {
-        text: '',
+        radioName: 'Option1',
       },
     });
 
     return (
       <FormFieldsWrapper methods={methods}>
-        <TextAreaField {...args} />
+        <RadioGroupField {...args}>
+          <Radio value="Option1">選項 1</Radio>
+          <Radio value="Option2">選項 2</Radio>
+          <Radio value="Option3">選項 3</Radio>
+        </RadioGroupField>
       </FormFieldsWrapper>
     );
   },

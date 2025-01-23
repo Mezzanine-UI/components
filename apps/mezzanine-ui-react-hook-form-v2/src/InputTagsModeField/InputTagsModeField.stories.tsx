@@ -1,33 +1,44 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useForm } from 'react-hook-form';
+import { action } from '@storybook/addon-actions';
 import { FormFieldsWrapper } from '../FormFieldsWrapper';
-import { TextAreaField } from './index';
+import { InputTagsModeField } from './index';
 
 const meta = {
-  component: TextAreaField,
-} satisfies Meta<typeof TextAreaField>;
+  component: InputTagsModeField,
+} satisfies Meta<typeof InputTagsModeField>;
 
 export default meta;
 
 type Story = StoryObj<typeof meta>;
 
 interface DemoFormValues {
-  text: string;
+  inputName: string[];
 }
 
 export const Default: Story = {
   args: {
-    registerName: 'text',
-    placeholder: '輸入文字',
+    registerName: 'inputName',
+    placeholder: '輸入標籤',
     label: '標籤',
-    width: 360,
-    height: 150,
+    width: 500,
+    maxTagsLength: 5,
     remark: 'remark',
+    size: 'large',
     hints: ['提示1', '提示2'],
     disabled: false,
     clearable: true,
     required: false,
     horizontal: false,
+    onTagsChange: (tags) => action('onTagsChange')(tags),
+  },
+  argTypes: {
+    size: {
+      control: {
+        type: 'radio',
+      },
+      options: ['large', 'medium', 'small'],
+    },
   },
   parameters: {
     controls: {
@@ -35,8 +46,9 @@ export const Default: Story = {
         'placeholder',
         'label',
         'width',
-        'height',
+        'maxTagsLength',
         'remark',
+        'size',
         'hints',
         'disabled',
         'clearable',
@@ -48,13 +60,13 @@ export const Default: Story = {
   render: function Render(args) {
     const methods = useForm<DemoFormValues>({
       defaultValues: {
-        text: '',
+        inputName: [],
       },
     });
 
     return (
       <FormFieldsWrapper methods={methods}>
-        <TextAreaField {...args} />
+        <InputTagsModeField {...args} />
       </FormFieldsWrapper>
     );
   },

@@ -20,6 +20,7 @@ interface DemoFormValues {
 export const Default: Story = {
   args: {
     registerName: 'searchTerm',
+    placeholder: '請搜尋',
     suffix: '',
     width: 360,
     size: 'large',
@@ -36,7 +37,14 @@ export const Default: Story = {
   },
   parameters: {
     controls: {
-      include: ['suffix', 'width', 'size', 'disabled', 'clearable'],
+      include: [
+        'placeholder',
+        'suffix',
+        'width',
+        'size',
+        'disabled',
+        'clearable',
+      ],
     },
   },
   render: function Render(args) {
