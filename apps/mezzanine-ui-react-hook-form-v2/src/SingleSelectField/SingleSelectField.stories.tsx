@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { SelectValue } from '@mezzanine-ui/react';
 import { FormFieldsWrapper } from '../FormFieldsWrapper';
 import { SingleSelectField } from './index';
 
@@ -132,6 +134,74 @@ export const Horizontal: Story = {
     return (
       <FormFieldsWrapper methods={methods}>
         <SingleSelectField {...args} />
+      </FormFieldsWrapper>
+    );
+  },
+};
+
+export const FetchMore: Story = {
+  args: {
+    registerName: 'inputName',
+    placeholder: '請選擇',
+    options: [
+      {
+        id: 'option1',
+        name: '選項1',
+      },
+      {
+        id: 'option2',
+        name: '選項2',
+      },
+      {
+        id: 'option3',
+        name: '選項3',
+      },
+      {
+        id: 'option4',
+        name: '選項4',
+      },
+      {
+        id: 'option5',
+        name: '選項5',
+      },
+    ],
+    label: '標籤',
+    width: 360,
+    disabled: false,
+    clearable: true,
+    required: false,
+  },
+  parameters: {
+    controls: {
+      include: ['label', 'width', 'disabled', 'clearable', 'required'],
+    },
+  },
+  render: function Render(args) {
+    const methods = useForm<DemoFormValues>({
+      defaultValues: {
+        inputName: '',
+      },
+    });
+    const [demoIndex, setDemoIndex] = useState<number>(1);
+
+    const onFetchMore = async (): Promise<SelectValue[]> => {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          setDemoIndex((i) => i + 1);
+
+          resolve([
+            {
+              id: `newOption${demoIndex}`,
+              name: `新選項${demoIndex}`,
+            },
+          ]);
+        }, 500);
+      });
+    };
+
+    return (
+      <FormFieldsWrapper methods={methods}>
+        <SingleSelectField {...args} onFetchMore={onFetchMore} />
       </FormFieldsWrapper>
     );
   },

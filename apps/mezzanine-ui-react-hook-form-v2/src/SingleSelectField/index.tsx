@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useMemo, useCallback, useState, useEffect } from 'react';
 import { Select, SelectValue, Option, cx } from '@mezzanine-ui/react';
 import { SelectSingleProps } from '@mezzanine-ui/react/Select/Select';
 import { FieldValues, useFormContext, useWatch } from 'react-hook-form';
@@ -14,6 +14,7 @@ export type SingleSelectFieldProps = HookFormFieldProps<
     options: SelectValue[];
     defaultValue?: string;
     horizontal?: boolean;
+    onFetchMore?: () => Promise<SelectValue[]>;
   }
 >;
 
@@ -44,10 +45,18 @@ export const SingleSelectField: HookFormFieldComponent<
   errorMsgRender,
   onChange: onChangeProp,
   disabledErrMsg,
+  onFetchMore,
   horizontal,
   hints,
   ...restProps
 }) => {
+  const [currentOptions, setOptions] = useState<SelectValue[]>(options);
+  const [fetchLoading, setFetchLoading] = useState<boolean>(false);
+
+  useEffect(() => {
+    setOptions(options);
+  }, [options]);
+
   const {
     clearErrors,
     formState: { errors },
@@ -63,14 +72,37 @@ export const SingleSelectField: HookFormFieldComponent<
   });
 
   const watchValueInOptions = useMemo(
-    () => options?.find((o) => o.id === watchValue) ?? null,
-    [options, watchValue],
+    () => currentOptions?.find((o) => o.id === watchValue) ?? null,
+    [currentOptions, watchValue],
   );
 
   const onClear = () => {
     resetField(registerName);
     setValue(registerName, '', { shouldDirty: true });
   };
+
+  const onMenuScroll = useCallback(
+    async ({
+      scrollTop,
+      maxScrollTop,
+    }: {
+      scrollTop: number;
+      maxScrollTop: number;
+    }) => {
+      if (scrollTop + 40 >= maxScrollTop && !fetchLoading && onFetchMore) {
+        setFetchLoading(true);
+
+        const newOptions = await onFetchMore();
+
+        if (newOptions.length > 0) {
+          setOptions((prev) => [...prev, ...newOptions]);
+        }
+
+        setFetchLoading(false);
+      }
+    },
+    [fetchLoading, onFetchMore],
+  );
 
   const onChange = (newValue: SelectValue) => {
     if (errors?.[registerName]) clearErrors(registerName);
@@ -112,8 +144,9 @@ export const SingleSelectField: HookFormFieldComponent<
         value={watchValueInOptions}
         menuSize={menuSize}
         menuMaxHeight={menuMaxHeight}
+        onMenuScroll={onMenuScroll}
       >
-        {options?.map((option) => (
+        {currentOptions?.map((option) => (
           <Option key={option.id} value={option.id}>
             {option.name}
           </Option>

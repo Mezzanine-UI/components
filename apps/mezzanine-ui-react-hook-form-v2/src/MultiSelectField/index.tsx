@@ -1,4 +1,4 @@
-import { useMemo, useCallback, useState } from 'react';
+import { useMemo, useCallback, useState, useEffect } from 'react';
 import { Select, SelectValue, Option, cx } from '@mezzanine-ui/react';
 import { SelectMultipleProps } from '@mezzanine-ui/react/Select/Select';
 import { FieldValues, useFormContext, useWatch } from 'react-hook-form';
@@ -54,6 +54,10 @@ export const MultiSelectField: HookFormFieldComponent<
 }) => {
   const [currentOptions, setOptions] = useState<SelectValue[]>(options);
   const [fetchLoading, setFetchLoading] = useState<boolean>(false);
+
+  useEffect(() => {
+    setOptions(options);
+  }, [options]);
 
   const {
     clearErrors,
