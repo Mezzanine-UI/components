@@ -46,8 +46,12 @@ export const TextAreaField: HookFormFieldComponent<TextAreaFieldProps> = ({
   hints,
   ...props
 }) => {
-  const { control: contextControl, register: contextRegister } =
-    useFormContext();
+  const {
+    control: contextControl,
+    register: contextRegister,
+    setValue,
+    trigger,
+  } = useFormContext();
 
   const watchValue = useWatch({
     control: control || contextControl,
@@ -63,8 +67,16 @@ export const TextAreaField: HookFormFieldComponent<TextAreaFieldProps> = ({
   });
 
   const onChange: React.ChangeEventHandler<HTMLTextAreaElement> = (e) => {
-    registration.onChange?.(e);
     onChangeProp?.(e);
+
+    if (e.type === 'change') {
+      setValue(registerName, e.target.value, { shouldDirty: true });
+
+      // eslint-disable-next-line no-underscore-dangle
+      if (contextControl._options.mode === 'onChange') trigger(registerName);
+    } else {
+      setValue(registerName, '');
+    }
   };
 
   return (
@@ -98,7 +110,6 @@ export const TextAreaField: HookFormFieldComponent<TextAreaFieldProps> = ({
           name: registerName,
           onBlur: registration.onBlur,
         }}
-        {...registration}
         className={cx(classes.input, inputClassName)}
         onChange={onChange}
         placeholder={placeholder}

@@ -115,7 +115,6 @@ export const InputField: HookFormFieldComponent<InputFieldProps> = ({
       hints={hints}
     >
       <Input
-        {...registration}
         {...prop}
         fullWidth
         role={role}
