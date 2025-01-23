@@ -11,6 +11,7 @@ export * from './FormFieldsDebug';
 export * from './FormFieldsWrapper';
 export * from './InputField';
 export * from './InputTagsModeField';
+export * from './MultiSelectField';
 export * from './PasswordField';
 export * from './RadioGroupField';
 export * from './RangeSliderField';
