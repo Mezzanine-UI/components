@@ -32,7 +32,7 @@ export const SearchInputField: HookFormFieldComponent<
       control,
       name: registerName,
       defaultValue,
-    }) || defaultValue;
+    }) ?? defaultValue;
 
   const [displayValue, setDisplayValue] = useState<string>(watchValue);
 
