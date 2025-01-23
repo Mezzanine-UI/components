@@ -4,6 +4,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
+    "storybook:react-hook-form-v2": "nx storybook @mezzanine-ui/react-hook-form-v2 -p 30030",
     "storybook:login-panel": "nx storybook @mezzanine-ui/login-panel -p 30029",
     "storybook:admin-components": "nx storybook @mezzanine-ui/admin-components -p 30028",
     "tag:react-hook-form-v2": "nx release patch -p @mezzanine-ui/react-hook-form-v2",

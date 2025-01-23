@@ -42,6 +42,7 @@ export interface FormFieldsWrapperProps<T extends FieldValues = FieldValues>
   cancelButtonProps?: ButtonProps;
   submitButtonProps?: ButtonProps;
   actionButtonProps?: ButtonProps;
+  disableCancelButton?: (values: T) => boolean;
   disableSubmitButton?: (values: T) => boolean;
   disableActionButton?: (values: T) => boolean;
   onClickAction?: (values: T) => Promise<void>;
@@ -69,6 +70,7 @@ export const FormFieldsWrapper = <T extends FieldValues>({
   cancelButtonProps,
   submitButtonProps,
   actionButtonProps,
+  disableCancelButton = () => false,
   disableSubmitButton = () => false,
   disableActionButton = () => false,
   onClickAction,
@@ -112,6 +114,7 @@ export const FormFieldsWrapper = <T extends FieldValues>({
             cancelButtonProps={cancelButtonProps}
             submitButtonProps={submitButtonProps}
             actionButtonProps={actionButtonProps}
+            disableCancelButton={disableCancelButton}
             disableSubmitButton={disableSubmitButton}
             disableActionButton={disableActionButton}
             onClickAction={onClickAction}

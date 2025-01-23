@@ -1,0 +1,29 @@
+@use '@mezzanine-ui/system' as mzn-system;
+@use '@mezzanine-ui/system/spacing' as mzn-spacing;
+@use '@mezzanine-ui/system/z-index' as mzn-z-index;
+@use '@mezzanine-ui/system/palette' as mzn-palette;
+@use '@mezzanine-ui/core' as mzn-core;
+
+:root {
+  @include mzn-system.common-variables;
+  @include mzn-spacing.variables;
+  @include mzn-z-index.variables;
+  @include mzn-palette.variables('light');
+
+  --mzn-typography-h1-letter-spacing: 4px;
+  --mzn-typography-h2-letter-spacing: 2px;
+  --mzn-typography-h3-letter-spacing: 2px;
+  --mzn-typography-h4-letter-spacing: 1px;
+  --mzn-typography-h5-letter-spacing: 0;
+  --mzn-typography-h6-letter-spacing: 0;
+  --mzn-typography-button1-letter-spacing: 2px;
+  --mzn-typography-button2-letter-spacing: 2px;
+  --mzn-typography-button3-letter-spacing: 1px;
+  --mzn-typography-input1-letter-spacing: 1px;
+  --mzn-typography-input2-letter-spacing: 1px;
+  --mzn-typography-input3-letter-spacing: 0;
+  --mzn-typography-body1-letter-spacing: 0;
+  --mzn-typography-body2-letter-spacing: 0;
+  --mzn-typography-caption-letter-spacing: 0;
+}
+@include mzn-core.styles;

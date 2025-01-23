@@ -11,6 +11,7 @@ export interface FormFooterProps<T extends FieldValues = FieldValues> {
   cancelButtonProps?: ButtonProps;
   submitButtonProps?: ButtonProps;
   actionButtonProps?: ButtonProps;
+  disableCancelButton?: (values: T) => boolean;
   disableSubmitButton?: (values: T) => boolean;
   disableActionButton?: (values: T) => boolean;
   onClickAction?: (values: T) => Promise<void>;
@@ -37,6 +38,7 @@ const FormFooter = <T extends FieldValues>({
   cancelButtonProps,
   submitButtonProps,
   actionButtonProps,
+  disableCancelButton = () => false,
   disableSubmitButton = () => false,
   disableActionButton = () => false,
   onClickAction,
@@ -108,6 +110,7 @@ const FormFooter = <T extends FieldValues>({
               type="button"
               variant="outlined"
               size="large"
+              disabled={disableCancelButton(values) || loading}
               onClick={async () => {
                 await onCancel(values);
               }}
