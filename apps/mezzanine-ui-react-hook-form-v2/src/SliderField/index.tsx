@@ -39,6 +39,8 @@ export const SliderField: HookFormFieldComponent<SliderFieldProps> = ({
   errorMsgRender,
   onChange: onChangeProp,
   fullWidth = true,
+  horizontal,
+  hints,
   ...props
 }) => {
   const {
@@ -50,7 +52,7 @@ export const SliderField: HookFormFieldComponent<SliderFieldProps> = ({
   const { errors } = useFormState({ control: control || contextControl });
 
   const watchValue =
-    useWatch({ name: registerName, defaultValue }) || defaultValue || 100;
+    useWatch({ name: registerName, defaultValue }) ?? defaultValue ?? 100;
 
   const onChange = (v: number) => {
     setValue(registerName, v, { shouldValidate: true });
@@ -83,6 +85,8 @@ export const SliderField: HookFormFieldComponent<SliderFieldProps> = ({
       fullWidth={fullWidth}
       disabledErrMsg={disabledErrMsg}
       errorMsgRender={errorMsgRender}
+      horizontal={horizontal}
+      hints={hints}
     >
       <Slider
         {...props}
