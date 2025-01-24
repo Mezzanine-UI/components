@@ -1,4 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { useCallback, useState } from 'react';
+import { SelectValue } from '@mezzanine-ui/react';
 import { action } from '@storybook/addon-actions';
 import { useForm } from 'react-hook-form';
 import { FormFieldsWrapper } from '../FormFieldsWrapper';
@@ -70,7 +72,6 @@ export const Default: Story = {
         'menuMaxHeight',
         'remark',
         'size',
-        'menuSize',
         'hints',
         'disabled',
         'required',
@@ -88,6 +89,82 @@ export const Default: Story = {
     return (
       <FormFieldsWrapper methods={methods}>
         <AutoCompleteMultiField {...args} />
+      </FormFieldsWrapper>
+    );
+  },
+};
+
+export const Addable: Story = {
+  args: {
+    registerName: 'multi',
+    placeholder: '請選擇',
+    options: [
+      {
+        id: 'option1',
+        name: '選項1',
+      },
+      {
+        id: 'option2',
+        name: '選項2',
+      },
+      {
+        id: 'option3',
+        name: '選項3',
+      },
+      {
+        id: 'option4',
+        name: '選項4',
+      },
+      {
+        id: 'option5',
+        name: '選項5',
+      },
+    ],
+    label: '標籤',
+    width: 360,
+    onInput: action('onInput'),
+    addable: true,
+  },
+  parameters: {
+    controls: {
+      include: ['placeholder', 'label', 'width'],
+    },
+  },
+  render: function Render(args) {
+    const methods = useForm<DemoFormValues>({
+      defaultValues: {
+        multi: [],
+      },
+    });
+
+    const [currentOptions, setCurrentOptions] = useState<SelectValue[]>(
+      args.options,
+    );
+
+    const onInsert = useCallback((text: string) => {
+      setCurrentOptions((options) => [
+        ...options,
+        {
+          id: text,
+          name: text,
+        },
+      ]);
+
+      action('onInsert')(text);
+
+      return {
+        id: text,
+        name: text,
+      };
+    }, []);
+
+    return (
+      <FormFieldsWrapper methods={methods}>
+        <AutoCompleteMultiField
+          {...args}
+          options={currentOptions}
+          onInsert={onInsert}
+        />
       </FormFieldsWrapper>
     );
   },

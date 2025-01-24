@@ -62,7 +62,6 @@ export const Default: Story = {
         'menuMaxHeight',
         'remark',
         'size',
-        'menuSize',
         'hints',
         'disabled',
         'required',
