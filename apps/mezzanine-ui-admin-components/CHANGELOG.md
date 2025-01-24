@@ -1,3 +1,9 @@
+## 0.0.23 (2025-01-24)
+
+### 🚀 Features
+
+- upgrade @mezzanine-ui/login-panel and @mezzanine-ui/react-hook-form-v2 dependencies
+
 ## 0.0.22 (2025-01-22)
 
 ### 🚀 Features
