@@ -1,3 +1,4 @@
+export * from './AutoCompleteField';
 export * from './AutoCompleteMultiField';
 export * from './AutoCompleteSingleField';
 export * from './BaseField';
@@ -16,6 +17,7 @@ export * from './PasswordField';
 export * from './RadioGroupField';
 export * from './RangeSliderField';
 export * from './SearchInputField';
+export * from './SelectField';
 export * from './SingleSelectField';
 export * from './SingleTreeSelectField';
 export * from './SliderField';
