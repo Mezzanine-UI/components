@@ -41,6 +41,8 @@ export const RangeSliderField: HookFormFieldComponent<
   disabledErrMsg,
   errorMsgRender,
   onChange: onChangeProp,
+  horizontal,
+  hints,
   ...props
 }) => {
   const {
@@ -85,6 +87,8 @@ export const RangeSliderField: HookFormFieldComponent<
       width={width}
       disabledErrMsg={disabledErrMsg}
       errorMsgRender={errorMsgRender}
+      horizontal={horizontal}
+      hints={hints}
     >
       <Slider
         {...props}
