@@ -1,3 +1,11 @@
+## 0.0.27 (2025-01-27)
+
+
+### 🧱 Updated Dependencies
+
+- Updated @mezzanine-ui/react-hook-form-v2 to 0.0.27
+- Updated @mezzanine-ui/login-panel to 0.0.27
+
 ## 0.0.26 (2025-01-27)
 
 
