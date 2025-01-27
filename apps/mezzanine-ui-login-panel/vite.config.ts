@@ -9,9 +9,7 @@ export default defineConfig({
   root: __dirname,
   cacheDir: '../../node_modules/.vite/apps/mezzanine-ui-login-panel',
   plugins: [
-    react({
-      jsxRuntime: 'classic',
-    }),
+    react(),
     nxViteTsPaths(),
     dts({
       entryRoot: 'src',

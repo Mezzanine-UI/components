@@ -9,9 +9,7 @@ export default defineConfig({
   root: __dirname,
   cacheDir: '../../node_modules/.vite/apps/mezzanine-ui-react-hook-form-v2',
   plugins: [
-    react({
-      jsxRuntime: 'classic',
-    }),
+    react(),
     nxViteTsPaths(),
     dts({
       entryRoot: 'src',

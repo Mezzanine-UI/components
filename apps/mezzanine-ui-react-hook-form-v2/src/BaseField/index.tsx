@@ -91,7 +91,7 @@ export const BaseField: FC<BaseFieldProps> = ({
               remark={remark}
               remarkIcon={remarkIcon}
             >
-              {label}
+              {label as React.JSX.Element}
               {required && (
                 <Typography
                   variant="caption"

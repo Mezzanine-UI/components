@@ -28,7 +28,7 @@ export interface HeaderProps {
   /**
    * 放置 logo
    */
-  logo: ReactNode;
+  logo: React.JSX.Element;
   /**
    * 顯示角色
    */
