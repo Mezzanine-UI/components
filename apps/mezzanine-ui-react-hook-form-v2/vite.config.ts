@@ -27,6 +27,7 @@ export default defineConfig({
       entry: 'src/index.ts',
       name: '@mezzanine-ui/react-hook-form-v2',
       fileName: 'index',
+      cssFileName: 'style',
       formats: ['es', 'cjs'],
     },
     rollupOptions: {

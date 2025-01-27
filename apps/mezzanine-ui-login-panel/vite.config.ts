@@ -27,6 +27,7 @@ export default defineConfig({
       entry: 'src/index.ts',
       name: '@mezzanine-ui/login-panel',
       fileName: 'index',
+      cssFileName: 'style',
       formats: ['es', 'cjs'],
     },
     rollupOptions: {
