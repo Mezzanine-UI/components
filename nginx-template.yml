@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-template
+  namespace: mezzanine-ui
+data:
+  default.conf.template: |-
+    server {
+      listen ${PORT};
+      server_name ${CLIENT_HOST};
+
+      location / {
+        root /var/www;
+        try_files $uri $uri/ /index.html;
+      }
+    }

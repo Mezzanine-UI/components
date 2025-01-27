@@ -1,0 +1,10 @@
+node_modules
+dist
+.vscode
+.next
+.yarn
+.nx
+**/storybook-static
+.git
+Dockerfile
+**/*.generated.tsx

@@ -11,6 +11,7 @@
     "tag:login-panel": "nx release patch -p @mezzanine-ui/login-panel",
     "tag:admin-components": "nx release patch -p @mezzanine-ui/admin-components",
     "build": "nx run-many -t build",
+    "build-storybook": "nx run-many -t build-storybook",
     "release": "nx release publish",
     "prepare": "husky"
   },
