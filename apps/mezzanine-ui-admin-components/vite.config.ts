@@ -9,7 +9,9 @@ export default defineConfig({
   root: __dirname,
   cacheDir: '../../node_modules/.vite/apps/mezzanine-ui-admin-components',
   plugins: [
-    react(),
+    react({
+      jsxRuntime: 'classic',
+    }),
     nxViteTsPaths(),
     dts({
       entryRoot: 'src',
@@ -39,10 +41,6 @@ export default defineConfig({
         '@mezzanine-ui/icons',
         '@mezzanine-ui/react',
         '@mezzanine-ui/core',
-        '@hookform/error-message',
-        'tslib',
-        /^react\/.*/,
-        /^react-dom\/.*/,
       ],
       output: {
         externalLiveBindings: false,

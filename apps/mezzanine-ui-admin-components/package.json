@@ -1,47 +1,28 @@
 {
   "name": "@mezzanine-ui/admin-components",
-  "version": "0.0.24",
+  "version": "0.0.26",
   "main": "index.cjs",
   "module": "index.js",
   "type": "module",
   "typings": "index.d.ts",
   "peerDependencies": {
-    "@hookform/error-message": "2.0.1",
-    "@hookform/resolvers": "3.9.1",
     "@mezzanine-ui/core": "0.15.2",
     "@mezzanine-ui/icons": "0.15.2",
-    "@mezzanine-ui/login-panel": "0.0.21",
     "@mezzanine-ui/react": "0.15.2",
-    "@mezzanine-ui/react-hook-form-v2": "0.0.21",
     "@mezzanine-ui/system": "0.15.2",
-    "lodash": "4.17.21",
-    "react": "18.3.1",
-    "react-dom": "18.3.1",
-    "react-dnd": "^16.0.1",
-    "react-dnd-html5-backend": "^16.0.1",
-    "react-hook-form": "7.52.2",
-    "tslib": "2.6.3",
-    "yup": "1.6.1"
+    "lodash": "*",
+    "react": "*",
+    "react-dom": "*",
+    "react-hook-form": "^7"
   },
   "dependencies": {
-    "@hookform/error-message": "2.0.1",
-    "@hookform/resolvers": "3.9.1",
+    "@mezzanine-ui/react-hook-form-v2": "^0.0.26",
+    "@mezzanine-ui/login-panel": "^0.0.26",
+    "@hookform/error-message": "^2.0.1",
+    "@hookform/resolvers": "^3.9.1",
     "react-dnd": "^16.0.1",
     "react-dnd-html5-backend": "^16.0.1",
-    "tslib": "2.6.3",
-    "yup": "1.6.1"
-  },
-  "devDependencies": {
-    "@mezzanine-ui/core": "0.15.2",
-    "@mezzanine-ui/icons": "0.15.2",
-    "@mezzanine-ui/login-panel": "0.0.21",
-    "@mezzanine-ui/react": "0.15.2",
-    "@mezzanine-ui/react-hook-form-v2": "0.0.21",
-    "@mezzanine-ui/system": "0.15.2",
-    "lodash": "4.17.21",
-    "react": "18.3.1",
-    "react-dom": "18.3.1",
-    "react-hook-form": "7.52.2"
+    "yup": "^1.6.1"
   },
   "packageManager": "yarn@4.4.0"
 }

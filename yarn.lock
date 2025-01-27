@@ -2364,6 +2364,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@hookform/resolvers@npm:^3.9.1":
+  version: 3.10.0
+  resolution: "@hookform/resolvers@npm:3.10.0"
+  peerDependencies:
+    react-hook-form: ^7.0.0
+  checksum: 10c0/7ee44533b4cdc28c4fa2a94894c735411e5a1f830f4a617c580533321a9b901df0cc8c1e2fad81ad8d55154ebc5cb844cf9c116a3148ffae2bc48758c33cbb8e
+  languageName: node
+  linkType: hard
+
 "@humanwhocodes/config-array@npm:^0.11.14":
   version: 0.11.14
   resolution: "@humanwhocodes/config-array@npm:0.11.14"
@@ -2751,12 +2760,12 @@ __metadata:
     "@commitlint/config-conventional": "npm:^19.2.2"
     "@commitlint/config-nx-scopes": "npm:^19.3.1"
     "@hookform/error-message": "npm:^2.0.1"
-    "@hookform/resolvers": "npm:3.9.1"
+    "@hookform/resolvers": "npm:^3.9.1"
     "@mezzanine-ui/core": "npm:^0.15.2"
     "@mezzanine-ui/icons": "npm:^0.15.2"
     "@mezzanine-ui/login-panel": "npm:0.0.21"
     "@mezzanine-ui/react": "npm:^0.15.2"
-    "@mezzanine-ui/react-hook-form-v2": "npm:0.0.21"
+    "@mezzanine-ui/react-hook-form-v2": "npm:^0.0.24"
     "@mezzanine-ui/system": "npm:^0.15.2"
     "@nx/eslint": "npm:20.3.1"
     "@nx/eslint-plugin": "npm:20.3.1"
@@ -2803,10 +2812,10 @@ __metadata:
     lodash: "npm:^4.17.21"
     nx: "npm:19.5.7"
     prettier: "npm:^3.3.3"
-    react: "npm:18.3.1"
+    react: "npm:^18.3.1"
     react-dnd: "npm:^16.0.1"
     react-dnd-html5-backend: "npm:^16.0.1"
-    react-dom: "npm:18.3.1"
+    react-dom: "npm:^18.3.1"
     react-hook-form: "npm:^7.52.2"
     sass: "npm:^1.77.8"
     storybook: "npm:8.4.7"
@@ -2817,7 +2826,7 @@ __metadata:
     vite: "npm:^5.4.0"
     vite-plugin-dts: "npm:^4.0.3"
     vitest: "npm:^2.0.5"
-    yup: "npm:1.6.1"
+    yup: "npm:^1.6.1"
   languageName: unknown
   linkType: soft
 
@@ -2878,9 +2887,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mezzanine-ui/react-hook-form-v2@npm:0.0.21":
-  version: 0.0.21
-  resolution: "@mezzanine-ui/react-hook-form-v2@npm:0.0.21"
+"@mezzanine-ui/react-hook-form-v2@npm:^0.0.24":
+  version: 0.0.24
+  resolution: "@mezzanine-ui/react-hook-form-v2@npm:0.0.24"
   dependencies:
     "@hookform/error-message": "npm:2.0.1"
     tslib: "npm:2.6.3"
@@ -2895,7 +2904,7 @@ __metadata:
     react-dom: 18.3.1
     react-hook-form: 7.52.2
     tslib: 2.6.3
-  checksum: 10c0/9be7ba94cc4f6338cd40fce66419752fbbcfc3ef9b0bf4f38c038f1376cb9918487b5fea5c68f50d1949793f28f3b1db319854e36752f056baa85eedc9aa26c4
+  checksum: 10c0/153186b5d78c23539a6e9d3978c54926a6621e1b06d05cc5c7ac613a6cc1ad62b59c5f190f849be41c41fbc326831c59b435c171b024524c5aefb765aa3d5617
   languageName: node
   linkType: hard
 
@@ -13772,7 +13781,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dom@npm:18.3.1, react-dom@npm:^16.8.0 || ^17.0.0 || ^18.0.0":
+"react-dom@npm:^16.8.0 || ^17.0.0 || ^18.0.0, react-dom@npm:^18.3.1":
   version: 18.3.1
   resolution: "react-dom@npm:18.3.1"
   dependencies:
@@ -13882,7 +13891,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:18.3.1, react@npm:^16.8.0 || ^17.0.0 || ^18.0.0":
+"react@npm:^16.8.0 || ^17.0.0 || ^18.0.0, react@npm:^18.3.1":
   version: 18.3.1
   resolution: "react@npm:18.3.1"
   dependencies:
@@ -16642,7 +16651,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"yup@npm:1.6.1":
+"yup@npm:1.6.1, yup@npm:^1.6.1":
   version: 1.6.1
   resolution: "yup@npm:1.6.1"
   dependencies:
