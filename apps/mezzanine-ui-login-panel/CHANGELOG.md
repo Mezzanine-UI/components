@@ -1,3 +1,17 @@
+## 0.0.33 (2025-01-27)
+
+### 🚀 Features
+
+- add react 19 support ([4142903](https://github.com/Mezzanine-UI/components/commit/4142903))
+
+### 🧱 Updated Dependencies
+
+- Updated @mezzanine-ui/react-hook-form-v2 to 0.0.32
+
+### ❤️ Thank You
+
+- Chia Yu Pai @fantasywind
+
 ## 0.0.32 (2025-01-27)
 
 
