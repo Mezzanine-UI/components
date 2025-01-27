@@ -38,6 +38,7 @@ export default defineConfig({
         'react-hook-form',
         'lodash',
         'yup',
+        '@mezzanine-ui/react-hook-form-v2',
         '@hookform/error-message',
         '@hookform/resolvers',
         '@mezzanine-ui/system',
