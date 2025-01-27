@@ -1,3 +1,21 @@
+## 0.0.29 (2025-01-27)
+
+
+### 🩹 Fixes
+
+- vite.config.ts external
+
+
+### 🧱 Updated Dependencies
+
+- Updated @mezzanine-ui/react-hook-form-v2 to 0.0.29
+- Updated @mezzanine-ui/login-panel to 0.0.29
+
+
+### ❤️  Thank You
+
+- Chia Yu Pai
+
 ## 0.0.28 (2025-01-27)
 
 

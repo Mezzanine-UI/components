@@ -1,3 +1,15 @@
+## 0.0.29 (2025-01-27)
+
+
+### 🩹 Fixes
+
+- vite.config.ts external
+
+
+### ❤️  Thank You
+
+- Chia Yu Pai
+
 ## 0.0.28 (2025-01-27)
 
 This was a version bump only for @mezzanine-ui/react-hook-form-v2 to align it with other projects, there were no code changes.
