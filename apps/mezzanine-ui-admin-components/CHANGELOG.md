@@ -1,3 +1,21 @@
+## 0.0.32 (2025-01-27)
+
+
+### 🩹 Fixes
+
+- **login-panel:** missing exports
+
+
+### 🧱 Updated Dependencies
+
+- Updated @mezzanine-ui/react-hook-form-v2 to 0.0.31
+- Updated @mezzanine-ui/login-panel to 0.0.32
+
+
+### ❤️  Thank You
+
+- Chia Yu Pai
+
 ## 0.0.31 (2025-01-27)
 
 
