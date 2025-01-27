@@ -1,3 +1,21 @@
+## 0.0.30 (2025-01-27)
+
+
+### 🩹 Fixes
+
+- add missing external declaration
+
+
+### 🧱 Updated Dependencies
+
+- Updated @mezzanine-ui/react-hook-form-v2 to 0.0.30
+- Updated @mezzanine-ui/login-panel to 0.0.30
+
+
+### ❤️  Thank You
+
+- Chia Yu Pai
+
 ## 0.0.29 (2025-01-27)
 
 
