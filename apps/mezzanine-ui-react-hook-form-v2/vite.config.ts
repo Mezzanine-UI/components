@@ -41,14 +41,13 @@ export default defineConfig({
         '@mezzanine-ui/core',
         '@hookform/error-message',
         'tslib',
+        /^react\/.*/,
+        /^react-dom\/.*/,
       ],
       output: {
         externalLiveBindings: false,
       },
     },
     outDir: '../../dist/apps/@mezzanine-ui/react-hook-form-v2',
-    // commonjsOptions: {
-    //   transformMixedEsModules: true,
-    // },
   },
 });

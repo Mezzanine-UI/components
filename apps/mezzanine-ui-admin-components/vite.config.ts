@@ -41,14 +41,13 @@ export default defineConfig({
         '@mezzanine-ui/core',
         '@hookform/error-message',
         'tslib',
+        /^react\/.*/,
+        /^react-dom\/.*/,
       ],
       output: {
         externalLiveBindings: false,
       },
     },
     outDir: '../../dist/apps/@mezzanine-ui/admin-components',
-    // commonjsOptions: {
-    //   transformMixedEsModules: true,
-    // },
   },
 });
