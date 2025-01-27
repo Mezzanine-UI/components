@@ -1,6 +1,6 @@
 {
   "name": "@mezzanine-ui/admin-components",
-  "version": "0.0.23",
+  "version": "0.0.24",
   "main": "index.cjs",
   "module": "index.js",
   "type": "module",
