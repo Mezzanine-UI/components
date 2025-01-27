@@ -1,3 +1,56 @@
+## 0.0.26 (2025-01-27)
+
+
+### 🚀 Features
+
+- create login-panel
+
+- add mzn styles
+
+- control activate form
+
+- add storybook actions
+
+- show soruce code
+
+- add storybook docs
+
+- add ActivateForm mdx
+
+- password hint storybook
+
+- reset password form storybook
+
+- change passowrd form storybook
+
+- login storybook
+
+- login storybook
+
+- login-panel new version
+
+- **login-panel:** storybook config
+
+- **admin-components:** divider docs
+
+
+### 🩹 Fixes
+
+- scss pattern
+
+- external in vite.config.js
+
+
+### 🧱 Updated Dependencies
+
+- Updated @mezzanine-ui/react-hook-form-v2 to 0.0.26
+
+
+### ❤️  Thank You
+
+- Chia Yu Pai
+- TingTing
+
 ## 0.0.21 (2025-01-24)
 
 ### 🚀 Features

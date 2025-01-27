@@ -35,10 +35,14 @@
     "projects": ["apps/*"],
     "projectsRelationship": "independent",
     "version": {
-      "conventionalCommits": true
+      "conventionalCommits": true,
+      "generatorOptions": {
+        "fallbackCurrentVersionResolver": "disk"
+      }
     },
     "changelog": {
-      "projectChangelogs": true
+      "projectChangelogs": true,
+      "automaticFromRef": true
     }
   },
   "nxCloudAccessToken": "MDMzODY1YTktOWVkMi00M2NhLWI2MjAtZDg0ZjFmYTk4NTI1fHJlYWQtd3JpdGU=",
