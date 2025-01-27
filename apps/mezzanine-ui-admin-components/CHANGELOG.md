@@ -1,3 +1,10 @@
+## 0.0.31 (2025-01-27)
+
+
+### 🧱 Updated Dependencies
+
+- Updated @mezzanine-ui/login-panel to 0.0.31
+
 ## 0.0.30 (2025-01-27)
 
 
