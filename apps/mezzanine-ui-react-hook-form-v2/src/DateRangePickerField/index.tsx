@@ -13,10 +13,11 @@ import classes from './index.module.scss';
 
 export type DateRangePickerFieldProps = HookFormFieldProps<
   FieldValues,
-  DateRangePickerProps
-> & {
-  width?: number;
-};
+  DateRangePickerProps,
+  {
+    width?: number;
+  }
+>;
 
 export const DateRangePickerField: HookFormFieldComponent<
   DateRangePickerFieldProps
