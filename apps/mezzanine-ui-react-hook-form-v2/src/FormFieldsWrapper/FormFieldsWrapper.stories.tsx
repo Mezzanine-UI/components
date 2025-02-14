@@ -221,7 +221,7 @@ const steps = [
   },
 ];
 
-export const WithTab: Story = {
+export const WithStep: Story = {
   args: {
     children: undefined,
   },
