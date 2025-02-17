@@ -128,19 +128,11 @@ export const ResetPasswordForm: FC<ResetPasswordFormProps> = ({
               inputClassName={classes.input}
               disabledErrMsg
             />
-            {generationLimit ? (
-              <PasswordHint
-                passwordValue={values.password}
-                passwordLength={passwordLength}
-                generationLimit={generationLimit}
-                showGenerationLimitHint
-              />
-            ) : (
-              <PasswordHint
-                passwordValue={values.password}
-                passwordLength={passwordLength}
-              />
-            )}
+            <PasswordHint
+              passwordValue={values.password}
+              passwordLength={passwordLength}
+              generationLimit={generationLimit}
+            />
           </div>
           <PasswordField
             registerName="confirmPassword"

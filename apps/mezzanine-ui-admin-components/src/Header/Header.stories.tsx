@@ -50,7 +50,6 @@ export const Default: Story = {
       ),
       passwordLength: 10,
       generationLimit: undefined,
-      showGenerationLimitHint: false,
       onChangePassword: async ({ values }) => {
         action('onChangePassword')(values);
         return true;

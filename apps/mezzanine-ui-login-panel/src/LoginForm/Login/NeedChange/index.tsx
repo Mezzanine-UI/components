@@ -133,21 +133,15 @@ const NeedChange: FC<NeedChangeProps> = ({
               inputClassName={classes.input}
               disabledErrMsg
             />
-            {generationLimit ? (
-              <PasswordHint
-                passwordValue={values.password}
-                passwordLength={passwordLength}
-                generationLimit={generationLimit}
-                showGenerationLimitHint={
-                  mode === NeedChangePasswordMode.TOO_LONG
-                }
-              />
-            ) : (
-              <PasswordHint
-                passwordValue={values.password}
-                passwordLength={passwordLength}
-              />
-            )}
+            <PasswordHint
+              passwordValue={values.password}
+              passwordLength={passwordLength}
+              generationLimit={
+                mode === NeedChangePasswordMode.TOO_LONG
+                  ? generationLimit
+                  : undefined
+              }
+            />
           </div>
           <PasswordField
             registerName="confirmPassword"

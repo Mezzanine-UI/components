@@ -45,7 +45,6 @@ export interface HeaderProps {
    * logo: 放置更換密碼 modal 的 logo;
    * passwordLength: 密碼至少需要的長度;
    * generationLimit: 密碼不可與前 `number` 代重複;
-   * showGenerationLimitHint: 是否顯示 `generationLimit`;
    * onChangePassword: 送出時觸發，return true 代表更新成功;
    * onBack: 成功後返回;
    */
@@ -53,7 +52,6 @@ export interface HeaderProps {
     logo: ReactNode;
     passwordLength: number;
     generationLimit?: number;
-    showGenerationLimitHint?: boolean;
     onChangePassword: ({
       values,
     }: {
@@ -118,9 +116,6 @@ export const Header: FC<HeaderProps> = ({
                           }
                           generationLimit={
                             changePasswordModalConfig.generationLimit
-                          }
-                          showGenerationLimitHint={
-                            changePasswordModalConfig.showGenerationLimitHint
                           }
                           onChangePassword={
                             changePasswordModalConfig.onChangePassword

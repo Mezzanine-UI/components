@@ -27,10 +27,6 @@ interface ChangePasswordFormProps {
    */
   generationLimit?: number;
   /**
-   * 是否顯示 `generationLimit`
-   */
-  showGenerationLimitHint?: boolean;
-  /**
    * 送出時觸發，return true 代表更新成功
    */
   onChangePassword: ({
@@ -67,7 +63,6 @@ export const ChangePasswordForm: FC<ChangePasswordFormProps> = ({
   logo,
   passwordLength,
   generationLimit,
-  showGenerationLimitHint = true,
   onChangePassword,
   account,
   onCancel,
@@ -149,20 +144,11 @@ export const ChangePasswordForm: FC<ChangePasswordFormProps> = ({
               inputClassName={classes.input}
               disabledErrMsg
             />
-            {showGenerationLimitHint && generationLimit ? (
-              <PasswordHint
-                passwordValue={values.password}
-                passwordLength={passwordLength}
-                generationLimit={generationLimit}
-                showGenerationLimitHint
-              />
-            ) : (
-              <PasswordHint
-                passwordValue={values.password}
-                passwordLength={passwordLength}
-                showGenerationLimitHint={false}
-              />
-            )}
+            <PasswordHint
+              passwordValue={values.password}
+              passwordLength={passwordLength}
+              generationLimit={generationLimit}
+            />
           </div>
           <PasswordField
             registerName="confirmPassword"

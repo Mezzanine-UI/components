@@ -28,7 +28,6 @@ export const Default: Story = {
     ),
     passwordLength: 10,
     generationLimit: undefined,
-    showGenerationLimitHint: false,
     onChangePassword: async ({ values }) => {
       action('onChangePassword')(values);
       return true;
@@ -39,12 +38,7 @@ export const Default: Story = {
   },
   parameters: {
     controls: {
-      include: [
-        'passwordLength',
-        'generationLimit',
-        'showGenerationLimitHint',
-        'account',
-      ],
+      include: ['passwordLength', 'generationLimit', 'account'],
     },
   },
   render: function Render(args) {

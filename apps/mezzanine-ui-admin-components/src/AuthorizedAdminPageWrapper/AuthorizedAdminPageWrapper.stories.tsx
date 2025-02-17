@@ -66,7 +66,6 @@ const args = {
     ),
     passwordLength: 10,
     generationLimit: undefined,
-    showGenerationLimitHint: false,
     onChangePassword: async ({
       values,
     }: {

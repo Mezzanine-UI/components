@@ -14,16 +14,10 @@ export const Default: Story = {
     passwordValue: 'qweR1234!@#$',
     passwordLength: 10,
     generationLimit: 6,
-    showGenerationLimitHint: true,
   },
   parameters: {
     controls: {
-      include: [
-        'passwordValue',
-        'passwordLength',
-        'generationLimit',
-        'showGenerationLimitHint',
-      ],
+      include: ['passwordValue', 'passwordLength', 'generationLimit'],
     },
   },
   render: function Render(args) {
@@ -35,18 +29,12 @@ export const CustomizedRule: Story = {
   args: {
     passwordValue: 'qweR1234!@#$',
     generationLimit: 6,
-    showGenerationLimitHint: true,
     customizedHint: '至少 8 字元、大寫字母、小寫字母',
     customizedRule: new RegExp(`^(?=.*[a-z])(?=.*[A-Z]).{8,}$`),
   },
   parameters: {
     controls: {
-      include: [
-        'passwordValue',
-        'generationLimit',
-        'showGenerationLimitHint',
-        'customizedHint',
-      ],
+      include: ['passwordValue', 'generationLimit', 'customizedHint'],
     },
   },
   render: function Render(args) {
