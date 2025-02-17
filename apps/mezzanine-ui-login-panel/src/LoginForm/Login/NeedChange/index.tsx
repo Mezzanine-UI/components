@@ -18,7 +18,7 @@ import classes from './index.module.scss';
 
 interface NeedChangeProps {
   mode: NeedChangePasswordMode;
-  logo: ReactNode;
+  logo?: ReactNode;
   passwordLength?: number;
   generationLimit?: number;
   keepPasswordDaysLimit: number;

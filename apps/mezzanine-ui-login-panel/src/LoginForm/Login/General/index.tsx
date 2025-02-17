@@ -17,7 +17,7 @@ import { LoginFormValues, LoginPageEnum } from '../../typing';
 import classes from './index.module.scss';
 
 interface GeneralLoginProps {
-  logo: ReactNode;
+  logo?: ReactNode;
   generalLoginText?: string;
   onLogin: ({ values }: { values: LoginFormValues }) => Promise<void>;
   setCurrentPage: Dispatch<SetStateAction<LoginPageEnum>>;
@@ -59,7 +59,7 @@ const GeneralLogin: FC<GeneralLoginProps> = ({
         onSubmit={onSubmit}
         className={classes.formWrapper}
       >
-        <div className={classes.logoWrapper}>{logo}</div>
+        {logo && <div className={classes.logoWrapper}>{logo}</div>}
         <Typography variant="h3" color="text-primary" align="center">
           帳號登入
         </Typography>

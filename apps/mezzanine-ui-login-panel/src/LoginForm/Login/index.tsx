@@ -16,7 +16,7 @@ import NeedChange from './NeedChange';
 import General from './General';
 
 interface LoginProps {
-  logo: ReactNode;
+  logo?: ReactNode;
   passwordLength?: number;
   generationLimit?: number;
   keepPasswordDaysLimit: number;

@@ -17,7 +17,7 @@ interface ActivateFormProps {
   /**
    * 放置 logo
    */
-  logo: ReactNode;
+  logo?: ReactNode;
   /**
    * 密碼至少需要的長度
    */

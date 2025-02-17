@@ -18,7 +18,7 @@ import Success from './Success';
 import classes from './index.module.scss';
 
 interface ForgetProps {
-  logo: ReactNode;
+  logo?: ReactNode;
   onSendForgetAccount?: ({
     values,
   }: {
@@ -80,7 +80,7 @@ const Forget: FC<ForgetProps> = ({
         onSubmit={onSubmit}
         className={classes.formWrapper}
       >
-        <div className={classes.logoWrapper}>{logo}</div>
+        {logo && <div className={classes.logoWrapper}>{logo}</div>}
         <Typography variant="h3" color="text-primary" align="center">
           重新設定密碼
         </Typography>
