@@ -1,4 +1,4 @@
-import { FC, ReactNode, useState, MouseEvent, RefObject } from 'react';
+import { FC, useState, MouseEvent, RefObject } from 'react';
 import {
   AppBar,
   AppBarBrand,
@@ -13,8 +13,8 @@ import {
 } from '@mezzanine-ui/react';
 import { MenuIcon, ProfileIcon, ChevronDownIcon } from '@mezzanine-ui/icons';
 import {
-  ChangePasswordForm,
-  ChangePasswordFormValues,
+  ChangePasswordModal,
+  ChangePasswordModalValues,
 } from '@mezzanine-ui/login-panel';
 import { useLayout } from '../layout/useLayout';
 import { useModal } from '../modal/useModal';
@@ -42,20 +42,18 @@ export interface HeaderProps {
    */
   onLogout: () => Promise<void>;
   /**
-   * logo: 放置更換密碼 modal 的 logo;
    * passwordLength: 密碼至少需要的長度;
    * generationLimit: 密碼不可與前 `number` 代重複;
    * onChangePassword: 送出時觸發，return true 代表更新成功;
    * onBack: 成功後返回;
    */
   changePasswordModalConfig: {
-    logo: ReactNode;
-    passwordLength: number;
+    passwordLength?: number;
     generationLimit?: number;
     onChangePassword: ({
       values,
     }: {
-      values: ChangePasswordFormValues;
+      values: ChangePasswordModalValues;
     }) => Promise<boolean>;
     onBack: VoidFunction;
   };
@@ -105,12 +103,10 @@ export const Header: FC<HeaderProps> = ({
                   onClick={() => {
                     toggleOpen(false);
                     openModal({
-                      width: 480,
+                      className: classes.changePasswordModal,
                       disableCloseOnBackdropClick: true,
-                      hideCloseIcon: true,
                       children: (
-                        <ChangePasswordForm
-                          logo={changePasswordModalConfig.logo}
+                        <ChangePasswordModal
                           passwordLength={
                             changePasswordModalConfig.passwordLength
                           }
@@ -120,9 +116,9 @@ export const Header: FC<HeaderProps> = ({
                           onChangePassword={
                             changePasswordModalConfig.onChangePassword
                           }
+                          onBack={changePasswordModalConfig.onBack}
                           account={account}
                           onCancel={closeModal}
-                          onBack={changePasswordModalConfig.onBack}
                         />
                       ),
                     });
