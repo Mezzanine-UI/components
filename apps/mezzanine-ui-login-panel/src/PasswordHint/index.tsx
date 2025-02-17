@@ -16,7 +16,7 @@ interface PasswordHintProps {
   /**
    * 密碼至少需要的長度
    */
-  passwordLength: number;
+  passwordLength?: number;
   /**
    * 密碼不可與前 `number` 代重複
    */
@@ -37,12 +37,12 @@ export const PasswordHint: FC<PasswordHintProps> = ({
   showGenerationLimitHint = false,
 }) => {
   const ruleRegExp = useMemo(
-    () => generatePasswordRegRxp(passwordLength),
+    () => (passwordLength ? generatePasswordRegRxp(passwordLength) : null),
     [passwordLength],
   );
 
   const color = useMemo((): TypographyColor => {
-    if (!passwordValue) {
+    if (!passwordValue || !ruleRegExp) {
       return 'text-secondary';
     }
 
@@ -54,7 +54,7 @@ export const PasswordHint: FC<PasswordHintProps> = ({
   }, [passwordValue, ruleRegExp]);
 
   const icon = useMemo((): ReactNode => {
-    if (!passwordValue) {
+    if (!passwordValue || !ruleRegExp) {
       return <Icon icon={InfoCircleFilledIcon} size={16} color="primary" />;
     }
 
@@ -67,12 +67,14 @@ export const PasswordHint: FC<PasswordHintProps> = ({
 
   return (
     <div className={classes.root}>
-      <div className={classes.hintWrapper}>
-        {icon}
-        <Typography variant="caption" color={color}>
-          {`至少 ${passwordLength} 位元、大寫字母、小寫字母、數字、符號`}
-        </Typography>
-      </div>
+      {!!passwordLength && (
+        <div className={classes.hintWrapper}>
+          {icon}
+          <Typography variant="caption" color={color}>
+            {`至少 ${passwordLength} 位元、大寫字母、小寫字母、數字、符號`}
+          </Typography>
+        </div>
+      )}
       {showGenerationLimitHint && (
         <div className={classes.hintWrapper}>
           <Icon icon={InfoCircleFilledIcon} size={16} color="primary" />
