@@ -21,7 +21,7 @@ interface ActivateFormProps {
   /**
    * 密碼至少需要的長度
    */
-  passwordLength: number;
+  passwordLength?: number;
   /**
    * 送出時觸發，return true 代表更新成功
    */
@@ -38,6 +38,14 @@ interface ActivateFormProps {
    * 成功後返回
    */
   onBack: VoidFunction;
+  /**
+   * 自定義密碼提示
+   */
+  customizedHint?: string;
+  /**
+   * 自定義密碼規則
+   */
+  customizedRule?: RegExp;
 }
 
 const formSchema: Yup.ObjectSchema<ActivateFormValues> = Yup.object({
@@ -56,12 +64,16 @@ export const ActivateForm: FC<ActivateFormProps> = ({
   onChangePassword,
   account,
   onBack,
+  customizedHint,
+  customizedRule,
 }) => {
   const [isSuccess, setIsSuccess] = useState<boolean>(false);
-  const ruleRegExp = useMemo(
-    () => generatePasswordRegRxp(passwordLength),
-    [passwordLength],
-  );
+  const ruleRegExp = useMemo(() => {
+    if (customizedRule) {
+      return customizedRule;
+    }
+    return passwordLength ? generatePasswordRegRxp(passwordLength) : null;
+  }, [passwordLength, customizedRule]);
 
   const methods = useForm<ActivateFormValues>({
     resolver: yupResolver(formSchema),
@@ -128,6 +140,8 @@ export const ActivateForm: FC<ActivateFormProps> = ({
             <PasswordHint
               passwordValue={values.password}
               passwordLength={passwordLength}
+              customizedHint={customizedHint}
+              customizedRule={customizedRule}
             />
           </div>
           <PasswordField
@@ -148,7 +162,7 @@ export const ActivateForm: FC<ActivateFormProps> = ({
             disabled={
               !(
                 formSchema.isValidSync(values) &&
-                ruleRegExp.test(values.password)
+                (ruleRegExp ? ruleRegExp.test(values.password) : true)
               ) || submitting
             }
           >

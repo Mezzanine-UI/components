@@ -21,7 +21,7 @@ interface ChangePasswordFormProps {
   /**
    * 密碼至少需要的長度
    */
-  passwordLength: number;
+  passwordLength?: number;
   /**
    * 密碼不可與前 `number` 代重複
    */
@@ -46,6 +46,14 @@ interface ChangePasswordFormProps {
    * 成功後返回
    */
   onBack: VoidFunction;
+  /**
+   * 自定義密碼提示
+   */
+  customizedHint?: string;
+  /**
+   * 自定義密碼規則
+   */
+  customizedRule?: RegExp;
 }
 
 const formSchema: Yup.ObjectSchema<ChangePasswordFormValues> = Yup.object({
@@ -67,12 +75,16 @@ export const ChangePasswordForm: FC<ChangePasswordFormProps> = ({
   account,
   onCancel,
   onBack,
+  customizedHint,
+  customizedRule,
 }) => {
   const [isSuccess, setIsSuccess] = useState<boolean>(false);
-  const ruleRegExp = useMemo(
-    () => generatePasswordRegRxp(passwordLength),
-    [passwordLength],
-  );
+  const ruleRegExp = useMemo(() => {
+    if (customizedRule) {
+      return customizedRule;
+    }
+    return passwordLength ? generatePasswordRegRxp(passwordLength) : null;
+  }, [passwordLength, customizedRule]);
 
   const methods = useForm<ChangePasswordFormValues>({
     resolver: yupResolver(formSchema),
@@ -148,6 +160,8 @@ export const ChangePasswordForm: FC<ChangePasswordFormProps> = ({
               passwordValue={values.password}
               passwordLength={passwordLength}
               generationLimit={generationLimit}
+              customizedHint={customizedHint}
+              customizedRule={customizedRule}
             />
           </div>
           <PasswordField
@@ -168,7 +182,7 @@ export const ChangePasswordForm: FC<ChangePasswordFormProps> = ({
             disabled={
               !(
                 formSchema.isValidSync(values) &&
-                ruleRegExp.test(values.password)
+                (ruleRegExp ? ruleRegExp.test(values.password) : true)
               ) || submitting
             }
           >

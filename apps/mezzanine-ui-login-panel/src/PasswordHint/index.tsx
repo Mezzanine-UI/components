@@ -82,7 +82,7 @@ export const PasswordHint: FC<PasswordHintProps> = ({
           </Typography>
         </div>
       )}
-      {!!passwordLength && (
+      {!!passwordLength && !customizedHint && (
         <div className={classes.hintWrapper}>
           {icon}
           <Typography variant="caption" color={color}>

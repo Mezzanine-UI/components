@@ -17,7 +17,7 @@ import General from './General';
 
 interface LoginProps {
   logo: ReactNode;
-  passwordLength: number;
+  passwordLength?: number;
   generationLimit?: number;
   keepPasswordDaysLimit: number;
   generalLoginText?: string;
@@ -38,6 +38,8 @@ interface LoginProps {
     oldPassword: string;
   }) => Promise<boolean>;
   setCurrentPage: Dispatch<SetStateAction<LoginPageEnum>>;
+  customizedHint?: string;
+  customizedRule?: RegExp;
   notShowForgotPassword?: boolean;
 }
 
@@ -50,6 +52,8 @@ const Login: FC<LoginProps> = ({
   onLogin: onLoginProps,
   onNeedChangePassword,
   setCurrentPage,
+  customizedHint,
+  customizedRule,
   notShowForgotPassword = false,
 }) => {
   const [needChangePasswordParams, setNeedChangePasswordParams] = useState<{
@@ -100,6 +104,8 @@ const Login: FC<LoginProps> = ({
             mode: null,
           });
         }}
+        customizedHint={customizedHint}
+        customizedRule={customizedRule}
       />
     );
   }

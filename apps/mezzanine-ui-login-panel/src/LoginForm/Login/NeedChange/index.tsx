@@ -19,7 +19,7 @@ import classes from './index.module.scss';
 interface NeedChangeProps {
   mode: NeedChangePasswordMode;
   logo: ReactNode;
-  passwordLength: number;
+  passwordLength?: number;
   generationLimit?: number;
   keepPasswordDaysLimit: number;
   onNeedChangePassword: ({
@@ -34,6 +34,8 @@ interface NeedChangeProps {
   account: string;
   oldPassword: string;
   onBack: VoidFunction;
+  customizedHint?: string;
+  customizedRule?: RegExp;
 }
 
 const formSchema: Yup.ObjectSchema<NeedChangePasswordFormValues> = Yup.object({
@@ -53,12 +55,16 @@ const NeedChange: FC<NeedChangeProps> = ({
   account,
   oldPassword,
   onBack,
+  customizedHint,
+  customizedRule,
 }) => {
   const [isSuccess, setIsSuccess] = useState<boolean>(false);
-  const ruleRegExp = useMemo(
-    () => generatePasswordRegRxp(passwordLength),
-    [passwordLength],
-  );
+  const ruleRegExp = useMemo(() => {
+    if (customizedRule) {
+      return customizedRule;
+    }
+    return passwordLength ? generatePasswordRegRxp(passwordLength) : null;
+  }, [passwordLength, customizedRule]);
 
   const methods = useForm<NeedChangePasswordFormValues>({
     resolver: yupResolver(formSchema),
@@ -141,6 +147,8 @@ const NeedChange: FC<NeedChangeProps> = ({
                   ? generationLimit
                   : undefined
               }
+              customizedHint={customizedHint}
+              customizedRule={customizedRule}
             />
           </div>
           <PasswordField
@@ -161,7 +169,7 @@ const NeedChange: FC<NeedChangeProps> = ({
             disabled={
               !(
                 formSchema.isValidSync(values) &&
-                ruleRegExp.test(values.password)
+                (ruleRegExp ? ruleRegExp.test(values.password) : true)
               ) || submitting
             }
           >
