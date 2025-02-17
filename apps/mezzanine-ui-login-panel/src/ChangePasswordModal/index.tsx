@@ -1,7 +1,12 @@
 import { FC, useMemo, useState, useCallback } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Typography, Button } from '@mezzanine-ui/react';
+import {
+  Typography,
+  ModalHeader,
+  ModalBody,
+  ModalActions,
+} from '@mezzanine-ui/react';
 import {
   PasswordField,
   FormFieldsWrapper,
@@ -116,23 +121,28 @@ export const ChangePasswordModal: FC<ChangePasswordModalProps> = ({
   }
 
   return (
-    <div className={classes.root}>
-      <div className={classes.logoWrapper}>
-        <Typography variant="h3" color="text-primary" align="center">
-          更改密碼
-        </Typography>
-        {!!account && (
-          <Typography variant="h5" color="text-primary" align="center">
-            {account}
-          </Typography>
+    <FormFieldsWrapper
+      methods={methods}
+      onSubmit={onSubmit}
+      className={classes.root}
+    >
+      <ModalHeader>更改密碼</ModalHeader>
+      <ModalBody className={classes.modalBody}>
+        {account && (
+          <>
+            <Typography variant="h5" color="text-primary">
+              帳號
+            </Typography>
+            <Typography variant="h5" color="text-primary">
+              {account}
+            </Typography>
+            <div className={classes.divider} />
+          </>
         )}
-      </div>
-      <FormFieldsWrapper
-        methods={methods}
-        onSubmit={onSubmit}
-        className={classes.formWrapper}
-      >
-        <div className={classes.fieldsWrapper}>
+        <Typography variant="h5" color="text-primary">
+          密碼
+        </Typography>
+        <div className={classes.formWrapper}>
           <PasswordField
             registerName="originPassword"
             label="原密碼"
@@ -169,26 +179,34 @@ export const ChangePasswordModal: FC<ChangePasswordModalProps> = ({
             inputClassName={classes.input}
           />
         </div>
-        <div className={classes.buttonsWrapper}>
-          <Button
-            type="submit"
-            variant="contained"
-            size="large"
-            loading={submitting}
-            disabled={
-              !(
-                formSchema.isValidSync(values) &&
-                (ruleRegExp ? ruleRegExp.test(values.password) : true)
-              ) || submitting
-            }
-          >
-            確認
-          </Button>
-          <Button type="button" variant="text" size="large" onClick={onCancel}>
-            取消
-          </Button>
-        </div>
-      </FormFieldsWrapper>
-    </div>
+      </ModalBody>
+      <ModalActions
+        cancelText="取消"
+        confirmText="確認"
+        cancelButtonProps={{
+          type: 'button',
+          size: 'large',
+          variant: 'outlined',
+          style: {
+            minWidth: 'unset',
+          },
+        }}
+        confirmButtonProps={{
+          type: 'submit',
+          size: 'large',
+          variant: 'contained',
+          style: {
+            minWidth: 'unset',
+          },
+          loading: submitting,
+          disabled:
+            !(
+              formSchema.isValidSync(values) &&
+              (ruleRegExp ? ruleRegExp.test(values.password) : true)
+            ) || submitting,
+        }}
+        onCancel={onCancel}
+      />
+    </FormFieldsWrapper>
   );
 };
