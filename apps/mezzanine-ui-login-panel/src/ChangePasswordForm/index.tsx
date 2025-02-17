@@ -37,7 +37,7 @@ interface ChangePasswordFormProps {
   /**
    * 顯示帳號
    */
-  account: string;
+  account?: string;
   /**
    * 取消時觸發
    */
@@ -127,9 +127,11 @@ export const ChangePasswordForm: FC<ChangePasswordFormProps> = ({
         <Typography variant="h3" color="text-primary" align="center">
           更改密碼
         </Typography>
-        <Typography variant="h5" color="text-primary" align="center">
-          {account}
-        </Typography>
+        {!!account && (
+          <Typography variant="h5" color="text-primary" align="center">
+            {account}
+          </Typography>
+        )}
       </div>
       <FormFieldsWrapper
         methods={methods}

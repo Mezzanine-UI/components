@@ -33,7 +33,7 @@ interface ActivateFormProps {
   /**
    * 顯示帳號
    */
-  account: string;
+  account?: string;
   /**
    * 成功後返回
    */
@@ -117,9 +117,11 @@ export const ActivateForm: FC<ActivateFormProps> = ({
           <br />
           請設定密碼
         </Typography>
-        <Typography variant="h5" color="text-primary" align="center">
-          {account}
-        </Typography>
+        {!!account && (
+          <Typography variant="h5" color="text-primary" align="center">
+            {account}
+          </Typography>
+        )}
       </div>
       <FormFieldsWrapper
         methods={methods}

@@ -37,7 +37,7 @@ interface ResetPasswordFormProps {
   /**
    * 顯示帳號
    */
-  account: string;
+  account?: string;
   /**
    * 成功後返回
    */
@@ -120,9 +120,11 @@ export const ResetPasswordForm: FC<ResetPasswordFormProps> = ({
         <Typography variant="h3" color="text-primary" align="center">
           密碼重置
         </Typography>
-        <Typography variant="h5" color="text-primary" align="center">
-          {account}
-        </Typography>
+        {!!account && (
+          <Typography variant="h5" color="text-primary" align="center">
+            {account}
+          </Typography>
+        )}
       </div>
       <FormFieldsWrapper
         methods={methods}
