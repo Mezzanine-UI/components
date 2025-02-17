@@ -1,3 +1,17 @@
+## 0.0.35 (2025-02-17)
+
+### 🚀 Features
+
+- add ChangePasswordModal
+
+- layout of success component
+
+- can customize password rule
+
+### Breaking Change
+
+- some props are optional
+
 ## 0.0.33 (2025-01-27)
 
 ### 🚀 Features
@@ -14,18 +28,15 @@
 
 ## 0.0.32 (2025-01-27)
 
-
 ### 🩹 Fixes
 
 - **login-panel:** missing exports
-
 
 ### 🧱 Updated Dependencies
 
 - Updated @mezzanine-ui/react-hook-form-v2 to 0.0.31
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Chia Yu Pai
 
@@ -35,40 +46,33 @@ This was a version bump only for @mezzanine-ui/login-panel to align it with othe
 
 ## 0.0.30 (2025-01-27)
 
-
 ### 🩹 Fixes
 
 - add missing external declaration
-
 
 ### 🧱 Updated Dependencies
 
 - Updated @mezzanine-ui/react-hook-form-v2 to 0.0.30
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Chia Yu Pai
 
 ## 0.0.29 (2025-01-27)
 
-
 ### 🩹 Fixes
 
 - vite.config.ts external
-
 
 ### 🧱 Updated Dependencies
 
 - Updated @mezzanine-ui/react-hook-form-v2 to 0.0.29
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Chia Yu Pai
 
 ## 0.0.28 (2025-01-27)
-
 
 ### 🧱 Updated Dependencies
 
@@ -76,13 +80,11 @@ This was a version bump only for @mezzanine-ui/login-panel to align it with othe
 
 ## 0.0.27 (2025-01-27)
 
-
 ### 🧱 Updated Dependencies
 
 - Updated @mezzanine-ui/react-hook-form-v2 to 0.0.27
 
 ## 0.0.26 (2025-01-27)
-
 
 ### 🚀 Features
 
@@ -116,20 +118,17 @@ This was a version bump only for @mezzanine-ui/login-panel to align it with othe
 
 - **admin-components:** divider docs
 
-
 ### 🩹 Fixes
 
 - scss pattern
 
 - external in vite.config.js
 
-
 ### 🧱 Updated Dependencies
 
 - Updated @mezzanine-ui/react-hook-form-v2 to 0.0.26
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Chia Yu Pai
 - TingTing

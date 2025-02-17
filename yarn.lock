@@ -2727,9 +2727,9 @@ __metadata:
     "@hookform/resolvers": "npm:^3.10.0"
     "@mezzanine-ui/core": "npm:^0.15.3"
     "@mezzanine-ui/icons": "npm:^0.15.3"
-    "@mezzanine-ui/login-panel": "npm:0.0.34"
+    "@mezzanine-ui/login-panel": "npm:0.0.35"
     "@mezzanine-ui/react": "npm:^0.15.3"
-    "@mezzanine-ui/react-hook-form-v2": "npm:^0.0.34"
+    "@mezzanine-ui/react-hook-form-v2": "npm:^0.0.35"
     "@mezzanine-ui/system": "npm:^0.15.3"
     "@nx/eslint": "npm:20.3.3"
     "@nx/eslint-plugin": "npm:20.3.3"
@@ -2825,13 +2825,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mezzanine-ui/login-panel@npm:0.0.34":
-  version: 0.0.34
-  resolution: "@mezzanine-ui/login-panel@npm:0.0.34"
+"@mezzanine-ui/login-panel@npm:0.0.35":
+  version: 0.0.35
+  resolution: "@mezzanine-ui/login-panel@npm:0.0.35"
   dependencies:
     "@hookform/error-message": "npm:^2.0.1"
     "@hookform/resolvers": "npm:^3.9.1"
-    "@mezzanine-ui/react-hook-form-v2": "npm:^0.0.33"
+    "@mezzanine-ui/react-hook-form-v2": "npm:^0.0.35"
     yup: "npm:^1.6.1"
   peerDependencies:
     "@mezzanine-ui/core": ^0.15.2
@@ -2842,13 +2842,13 @@ __metadata:
     react: "*"
     react-dom: "*"
     react-hook-form: ^7
-  checksum: 10c0/cd4d710ca84a89d7d2c396b2b2050ddabfbbdaa45eb91eb6616c687417bb7538ba0774c592263569652c06a9cf0e0e483c6fab42b7c4d67e48f7e9a0c808c456
+  checksum: 10c0/3b699c5a8e16df26e7848a475ad53015c6dda4fc2c8d4dd9d85b9426970c9024b825b00f629bdbb5c07fbc77f44959a1f1f5b7d31236cbba52ed521ad2b53fec
   languageName: node
   linkType: hard
 
-"@mezzanine-ui/react-hook-form-v2@npm:^0.0.33":
-  version: 0.0.33
-  resolution: "@mezzanine-ui/react-hook-form-v2@npm:0.0.33"
+"@mezzanine-ui/react-hook-form-v2@npm:^0.0.35":
+  version: 0.0.35
+  resolution: "@mezzanine-ui/react-hook-form-v2@npm:0.0.35"
   dependencies:
     "@hookform/error-message": "npm:^2.0.1"
   peerDependencies:
@@ -2860,25 +2860,7 @@ __metadata:
     react: ^18.3.1
     react-dom: ^18.3.1
     react-hook-form: ^7.52.2
-  checksum: 10c0/5e8b213b232391f6e5859cd03dda35235169c5155c8581910e9c052e3a4bed79f9c2d7f837aee1037d31a03f739091f760fa2f75757a388e983eadca3f1672d3
-  languageName: node
-  linkType: hard
-
-"@mezzanine-ui/react-hook-form-v2@npm:^0.0.34":
-  version: 0.0.34
-  resolution: "@mezzanine-ui/react-hook-form-v2@npm:0.0.34"
-  dependencies:
-    "@hookform/error-message": "npm:^2.0.1"
-  peerDependencies:
-    "@mezzanine-ui/core": ^0.15.2
-    "@mezzanine-ui/icons": ^0.15.2
-    "@mezzanine-ui/react": ^0.15.2
-    "@mezzanine-ui/system": ^0.15.2
-    lodash: ^4.17.21
-    react: ^18.3.1
-    react-dom: ^18.3.1
-    react-hook-form: ^7.52.2
-  checksum: 10c0/e7e2124d839e9f9709c85a0778e479e22e5cea638513a650b6eb54f1146352ba1b94afadb5a0acc8127e1b99cc0fdff3f13341b6cb81c8e1afe0f426f17842cf
+  checksum: 10c0/346fa8c660a8346c20eea00473c6fb5948b019c5780a72c08d52fbd0c326d5853fa1cec8402cede18f71deab0c1f50154e12fc786204be1e627f8d1923ca42fc
   languageName: node
   linkType: hard
 
