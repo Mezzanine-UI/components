@@ -22,7 +22,7 @@ interface NeedChangeProps {
   passwordLength?: number;
   generationLimit?: number;
   keepPasswordDaysLimit: number;
-  onNeedChangePassword: ({
+  onNeedChangePassword?: ({
     values,
     account,
     oldPassword,
@@ -84,14 +84,16 @@ const NeedChange: FC<NeedChangeProps> = ({
 
   const onSubmit = useCallback(
     async (values: NeedChangePasswordFormValues) => {
-      const status = await onNeedChangePassword({
-        values,
-        account,
-        oldPassword,
-      });
+      if (onNeedChangePassword) {
+        const status = await onNeedChangePassword({
+          values,
+          account,
+          oldPassword,
+        });
 
-      if (status) {
-        setIsSuccess(true);
+        if (status) {
+          setIsSuccess(true);
+        }
       }
     },
     [account, oldPassword, onNeedChangePassword],

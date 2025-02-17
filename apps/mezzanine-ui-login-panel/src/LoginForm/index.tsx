@@ -44,7 +44,7 @@ interface LoginFormProps {
   /**
    * 變更密碼時觸發
    */
-  onNeedChangePassword: ({
+  onNeedChangePassword?: ({
     values,
     account,
     oldPassword,

@@ -28,7 +28,7 @@ interface LoginProps {
     values: LoginFormValues;
     needChangePassword: ({ mode }: { mode: NeedChangePasswordMode }) => void;
   }) => Promise<void>;
-  onNeedChangePassword: ({
+  onNeedChangePassword?: ({
     values,
     account,
     oldPassword,
