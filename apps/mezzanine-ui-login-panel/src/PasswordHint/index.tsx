@@ -25,6 +25,14 @@ interface PasswordHintProps {
    * 是否顯示 `generationLimit`
    */
   showGenerationLimitHint?: boolean;
+  /**
+   * 自定義密碼提示
+   */
+  customizedHint?: string;
+  /**
+   * 自定義密碼規則
+   */
+  customizedRule?: RegExp;
 }
 
 /**
@@ -35,11 +43,15 @@ export const PasswordHint: FC<PasswordHintProps> = ({
   passwordLength,
   generationLimit,
   showGenerationLimitHint = false,
+  customizedHint,
+  customizedRule,
 }) => {
-  const ruleRegExp = useMemo(
-    () => (passwordLength ? generatePasswordRegRxp(passwordLength) : null),
-    [passwordLength],
-  );
+  const ruleRegExp = useMemo(() => {
+    if (customizedRule) {
+      return customizedRule;
+    }
+    return passwordLength ? generatePasswordRegRxp(passwordLength) : null;
+  }, [passwordLength, customizedRule]);
 
   const color = useMemo((): TypographyColor => {
     if (!passwordValue || !ruleRegExp) {
@@ -67,6 +79,14 @@ export const PasswordHint: FC<PasswordHintProps> = ({
 
   return (
     <div className={classes.root}>
+      {!!customizedHint && (
+        <div className={classes.hintWrapper}>
+          {icon}
+          <Typography variant="caption" color={color}>
+            {customizedHint}
+          </Typography>
+        </div>
+      )}
       {!!passwordLength && (
         <div className={classes.hintWrapper}>
           {icon}
