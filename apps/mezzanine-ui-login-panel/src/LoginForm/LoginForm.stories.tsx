@@ -62,6 +62,54 @@ export const Default: Story = {
   },
 };
 
+export const HaveNoForgotPassword: Story = {
+  args: {
+    logo: (
+      <div
+        style={{
+          width: 134,
+          height: 100,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          border: '1px solid #212121',
+        }}
+      >
+        Logo
+      </div>
+    ),
+    passwordLength: 10,
+    keepPasswordDaysLimit: 60,
+    generalLoginText: undefined,
+    onLogin: async ({ values }) => {
+      action('onLogin')(values);
+    },
+    onNeedChangePassword: async ({ values, account, oldPassword }) => {
+      action('onNeedChangePassword')({ values, account, oldPassword });
+      return true;
+    },
+    notShowForgotPassword: true,
+  },
+  parameters: {
+    controls: {
+      include: ['passwordLength', 'keepPasswordDaysLimit', 'generalLoginText'],
+    },
+  },
+  render: function Render(args) {
+    return (
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
+        <LoginForm {...args} />
+      </div>
+    );
+  },
+};
+
 export const NeedChangePasswordFirstActivate: Story = {
   args: {
     logo: (

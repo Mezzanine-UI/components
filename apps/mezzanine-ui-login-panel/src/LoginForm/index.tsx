@@ -56,11 +56,15 @@ interface LoginFormProps {
   /**
    * 寄忘記密碼信時觸發
    */
-  onSendForgetAccount: ({
+  onSendForgetAccount?: ({
     values,
   }: {
     values: ForgetFormValues;
   }) => Promise<boolean>;
+  /**
+   * 是否顯示忘記密碼
+   */
+  notShowForgotPassword?: boolean;
 }
 
 /**
@@ -75,6 +79,7 @@ export const LoginForm: FC<LoginFormProps> = ({
   onLogin,
   onNeedChangePassword,
   onSendForgetAccount,
+  notShowForgotPassword = false,
 }) => {
   const [currentPage, setCurrentPage] = useState<LoginPageEnum>(
     LoginPageEnum.LOGIN,
@@ -92,6 +97,7 @@ export const LoginForm: FC<LoginFormProps> = ({
           onLogin={onLogin}
           onNeedChangePassword={onNeedChangePassword}
           setCurrentPage={setCurrentPage}
+          notShowForgotPassword={notShowForgotPassword}
         />
       );
 

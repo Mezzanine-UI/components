@@ -38,6 +38,7 @@ interface LoginProps {
     oldPassword: string;
   }) => Promise<boolean>;
   setCurrentPage: Dispatch<SetStateAction<LoginPageEnum>>;
+  notShowForgotPassword?: boolean;
 }
 
 const Login: FC<LoginProps> = ({
@@ -49,6 +50,7 @@ const Login: FC<LoginProps> = ({
   onLogin: onLoginProps,
   onNeedChangePassword,
   setCurrentPage,
+  notShowForgotPassword = false,
 }) => {
   const [needChangePasswordParams, setNeedChangePasswordParams] = useState<{
     account: string;
@@ -108,6 +110,7 @@ const Login: FC<LoginProps> = ({
       generalLoginText={generalLoginText}
       onLogin={onLogin}
       setCurrentPage={setCurrentPage}
+      notShowForgotPassword={notShowForgotPassword}
     />
   );
 };

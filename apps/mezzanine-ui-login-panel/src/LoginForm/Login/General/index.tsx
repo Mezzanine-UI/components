@@ -16,18 +16,20 @@ import {
 import { LoginFormValues, LoginPageEnum } from '../../typing';
 import classes from './index.module.scss';
 
-interface LoginProps {
+interface GeneralLoginProps {
   logo: ReactNode;
   generalLoginText?: string;
   onLogin: ({ values }: { values: LoginFormValues }) => Promise<void>;
   setCurrentPage: Dispatch<SetStateAction<LoginPageEnum>>;
+  notShowForgotPassword?: boolean;
 }
 
-const Login: FC<LoginProps> = ({
+const GeneralLogin: FC<GeneralLoginProps> = ({
   logo,
   generalLoginText = '登入',
   onLogin,
   setCurrentPage,
+  notShowForgotPassword = false,
 }) => {
   const methods = useForm<LoginFormValues>({
     defaultValues: {
@@ -89,20 +91,22 @@ const Login: FC<LoginProps> = ({
           >
             {generalLoginText}
           </Button>
-          <Button
-            type="button"
-            variant="text"
-            size="large"
-            onClick={() => {
-              setCurrentPage(LoginPageEnum.FORGET);
-            }}
-          >
-            忘記密碼
-          </Button>
+          {!notShowForgotPassword && (
+            <Button
+              type="button"
+              variant="text"
+              size="large"
+              onClick={() => {
+                setCurrentPage(LoginPageEnum.FORGET);
+              }}
+            >
+              忘記密碼
+            </Button>
+          )}
         </div>
       </FormFieldsWrapper>
     </div>
   );
 };
 
-export default Login;
+export default GeneralLogin;
