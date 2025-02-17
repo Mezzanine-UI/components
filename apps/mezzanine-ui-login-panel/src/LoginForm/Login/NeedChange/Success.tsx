@@ -15,7 +15,7 @@ const Success: FC<SuccessProps> = ({ onBack }) => {
       </div>
       <div className={classes.contentWrapper}>
         <Typography variant="h2" color="text-primary" align="center">
-          密碼設定成功
+          密碼設定成功！
         </Typography>
         <Button
           type="button"
