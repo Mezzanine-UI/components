@@ -28,7 +28,6 @@ export const Default: Story = {
       </div>
     ),
     passwordLength: 10,
-    generationLimit: undefined,
     keepPasswordDaysLimit: 60,
     generalLoginText: undefined,
     onLogin: async ({ values }) => {
@@ -45,12 +44,7 @@ export const Default: Story = {
   },
   parameters: {
     controls: {
-      include: [
-        'passwordLength',
-        'generationLimit',
-        'keepPasswordDaysLimit',
-        'generalLoginText',
-      ],
+      include: ['passwordLength', 'keepPasswordDaysLimit', 'generalLoginText'],
     },
   },
   render: function Render(args) {
@@ -85,7 +79,6 @@ export const NeedChangePasswordFirstActivate: Story = {
       </div>
     ),
     passwordLength: 10,
-    generationLimit: undefined,
     keepPasswordDaysLimit: 60,
     generalLoginText: undefined,
     onLogin: async ({ values, needChangePassword }) => {
@@ -105,12 +98,7 @@ export const NeedChangePasswordFirstActivate: Story = {
   },
   parameters: {
     controls: {
-      include: [
-        'passwordLength',
-        'generationLimit',
-        'keepPasswordDaysLimit',
-        'generalLoginText',
-      ],
+      include: ['passwordLength', 'keepPasswordDaysLimit', 'generalLoginText'],
     },
   },
   render: function Render(args) {
@@ -145,7 +133,7 @@ export const NeedChangePasswordTooLong: Story = {
       </div>
     ),
     passwordLength: 10,
-    generationLimit: undefined,
+    generationLimit: 6,
     keepPasswordDaysLimit: 60,
     generalLoginText: undefined,
     onLogin: async ({ values, needChangePassword }) => {

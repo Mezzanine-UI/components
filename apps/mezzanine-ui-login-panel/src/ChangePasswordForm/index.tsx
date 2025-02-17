@@ -57,7 +57,7 @@ const formSchema: Yup.ObjectSchema<ChangePasswordFormValues> = Yup.object({
 });
 
 /**
- * 後台更換密碼 UI 元件，建議搭配 modal
+ * 後台更換密碼 UI 元件，可搭配 modal
  */
 export const ChangePasswordForm: FC<ChangePasswordFormProps> = ({
   logo,
