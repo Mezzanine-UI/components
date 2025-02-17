@@ -31,9 +31,7 @@ export const Default: Story = {
     return (
       <div
         style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
+          width: 576,
         }}
       >
         <ChangePasswordModal {...args} />
@@ -64,9 +62,7 @@ export const CustomizedRule: Story = {
     return (
       <div
         style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
+          width: 576,
         }}
       >
         <ChangePasswordModal {...args} />
