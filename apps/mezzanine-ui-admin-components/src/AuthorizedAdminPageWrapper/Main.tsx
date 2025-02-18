@@ -11,12 +11,17 @@ const Main: FC<
 > = ({
   children,
   layoutStyleVar,
+  // Header props
   headerClassName,
   logo,
+  name,
   role,
   account,
   onLogout,
+  customizedComponent,
   changePasswordModalConfig,
+  customizedButton,
+  // Sidebar props
   navigationChildren,
   onPush,
 }) => {
@@ -27,10 +32,13 @@ const Main: FC<
       <Header
         headerClassName={headerClassName}
         logo={logo}
+        name={name}
         role={role}
         account={account}
         onLogout={onLogout}
+        customizedComponent={customizedComponent}
         changePasswordModalConfig={changePasswordModalConfig}
+        customizedButton={customizedButton}
       />
       <main className={classes.main}>
         <Sidebar navigationChildren={navigationChildren} onPush={onPush} />

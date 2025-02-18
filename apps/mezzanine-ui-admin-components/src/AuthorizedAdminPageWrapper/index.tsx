@@ -30,12 +30,17 @@ export const AuthorizedAdminPageWrapper: FC<
   children,
   headerHeight = 64,
   sidebarWidth = 270,
+  // Header props
   headerClassName,
   logo,
+  name,
   role,
   account,
   onLogout,
+  customizedComponent,
   changePasswordModalConfig,
+  customizedButton,
+  // Sidebar props
   navigationChildren,
   onPush,
 }) => {
@@ -56,10 +61,13 @@ export const AuthorizedAdminPageWrapper: FC<
             layoutStyleVar={layoutStyleVar}
             headerClassName={headerClassName}
             logo={logo}
+            name={name}
             role={role}
             account={account}
             onLogout={onLogout}
+            customizedComponent={customizedComponent}
             changePasswordModalConfig={changePasswordModalConfig}
+            customizedButton={customizedButton}
             navigationChildren={navigationChildren}
             onPush={onPush}
           >
