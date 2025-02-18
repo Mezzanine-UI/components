@@ -29,7 +29,7 @@ export interface HeaderProps {
   /**
    * 放置 logo
    */
-  logo: React.JSX.Element;
+  logo?: React.JSX.Element;
   /**
    * 顯示名字
    */
@@ -62,6 +62,9 @@ export interface HeaderProps {
     }) => Promise<boolean>;
     onBack: VoidFunction;
   };
+  /**
+   * 自定義按鈕元件
+   */
   customizedButton?: ReactNode;
 }
 
@@ -97,60 +100,64 @@ export const Header: FC<HeaderProps> = ({
           menu={
             <Menu className={classes.menu} size="large">
               <div className={classes.wrapper}>
-                <div className={classes.infoWrapper}>
-                  <div className={classes.nameWrapper}>
-                    {!!name && (
+                {(name || role || account) && (
+                  <div className={classes.infoWrapper}>
+                    <div className={classes.nameWrapper}>
+                      {!!name && (
+                        <Typography variant="h5" color="text-primary">
+                          {name}
+                        </Typography>
+                      )}
+                      {!!role && <Tag>{role}</Tag>}
+                    </div>
+                    {!!account && (
                       <Typography variant="h5" color="text-primary">
-                        {name}
+                        {account}
                       </Typography>
                     )}
-                    {!!role && <Tag>{role}</Tag>}
                   </div>
-                  {!!account && (
-                    <Typography variant="h5" color="text-primary">
-                      {account}
-                    </Typography>
-                  )}
-                </div>
-                <div className={classes.buttonsWrapper}>
-                  {!!changePasswordModalConfig && (
-                    <div className={classes.button}>
-                      <Button
-                        type="button"
-                        variant="outlined"
-                        size="large"
-                        onClick={() => {
-                          toggleOpen(false);
-                          openModal({
-                            className: classes.changePasswordModal,
-                            disableCloseOnBackdropClick: true,
-                            children: (
-                              <ChangePasswordModal
-                                passwordLength={
-                                  changePasswordModalConfig.passwordLength
-                                }
-                                generationLimit={
-                                  changePasswordModalConfig.generationLimit
-                                }
-                                onChangePassword={
-                                  changePasswordModalConfig.onChangePassword
-                                }
-                                onBack={changePasswordModalConfig.onBack}
-                                account={account}
-                                onCancel={closeModal}
-                              />
-                            ),
-                          });
-                        }}
-                      >
-                        更改密碼
-                      </Button>
-                    </div>
-                  )}
-                  {!!customizedButton && (
-                    <div className={classes.button}>{customizedButton}</div>
-                  )}
-                </div>
+                )}
+                {(changePasswordModalConfig || customizedButton) && (
+                  <div className={classes.buttonsWrapper}>
+                    {!!changePasswordModalConfig && (
+                      <div className={classes.button}>
+                        <Button
+                          type="button"
+                          variant="outlined"
+                          size="large"
+                          onClick={() => {
+                            toggleOpen(false);
+                            openModal({
+                              className: classes.changePasswordModal,
+                              disableCloseOnBackdropClick: true,
+                              children: (
+                                <ChangePasswordModal
+                                  passwordLength={
+                                    changePasswordModalConfig.passwordLength
+                                  }
+                                  generationLimit={
+                                    changePasswordModalConfig.generationLimit
+                                  }
+                                  onChangePassword={
+                                    changePasswordModalConfig.onChangePassword
+                                  }
+                                  onBack={changePasswordModalConfig.onBack}
+                                  account={account}
+                                  onCancel={closeModal}
+                                />
+                              ),
+                            });
+                          }}
+                        >
+                          更改密碼
+                        </Button>
+                      </div>
+                    )}
+                    {!!customizedButton && (
+                      <div className={classes.button}>{customizedButton}</div>
+                    )}
+                  </div>
+                )}
               </div>
               <Button
                 type="button"
