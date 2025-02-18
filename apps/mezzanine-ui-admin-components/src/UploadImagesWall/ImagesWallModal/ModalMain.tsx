@@ -83,6 +83,7 @@ const ModalMain: FC<ModalMainProps> = ({
 
           append(fileFormValue);
           setLoading(false);
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
         } catch (error) {
           Message.error(`${f.name} 上傳失敗（檔案格式錯誤）`);
         }

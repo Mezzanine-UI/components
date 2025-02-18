@@ -151,7 +151,7 @@ export const ArticleShareForm: FC<ArticleShareFormProps> = ({
           required={enTitle.required}
         />
       )}
-      {(twAuthor || enAuthor) && <Divider />}
+      {(twTitle || enTitle) && <Divider />}
       {twAuthor && (
         <InputField
           registerName={twAuthor.registerName}
@@ -174,7 +174,7 @@ export const ArticleShareForm: FC<ArticleShareFormProps> = ({
           required={enAuthor.required}
         />
       )}
-      {(cover || twAlt || enAlt) && <Divider />}
+      {(twAuthor || enAuthor) && <Divider />}
       {!!uploadSectionTitle && (
         <Typography variant="h5" color="text-primary">
           {uploadSectionTitle}

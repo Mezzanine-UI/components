@@ -1,7 +1,10 @@
 @use '@mezzanine-ui/system/palette';
 
 .modalBody {
-  height: 605px;
+  height: calc(
+    100svh - 64px - 72px - 2 * 24px
+  ); // view height - modal header - modal actions - modal margin
+  max-height: 605px;
   padding: 24px;
 
   .placeholder {

@@ -30,7 +30,7 @@ export interface UploadImagesWallProps {
   /**
    * 上傳器提示文字
    */
-  hints: string[];
+  hints?: string[];
   /**
    * 是否 disabled
    */
@@ -123,6 +123,7 @@ export const UploadImagesWall: FC<UploadImagesWallProps> = ({
 
           setTemporaryImages((state) => [...state, fileFormValue]);
           setLoading(false);
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
         } catch (error) {
           Message.error(`${f.name} 上傳失敗（檔案格式錯誤）`);
         }
@@ -229,7 +230,7 @@ export const UploadImagesWall: FC<UploadImagesWallProps> = ({
             >
               創建圖輯
             </UploadButton>
-            <Hints hints={hints} />
+            {hints && hints.length > 0 && <Hints hints={hints} />}
           </>
         )}
       </div>
