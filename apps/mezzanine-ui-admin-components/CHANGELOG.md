@@ -1,3 +1,11 @@
+## 0.0.36 (2025-02-18)
+
+### 🚀 Features
+
+- Header 增加自定義密碼規則，多數 props 改為 optional
+- ImagesWall 佈局優化
+- AdminTable, AuthorizedAdminPageWrapper, ArticleShareForm props type 優化
+
 ## 0.0.33 (2025-01-27)
 
 ### 🚀 Features
