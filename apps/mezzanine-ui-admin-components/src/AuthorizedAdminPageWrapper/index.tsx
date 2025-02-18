@@ -6,7 +6,7 @@ import { HeaderProps } from '../Header';
 import { SidebarProps } from '../Sidebar';
 import Main from './Main';
 
-interface AuthorizedAdminPageWrapperProps {
+interface AuthorizedAdminPageWrapperBaseProps {
   /**
    * 頁面元素
    */
@@ -21,11 +21,14 @@ interface AuthorizedAdminPageWrapperProps {
   sidebarWidth?: number;
 }
 
+export type AuthorizedAdminPageWrapperProps =
+  AuthorizedAdminPageWrapperBaseProps & HeaderProps & SidebarProps;
+
 /**
  * 後台登入後基本框架，包含 header、sidebar 元件與 layout、dialog、modal provider
  */
 export const AuthorizedAdminPageWrapper: FC<
-  AuthorizedAdminPageWrapperProps & HeaderProps & SidebarProps
+  AuthorizedAdminPageWrapperProps
 > = ({
   children,
   headerHeight = 64,

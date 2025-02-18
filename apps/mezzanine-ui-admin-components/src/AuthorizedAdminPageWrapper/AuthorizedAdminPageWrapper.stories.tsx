@@ -17,7 +17,10 @@ import { useDialog } from '../dialog/useDialog';
 import { useModal } from '../modal/useModal';
 import { action } from '@storybook/addon-actions';
 import { PageWrapper } from '../PageWrapper';
-import { AuthorizedAdminPageWrapper } from './index';
+import {
+  AuthorizedAdminPageWrapper,
+  AuthorizedAdminPageWrapperProps,
+} from './index';
 
 const meta = {
   component: AuthorizedAdminPageWrapper,
@@ -27,7 +30,7 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-const args = {
+const args: AuthorizedAdminPageWrapperProps = {
   headerHeight: 64,
   sidebarWidth: 270,
   logo: (
@@ -44,26 +47,13 @@ const args = {
       Logo
     </div>
   ),
+  name: 'Ting',
   role: '管理員',
   account: 'root@rytass.com',
   onLogout: async () => {
     action('onLogout')();
   },
   changePasswordModalConfig: {
-    logo: (
-      <div
-        style={{
-          width: 134,
-          height: 100,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          border: '1px solid #212121',
-        }}
-      >
-        Logo
-      </div>
-    ),
     passwordLength: 10,
     generationLimit: undefined,
     onChangePassword: async ({
@@ -76,6 +66,16 @@ const args = {
     },
     onBack: action('onBack'),
   },
+  customizedButton: (
+    <Button
+      type="button"
+      variant="outlined"
+      size="large"
+      onClick={action('onCustomized')}
+    >
+      編輯個人資料
+    </Button>
+  ),
   navigationChildren: (
     <>
       <NavigationSubMenu title="管理頁面">
