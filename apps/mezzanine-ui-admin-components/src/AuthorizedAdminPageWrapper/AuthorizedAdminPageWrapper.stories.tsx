@@ -53,6 +53,7 @@ const args: AuthorizedAdminPageWrapperProps = {
   onLogout: async () => {
     action('onLogout')();
   },
+  customizedComponent: <div>自定義元件</div>,
   changePasswordModalConfig: {
     passwordLength: 10,
     generationLimit: undefined,

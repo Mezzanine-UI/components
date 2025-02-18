@@ -6,7 +6,7 @@ import { Divider } from '../../Divider';
 import { Hints } from '../../Hints';
 import classes from './index.module.scss';
 
-interface ArticleShareFormProps {
+export interface ArticleShareFormProps {
   /**
    * 基本資訊標題
    */
@@ -18,7 +18,7 @@ interface ArticleShareFormProps {
   /**
    * 中文標題 field 設定
    */
-  twTitle: {
+  twTitle?: {
     registerName: string;
     size?: Size;
     label: string;
@@ -66,7 +66,7 @@ interface ArticleShareFormProps {
   /**
    * 封面 field 設定
    */
-  cover: {
+  cover?: {
     width?: number;
     height?: number;
     registerName: string;
@@ -80,7 +80,7 @@ interface ArticleShareFormProps {
   /**
    * 中文 alt field 設定
    */
-  twAlt: {
+  twAlt?: {
     registerName: string;
     size?: Size;
     label: string;
@@ -124,18 +124,22 @@ export const ArticleShareForm: FC<ArticleShareFormProps> = ({
 }) => {
   return (
     <div className={classes.host}>
-      <Typography variant="h5" color="text-primary">
-        {sectionTitle}
-      </Typography>
-      <InputField
-        registerName={twTitle.registerName}
-        size={twTitle.size ?? 'large'}
-        label={twTitle.label}
-        placeholder={twTitle.placeholder}
-        maxLength={twTitle.maxLength}
-        hints={twTitle.hints}
-        required={twTitle.required}
-      />
+      {!!sectionTitle && (
+        <Typography variant="h5" color="text-primary">
+          {sectionTitle}
+        </Typography>
+      )}
+      {twTitle && (
+        <InputField
+          registerName={twTitle.registerName}
+          size={twTitle.size ?? 'large'}
+          label={twTitle.label}
+          placeholder={twTitle.placeholder}
+          maxLength={twTitle.maxLength}
+          hints={twTitle.hints}
+          required={twTitle.required}
+        />
+      )}
       {enTitle && (
         <InputField
           registerName={enTitle.registerName}
@@ -170,45 +174,53 @@ export const ArticleShareForm: FC<ArticleShareFormProps> = ({
           required={enAuthor.required}
         />
       )}
-      <Divider />
-      <Typography variant="h5" color="text-primary">
-        {uploadSectionTitle}
-      </Typography>
-      <UploadImageField
-        registerName={cover.registerName}
-        label={cover.label}
-        limit={cover.limit}
-        width={cover.width}
-        height={cover.height}
-        objectFit={cover.objectFit}
-        setFileUrl={cover.setFileUrl}
-        upload={cover.upload}
-        required={cover.required}
-      />
-      <div className={classes.altFieldsWrapper}>
-        <InputField
-          registerName={twAlt.registerName}
-          className={classes.altField}
-          size={twAlt.size ?? 'large'}
-          label={twAlt.label}
-          placeholder={twAlt.placeholder}
-          maxLength={twAlt.maxLength}
-          hints={twAlt.hints}
-          required={twAlt.required}
+      {(cover || twAlt || enAlt) && <Divider />}
+      {!!uploadSectionTitle && (
+        <Typography variant="h5" color="text-primary">
+          {uploadSectionTitle}
+        </Typography>
+      )}
+      {cover && (
+        <UploadImageField
+          registerName={cover.registerName}
+          label={cover.label}
+          limit={cover.limit}
+          width={cover.width}
+          height={cover.height}
+          objectFit={cover.objectFit}
+          setFileUrl={cover.setFileUrl}
+          upload={cover.upload}
+          required={cover.required}
         />
-        {enAlt && (
-          <InputField
-            registerName={enAlt.registerName}
-            className={classes.altField}
-            size={enAlt.size ?? 'large'}
-            label={enAlt.label}
-            placeholder={enAlt.placeholder}
-            maxLength={enAlt.maxLength}
-            hints={enAlt.hints}
-            required={enAlt.required}
-          />
-        )}
-      </div>
+      )}
+      {(twAlt || enAlt) && (
+        <div className={classes.altFieldsWrapper}>
+          {twAlt && (
+            <InputField
+              registerName={twAlt.registerName}
+              className={classes.altField}
+              size={twAlt.size ?? 'large'}
+              label={twAlt.label}
+              placeholder={twAlt.placeholder}
+              maxLength={twAlt.maxLength}
+              hints={twAlt.hints}
+              required={twAlt.required}
+            />
+          )}
+          {enAlt && (
+            <InputField
+              registerName={enAlt.registerName}
+              className={classes.altField}
+              size={enAlt.size ?? 'large'}
+              label={enAlt.label}
+              placeholder={enAlt.placeholder}
+              maxLength={enAlt.maxLength}
+              hints={enAlt.hints}
+              required={enAlt.required}
+            />
+          )}
+        </div>
+      )}
       {coverHints && coverHints.length > 0 && <Hints hints={coverHints} />}
     </div>
   );
