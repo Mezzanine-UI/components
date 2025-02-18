@@ -31,7 +31,7 @@ export const Default: Story = {
     ),
   },
   parameters: {
-    controls: { include: ['title', 'isFormPage'] },
+    controls: { include: ['title'] },
   },
   render: function Render(args) {
     return <PageWrapper {...args} />;
@@ -61,7 +61,7 @@ export const WithCreateButton: Story = {
     ),
   },
   parameters: {
-    controls: { include: ['title', 'isFormPage', 'createButtonDisabled'] },
+    controls: { include: ['title', 'createButtonDisabled'] },
   },
   render: function Render(args) {
     return <PageWrapper {...args} />;
@@ -73,7 +73,12 @@ export const WithCustomizeActionComponent: Story = {
     title: '管理帳號',
     isFormPage: false,
     customizeActionComponent: (
-      <Button type="button" variant="contained" size="large">
+      <Button
+        type="button"
+        variant="contained"
+        size="large"
+        onClick={action('onCustomized')}
+      >
         自定義按鈕
       </Button>
     ),
@@ -93,7 +98,7 @@ export const WithCustomizeActionComponent: Story = {
     ),
   },
   parameters: {
-    controls: { include: ['title', 'isFormPage'] },
+    controls: { include: ['title'] },
   },
   render: function Render(args) {
     return <PageWrapper {...args} />;
@@ -105,7 +110,12 @@ export const WithBoth: Story = {
     title: '管理帳號',
     isFormPage: false,
     customizeActionComponent: (
-      <Button type="button" variant="contained" size="large">
+      <Button
+        type="button"
+        variant="contained"
+        size="large"
+        onClick={action('onCustomized')}
+      >
         自定義按鈕
       </Button>
     ),
@@ -128,7 +138,7 @@ export const WithBoth: Story = {
     ),
   },
   parameters: {
-    controls: { include: ['title', 'isFormPage', 'createButtonDisabled'] },
+    controls: { include: ['title', 'createButtonDisabled'] },
   },
   render: function Render(args) {
     return <PageWrapper {...args} />;

@@ -3,37 +3,41 @@ import { Typography, Button, Icon, cx } from '@mezzanine-ui/react';
 import { PlusIcon } from '@mezzanine-ui/icons';
 import classes from './index.module.scss';
 
-interface PageWrapperWithoutCreateButtonProps {
+interface PageWrapperProps {
   children: ReactNode;
-  title: string;
+  /**
+   * 大標題
+   */
+  title?: string;
+  /**
+   * 是否為表單頁面，若為 true，頁面下方 padding 會更大
+   */
   isFormPage?: boolean;
+  /**
+   * 自定義元件
+   */
   customizeActionComponent?: ReactNode;
-  onCreate?: undefined;
-  createButtonDisabled?: undefined;
-  createText?: undefined;
-}
-
-interface PageWrapperWithCreateButtonProps {
-  children: ReactNode;
-  title: string;
-  isFormPage?: boolean;
-  customizeActionComponent?: ReactNode;
-  onCreate: VoidFunction;
+  /**
+   * 新增按鈕點擊時觸發
+   */
+  onCreate?: VoidFunction;
+  /**
+   * 新增按鈕是否 disabled
+   */
   createButtonDisabled?: boolean;
-  createText: string;
+  /**
+   * 新增按鈕名稱
+   */
+  createText?: string;
 }
-
-type PageWrapperProps =
-  | PageWrapperWithoutCreateButtonProps
-  | PageWrapperWithCreateButtonProps;
 
 export const PageWrapper: FC<PageWrapperProps> = ({
+  children,
   title,
   isFormPage = false,
-  children,
+  customizeActionComponent,
   onCreate,
   createButtonDisabled,
-  customizeActionComponent,
   createText,
 }) => {
   return (
