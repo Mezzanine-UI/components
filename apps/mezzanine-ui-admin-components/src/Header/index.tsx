@@ -47,6 +47,10 @@ export interface HeaderProps {
    */
   onLogout: () => Promise<void>;
   /**
+   * 自定義元件，位在使用者資訊及按鈕元件之間
+   */
+  customizedComponent?: ReactNode;
+  /**
    * passwordLength: 密碼至少需要的長度;
    * generationLimit: 密碼不可與前 `number` 代重複;
    * onChangePassword: 送出時觸發，return true 代表更新成功;
@@ -78,6 +82,7 @@ export const Header: FC<HeaderProps> = ({
   role,
   account,
   onLogout,
+  customizedComponent,
   changePasswordModalConfig,
   customizedButton,
 }) => {
@@ -117,6 +122,7 @@ export const Header: FC<HeaderProps> = ({
                     )}
                   </div>
                 )}
+                {customizedComponent}
                 {(changePasswordModalConfig || customizedButton) && (
                   <div className={classes.buttonsWrapper}>
                     {!!changePasswordModalConfig && (
