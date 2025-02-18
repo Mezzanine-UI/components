@@ -63,6 +63,56 @@ export const Default: Story = {
   },
 };
 
+export const CustomizedRule: Story = {
+  args: {
+    logo: (
+      <div
+        style={{
+          width: 184,
+          height: 32,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          border: '1px solid #212121',
+        }}
+      >
+        Logo
+      </div>
+    ),
+    name: 'Ting',
+    role: '管理員',
+    account: 'root@rytass.com',
+    onLogout: async () => {
+      action('onLogout')();
+    },
+    changePasswordModalConfig: {
+      customizedHint: '至少 8 字元、大寫字母、小寫字母',
+      customizedRule: new RegExp(`^(?=.*[a-z])(?=.*[A-Z]).{8,}$`),
+      onChangePassword: async ({ values }) => {
+        action('onChangePassword')(values);
+        return true;
+      },
+      onBack: action('onBack'),
+    },
+  },
+  parameters: {
+    controls: { include: ['name', 'role', 'account'] },
+  },
+  render: function Render(args) {
+    const layoutStyleVar = {
+      '--header-height': '64px',
+    } as CSSProperties;
+
+    return (
+      <ModalProvider>
+        <div style={layoutStyleVar}>
+          <Header {...args} />
+        </div>
+      </ModalProvider>
+    );
+  },
+};
+
 export const CustomizedButton: Story = {
   args: {
     logo: (

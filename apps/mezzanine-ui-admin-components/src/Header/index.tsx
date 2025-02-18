@@ -55,6 +55,8 @@ export interface HeaderProps {
    * generationLimit: 密碼不可與前 `number` 代重複;
    * onChangePassword: 送出時觸發，return true 代表更新成功;
    * onBack: 成功後返回;
+   * customizedHint: 自定義密碼提示;
+   * customizedRule: 自定義密碼規則;
    */
   changePasswordModalConfig?: {
     passwordLength?: number;
@@ -65,6 +67,8 @@ export interface HeaderProps {
       values: ChangePasswordModalValues;
     }) => Promise<boolean>;
     onBack: VoidFunction;
+    customizedHint?: string;
+    customizedRule?: RegExp;
   };
   /**
    * 自定義按鈕元件
@@ -150,6 +154,12 @@ export const Header: FC<HeaderProps> = ({
                                   onBack={changePasswordModalConfig.onBack}
                                   account={account}
                                   onCancel={closeModal}
+                                  customizedHint={
+                                    changePasswordModalConfig.customizedHint
+                                  }
+                                  customizedRule={
+                                    changePasswordModalConfig.customizedRule
+                                  }
                                 />
                               ),
                             });
