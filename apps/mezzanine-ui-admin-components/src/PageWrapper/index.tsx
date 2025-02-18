@@ -3,7 +3,7 @@ import { Typography, Button, Icon, cx } from '@mezzanine-ui/react';
 import { PlusIcon } from '@mezzanine-ui/icons';
 import classes from './index.module.scss';
 
-interface PageWrapperProps {
+export interface PageWrapperProps {
   children?: ReactNode;
   /**
    * 大標題

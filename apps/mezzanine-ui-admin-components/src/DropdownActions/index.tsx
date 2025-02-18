@@ -20,7 +20,7 @@ export type DropdownItemType = {
 
 export type DropdownItemsType = DropdownItemType[];
 
-interface DropdownActionsProps {
+export interface DropdownActionsProps {
   /**
    * 選單元素
    */

@@ -8,7 +8,7 @@ import {
 } from '@mezzanine-ui/icons';
 import classes from './index.module.scss';
 
-interface InformationProps {
+export interface InformationProps {
   /**
    * 資訊模式，icon、顏色會不同
    */
