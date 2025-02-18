@@ -34,6 +34,7 @@ export default defineConfig({
       external: [
         'react',
         'react-dom',
+        'react/jsx-runtime',
         'react-hook-form',
         'lodash',
         'yup',
