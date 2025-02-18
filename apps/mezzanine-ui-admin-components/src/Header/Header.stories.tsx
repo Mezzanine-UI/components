@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { CSSProperties } from 'react';
 import { action } from '@storybook/addon-actions';
+import { Button } from '@mezzanine-ui/react';
 import ModalProvider from '../modal/ModalProvider';
 import { Header } from './index';
 
@@ -43,6 +44,66 @@ export const Default: Story = {
       },
       onBack: action('onBack'),
     },
+  },
+  parameters: {
+    controls: { include: ['name', 'role', 'account'] },
+  },
+  render: function Render(args) {
+    const layoutStyleVar = {
+      '--header-height': '64px',
+    } as CSSProperties;
+
+    return (
+      <ModalProvider>
+        <div style={layoutStyleVar}>
+          <Header {...args} />
+        </div>
+      </ModalProvider>
+    );
+  },
+};
+
+export const CustomizedButton: Story = {
+  args: {
+    logo: (
+      <div
+        style={{
+          width: 184,
+          height: 32,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          border: '1px solid #212121',
+        }}
+      >
+        Logo
+      </div>
+    ),
+    name: 'Ting',
+    role: '管理員',
+    account: 'root@rytass.com',
+    onLogout: async () => {
+      action('onLogout')();
+    },
+    changePasswordModalConfig: {
+      passwordLength: 10,
+      generationLimit: undefined,
+      onChangePassword: async ({ values }) => {
+        action('onChangePassword')(values);
+        return true;
+      },
+      onBack: action('onBack'),
+    },
+    customizedButton: (
+      <Button
+        type="button"
+        variant="outlined"
+        size="large"
+        onClick={action('onCustomized')}
+      >
+        編輯個人資料
+      </Button>
+    ),
   },
   parameters: {
     controls: { include: ['name', 'role', 'account'] },

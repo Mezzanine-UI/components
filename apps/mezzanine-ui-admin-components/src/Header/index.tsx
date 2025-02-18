@@ -1,4 +1,4 @@
-import { FC, useState, MouseEvent, RefObject } from 'react';
+import { FC, useState, MouseEvent, RefObject, ReactNode } from 'react';
 import {
   AppBar,
   AppBarBrand,
@@ -62,6 +62,7 @@ export interface HeaderProps {
     }) => Promise<boolean>;
     onBack: VoidFunction;
   };
+  customizedButton?: ReactNode;
 }
 
 /**
@@ -75,6 +76,7 @@ export const Header: FC<HeaderProps> = ({
   account,
   onLogout,
   changePasswordModalConfig,
+  customizedButton,
 }) => {
   const { openModal, closeModal } = useModal();
   const { toggleSidebar } = useLayout();
@@ -112,37 +114,41 @@ export const Header: FC<HeaderProps> = ({
                 </div>
                 <div className={classes.buttonsWrapper}>
                   {!!changePasswordModalConfig && (
-                    <Button
-                      type="button"
-                      variant="outlined"
-                      size="large"
-                      className={classes.button}
-                      onClick={() => {
-                        toggleOpen(false);
-                        openModal({
-                          className: classes.changePasswordModal,
-                          disableCloseOnBackdropClick: true,
-                          children: (
-                            <ChangePasswordModal
-                              passwordLength={
-                                changePasswordModalConfig.passwordLength
-                              }
-                              generationLimit={
-                                changePasswordModalConfig.generationLimit
-                              }
-                              onChangePassword={
-                                changePasswordModalConfig.onChangePassword
-                              }
-                              onBack={changePasswordModalConfig.onBack}
-                              account={account}
-                              onCancel={closeModal}
-                            />
-                          ),
-                        });
-                      }}
-                    >
-                      更改密碼
-                    </Button>
+                    <div className={classes.button}>
+                      <Button
+                        type="button"
+                        variant="outlined"
+                        size="large"
+                        onClick={() => {
+                          toggleOpen(false);
+                          openModal({
+                            className: classes.changePasswordModal,
+                            disableCloseOnBackdropClick: true,
+                            children: (
+                              <ChangePasswordModal
+                                passwordLength={
+                                  changePasswordModalConfig.passwordLength
+                                }
+                                generationLimit={
+                                  changePasswordModalConfig.generationLimit
+                                }
+                                onChangePassword={
+                                  changePasswordModalConfig.onChangePassword
+                                }
+                                onBack={changePasswordModalConfig.onBack}
+                                account={account}
+                                onCancel={closeModal}
+                              />
+                            ),
+                          });
+                        }}
+                      >
+                        更改密碼
+                      </Button>
+                    </div>
+                  )}
+                  {!!customizedButton && (
+                    <div className={classes.button}>{customizedButton}</div>
                   )}
                 </div>
               </div>
