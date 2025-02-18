@@ -4,7 +4,7 @@ import { PlusIcon } from '@mezzanine-ui/icons';
 import classes from './index.module.scss';
 
 interface PageWrapperProps {
-  children: ReactNode;
+  children?: ReactNode;
   /**
    * 大標題
    */
@@ -18,7 +18,7 @@ interface PageWrapperProps {
    */
   customizeActionComponent?: ReactNode;
   /**
-   * 新增按鈕點擊時觸發
+   * 新增按鈕點擊時觸發，若為 undefined，則不會出現按鈕
    */
   onCreate?: VoidFunction;
   /**

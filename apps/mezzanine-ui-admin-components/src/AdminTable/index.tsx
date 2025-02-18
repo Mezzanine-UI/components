@@ -11,47 +11,64 @@ import {
 import { DropdownActions, DropdownItemsType } from '../DropdownActions';
 import classes from './index.module.scss';
 
-interface AdminTableWithoutTabsProps<T extends TableDataSourceWithID> {
+export type AdminTableProps<T extends TableDataSourceWithID> = {
+  /**
+   * 資料陣列
+   */
   dataSource: T[];
+  /**
+   * Table 欄位設定
+   */
   columns: TableColumn<T>[];
+  /**
+   * Table 滾動設定
+   */
   scroll?: TableScrolling;
+  /**
+   * 若為 true，則顯示讀取狀態畫面
+   */
   loading?: boolean;
+  /**
+   * Table 分頁設定
+   */
   pagination?: TablePagination;
+  /**
+   * Table 拖拉功能設定
+   */
   draggable?: TableDraggable;
+  /**
+   * Table Row 下拉選單設定
+   */
   actions?: (source: T) => DropdownItemsType;
+  /**
+   * 下拉選單是否 disabled
+   */
   actionsDisabled?: (source: T) => boolean;
+  /**
+   * 自定義 Table class
+   */
   className?: string;
+  /**
+   * 自定義 Table Row class
+   */
   bodyRowClassName?: string;
-  // filters
+  /**
+   * 自定義顯示 filters 元件
+   */
   filtersComponent?: ReactNode;
-  // tabs
-  activeTabId?: undefined;
-  onTabChange?: undefined;
-  tabs?: undefined;
-}
-
-interface AdminTableWithTabsProps<T extends TableDataSourceWithID> {
-  dataSource: T[];
-  columns: TableColumn<T>[];
-  scroll?: TableScrolling;
-  loading?: boolean;
-  pagination?: TablePagination;
-  draggable?: TableDraggable;
-  actions?: (source: T) => DropdownItemsType;
-  actionsDisabled?: (source: T) => boolean;
-  className?: string;
-  bodyRowClassName?: string;
-  // filters
-  filtersComponent?: ReactNode;
-  // tabs
-  activeTabId: Key;
-  onTabChange: (tabId: Key) => void;
-  tabs: { id: Key; name: string }[];
-}
-
-export type AdminTableProps<T extends TableDataSourceWithID> =
-  | AdminTableWithTabsProps<T>
-  | AdminTableWithoutTabsProps<T>;
+  /**
+   * 自定義 tabs
+   */
+  tabs?: { id: Key; name: string }[];
+  /**
+   * 當前激活狀態的 tab id
+   */
+  activeTabId?: Key;
+  /**
+   * 切換 tab 時觸發
+   */
+  onTabChange?: (tabId: Key) => void;
+};
 
 /**
  * 後台 Table 元件，包含自定義 filters 與 tabs
@@ -70,9 +87,9 @@ export const AdminTable = <T extends TableDataSourceWithID>({
   // filters
   filtersComponent,
   // tabs
+  tabs,
   activeTabId,
   onTabChange,
-  tabs,
 }: AdminTableProps<T>): JSX.Element => {
   const columns = useMemo(
     (): TableColumn<T>[] =>
