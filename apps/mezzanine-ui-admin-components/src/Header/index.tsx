@@ -9,6 +9,7 @@ import {
   Menu,
   Typography,
   Dropdown,
+  Tag,
   cx,
 } from '@mezzanine-ui/react';
 import { MenuIcon, ProfileIcon, ChevronDownIcon } from '@mezzanine-ui/icons';
@@ -30,13 +31,17 @@ export interface HeaderProps {
    */
   logo: React.JSX.Element;
   /**
+   * 顯示名字
+   */
+  name?: string;
+  /**
    * 顯示角色
    */
-  role: string;
+  role?: string;
   /**
    * 顯示帳號
    */
-  account: string;
+  account?: string;
   /**
    * 登出時觸發
    */
@@ -47,7 +52,7 @@ export interface HeaderProps {
    * onChangePassword: 送出時觸發，return true 代表更新成功;
    * onBack: 成功後返回;
    */
-  changePasswordModalConfig: {
+  changePasswordModalConfig?: {
     passwordLength?: number;
     generationLimit?: number;
     onChangePassword: ({
@@ -65,6 +70,7 @@ export interface HeaderProps {
 export const Header: FC<HeaderProps> = ({
   headerClassName,
   logo,
+  name,
   role,
   account,
   onLogout,
@@ -88,44 +94,57 @@ export const Header: FC<HeaderProps> = ({
         <Dropdown
           menu={
             <Menu className={classes.menu} size="large">
-              <div className={classes.infoWrapper}>
-                <Typography variant="h6" color="text-primary">
-                  {role}
-                </Typography>
-                <Typography variant="h4" color="text-primary">
-                  {account}
-                </Typography>
-                <Button
-                  type="button"
-                  variant="outlined"
-                  size="large"
-                  className={classes.changeButton}
-                  onClick={() => {
-                    toggleOpen(false);
-                    openModal({
-                      className: classes.changePasswordModal,
-                      disableCloseOnBackdropClick: true,
-                      children: (
-                        <ChangePasswordModal
-                          passwordLength={
-                            changePasswordModalConfig.passwordLength
-                          }
-                          generationLimit={
-                            changePasswordModalConfig.generationLimit
-                          }
-                          onChangePassword={
-                            changePasswordModalConfig.onChangePassword
-                          }
-                          onBack={changePasswordModalConfig.onBack}
-                          account={account}
-                          onCancel={closeModal}
-                        />
-                      ),
-                    });
-                  }}
-                >
-                  更改密碼
-                </Button>
+              <div className={classes.wrapper}>
+                <div className={classes.infoWrapper}>
+                  <div className={classes.nameWrapper}>
+                    {!!name && (
+                      <Typography variant="h5" color="text-primary">
+                        {name}
+                      </Typography>
+                    )}
+                    {!!role && <Tag>{role}</Tag>}
+                  </div>
+                  {!!account && (
+                    <Typography variant="h5" color="text-primary">
+                      {account}
+                    </Typography>
+                  )}
+                </div>
+                <div className={classes.buttonsWrapper}>
+                  {!!changePasswordModalConfig && (
+                    <Button
+                      type="button"
+                      variant="outlined"
+                      size="large"
+                      className={classes.button}
+                      onClick={() => {
+                        toggleOpen(false);
+                        openModal({
+                          className: classes.changePasswordModal,
+                          disableCloseOnBackdropClick: true,
+                          children: (
+                            <ChangePasswordModal
+                              passwordLength={
+                                changePasswordModalConfig.passwordLength
+                              }
+                              generationLimit={
+                                changePasswordModalConfig.generationLimit
+                              }
+                              onChangePassword={
+                                changePasswordModalConfig.onChangePassword
+                              }
+                              onBack={changePasswordModalConfig.onBack}
+                              account={account}
+                              onCancel={closeModal}
+                            />
+                          ),
+                        });
+                      }}
+                    >
+                      更改密碼
+                    </Button>
+                  )}
+                </div>
               </div>
               <Button
                 type="button"

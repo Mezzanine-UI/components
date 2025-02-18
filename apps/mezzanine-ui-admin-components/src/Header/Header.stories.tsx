@@ -28,26 +28,13 @@ export const Default: Story = {
         Logo
       </div>
     ),
+    name: 'Ting',
     role: '管理員',
     account: 'root@rytass.com',
     onLogout: async () => {
       action('onLogout')();
     },
     changePasswordModalConfig: {
-      logo: (
-        <div
-          style={{
-            width: 134,
-            height: 100,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            border: '1px solid #212121',
-          }}
-        >
-          Logo
-        </div>
-      ),
       passwordLength: 10,
       generationLimit: undefined,
       onChangePassword: async ({ values }) => {
@@ -58,7 +45,7 @@ export const Default: Story = {
     },
   },
   parameters: {
-    controls: { include: ['role', 'account'] },
+    controls: { include: ['name', 'role', 'account'] },
   },
   render: function Render(args) {
     const layoutStyleVar = {

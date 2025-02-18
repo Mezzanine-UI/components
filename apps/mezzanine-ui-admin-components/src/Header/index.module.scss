@@ -45,17 +45,34 @@
       padding: 0;
       max-height: unset;
 
-      .infoWrapper {
+      .wrapper {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
         align-self: stretch;
-        gap: 8px;
-        padding: 32px 40px;
+        gap: 24px;
+        padding: 24px 24px 32px;
 
-        .changeButton {
-          width: 100%;
-          margin-top: 16px;
+        .infoWrapper {
+          align-self: stretch;
+
+          .nameWrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+          }
+        }
+
+        .buttonsWrapper {
+          align-self: stretch;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 16px;
+
+          .button {
+            flex: 1;
+          }
         }
       }
 
