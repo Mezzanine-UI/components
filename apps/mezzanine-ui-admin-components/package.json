@@ -1,6 +1,6 @@
 {
   "name": "@mezzanine-ui/admin-components",
-  "version": "0.0.37",
+  "version": "0.0.39",
   "main": "index.cjs",
   "module": "index.js",
   "type": "module",
@@ -13,13 +13,11 @@
     "lodash": "*",
     "react": "*",
     "react-dom": "*",
-    "react-dnd": "^16.0.1",
-    "react-dnd-html5-backend": "^16.0.1",
     "react-hook-form": "^7"
   },
   "dependencies": {
-    "@mezzanine-ui/react-hook-form-v2": "^0.0.37",
-    "@mezzanine-ui/login-panel": "^0.0.37",
+    "@mezzanine-ui/react-hook-form-v2": "^0.0.39",
+    "@mezzanine-ui/login-panel": "^0.0.39",
     "@hookform/error-message": "^2.0.1",
     "@hookform/resolvers": "^3.9.1",
     "react-dnd": "^16.0.1",
