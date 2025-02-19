@@ -116,7 +116,7 @@ export const Header: FC<HeaderProps> = ({
       </IconButton>
       <AppBarBrand>{logo}</AppBarBrand>
       <AppBarSupport className={classes.appBarSupport}>
-        <div>{customizedSystemName}</div>
+        {!!customizedSystemName && <div>{customizedSystemName}</div>}
         <Dropdown
           menu={
             <Menu className={classes.menu} size="large">
