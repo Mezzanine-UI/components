@@ -3,7 +3,7 @@ name: Generate Storybook on Tag Push
 on:
   push:
     tags:
-      - '@mezzanine-ui/*'
+      - '@mezzanine-ui/*@*'
 
 jobs:
   build-images:
