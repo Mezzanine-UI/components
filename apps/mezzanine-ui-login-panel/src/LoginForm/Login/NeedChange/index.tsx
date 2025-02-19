@@ -108,20 +108,23 @@ const NeedChange: FC<NeedChangeProps> = ({
       <div className={classes.logoWrapper}>
         {logo}
         {mode === NeedChangePasswordMode.FIRST && (
-          <Typography variant="h3" color="text-primary" align="center">
-            歡迎啟用帳號！
-            <br />
-            請設定密碼
+          <Typography variant="h2" color="text-primary" align="center">
+            歡迎啟用帳號 請設定密碼
           </Typography>
         )}
         {mode === NeedChangePasswordMode.TOO_LONG && (
-          <Typography variant="h3" color="text-primary" align="center">
-            {`密碼超過${keepPasswordDaysLimit}天未更新了哦！`}
+          <Typography variant="h2" color="text-primary" align="center">
+            {`您的密碼已超過 ${keepPasswordDaysLimit} 天未更新`}
             <br />
-            來更新密碼吧！
+            為了您的帳戶安全，請立即更新
           </Typography>
         )}
-        <Typography variant="h5" color="text-primary" align="center">
+        <Typography
+          variant="h5"
+          color="text-primary"
+          align="center"
+          style={{ marginTop: -8 }}
+        >
           {account}
         </Typography>
       </div>
@@ -130,38 +133,38 @@ const NeedChange: FC<NeedChangeProps> = ({
         onSubmit={onSubmit}
         className={classes.formWrapper}
       >
-        <div className={classes.fieldsWrapper}>
-          <div className={classes.inputFieldWithHint}>
-            <PasswordField
-              registerName="password"
-              label="設定密碼"
-              size="large"
-              placeholder="請輸入密碼"
-              className={classes.inputWrapper}
-              inputClassName={classes.input}
-              disabledErrMsg
-            />
-            <PasswordHint
-              passwordValue={values.password}
-              passwordLength={passwordLength}
-              generationLimit={
-                mode === NeedChangePasswordMode.TOO_LONG
-                  ? generationLimit
-                  : undefined
-              }
-              customizedHint={customizedHint}
-              customizedRule={customizedRule}
-            />
-          </div>
+        <div className={classes.inputFieldWithHint}>
           <PasswordField
-            registerName="confirmPassword"
-            label="再次輸入密碼"
+            registerName="password"
+            label="設定密碼"
             size="large"
             placeholder="請輸入密碼"
             className={classes.inputWrapper}
             inputClassName={classes.input}
+            required
+            disabledErrMsg
+          />
+          <PasswordHint
+            passwordValue={values.password}
+            passwordLength={passwordLength}
+            generationLimit={
+              mode === NeedChangePasswordMode.TOO_LONG
+                ? generationLimit
+                : undefined
+            }
+            customizedHint={customizedHint}
+            customizedRule={customizedRule}
           />
         </div>
+        <PasswordField
+          registerName="confirmPassword"
+          label="再次輸入密碼"
+          size="large"
+          placeholder="請再次輸入密碼"
+          className={classes.inputWrapper}
+          inputClassName={classes.input}
+          required
+        />
         <div className={classes.buttonsWrapper}>
           <Button
             type="submit"
