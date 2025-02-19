@@ -43,6 +43,7 @@ export const AuthorizedAdminPageWrapper: FC<
   customizedComponent,
   changePasswordModalConfig,
   customizedButton,
+  iconColor,
   // Sidebar props
   navigationChildren,
   onPush,
@@ -71,6 +72,7 @@ export const AuthorizedAdminPageWrapper: FC<
             customizedComponent={customizedComponent}
             changePasswordModalConfig={changePasswordModalConfig}
             customizedButton={customizedButton}
+            iconColor={iconColor}
             navigationChildren={navigationChildren}
             onPush={onPush}
           >

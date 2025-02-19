@@ -11,6 +11,7 @@ import {
   Dropdown,
   Tag,
   cx,
+  IconColor,
 } from '@mezzanine-ui/react';
 import { MenuIcon, ProfileIcon, ChevronDownIcon } from '@mezzanine-ui/icons';
 import {
@@ -74,6 +75,10 @@ export interface HeaderProps {
    * 自定義按鈕元件
    */
   customizedButton?: ReactNode;
+  /**
+   * 自定義 icon 顏色
+   */
+  iconColor?: IconColor;
 }
 
 /**
@@ -89,6 +94,7 @@ export const Header: FC<HeaderProps> = ({
   customizedComponent,
   changePasswordModalConfig,
   customizedButton,
+  iconColor = 'surface',
 }) => {
   const { openModal, closeModal } = useModal();
   const { toggleSidebar } = useLayout();
@@ -101,7 +107,7 @@ export const Header: FC<HeaderProps> = ({
         className={classes.burgerBtn}
         onClick={toggleSidebar}
       >
-        <Icon icon={MenuIcon} color="surface" />
+        <Icon icon={MenuIcon} color={iconColor} />
       </IconButton>
       <AppBarBrand>{logo}</AppBarBrand>
       <AppBarSupport className={classes.appBarSupport}>
@@ -211,11 +217,11 @@ export const Header: FC<HeaderProps> = ({
               }}
             >
               <div className={classes.iconsContainer}>
-                <Icon size={24} icon={ProfileIcon} color="surface" />
+                <Icon size={24} icon={ProfileIcon} color={iconColor} />
                 <Icon
                   size={24}
                   icon={ChevronDownIcon}
-                  color="surface"
+                  color={iconColor}
                   className={cx(classes.dropdownIcon, {
                     [classes.open]: open,
                   })}
