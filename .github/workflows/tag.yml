@@ -77,6 +77,6 @@ jobs:
         run: |-
           gcloud components install kubectl
           gcloud container clusters get-credentials rytass-cluster --region asia-east1 --project develop-server
-          kubectl -n mezzanine-ui set image deployments/storybook react-hook-form-v2=asia-east1-docker.pkg.dev/develop-server/mezzanine-ui/storybooks/react-hook-form-v2:${{ steps.extract_version.outputs.version }}}}
-          kubectl -n mezzanine-ui set image deployments/storybook admin-components=asia-east1-docker.pkg.dev/develop-server/mezzanine-ui/storybooks/admin-components:${{ steps.extract_version.outputs.version }}}}
-          kubectl -n mezzanine-ui set image deployments/storybook login-panel=asia-east1-docker.pkg.dev/develop-server/mezzanine-ui/storybooks/login-panel:${{ steps.extract_version.outputs.version }}}}
+          kubectl -n mezzanine-ui set image deployments/storybook react-hook-form-v2=asia-east1-docker.pkg.dev/develop-server/mezzanine-ui/storybooks/react-hook-form-v2:${{ steps.extract_version.outputs.version }}
+          kubectl -n mezzanine-ui set image deployments/storybook admin-components=asia-east1-docker.pkg.dev/develop-server/mezzanine-ui/storybooks/admin-components:${{ steps.extract_version.outputs.version }}
+          kubectl -n mezzanine-ui set image deployments/storybook login-panel=asia-east1-docker.pkg.dev/develop-server/mezzanine-ui/storybooks/login-panel:${{ steps.extract_version.outputs.version }}
