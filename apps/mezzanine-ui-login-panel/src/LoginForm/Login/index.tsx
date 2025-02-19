@@ -22,7 +22,7 @@ interface LoginProps {
   passwordLength?: number;
   generationLimit?: number;
   keepPasswordDaysLimit: number;
-  generalLoginText?: string;
+  generalLoginText: string;
   onLogin: ({
     values,
     needChangePassword,

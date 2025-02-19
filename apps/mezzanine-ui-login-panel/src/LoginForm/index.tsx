@@ -97,7 +97,7 @@ export const LoginForm: FC<LoginFormProps> = ({
   passwordLength,
   generationLimit,
   keepPasswordDaysLimit = 60,
-  generalLoginText,
+  generalLoginText = '登入',
   onLogin,
   onNeedChangePassword,
   onSendForgetAccount,

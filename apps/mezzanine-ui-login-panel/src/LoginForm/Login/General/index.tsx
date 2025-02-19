@@ -18,7 +18,7 @@ import classes from './index.module.scss';
 
 interface GeneralLoginProps {
   logo?: ReactNode;
-  generalLoginText?: string;
+  generalLoginText: string;
   onLogin: ({ values }: { values: LoginFormValues }) => Promise<void>;
   setCurrentPage: Dispatch<SetStateAction<LoginPageEnum>>;
   customizedLoginPasswordHint?: string[];
@@ -27,7 +27,7 @@ interface GeneralLoginProps {
 
 const GeneralLogin: FC<GeneralLoginProps> = ({
   logo,
-  generalLoginText = '登入',
+  generalLoginText,
   onLogin,
   setCurrentPage,
   customizedLoginPasswordHint,
