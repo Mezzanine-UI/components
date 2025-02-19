@@ -81,13 +81,18 @@ const Forget: FC<ForgetProps> = ({
         className={classes.formWrapper}
       >
         {logo && <div className={classes.logoWrapper}>{logo}</div>}
-        <Typography variant="h3" color="text-primary" align="center">
+        <Typography variant="h2" color="text-primary" align="center">
           重新設定密碼
         </Typography>
-        <Typography variant="h5" color="text-primary" align="center">
-          請輸入註冊時使用的email帳號，
+        <Typography
+          variant="h5"
+          color="text-primary"
+          align="center"
+          style={{ marginTop: -8 }}
+        >
+          請輸入註冊時使用的email帳號
           <br />
-          密碼重置URL將發送至該信箱
+          密碼重置連結將發送至該信箱
         </Typography>
         <div className={classes.blocksWrapper}>
           <div className={classes.blockWrapper}>
@@ -98,6 +103,7 @@ const Forget: FC<ForgetProps> = ({
               placeholder="輸入帳號 e.g. example@email.com"
               className={classes.inputWrapper}
               inputClassName={classes.input}
+              required
             />
           </div>
           <div className={classes.blockWrapper}>

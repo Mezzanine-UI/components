@@ -10,7 +10,7 @@ interface SuccessProps {
 
 const Success: FC<SuccessProps> = ({ account, onBack }) => {
   return (
-    <div className={classes.root}>
+    <div className={cx(classes.root, classes.success)}>
       <div className={cx(classes.logoWrapper, classes.success)}>
         <Icon icon={CheckCircleFilledIcon} color="success" size={50} />
       </div>

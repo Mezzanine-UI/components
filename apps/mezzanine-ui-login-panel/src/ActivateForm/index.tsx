@@ -139,6 +139,7 @@ export const ActivateForm: FC<ActivateFormProps> = ({
             placeholder="請輸入密碼"
             className={classes.inputWrapper}
             inputClassName={classes.input}
+            required
             disabledErrMsg
           />
           <PasswordHint
@@ -152,9 +153,10 @@ export const ActivateForm: FC<ActivateFormProps> = ({
           registerName="confirmPassword"
           label="再次輸入密碼"
           size="large"
-          placeholder="請輸入密碼"
+          placeholder="請再次輸入密碼"
           className={classes.inputWrapper}
           inputClassName={classes.input}
+          required
         />
         <div className={classes.buttonsWrapper}>
           <Button
