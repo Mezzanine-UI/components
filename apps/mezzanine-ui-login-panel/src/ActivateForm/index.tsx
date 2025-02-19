@@ -1,9 +1,11 @@
-import { ReactNode, FC, useMemo, useState, useCallback } from 'react';
+import { FC, ReactNode, useMemo, useState, useCallback } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Typography, Button } from '@mezzanine-ui/react';
 import {
   PasswordField,
+  InputField,
+  InputFieldProps,
   FormFieldsWrapper,
 } from '@mezzanine-ui/react-hook-form-v2';
 import { generatePasswordRegRxp } from '../utils/validation';
@@ -39,6 +41,14 @@ export interface ActivateFormProps {
    */
   onBack: VoidFunction;
   /**
+   * 自定義額外輸入欄位
+   */
+  customizedFields?: InputFieldProps[];
+  /**
+   * 自定義額外輸入欄位驗證
+   */
+  customizedSchema?: Yup.ObjectSchema<object>;
+  /**
    * 是否在表單上顯示返回按鈕
    */
   showBackButtonInPanel?: boolean;
@@ -52,13 +62,6 @@ export interface ActivateFormProps {
   customizedRule?: RegExp;
 }
 
-const formSchema: Yup.ObjectSchema<ActivateFormValues> = Yup.object({
-  password: Yup.string().required('必填欄位不可空白'),
-  confirmPassword: Yup.string()
-    .required('密碼不一致')
-    .oneOf([Yup.ref('password')], '密碼不一致'),
-});
-
 /**
  * 後台啟用帳號 UI 元件
  */
@@ -68,6 +71,8 @@ export const ActivateForm: FC<ActivateFormProps> = ({
   onChangePassword,
   account,
   onBack,
+  customizedFields,
+  customizedSchema,
   showBackButtonInPanel = false,
   customizedHint,
   customizedRule,
@@ -79,6 +84,21 @@ export const ActivateForm: FC<ActivateFormProps> = ({
     }
     return passwordLength ? generatePasswordRegRxp(passwordLength) : null;
   }, [passwordLength, customizedRule]);
+
+  const formSchema: Yup.ObjectSchema<ActivateFormValues> = useMemo(() => {
+    const baseSchema = Yup.object({
+      password: Yup.string().required('必填欄位不可空白'),
+      confirmPassword: Yup.string()
+        .required('密碼不一致')
+        .oneOf([Yup.ref('password')], '密碼不一致'),
+    });
+
+    if (customizedSchema) {
+      return baseSchema.concat(customizedSchema);
+    }
+
+    return baseSchema;
+  }, [customizedSchema]);
 
   const methods = useForm<ActivateFormValues>({
     resolver: yupResolver(formSchema),
@@ -136,6 +156,10 @@ export const ActivateForm: FC<ActivateFormProps> = ({
         onSubmit={onSubmit}
         className={classes.formWrapper}
       >
+        {customizedFields &&
+          customizedFields.map((field, index) => (
+            <InputField key={index} {...field} />
+          ))}
         <div className={classes.inputFieldWithHint}>
           <PasswordField
             registerName="password"
