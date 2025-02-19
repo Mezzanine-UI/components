@@ -21,6 +21,7 @@ const Main: FC<
   customizedComponent,
   changePasswordModalConfig,
   customizedButton,
+  customizedSystemName,
   iconColor,
   // Sidebar props
   navigationChildren,
@@ -40,6 +41,7 @@ const Main: FC<
         customizedComponent={customizedComponent}
         changePasswordModalConfig={changePasswordModalConfig}
         customizedButton={customizedButton}
+        customizedSystemName={customizedSystemName}
         iconColor={iconColor}
       />
       <main className={classes.main}>

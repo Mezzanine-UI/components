@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { CSSProperties } from 'react';
 import { action } from '@storybook/addon-actions';
-import { Button } from '@mezzanine-ui/react';
+import { Button, Typography } from '@mezzanine-ui/react';
 import ModalProvider from '../modal/ModalProvider';
 import { Header } from './index';
 
@@ -47,6 +47,70 @@ export const Default: Story = {
   },
   parameters: {
     controls: { include: ['name', 'role', 'account'] },
+  },
+  render: function Render(args) {
+    const layoutStyleVar = {
+      '--header-height': '64px',
+    } as CSSProperties;
+
+    return (
+      <ModalProvider>
+        <div style={layoutStyleVar}>
+          <Header {...args} />
+        </div>
+      </ModalProvider>
+    );
+  },
+};
+
+export const CustomizedColor: Story = {
+  args: {
+    logo: (
+      <div
+        style={{
+          width: 184,
+          height: 32,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          border: '1px solid #212121',
+        }}
+      >
+        Logo
+      </div>
+    ),
+    name: 'Ting',
+    role: '管理員',
+    account: 'root@rytass.com',
+    onLogout: async () => {
+      action('onLogout')();
+    },
+    changePasswordModalConfig: {
+      passwordLength: 10,
+      generationLimit: undefined,
+      onChangePassword: async ({ values }) => {
+        action('onChangePassword')(values);
+        return true;
+      },
+      onBack: action('onBack'),
+    },
+    customizedSystemName: (
+      <Typography variant="input3" color="text-primary">
+        廣告物管理系統
+      </Typography>
+    ),
+    iconColor: 'action-active',
+  },
+  argTypes: {
+    iconColor: {
+      control: {
+        type: 'radio',
+      },
+      options: ['action-active', 'success', 'secondary', 'surface'],
+    },
+  },
+  parameters: {
+    controls: { include: ['name', 'role', 'account', 'iconColor'] },
   },
   render: function Render(args) {
     const layoutStyleVar = {

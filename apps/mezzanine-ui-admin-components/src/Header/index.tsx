@@ -76,6 +76,10 @@ export interface HeaderProps {
    */
   customizedButton?: ReactNode;
   /**
+   * 自定義系統名稱，顯示在下拉選單左側
+   */
+  customizedSystemName?: ReactNode;
+  /**
    * 自定義 icon 顏色
    */
   iconColor?: IconColor;
@@ -94,6 +98,7 @@ export const Header: FC<HeaderProps> = ({
   customizedComponent,
   changePasswordModalConfig,
   customizedButton,
+  customizedSystemName,
   iconColor = 'surface',
 }) => {
   const { openModal, closeModal } = useModal();
@@ -111,6 +116,7 @@ export const Header: FC<HeaderProps> = ({
       </IconButton>
       <AppBarBrand>{logo}</AppBarBrand>
       <AppBarSupport className={classes.appBarSupport}>
+        <div>{customizedSystemName}</div>
         <Dropdown
           menu={
             <Menu className={classes.menu} size="large">
