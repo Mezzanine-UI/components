@@ -5,6 +5,7 @@ import {
   Button,
   ModalHeader,
   ModalBody,
+  Typography,
 } from '@mezzanine-ui/react';
 import {
   FormFieldsWrapper,
@@ -32,7 +33,7 @@ type Story = StoryObj<typeof meta>;
 
 const args: AuthorizedAdminPageWrapperProps = {
   headerHeight: 64,
-  sidebarWidth: 270,
+  sidebarWidth: 256,
   logo: (
     <div
       style={{
@@ -54,6 +55,11 @@ const args: AuthorizedAdminPageWrapperProps = {
     action('onLogout')();
   },
   customizedComponent: <div>自定義元件</div>,
+  customizedSystemName: (
+    <Typography variant="input3" style={{ color: '#fff' }}>
+      系統名稱
+    </Typography>
+  ),
   changePasswordModalConfig: {
     passwordLength: 10,
     generationLimit: undefined,

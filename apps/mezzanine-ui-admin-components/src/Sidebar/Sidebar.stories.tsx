@@ -33,7 +33,7 @@ export const Default: Story = {
   render: function Render(args) {
     const layoutStyleVar = {
       '--header-height': '0px',
-      '--sidebar-width': '270px',
+      '--sidebar-width': '256px',
     } as CSSProperties;
 
     return (

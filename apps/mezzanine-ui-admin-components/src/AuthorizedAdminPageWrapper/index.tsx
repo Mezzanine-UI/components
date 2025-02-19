@@ -32,7 +32,7 @@ export const AuthorizedAdminPageWrapper: FC<
 > = ({
   children,
   headerHeight = 64,
-  sidebarWidth = 270,
+  sidebarWidth = 256,
   // Header props
   headerClassName,
   logo,
