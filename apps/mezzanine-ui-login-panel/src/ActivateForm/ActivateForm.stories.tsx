@@ -33,10 +33,11 @@ export const Default: Story = {
     },
     account: 'admin@rytass.com',
     onBack: action('onBack'),
+    showBackButtonInPanel: false,
   },
   parameters: {
     controls: {
-      include: ['passwordLength', 'account'],
+      include: ['passwordLength', 'account', 'showBackButtonInPanel'],
     },
   },
   render: function Render(args) {

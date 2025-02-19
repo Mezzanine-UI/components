@@ -39,6 +39,10 @@ interface ActivateFormProps {
    */
   onBack: VoidFunction;
   /**
+   * 是否在表單上顯示返回按鈕
+   */
+  showBackButtonInPanel?: boolean;
+  /**
    * 自定義密碼提示
    */
   customizedHint?: string;
@@ -64,6 +68,7 @@ export const ActivateForm: FC<ActivateFormProps> = ({
   onChangePassword,
   account,
   onBack,
+  showBackButtonInPanel = false,
   customizedHint,
   customizedRule,
 }) => {
@@ -173,6 +178,17 @@ export const ActivateForm: FC<ActivateFormProps> = ({
           >
             確認
           </Button>
+          {showBackButtonInPanel && (
+            <Button
+              type="button"
+              variant="text"
+              size="large"
+              className={classes.button}
+              onClick={onBack}
+            >
+              返回登入頁面
+            </Button>
+          )}
         </div>
       </FormFieldsWrapper>
     </div>
