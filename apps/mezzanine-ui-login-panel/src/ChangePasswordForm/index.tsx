@@ -146,6 +146,7 @@ export const ChangePasswordForm: FC<ChangePasswordFormProps> = ({
             placeholder="請輸入密碼"
             className={classes.inputWrapper}
             inputClassName={classes.input}
+            required
             disabledErrMsg
           />
           <div className={classes.inputFieldWithHint}>
@@ -156,6 +157,7 @@ export const ChangePasswordForm: FC<ChangePasswordFormProps> = ({
               placeholder="請輸入密碼"
               className={classes.inputWrapper}
               inputClassName={classes.input}
+              required
               disabledErrMsg
             />
             <PasswordHint
@@ -168,11 +170,12 @@ export const ChangePasswordForm: FC<ChangePasswordFormProps> = ({
           </div>
           <PasswordField
             registerName="confirmPassword"
-            label="確認密碼"
+            label="再次輸入密碼"
             size="large"
-            placeholder="請輸入密碼"
+            placeholder="請再次輸入密碼"
             className={classes.inputWrapper}
             inputClassName={classes.input}
+            required
           />
         </div>
         <div className={classes.buttonsWrapper}>

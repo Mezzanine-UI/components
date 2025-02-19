@@ -155,7 +155,7 @@ const NeedChange: FC<NeedChangeProps> = ({
           </div>
           <PasswordField
             registerName="confirmPassword"
-            label="確認密碼"
+            label="再次輸入密碼"
             size="large"
             placeholder="請輸入密碼"
             className={classes.inputWrapper}
