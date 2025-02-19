@@ -117,11 +117,16 @@ export const ResetPasswordForm: FC<ResetPasswordFormProps> = ({
     <div className={classes.root}>
       <div className={classes.logoWrapper}>
         {logo}
-        <Typography variant="h3" color="text-primary" align="center">
+        <Typography variant="h2" color="text-primary" align="center">
           密碼重置
         </Typography>
         {!!account && (
-          <Typography variant="h5" color="text-primary" align="center">
+          <Typography
+            variant="h5"
+            color="text-primary"
+            align="center"
+            style={{ marginTop: -8 }}
+          >
             {account}
           </Typography>
         )}
@@ -131,34 +136,34 @@ export const ResetPasswordForm: FC<ResetPasswordFormProps> = ({
         onSubmit={onSubmit}
         className={classes.formWrapper}
       >
-        <div className={classes.fieldsWrapper}>
-          <div className={classes.inputFieldWithHint}>
-            <PasswordField
-              registerName="password"
-              label="設定密碼"
-              size="large"
-              placeholder="請輸入密碼"
-              className={classes.inputWrapper}
-              inputClassName={classes.input}
-              disabledErrMsg
-            />
-            <PasswordHint
-              passwordValue={values.password}
-              passwordLength={passwordLength}
-              generationLimit={generationLimit}
-              customizedHint={customizedHint}
-              customizedRule={customizedRule}
-            />
-          </div>
+        <div className={classes.inputFieldWithHint}>
           <PasswordField
-            registerName="confirmPassword"
-            label="再次輸入密碼"
+            registerName="password"
+            label="設定密碼"
             size="large"
             placeholder="請輸入密碼"
             className={classes.inputWrapper}
             inputClassName={classes.input}
+            required
+            disabledErrMsg
+          />
+          <PasswordHint
+            passwordValue={values.password}
+            passwordLength={passwordLength}
+            generationLimit={generationLimit}
+            customizedHint={customizedHint}
+            customizedRule={customizedRule}
           />
         </div>
+        <PasswordField
+          registerName="confirmPassword"
+          label="再次輸入密碼"
+          size="large"
+          placeholder="請再次輸入密碼"
+          className={classes.inputWrapper}
+          inputClassName={classes.input}
+          required
+        />
         <div className={classes.buttonsWrapper}>
           <Button
             type="submit"
