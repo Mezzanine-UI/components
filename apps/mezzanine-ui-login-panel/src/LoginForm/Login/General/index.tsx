@@ -60,28 +60,28 @@ const GeneralLogin: FC<GeneralLoginProps> = ({
         className={classes.formWrapper}
       >
         {logo && <div className={classes.logoWrapper}>{logo}</div>}
-        <Typography variant="h3" color="text-primary" align="center">
+        <Typography variant="h2" color="text-primary" align="center">
           帳號登入
         </Typography>
-        <div className={classes.blockWrapper}>
-          <InputField
-            registerName="account"
-            label="帳號"
-            size="large"
-            placeholder="請輸入帳號"
-            className={classes.inputWrapper}
-            inputClassName={classes.input}
-          />
-          <PasswordField
-            registerName="password"
-            label="密碼"
-            size="large"
-            placeholder="請輸入密碼"
-            className={classes.inputWrapper}
-            inputClassName={classes.input}
-          />
-        </div>
-        <div className={classes.blockWrapper}>
+        <InputField
+          registerName="account"
+          label="帳號"
+          size="large"
+          placeholder="請輸入帳號"
+          className={classes.inputWrapper}
+          inputClassName={classes.input}
+          required
+        />
+        <PasswordField
+          registerName="password"
+          label="密碼"
+          size="large"
+          placeholder="請輸入密碼"
+          className={classes.inputWrapper}
+          inputClassName={classes.input}
+          required
+        />
+        <div className={classes.buttonsWrapper}>
           <Button
             type="submit"
             variant="contained"
