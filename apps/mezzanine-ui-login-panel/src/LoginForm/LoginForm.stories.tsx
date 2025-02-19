@@ -88,6 +88,7 @@ export const HaveNoForgotPassword: Story = {
       action('onNeedChangePassword')({ values, account, oldPassword });
       return true;
     },
+    customizedLoginPasswordHint: ['忘記密碼請聯繫管理員'],
     notShowForgotPassword: true,
   },
   parameters: {

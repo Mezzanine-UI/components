@@ -21,6 +21,7 @@ interface GeneralLoginProps {
   generalLoginText?: string;
   onLogin: ({ values }: { values: LoginFormValues }) => Promise<void>;
   setCurrentPage: Dispatch<SetStateAction<LoginPageEnum>>;
+  customizedLoginPasswordHint?: string[];
   notShowForgotPassword?: boolean;
 }
 
@@ -29,6 +30,7 @@ const GeneralLogin: FC<GeneralLoginProps> = ({
   generalLoginText = '登入',
   onLogin,
   setCurrentPage,
+  customizedLoginPasswordHint,
   notShowForgotPassword = false,
 }) => {
   const methods = useForm<LoginFormValues>({
@@ -79,6 +81,7 @@ const GeneralLogin: FC<GeneralLoginProps> = ({
           placeholder="請輸入密碼"
           className={classes.inputWrapper}
           inputClassName={classes.input}
+          hints={customizedLoginPasswordHint}
           required
         />
         <div className={classes.buttonsWrapper}>

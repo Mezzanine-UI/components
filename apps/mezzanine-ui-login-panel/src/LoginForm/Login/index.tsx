@@ -40,6 +40,7 @@ interface LoginProps {
   setCurrentPage: Dispatch<SetStateAction<LoginPageEnum>>;
   customizedHint?: string;
   customizedRule?: RegExp;
+  customizedLoginPasswordHint?: string[];
   notShowForgotPassword?: boolean;
 }
 
@@ -54,6 +55,7 @@ const Login: FC<LoginProps> = ({
   setCurrentPage,
   customizedHint,
   customizedRule,
+  customizedLoginPasswordHint,
   notShowForgotPassword = false,
 }) => {
   const [needChangePasswordParams, setNeedChangePasswordParams] = useState<{
@@ -116,6 +118,7 @@ const Login: FC<LoginProps> = ({
       generalLoginText={generalLoginText}
       onLogin={onLogin}
       setCurrentPage={setCurrentPage}
+      customizedLoginPasswordHint={customizedLoginPasswordHint}
       notShowForgotPassword={notShowForgotPassword}
     />
   );

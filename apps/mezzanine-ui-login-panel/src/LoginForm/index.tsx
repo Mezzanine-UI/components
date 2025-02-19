@@ -70,6 +70,10 @@ interface LoginFormProps {
    */
   customizedRule?: RegExp;
   /**
+   * 自定義登入密碼提示
+   */
+  customizedLoginPasswordHint?: string[];
+  /**
    * 是否顯示忘記密碼
    */
   notShowForgotPassword?: boolean;
@@ -89,6 +93,7 @@ export const LoginForm: FC<LoginFormProps> = ({
   onSendForgetAccount,
   customizedHint,
   customizedRule,
+  customizedLoginPasswordHint,
   notShowForgotPassword = false,
 }) => {
   const [currentPage, setCurrentPage] = useState<LoginPageEnum>(
@@ -109,6 +114,7 @@ export const LoginForm: FC<LoginFormProps> = ({
           setCurrentPage={setCurrentPage}
           customizedHint={customizedHint}
           customizedRule={customizedRule}
+          customizedLoginPasswordHint={customizedLoginPasswordHint}
           notShowForgotPassword={notShowForgotPassword}
         />
       );
