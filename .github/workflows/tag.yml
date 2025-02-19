@@ -27,6 +27,11 @@ jobs:
           username: _json_key
           password: ${{ secrets.GAR_JSON_KEY }}
 
+      - name: Extract version from tag
+        id: extract_version
+        run: |
+          echo "version=${GITHUB_REF_NAME##*@}" >> $GITHUB_OUTPUT
+
       - name: Build docker image (React Hook Form v2)
         uses: docker/build-push-action@v5
         with:
@@ -34,7 +39,7 @@ jobs:
           push: true
           cache-from: type=local,src=/tmp/runner-cache
           cache-to: type=local,dest=/tmp/runner-cache,mode=min,compression=zstd
-          tags: asia-east1-docker.pkg.dev/develop-server/mezzanine-ui/storybooks/react-hook-form-v2:${{ github.ref_name }}
+          tags: asia-east1-docker.pkg.dev/develop-server/mezzanine-ui/storybooks/react-hook-form-v2:${{ steps.extract_version.outputs.version }}
           build-args: |
             TARGET=mezzanine-ui-react-hook-form-v2
 
@@ -45,7 +50,7 @@ jobs:
           push: true
           cache-from: type=local,src=/tmp/runner-cache
           cache-to: type=local,dest=/tmp/runner-cache,mode=min,compression=zstd
-          tags: asia-east1-docker.pkg.dev/develop-server/mezzanine-ui/storybooks/admin-components:${{ github.ref_name }}
+          tags: asia-east1-docker.pkg.dev/develop-server/mezzanine-ui/storybooks/admin-components:${{ steps.extract_version.outputs.version }}
           build-args: |
             TARGET=mezzanine-ui-admin-components
 
@@ -56,20 +61,10 @@ jobs:
           push: true
           cache-from: type=local,src=/tmp/runner-cache
           cache-to: type=local,dest=/tmp/runner-cache,mode=min,compression=zstd
-          tags: asia-east1-docker.pkg.dev/develop-server/mezzanine-ui/storybooks/login-panel:${{ github.ref_name }}
+          tags: asia-east1-docker.pkg.dev/develop-server/mezzanine-ui/storybooks/login-panel:${{ steps.extract_version.outputs.version }}
           build-args: |
             TARGET=mezzanine-ui-login-panel
 
-  update-deployments:
-    runs-on: ubuntu-latest
-    needs:
-      - build-images
-
-    permissions:
-      contents: read
-      packages: write
-
-    steps:
       - name: 'Authenticate to Google Cloud'
         uses: 'google-github-actions/auth@v1'
         with:
@@ -82,6 +77,6 @@ jobs:
         run: |-
           gcloud components install kubectl
           gcloud container clusters get-credentials rytass-cluster --region asia-east1 --project develop-server
-          kubectl -n mezzanine-ui set image deployments/storybook react-hook-form-v2=asia-east1-docker.pkg.dev/develop-server/mezzanine-ui/storybooks/react-hook-form-v2:${{ github.ref_name }}
-          kubectl -n mezzanine-ui set image deployments/storybook admin-components=asia-east1-docker.pkg.dev/develop-server/mezzanine-ui/storybooks/admin-components:${{ github.ref_name }}
-          kubectl -n mezzanine-ui set image deployments/storybook login-panel=asia-east1-docker.pkg.dev/develop-server/mezzanine-ui/storybooks/login-panel:${{ github.ref_name }}
+          kubectl -n mezzanine-ui set image deployments/storybook react-hook-form-v2=asia-east1-docker.pkg.dev/develop-server/mezzanine-ui/storybooks/react-hook-form-v2:${{ steps.extract_version.outputs.version }}}}
+          kubectl -n mezzanine-ui set image deployments/storybook admin-components=asia-east1-docker.pkg.dev/develop-server/mezzanine-ui/storybooks/admin-components:${{ steps.extract_version.outputs.version }}}}
+          kubectl -n mezzanine-ui set image deployments/storybook login-panel=asia-east1-docker.pkg.dev/develop-server/mezzanine-ui/storybooks/login-panel:${{ steps.extract_version.outputs.version }}}}
