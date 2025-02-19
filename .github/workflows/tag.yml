@@ -1,9 +1,9 @@
-name: Staging Server
+name: Generate Storybook on Tag Push
 
 on:
   push:
     tags:
-      - '*'
+      - '@mezzanine-ui/*'
 
 jobs:
   build-images:
