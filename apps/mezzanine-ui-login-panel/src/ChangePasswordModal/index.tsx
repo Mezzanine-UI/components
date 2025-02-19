@@ -18,7 +18,7 @@ import * as Yup from 'yup';
 import Success from './Success';
 import classes from './index.module.scss';
 
-interface ChangePasswordModalProps {
+export interface ChangePasswordModalProps {
   /**
    * 密碼至少需要的長度
    */

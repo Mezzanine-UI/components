@@ -9,7 +9,7 @@ import {
   NeedChangePasswordMode,
 } from './typing';
 
-interface LoginFormProps {
+export interface LoginFormProps {
   /**
    * 放置 logo
    */

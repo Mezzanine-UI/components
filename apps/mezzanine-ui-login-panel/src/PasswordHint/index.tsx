@@ -8,7 +8,7 @@ import {
 import { generatePasswordRegRxp } from '../utils/validation';
 import classes from './index.module.scss';
 
-interface PasswordHintProps {
+export interface PasswordHintProps {
   /**
    * 密碼值，若不符合規則會變為紅色文字
    */

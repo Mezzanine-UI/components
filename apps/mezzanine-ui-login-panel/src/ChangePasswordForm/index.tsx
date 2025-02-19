@@ -13,7 +13,7 @@ import * as Yup from 'yup';
 import Success from './Success';
 import classes from './index.module.scss';
 
-interface ChangePasswordFormProps {
+export interface ChangePasswordFormProps {
   /**
    * 放置 logo
    */
