@@ -1,3 +1,18 @@
+## 0.0.41 (2025-02-19)
+
+### 🚀 Features
+
+- **login-panel:** can customized fields in login form ([c8c48fc](https://github.com/Mezzanine-UI/components/commit/c8c48fc))
+- **login-panel:** can customized fields in activate form ([071308b](https://github.com/Mezzanine-UI/components/commit/071308b))
+
+### 🧱 Updated Dependencies
+
+- Updated @mezzanine-ui/react-hook-form-v2 to 0.0.41
+
+### ❤️ Thank You
+
+- TingTing
+
 ## 0.0.35 (2025-02-17)
 
 ### 🚀 Features
