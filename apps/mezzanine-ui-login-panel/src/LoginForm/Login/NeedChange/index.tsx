@@ -4,6 +4,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { Typography, Button } from '@mezzanine-ui/react';
 import {
   PasswordField,
+  InputField,
+  InputFieldProps,
   FormFieldsWrapper,
 } from '@mezzanine-ui/react-hook-form-v2';
 import {
@@ -34,16 +36,11 @@ interface NeedChangeProps {
   account: string;
   oldPassword: string;
   onBack: VoidFunction;
+  customizedActivateFields?: InputFieldProps[];
+  customizedActivateSchema?: Yup.ObjectSchema<object>;
   customizedHint?: string;
   customizedRule?: RegExp;
 }
-
-const formSchema: Yup.ObjectSchema<NeedChangePasswordFormValues> = Yup.object({
-  password: Yup.string().required('必填欄位不可空白'),
-  confirmPassword: Yup.string()
-    .required('密碼不一致')
-    .oneOf([Yup.ref('password')], '密碼不一致'),
-});
 
 const NeedChange: FC<NeedChangeProps> = ({
   mode,
@@ -55,6 +52,8 @@ const NeedChange: FC<NeedChangeProps> = ({
   account,
   oldPassword,
   onBack,
+  customizedActivateFields,
+  customizedActivateSchema,
   customizedHint,
   customizedRule,
 }) => {
@@ -65,6 +64,22 @@ const NeedChange: FC<NeedChangeProps> = ({
     }
     return passwordLength ? generatePasswordRegRxp(passwordLength) : null;
   }, [passwordLength, customizedRule]);
+
+  const formSchema: Yup.ObjectSchema<NeedChangePasswordFormValues> =
+    useMemo(() => {
+      const baseSchema = Yup.object({
+        password: Yup.string().required('必填欄位不可空白'),
+        confirmPassword: Yup.string()
+          .required('密碼不一致')
+          .oneOf([Yup.ref('password')], '密碼不一致'),
+      });
+
+      if (customizedActivateSchema && mode === NeedChangePasswordMode.FIRST) {
+        return baseSchema.concat(customizedActivateSchema);
+      }
+
+      return baseSchema;
+    }, [customizedActivateSchema, mode]);
 
   const methods = useForm<NeedChangePasswordFormValues>({
     resolver: yupResolver(formSchema),
@@ -133,6 +148,11 @@ const NeedChange: FC<NeedChangeProps> = ({
         onSubmit={onSubmit}
         className={classes.formWrapper}
       >
+        {mode === NeedChangePasswordMode.FIRST &&
+          customizedActivateFields &&
+          customizedActivateFields.map((field, index) => (
+            <InputField key={index} {...field} />
+          ))}
         <div className={classes.inputFieldWithHint}>
           <PasswordField
             registerName="password"

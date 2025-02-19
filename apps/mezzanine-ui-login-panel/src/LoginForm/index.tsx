@@ -1,4 +1,6 @@
 import { FC, ReactNode, useState } from 'react';
+import { InputFieldProps } from '@mezzanine-ui/react-hook-form-v2';
+import * as Yup from 'yup';
 import Login from './Login';
 import Forget from './Forget';
 import {
@@ -62,6 +64,14 @@ export interface LoginFormProps {
     values: ForgetFormValues;
   }) => Promise<boolean>;
   /**
+   * 自定義啟用帳號時額外輸入欄位
+   */
+  customizedActivateFields?: InputFieldProps[];
+  /**
+   * 自定義啟用帳號時額外輸入欄位驗證
+   */
+  customizedActivateSchema?: Yup.ObjectSchema<object>;
+  /**
    * 自定義密碼提示
    */
   customizedHint?: string;
@@ -91,6 +101,8 @@ export const LoginForm: FC<LoginFormProps> = ({
   onLogin,
   onNeedChangePassword,
   onSendForgetAccount,
+  customizedActivateFields,
+  customizedActivateSchema,
   customizedHint,
   customizedRule,
   customizedLoginPasswordHint,
@@ -112,6 +124,8 @@ export const LoginForm: FC<LoginFormProps> = ({
           onLogin={onLogin}
           onNeedChangePassword={onNeedChangePassword}
           setCurrentPage={setCurrentPage}
+          customizedActivateFields={customizedActivateFields}
+          customizedActivateSchema={customizedActivateSchema}
           customizedHint={customizedHint}
           customizedRule={customizedRule}
           customizedLoginPasswordHint={customizedLoginPasswordHint}

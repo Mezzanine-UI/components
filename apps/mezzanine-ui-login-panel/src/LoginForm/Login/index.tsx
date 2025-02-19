@@ -6,6 +6,8 @@ import {
   useState,
   useCallback,
 } from 'react';
+import { InputFieldProps } from '@mezzanine-ui/react-hook-form-v2';
+import * as Yup from 'yup';
 import {
   LoginFormValues,
   NeedChangePasswordFormValues,
@@ -38,6 +40,8 @@ interface LoginProps {
     oldPassword: string;
   }) => Promise<boolean>;
   setCurrentPage: Dispatch<SetStateAction<LoginPageEnum>>;
+  customizedActivateFields?: InputFieldProps[];
+  customizedActivateSchema?: Yup.ObjectSchema<object>;
   customizedHint?: string;
   customizedRule?: RegExp;
   customizedLoginPasswordHint?: string[];
@@ -53,6 +57,8 @@ const Login: FC<LoginProps> = ({
   onLogin: onLoginProps,
   onNeedChangePassword,
   setCurrentPage,
+  customizedActivateFields,
+  customizedActivateSchema,
   customizedHint,
   customizedRule,
   customizedLoginPasswordHint,
@@ -106,6 +112,8 @@ const Login: FC<LoginProps> = ({
             mode: null,
           });
         }}
+        customizedActivateFields={customizedActivateFields}
+        customizedActivateSchema={customizedActivateSchema}
         customizedHint={customizedHint}
         customizedRule={customizedRule}
       />
