@@ -1,3 +1,17 @@
+## 0.0.44 (2025-02-20)
+
+### 🚀 Features
+
+- **admin-components:** customizedComponent props get close function from header ([65995be](https://github.com/Mezzanine-UI/components/commit/65995be))
+
+### 🧱 Updated Dependencies
+
+- Updated @mezzanine-ui/react-hook-form-v2 to 0.0.44
+
+### ❤️ Thank You
+
+- TingTing
+
 ## 0.0.43 (2025-02-20)
 
 ### 🧱 Updated Dependencies
