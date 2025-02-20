@@ -1,6 +1,6 @@
 {
   "name": "@mezzanine-ui/react-hook-form-v2",
-  "version": "0.0.44",
+  "version": "0.0.45",
   "main": "index.cjs",
   "module": "index.js",
   "type": "module",

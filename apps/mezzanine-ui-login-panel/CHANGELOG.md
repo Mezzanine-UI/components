@@ -1,3 +1,17 @@
+## 0.0.45 (2025-02-20)
+
+### 🩹 Fixes
+
+- await promise function ([7edba42](https://github.com/Mezzanine-UI/components/commit/7edba42))
+
+### 🧱 Updated Dependencies
+
+- Updated @mezzanine-ui/react-hook-form-v2 to 0.0.45
+
+### ❤️ Thank You
+
+- TingTing
+
 ## 0.0.44 (2025-02-20)
 
 ### 🚀 Features
