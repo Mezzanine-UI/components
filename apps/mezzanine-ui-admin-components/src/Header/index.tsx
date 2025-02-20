@@ -204,9 +204,9 @@ export const Header: FC<HeaderProps> = ({
                 variant="contained"
                 size="large"
                 className={classes.logoutButton}
-                onClick={() => {
+                onClick={async () => {
                   closeMenu();
-                  onLogout();
+                  await onLogout();
                 }}
               >
                 登出

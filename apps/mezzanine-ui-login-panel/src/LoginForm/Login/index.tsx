@@ -76,7 +76,7 @@ const Login: FC<LoginProps> = ({
 
   const onLogin = useCallback(
     async ({ values }: { values: LoginFormValues }) => {
-      onLoginProps({
+      await onLoginProps({
         values,
         needChangePassword: ({ mode }) => {
           setNeedChangePasswordParams({
