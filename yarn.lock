@@ -2727,9 +2727,9 @@ __metadata:
     "@hookform/resolvers": "npm:^3.10.0"
     "@mezzanine-ui/core": "npm:^0.15.3"
     "@mezzanine-ui/icons": "npm:^0.15.3"
-    "@mezzanine-ui/login-panel": "npm:0.0.44"
+    "@mezzanine-ui/login-panel": "npm:0.0.45"
     "@mezzanine-ui/react": "npm:^0.15.3"
-    "@mezzanine-ui/react-hook-form-v2": "npm:^0.0.44"
+    "@mezzanine-ui/react-hook-form-v2": "npm:^0.0.45"
     "@mezzanine-ui/system": "npm:^0.15.3"
     "@nx/eslint": "npm:20.3.3"
     "@nx/eslint-plugin": "npm:20.3.3"
@@ -2825,13 +2825,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mezzanine-ui/login-panel@npm:0.0.44":
-  version: 0.0.44
-  resolution: "@mezzanine-ui/login-panel@npm:0.0.44"
+"@mezzanine-ui/login-panel@npm:0.0.45":
+  version: 0.0.45
+  resolution: "@mezzanine-ui/login-panel@npm:0.0.45"
   dependencies:
     "@hookform/error-message": "npm:^2.0.1"
     "@hookform/resolvers": "npm:^3.9.1"
-    "@mezzanine-ui/react-hook-form-v2": "npm:^0.0.44"
+    "@mezzanine-ui/react-hook-form-v2": "npm:^0.0.45"
     yup: "npm:^1.6.1"
   peerDependencies:
     "@mezzanine-ui/core": ^0.15.2
@@ -2842,13 +2842,13 @@ __metadata:
     react: "*"
     react-dom: "*"
     react-hook-form: ^7
-  checksum: 10c0/ea93eabd5fdba5ee37308a6428541ab90d7a1f34c6d56bda5ecc32a4acfde3770a7beafef5f4a9abc535d3444e7dd644743898ae4239ee536130f20682d666cd
+  checksum: 10c0/03116ea7bc91b6c0cb1a237fcf9ade1b98849b4ced2b0fee62192860b4448dff72f89cc35d65354887ea969afffe4416e2ba8ac7aad3ef525d95b1c16dcde42a
   languageName: node
   linkType: hard
 
-"@mezzanine-ui/react-hook-form-v2@npm:^0.0.44":
-  version: 0.0.44
-  resolution: "@mezzanine-ui/react-hook-form-v2@npm:0.0.44"
+"@mezzanine-ui/react-hook-form-v2@npm:^0.0.45":
+  version: 0.0.45
+  resolution: "@mezzanine-ui/react-hook-form-v2@npm:0.0.45"
   dependencies:
     "@hookform/error-message": "npm:^2.0.1"
   peerDependencies:
@@ -2860,7 +2860,7 @@ __metadata:
     react: ^18.3.1
     react-dom: ^18.3.1
     react-hook-form: ^7.52.2
-  checksum: 10c0/166112e23c6d1bf79cf7af66f9d2de1897a700726ce0021a34df906000c31206c6e13ecd517654d2a5cb5f6c69bfecbd1cadae92b7812d3489a5ca504cfaaec6
+  checksum: 10c0/e0c6093af7b626b63ccd6f9adc1cc83f22d4139feae47ce4bce519869e6017e3de6fe9b8a0fcd072872afb18bc322e9d088bfbc197901cfbcad1b5b9a858fd87
   languageName: node
   linkType: hard
 
