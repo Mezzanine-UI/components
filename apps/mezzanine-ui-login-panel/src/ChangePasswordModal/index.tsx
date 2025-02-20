@@ -190,17 +190,12 @@ export const ChangePasswordModal: FC<ChangePasswordModalProps> = ({
           type: 'button',
           size: 'large',
           variant: 'outlined',
-          style: {
-            minWidth: 'unset',
-          },
         }}
         confirmButtonProps={{
           type: 'submit',
           size: 'large',
           variant: 'contained',
-          style: {
-            minWidth: 'unset',
-          },
+
           loading: submitting,
           disabled:
             !(

@@ -137,18 +137,12 @@ const ModalMain: FC<ModalMainProps> = ({
           type: 'button',
           size: 'large',
           variant: 'outlined',
-          style: {
-            minWidth: 'unset',
-          },
         }}
         confirmButtonProps={{
           type: 'button',
           size: 'large',
           variant: 'contained',
           disabled: fields.length > maxLength,
-          style: {
-            minWidth: 'unset',
-          },
         }}
         onCancel={onCancel}
         onConfirm={handleSubmit((values: ImagesWallModalFormValues) => {
