@@ -73,12 +73,15 @@ const args: AuthorizedAdminPageWrapperProps = {
     },
     onBack: action('onBack'),
   },
-  customizedButton: (
+  customizedButton: (close) => (
     <Button
       type="button"
       variant="outlined"
       size="large"
-      onClick={action('onCustomized')}
+      onClick={() => {
+        close();
+        action('onCustomized')();
+      }}
     >
       編輯個人資料
     </Button>

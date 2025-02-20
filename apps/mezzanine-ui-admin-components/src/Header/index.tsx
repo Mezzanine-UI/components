@@ -1,4 +1,11 @@
-import { FC, useState, MouseEvent, RefObject, ReactNode } from 'react';
+import {
+  FC,
+  useState,
+  MouseEvent,
+  RefObject,
+  ReactNode,
+  useCallback,
+} from 'react';
 import {
   AppBar,
   AppBarBrand,
@@ -74,7 +81,7 @@ export interface HeaderProps {
   /**
    * 自定義按鈕元件
    */
-  customizedButton?: ReactNode;
+  customizedButton?: (closeMenu: VoidFunction) => ReactNode;
   /**
    * 自定義系統名稱，顯示在下拉選單左側
    */
@@ -104,6 +111,9 @@ export const Header: FC<HeaderProps> = ({
   const { openModal, closeModal } = useModal();
   const { toggleSidebar } = useLayout();
   const [open, toggleOpen] = useState<boolean>(false);
+  const closeMenu = useCallback(() => {
+    toggleOpen(false);
+  }, []);
 
   return (
     <AppBar className={cx(classes.host, headerClassName)}>
@@ -148,7 +158,7 @@ export const Header: FC<HeaderProps> = ({
                           variant="outlined"
                           size="large"
                           onClick={() => {
-                            toggleOpen(false);
+                            closeMenu();
                             openModal({
                               className: classes.changePasswordModal,
                               disableCloseOnBackdropClick: true,
@@ -182,7 +192,9 @@ export const Header: FC<HeaderProps> = ({
                       </div>
                     )}
                     {!!customizedButton && (
-                      <div className={classes.button}>{customizedButton}</div>
+                      <div className={classes.button}>
+                        {customizedButton(closeMenu)}
+                      </div>
                     )}
                   </div>
                 )}
@@ -193,7 +205,7 @@ export const Header: FC<HeaderProps> = ({
                 size="large"
                 className={classes.logoutButton}
                 onClick={() => {
-                  toggleOpen(false);
+                  closeMenu();
                   onLogout();
                 }}
               >
@@ -201,9 +213,7 @@ export const Header: FC<HeaderProps> = ({
               </Button>
             </Menu>
           }
-          onClose={() => {
-            toggleOpen(false);
-          }}
+          onClose={closeMenu}
           popperProps={{
             open,
             disablePortal: true,
