@@ -262,7 +262,11 @@ export const CustomizedComponent: Story = {
     onLogout: async () => {
       action('onLogout')();
     },
-    customizedComponent: <div>自定義元件區</div>,
+    customizedComponent: (close) => (
+      <Button type="button" variant="text" size="large" onClick={close}>
+        自定義元件
+      </Button>
+    ),
     changePasswordModalConfig: {
       passwordLength: 10,
       generationLimit: undefined,

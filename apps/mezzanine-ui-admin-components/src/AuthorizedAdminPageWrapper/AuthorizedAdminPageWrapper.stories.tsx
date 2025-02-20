@@ -54,7 +54,11 @@ const args: AuthorizedAdminPageWrapperProps = {
   onLogout: async () => {
     action('onLogout')();
   },
-  customizedComponent: <div>自定義元件</div>,
+  customizedComponent: (close) => (
+    <Button type="button" variant="text" size="large" onClick={close}>
+      自定義元件
+    </Button>
+  ),
   customizedSystemName: (
     <Typography variant="input3" style={{ color: '#fff' }}>
       系統名稱

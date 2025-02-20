@@ -57,7 +57,7 @@ export interface HeaderProps {
   /**
    * 自定義元件，位在使用者資訊及按鈕元件之間
    */
-  customizedComponent?: ReactNode;
+  customizedComponent?: (closeMenu: VoidFunction) => ReactNode;
   /**
    * passwordLength: 密碼至少需要的長度;
    * generationLimit: 密碼不可與前 `number` 代重複;
@@ -148,7 +148,7 @@ export const Header: FC<HeaderProps> = ({
                     )}
                   </div>
                 )}
-                {customizedComponent}
+                {!!customizedComponent && customizedComponent(closeMenu)}
                 {(changePasswordModalConfig || customizedButton) && (
                   <div className={classes.buttonsWrapper}>
                     {!!changePasswordModalConfig && (

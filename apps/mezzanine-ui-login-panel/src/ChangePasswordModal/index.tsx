@@ -195,7 +195,6 @@ export const ChangePasswordModal: FC<ChangePasswordModalProps> = ({
           type: 'submit',
           size: 'large',
           variant: 'contained',
-
           loading: submitting,
           disabled:
             !(
