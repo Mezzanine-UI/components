@@ -1,3 +1,19 @@
+## 0.0.43 (2025-02-20)
+
+### 🚀 Features
+
+- **admin-components:** table layout ([8a9f58f](https://github.com/Mezzanine-UI/components/commit/8a9f58f))
+- **admin-components:** sidebar width is smaller ([c3a48b5](https://github.com/Mezzanine-UI/components/commit/c3a48b5))
+
+### 🧱 Updated Dependencies
+
+- Updated @mezzanine-ui/react-hook-form-v2 to 0.0.43
+- Updated @mezzanine-ui/login-panel to 0.0.43
+
+### ❤️ Thank You
+
+- TingTing
+
 ## 0.0.42 (2025-02-19)
 
 ### 🧱 Updated Dependencies
