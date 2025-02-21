@@ -1,3 +1,18 @@
+## 0.0.47 (2025-02-21)
+
+### 🚀 Features
+
+- **admin-components:** more class props of AdminTable ([0ba33d8](https://github.com/Mezzanine-UI/components/commit/0ba33d8))
+
+### 🧱 Updated Dependencies
+
+- Updated @mezzanine-ui/react-hook-form-v2 to 0.0.47
+- Updated @mezzanine-ui/login-panel to 0.0.47
+
+### ❤️ Thank You
+
+- TingTing
+
 ## 0.0.46 (2025-02-21)
 
 ### 🚀 Features

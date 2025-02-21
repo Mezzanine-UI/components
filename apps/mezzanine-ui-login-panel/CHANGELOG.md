@@ -1,3 +1,9 @@
+## 0.0.47 (2025-02-21)
+
+### 🧱 Updated Dependencies
+
+- Updated @mezzanine-ui/react-hook-form-v2 to 0.0.47
+
 ## 0.0.46 (2025-02-21)
 
 ### 🧱 Updated Dependencies
