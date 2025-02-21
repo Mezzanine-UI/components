@@ -1,6 +1,6 @@
 import { Key, ReactNode, useMemo } from 'react';
 import { compact } from 'lodash';
-import { Table, Tabs, TabPane, Tab } from '@mezzanine-ui/react';
+import { Table, Tabs, TabPane, Tab, EmptyProps } from '@mezzanine-ui/react';
 import {
   TableColumn,
   TableDataSourceWithID,
@@ -53,6 +53,10 @@ export type AdminTableProps<T extends TableDataSourceWithID> = {
    */
   bodyRowClassName?: string;
   /**
+   * 自定義 Table Placeholder
+   */
+  emptyProps?: EmptyProps;
+  /**
    * 自定義顯示 filters 元件
    */
   filtersComponent?: ReactNode;
@@ -84,6 +88,7 @@ export const AdminTable = <T extends TableDataSourceWithID>({
   actionsDisabled,
   className,
   bodyRowClassName,
+  emptyProps,
   // filters
   filtersComponent,
   // tabs
@@ -139,6 +144,7 @@ export const AdminTable = <T extends TableDataSourceWithID>({
         loading={loading}
         pagination={pagination}
         draggable={draggable}
+        emptyProps={emptyProps}
       />
     </div>
   );

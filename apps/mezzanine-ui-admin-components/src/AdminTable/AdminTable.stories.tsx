@@ -244,3 +244,29 @@ export const Draggable: Story = {
     return <AdminTable {...args} />;
   },
 };
+
+export const CustomizedEmpty: Story = {
+  args: {
+    dataSource: [],
+    columns,
+    loading: false,
+    pagination: {
+      current: 1,
+      total: 0,
+      onChange: action('onChange'),
+      options: {
+        pageSize: 4,
+      },
+    },
+    emptyProps: {
+      title: '查無資料',
+      children: '找不到符合條件的資料。',
+    },
+  },
+  parameters: {
+    controls: { include: ['loading', 'pagination'] },
+  },
+  render: function Render(args) {
+    return <AdminTable {...args} />;
+  },
+};
