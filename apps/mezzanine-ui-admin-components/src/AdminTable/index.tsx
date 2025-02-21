@@ -25,6 +25,10 @@ export type AdminTableProps<T extends TableDataSourceWithID> = {
    */
   scroll?: TableScrolling;
   /**
+   * 自定義 Table Scroll 區 class
+   */
+  scrollContainerClassName?: string;
+  /**
    * 若為 true，則顯示讀取狀態畫面
    */
   loading?: boolean;
@@ -45,11 +49,19 @@ export type AdminTableProps<T extends TableDataSourceWithID> = {
    */
   actionsDisabled?: (source: T) => boolean;
   /**
+   * 自定義 Table Header class
+   */
+  headerClassName?: string;
+  /**
    * 自定義 Table class
    */
   className?: string;
   /**
-   * 自定義 Table Row class
+   * 自定義 Table Body class
+   */
+  bodyClassName?: string;
+  /**
+   * 自定義 Table Body Row class
    */
   bodyRowClassName?: string;
   /**
@@ -81,12 +93,15 @@ export const AdminTable = <T extends TableDataSourceWithID>({
   dataSource,
   columns: columnsProps,
   scroll,
+  scrollContainerClassName,
   loading,
   pagination,
   draggable,
   actions,
   actionsDisabled,
+  headerClassName,
   className,
+  bodyClassName,
   bodyRowClassName,
   emptyProps,
   // filters
@@ -136,11 +151,14 @@ export const AdminTable = <T extends TableDataSourceWithID>({
       )}
       {filtersComponent}
       <Table
+        headerClassName={headerClassName}
         className={className}
+        bodyClassName={bodyClassName}
         bodyRowClassName={bodyRowClassName}
         columns={columns}
         dataSource={dataSource}
         scroll={scroll}
+        scrollContainerClassName={scrollContainerClassName}
         loading={loading}
         pagination={pagination}
         draggable={draggable}
