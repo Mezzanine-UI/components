@@ -1,3 +1,18 @@
+## 0.0.46 (2025-02-21)
+
+### 🚀 Features
+
+- **admin-components:** add emptyProps in AdminTable ([3fe93ef](https://github.com/Mezzanine-UI/components/commit/3fe93ef))
+
+### 🧱 Updated Dependencies
+
+- Updated @mezzanine-ui/react-hook-form-v2 to 0.0.46
+- Updated @mezzanine-ui/login-panel to 0.0.46
+
+### ❤️ Thank You
+
+- TingTing
+
 ## 0.0.45 (2025-02-20)
 
 ### 🩹 Fixes
