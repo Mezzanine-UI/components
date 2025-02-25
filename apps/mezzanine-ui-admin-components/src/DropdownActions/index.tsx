@@ -16,6 +16,7 @@ export type DropdownItemType = {
   text: string;
   danger?: boolean;
   hidden?: boolean;
+  disabled?: boolean;
 } & Omit<MenuItemProps, 'children'>;
 
 export type DropdownItemsType = DropdownItemType[];
@@ -78,28 +79,31 @@ export const DropdownActions: FC<DropdownActionsProps> = ({
           itemsInView={5}
           size="large"
         >
-          {items.map(({ onClick, text, danger, hidden, ...rest }, index) => {
-            if (hidden) {
-              return null;
-            }
+          {items.map(
+            ({ onClick, text, danger, hidden, disabled, ...rest }, index) => {
+              if (hidden) {
+                return null;
+              }
 
-            return (
-              <MenuItem
-                {...rest}
-                // eslint-disable-next-line react/no-array-index-key
-                key={index}
-                className={cx({
-                  [classes.dangerItem]: danger,
-                })}
-                onClick={(e) => {
-                  setOpen(false);
-                  onClick?.(e);
-                }}
-              >
-                {text}
-              </MenuItem>
-            );
-          })}
+              return (
+                <MenuItem
+                  {...rest}
+                  // eslint-disable-next-line react/no-array-index-key
+                  key={index}
+                  disabled={disabled}
+                  className={cx({
+                    [classes.dangerItem]: danger && !disabled,
+                  })}
+                  onClick={async (e) => {
+                    setOpen(false);
+                    onClick?.(e);
+                  }}
+                >
+                  {text}
+                </MenuItem>
+              );
+            },
+          )}
         </Menu>
       }
       onClose={() => {

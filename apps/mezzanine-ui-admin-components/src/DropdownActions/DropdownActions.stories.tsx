@@ -23,6 +23,11 @@ export const Default: Story = {
         onClick: action('點擊危險'),
       },
       {
+        text: '不能點',
+        disabled: true,
+        onClick: action('不能點'),
+      },
+      {
         text: '藏起來',
         hidden: true,
         onClick: action('點擊藏起來'),
