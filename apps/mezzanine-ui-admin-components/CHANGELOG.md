@@ -1,3 +1,19 @@
+## 0.0.49 (2025-02-25)
+
+### 🚀 Features
+
+- **admin-components:** dropdown divider item ([8af1f71](https://github.com/Mezzanine-UI/components/commit/8af1f71))
+- **admin-components:** dropdown item disabled props ([f6b8a30](https://github.com/Mezzanine-UI/components/commit/f6b8a30))
+
+### 🧱 Updated Dependencies
+
+- Updated @mezzanine-ui/react-hook-form-v2 to 0.0.49
+- Updated @mezzanine-ui/login-panel to 0.0.49
+
+### ❤️ Thank You
+
+- TingTing
+
 ## 0.0.48 (2025-02-25)
 
 ### 🚀 Features
