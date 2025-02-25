@@ -1,3 +1,18 @@
+## 0.0.48 (2025-02-25)
+
+### 🚀 Features
+
+- **admin-components:** divider have two layout ([d0f8544](https://github.com/Mezzanine-UI/components/commit/d0f8544))
+
+### 🧱 Updated Dependencies
+
+- Updated @mezzanine-ui/react-hook-form-v2 to 0.0.48
+- Updated @mezzanine-ui/login-panel to 0.0.48
+
+### ❤️ Thank You
+
+- TingTing
+
 ## 0.0.47 (2025-02-21)
 
 ### 🚀 Features
