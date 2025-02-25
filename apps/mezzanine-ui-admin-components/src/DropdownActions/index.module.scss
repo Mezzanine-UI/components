@@ -5,6 +5,10 @@
 
   .dangerItem {
     color: palette.color(error-dark);
+
+    &:hover {
+      background-color: palette.color(error-hover-bg);
+    }
   }
 
   .divider {
