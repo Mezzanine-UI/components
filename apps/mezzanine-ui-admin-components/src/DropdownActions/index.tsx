@@ -13,10 +13,11 @@ import { Placement } from '@popperjs/core';
 import classes from './index.module.scss';
 
 export type DropdownItemType = {
-  text: string;
+  text?: string;
   danger?: boolean;
   hidden?: boolean;
   disabled?: boolean;
+  isDivider?: boolean;
 } & Omit<MenuItemProps, 'children'>;
 
 export type DropdownItemsType = DropdownItemType[];
@@ -80,9 +81,16 @@ export const DropdownActions: FC<DropdownActionsProps> = ({
           size="large"
         >
           {items.map(
-            ({ onClick, text, danger, hidden, disabled, ...rest }, index) => {
+            (
+              { onClick, text, danger, hidden, disabled, isDivider, ...rest },
+              index,
+            ) => {
               if (hidden) {
                 return null;
+              }
+
+              if (isDivider) {
+                return <div className={classes.divider} />;
               }
 
               return (

@@ -18,6 +18,9 @@ export const Default: Story = {
         onClick: action('點擊普通'),
       },
       {
+        isDivider: true,
+      },
+      {
         text: '危險',
         danger: true,
         onClick: action('點擊危險'),

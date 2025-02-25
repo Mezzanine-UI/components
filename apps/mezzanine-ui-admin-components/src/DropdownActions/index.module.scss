@@ -6,4 +6,11 @@
   .dangerItem {
     color: palette.color(error-dark);
   }
+
+  .divider {
+    width: 100%;
+    height: 1px;
+    background-color: palette.color(border);
+    margin: 4px 0;
+  }
 }
