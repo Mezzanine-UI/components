@@ -4,4 +4,9 @@
   width: 100%;
   min-height: 1px;
   background-color: palette.color(divider);
+  margin: 4px 0;
+
+  &.isPure {
+    margin: 0;
+  }
 }

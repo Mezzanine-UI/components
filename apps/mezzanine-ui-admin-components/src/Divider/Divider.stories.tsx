@@ -29,3 +29,25 @@ export const Default: Story = {
     );
   },
 };
+
+export const Pure: Story = {
+  args: {
+    isPure: true,
+  },
+  parameters: {
+    controls: { include: ['isPure'] },
+  },
+  render: function Render(args) {
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+        <Typography variant="h2" color="primary">
+          上文
+        </Typography>
+        <Divider {...args} />
+        <Typography variant="h2" color="primary">
+          下文
+        </Typography>
+      </div>
+    );
+  },
+};
