@@ -9,16 +9,16 @@
   &.success {
     width: 420px;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
   }
 
   .logoWrapper {
     display: flex;
     align-items: center;
     justify-content: center;
-
-    &.success {
-      margin-bottom: 12px;
-    }
   }
 
   .formWrapper {
@@ -54,5 +54,10 @@
     .button {
       align-self: stretch;
     }
+  }
+
+  .backButton {
+    width: 100%;
+    margin-top: 24px;
   }
 }
