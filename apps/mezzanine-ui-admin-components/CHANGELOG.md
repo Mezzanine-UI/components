@@ -1,3 +1,18 @@
+## 0.0.50 (2025-02-26)
+
+### 🚀 Features
+
+- **admin:** better style of danger droopdown item ([2e030bd](https://github.com/Mezzanine-UI/components/commit/2e030bd))
+
+### 🧱 Updated Dependencies
+
+- Updated @mezzanine-ui/react-hook-form-v2 to 0.0.50
+- Updated @mezzanine-ui/login-panel to 0.0.50
+
+### ❤️ Thank You
+
+- TingTing
+
 ## 0.0.49 (2025-02-25)
 
 ### 🚀 Features

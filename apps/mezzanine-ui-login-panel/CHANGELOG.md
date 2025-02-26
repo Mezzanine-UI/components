@@ -1,3 +1,17 @@
+## 0.0.50 (2025-02-26)
+
+### 🚀 Features
+
+- **login-panel:** send forget password email success view ([b333f3b](https://github.com/Mezzanine-UI/components/commit/b333f3b))
+
+### 🧱 Updated Dependencies
+
+- Updated @mezzanine-ui/react-hook-form-v2 to 0.0.50
+
+### ❤️ Thank You
+
+- TingTing
+
 ## 0.0.49 (2025-02-25)
 
 ### 🧱 Updated Dependencies
