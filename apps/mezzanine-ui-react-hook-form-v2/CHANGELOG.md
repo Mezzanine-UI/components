@@ -1,3 +1,13 @@
+## 0.0.51 (2025-02-27)
+
+### 🚀 Features
+
+- **react-hook-form-v2:** cancel form need confirm or not ([8ba090b](https://github.com/Mezzanine-UI/components/commit/8ba090b))
+
+### ❤️ Thank You
+
+- TingTing
+
 ## 0.0.50 (2025-02-26)
 
 This was a version bump only for @mezzanine-ui/react-hook-form-v2 to align it with other projects, there were no code changes.

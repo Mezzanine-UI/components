@@ -1,3 +1,19 @@
+## 0.0.51 (2025-02-27)
+
+### 🚀 Features
+
+- **admin-components:** dialog layout ([0c41a49](https://github.com/Mezzanine-UI/components/commit/0c41a49))
+- **admin-components:** cancel confirm dialog ([aed7b49](https://github.com/Mezzanine-UI/components/commit/aed7b49))
+
+### 🧱 Updated Dependencies
+
+- Updated @mezzanine-ui/react-hook-form-v2 to 0.0.51
+- Updated @mezzanine-ui/login-panel to 0.0.51
+
+### ❤️ Thank You
+
+- TingTing
+
 ## 0.0.50 (2025-02-26)
 
 ### 🚀 Features

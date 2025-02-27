@@ -1,6 +1,6 @@
 {
   "name": "@mezzanine-ui/login-panel",
-  "version": "0.0.50",
+  "version": "0.0.51",
   "main": "index.cjs",
   "module": "index.js",
   "type": "module",
@@ -18,7 +18,7 @@
   "dependencies": {
     "@hookform/error-message": "^2.0.1",
     "@hookform/resolvers": "^3.9.1",
-    "@mezzanine-ui/react-hook-form-v2": "^0.0.50",
+    "@mezzanine-ui/react-hook-form-v2": "^0.0.51",
     "yup": "^1.6.1"
   },
   "packageManager": "yarn@4.4.0"
