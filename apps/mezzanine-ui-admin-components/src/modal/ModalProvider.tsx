@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
-import { FC, ReactNode, useState, memo } from 'react';
+import { FC, ReactNode, useState, useCallback, memo } from 'react';
 import { Modal } from '@mezzanine-ui/react';
 import { ModalContextProvider } from './ModalContext';
 import { ModalConfigType } from './typing';
@@ -19,10 +19,10 @@ const ModalProvider: FC<{ children?: ReactNode }> = ({ children }) => {
     onClose,
   } = modalConfig;
 
-  const openModal = (config: ModalConfigType) => {
+  const openModal = useCallback((config: ModalConfigType) => {
     setOpen(true);
     setModalConfig(config);
-  };
+  }, []);
 
   return (
     <ModalContextProvider
