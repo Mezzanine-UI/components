@@ -10,7 +10,13 @@ import {
   Typography,
   cx,
 } from '@mezzanine-ui/react';
-import { InfoCircleFilledIcon } from '@mezzanine-ui/icons';
+import {
+  InfoCircleFilledIcon,
+  CheckCircleFilledIcon,
+  ExclamationCircleFilledIcon,
+  TimesCircleFilledIcon,
+} from '@mezzanine-ui/icons';
+import { Severity } from '@mezzanine-ui/system/severity';
 import { DeepRequired, FieldErrorsImpl, useFormContext } from 'react-hook-form';
 import { ErrorMessageFn } from '../typing';
 import classes from './index.module.scss';
@@ -35,8 +41,22 @@ export interface BaseFieldProps {
   width?: number;
   errorMsgRender?: ErrorMessageFn;
   horizontal?: boolean;
-  hints?: string[];
+  hints?: string[] | { severity: Severity | 'info'; text: string }[];
 }
+
+const hintIcons = {
+  info: InfoCircleFilledIcon,
+  success: CheckCircleFilledIcon,
+  warning: ExclamationCircleFilledIcon,
+  error: TimesCircleFilledIcon,
+} as const;
+
+const hintColors = {
+  info: 'primary',
+  success: 'success',
+  warning: 'warning',
+  error: 'error',
+} as const;
 
 export const BaseField: FC<BaseFieldProps> = ({
   children,
@@ -108,14 +128,35 @@ export const BaseField: FC<BaseFieldProps> = ({
           {children}
           {hints.length > 0 && (
             <div className={classes.hintsWrapper}>
-              {hints.map((hint) => (
-                <div key={hint} className={classes.hintWrapper}>
-                  <Icon icon={InfoCircleFilledIcon} size={16} color="primary" />
-                  <Typography variant="caption" color="text-secondary">
-                    {hint}
-                  </Typography>
-                </div>
-              ))}
+              {hints.map((hint) => {
+                if (typeof hint === 'string') {
+                  return (
+                    <div key={hint} className={classes.hintWrapper}>
+                      <Icon
+                        icon={InfoCircleFilledIcon}
+                        size={16}
+                        color="primary"
+                      />
+                      <Typography variant="caption" color="text-secondary">
+                        {hint}
+                      </Typography>
+                    </div>
+                  );
+                }
+
+                return (
+                  <div key={hint.text} className={classes.hintWrapper}>
+                    <Icon
+                      icon={hintIcons[hint.severity]}
+                      size={16}
+                      color={hintColors[hint.severity]}
+                    />
+                    <Typography variant="caption" color="text-secondary">
+                      {hint.text}
+                    </Typography>
+                  </div>
+                );
+              })}
             </div>
           )}
         </div>
