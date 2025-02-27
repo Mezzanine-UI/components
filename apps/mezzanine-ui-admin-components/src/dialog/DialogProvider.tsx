@@ -70,13 +70,10 @@ const DialogProvider: FC<{ children?: ReactNode }> = ({ children }) => {
             handleResolveActions(false);
           }}
           open={open}
+          size="small"
           className={cx(classes.host, className)}
         >
-          <ModalHeader
-            showSeverityIcon
-            titleLarge={titleLarge}
-            className={classes.modalHeader}
-          >
+          <ModalHeader showSeverityIcon titleLarge={titleLarge}>
             {title}
           </ModalHeader>
           <ModalBody className={classes.modalBody}>{dialogChildren}</ModalBody>

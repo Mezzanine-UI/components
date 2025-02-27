@@ -185,7 +185,8 @@ const DialogModalSample = () => {
           const isConfirm = await openDialog({
             severity: 'error',
             title: '確認刪除？',
-            children: '內容將一併刪除，此動作無法復原。',
+            children: `內容將一併刪除，此動作無法復原。
+確定要刪除嗎？`,
             cancelText: '取消',
             cancelButtonProps: {
               danger: false,
