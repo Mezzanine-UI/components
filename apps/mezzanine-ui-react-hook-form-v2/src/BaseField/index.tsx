@@ -51,8 +51,15 @@ const hintIcons = {
   error: TimesCircleFilledIcon,
 } as const;
 
-const hintColors = {
+const hintIconColors = {
   info: 'primary',
+  success: 'success',
+  warning: 'warning',
+  error: 'error',
+} as const;
+
+const hintTextColors = {
+  info: 'text-secondary',
   success: 'success',
   warning: 'warning',
   error: 'error',
@@ -133,11 +140,14 @@ export const BaseField: FC<BaseFieldProps> = ({
                   return (
                     <div key={hint} className={classes.hintWrapper}>
                       <Icon
-                        icon={InfoCircleFilledIcon}
+                        icon={hintIcons['info']}
                         size={16}
-                        color="primary"
+                        color={hintIconColors['info']}
                       />
-                      <Typography variant="caption" color="text-secondary">
+                      <Typography
+                        variant="caption"
+                        color={hintTextColors['info']}
+                      >
                         {hint}
                       </Typography>
                     </div>
@@ -149,9 +159,12 @@ export const BaseField: FC<BaseFieldProps> = ({
                     <Icon
                       icon={hintIcons[hint.severity]}
                       size={16}
-                      color={hintColors[hint.severity]}
+                      color={hintIconColors[hint.severity]}
                     />
-                    <Typography variant="caption" color="text-secondary">
+                    <Typography
+                      variant="caption"
+                      color={hintTextColors[hint.severity]}
+                    >
                       {hint.text}
                     </Typography>
                   </div>

@@ -28,20 +28,20 @@ export const Default: Story = {
     remark: 'remark',
     hints: [
       {
-        severity: 'warning',
-        text: 'warning',
-      },
-      {
         severity: 'info',
         text: 'info',
       },
       {
-        severity: 'error',
-        text: 'error',
-      },
-      {
         severity: 'success',
         text: 'success',
+      },
+      {
+        severity: 'warning',
+        text: 'warning',
+      },
+      {
+        severity: 'error',
+        text: 'error',
       },
     ],
   },
