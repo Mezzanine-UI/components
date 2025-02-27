@@ -5,81 +5,85 @@
   top: 0;
   left: 0;
   right: 0;
-  height: var(--header-height);
-  background-color: palette.color(primary);
-  padding: 0 24px;
-  max-height: unset;
   z-index: 15;
 
-  .burgerBtn {
-    margin-right: 24px;
-  }
+  .header {
+    width: 100%;
+    height: var(--header-height);
+    background-color: palette.color(primary);
+    padding: 0 24px;
+    max-height: unset;
 
-  .appBarSupport {
-    .dropdownBtn {
-      padding: 4px;
-      margin: 0;
-
-      .iconsContainer {
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-
-        .dropdownIcon {
-          transition: transform 0.3s ease-in-out;
-
-          &.open {
-            transform: rotate(180deg);
-          }
-        }
-      }
+    .burgerBtn {
+      margin-right: 24px;
     }
 
-    .menu {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 350px;
-      padding: 0;
-      max-height: unset;
+    .appBarSupport {
+      .dropdownBtn {
+        padding: 4px;
+        margin: 0;
 
-      .wrapper {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        align-self: stretch;
-        gap: 24px;
-        padding: 24px 24px 32px;
-
-        .infoWrapper {
-          align-self: stretch;
-
-          .nameWrapper {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-          }
-        }
-
-        .buttonsWrapper {
-          align-self: stretch;
+        .iconsContainer {
           display: flex;
           align-items: center;
-          justify-content: space-between;
-          gap: 16px;
+          justify-content: flex-start;
 
-          .button {
-            flex: 1;
+          .dropdownIcon {
+            transition: transform 0.3s ease-in-out;
 
-            & > * {
-              width: 100%;
+            &.open {
+              transform: rotate(180deg);
             }
           }
         }
       }
 
-      .logoutButton {
-        width: 100%;
+      .menu {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 350px;
+        padding: 0;
+        max-height: unset;
+
+        .wrapper {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          align-self: stretch;
+          gap: 24px;
+          padding: 24px 24px 32px;
+
+          .infoWrapper {
+            align-self: stretch;
+
+            .nameWrapper {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+            }
+          }
+
+          .buttonsWrapper {
+            align-self: stretch;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+
+            .button {
+              flex: 1;
+
+              & > * {
+                width: 100%;
+              }
+            }
+          }
+        }
+
+        .logoutButton {
+          width: 100%;
+        }
       }
     }
   }

@@ -116,137 +116,139 @@ export const Header: FC<HeaderProps> = ({
   }, []);
 
   return (
-    <AppBar className={cx(classes.host, headerClassName)}>
-      <IconButton
-        type="button"
-        className={classes.burgerBtn}
-        onClick={toggleSidebar}
-      >
-        <Icon icon={MenuIcon} color={iconColor} />
-      </IconButton>
-      <AppBarBrand>{logo}</AppBarBrand>
-      <AppBarSupport className={classes.appBarSupport}>
-        {!!customizedSystemName && <div>{customizedSystemName}</div>}
-        <Dropdown
-          menu={
-            <Menu className={classes.menu} size="large">
-              <div className={classes.wrapper}>
-                {(name || role || account) && (
-                  <div className={classes.infoWrapper}>
-                    <div className={classes.nameWrapper}>
-                      {!!name && (
+    <div className={classes.host}>
+      <AppBar className={cx(classes.header, headerClassName)}>
+        <IconButton
+          type="button"
+          className={classes.burgerBtn}
+          onClick={toggleSidebar}
+        >
+          <Icon icon={MenuIcon} color={iconColor} />
+        </IconButton>
+        <AppBarBrand>{logo}</AppBarBrand>
+        <AppBarSupport className={classes.appBarSupport}>
+          {!!customizedSystemName && <div>{customizedSystemName}</div>}
+          <Dropdown
+            menu={
+              <Menu className={classes.menu} size="large">
+                <div className={classes.wrapper}>
+                  {(name || role || account) && (
+                    <div className={classes.infoWrapper}>
+                      <div className={classes.nameWrapper}>
+                        {!!name && (
+                          <Typography variant="h5" color="text-primary">
+                            {name}
+                          </Typography>
+                        )}
+                        {!!role && <Tag>{role}</Tag>}
+                      </div>
+                      {!!account && (
                         <Typography variant="h5" color="text-primary">
-                          {name}
+                          {account}
                         </Typography>
                       )}
-                      {!!role && <Tag>{role}</Tag>}
                     </div>
-                    {!!account && (
-                      <Typography variant="h5" color="text-primary">
-                        {account}
-                      </Typography>
-                    )}
-                  </div>
-                )}
-                {!!customizedComponent && customizedComponent(closeMenu)}
-                {(changePasswordModalConfig || customizedButton) && (
-                  <div className={classes.buttonsWrapper}>
-                    {!!changePasswordModalConfig && (
-                      <div className={classes.button}>
-                        <Button
-                          type="button"
-                          variant="outlined"
-                          size="large"
-                          onClick={() => {
-                            closeMenu();
-                            openModal({
-                              className: classes.changePasswordModal,
-                              disableCloseOnBackdropClick: true,
-                              children: (
-                                <ChangePasswordModal
-                                  passwordLength={
-                                    changePasswordModalConfig.passwordLength
-                                  }
-                                  generationLimit={
-                                    changePasswordModalConfig.generationLimit
-                                  }
-                                  onChangePassword={
-                                    changePasswordModalConfig.onChangePassword
-                                  }
-                                  onBack={changePasswordModalConfig.onBack}
-                                  account={account}
-                                  onCancel={closeModal}
-                                  customizedHint={
-                                    changePasswordModalConfig.customizedHint
-                                  }
-                                  customizedRule={
-                                    changePasswordModalConfig.customizedRule
-                                  }
-                                />
-                              ),
-                            });
-                          }}
-                        >
-                          更改密碼
-                        </Button>
-                      </div>
-                    )}
-                    {!!customizedButton && (
-                      <div className={classes.button}>
-                        {customizedButton(closeMenu)}
-                      </div>
-                    )}
-                  </div>
-                )}
-              </div>
+                  )}
+                  {!!customizedComponent && customizedComponent(closeMenu)}
+                  {(changePasswordModalConfig || customizedButton) && (
+                    <div className={classes.buttonsWrapper}>
+                      {!!changePasswordModalConfig && (
+                        <div className={classes.button}>
+                          <Button
+                            type="button"
+                            variant="outlined"
+                            size="large"
+                            onClick={() => {
+                              closeMenu();
+                              openModal({
+                                className: classes.changePasswordModal,
+                                disableCloseOnBackdropClick: true,
+                                children: (
+                                  <ChangePasswordModal
+                                    passwordLength={
+                                      changePasswordModalConfig.passwordLength
+                                    }
+                                    generationLimit={
+                                      changePasswordModalConfig.generationLimit
+                                    }
+                                    onChangePassword={
+                                      changePasswordModalConfig.onChangePassword
+                                    }
+                                    onBack={changePasswordModalConfig.onBack}
+                                    account={account}
+                                    onCancel={closeModal}
+                                    customizedHint={
+                                      changePasswordModalConfig.customizedHint
+                                    }
+                                    customizedRule={
+                                      changePasswordModalConfig.customizedRule
+                                    }
+                                  />
+                                ),
+                              });
+                            }}
+                          >
+                            更改密碼
+                          </Button>
+                        </div>
+                      )}
+                      {!!customizedButton && (
+                        <div className={classes.button}>
+                          {customizedButton(closeMenu)}
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
+                <Button
+                  type="button"
+                  variant="contained"
+                  size="large"
+                  className={classes.logoutButton}
+                  onClick={async () => {
+                    closeMenu();
+                    await onLogout();
+                  }}
+                >
+                  登出
+                </Button>
+              </Menu>
+            }
+            onClose={closeMenu}
+            popperProps={{
+              open,
+              disablePortal: true,
+              options: {
+                placement: 'bottom-end',
+              },
+            }}
+          >
+            {(ref) => (
               <Button
                 type="button"
-                variant="contained"
-                size="large"
-                className={classes.logoutButton}
-                onClick={async () => {
-                  closeMenu();
-                  await onLogout();
+                ref={ref as RefObject<HTMLButtonElement>}
+                className={classes.dropdownBtn}
+                onClick={(event: MouseEvent<HTMLButtonElement>) => {
+                  event.stopPropagation();
+                  toggleOpen((s) => !s);
                 }}
               >
-                登出
+                <div className={classes.iconsContainer}>
+                  <Icon size={24} icon={ProfileIcon} color={iconColor} />
+                  <Icon
+                    size={24}
+                    icon={ChevronDownIcon}
+                    color={iconColor}
+                    className={cx(classes.dropdownIcon, {
+                      [classes.open]: open,
+                    })}
+                  />
+                </div>
               </Button>
-            </Menu>
-          }
-          onClose={closeMenu}
-          popperProps={{
-            open,
-            disablePortal: true,
-            options: {
-              placement: 'bottom-end',
-            },
-          }}
-        >
-          {(ref) => (
-            <Button
-              type="button"
-              ref={ref as RefObject<HTMLButtonElement>}
-              className={classes.dropdownBtn}
-              onClick={(event: MouseEvent<HTMLButtonElement>) => {
-                event.stopPropagation();
-                toggleOpen((s) => !s);
-              }}
-            >
-              <div className={classes.iconsContainer}>
-                <Icon size={24} icon={ProfileIcon} color={iconColor} />
-                <Icon
-                  size={24}
-                  icon={ChevronDownIcon}
-                  color={iconColor}
-                  className={cx(classes.dropdownIcon, {
-                    [classes.open]: open,
-                  })}
-                />
-              </div>
-            </Button>
-          )}
-        </Dropdown>
-      </AppBarSupport>
-    </AppBar>
+            )}
+          </Dropdown>
+        </AppBarSupport>
+      </AppBar>
+    </div>
   );
 };
