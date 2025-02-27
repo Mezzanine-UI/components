@@ -25,12 +25,18 @@ interface ForgetProps {
     values: ForgetFormValues;
   }) => Promise<boolean>;
   setCurrentPage: Dispatch<SetStateAction<LoginPageEnum>>;
+  forgetPasswordAccountFieldPlaceholder: string;
+  forgetPasswordHint: string;
+  forgetPasswordSuccessHint: string;
 }
 
 const Forget: FC<ForgetProps> = ({
   logo,
   onSendForgetAccount,
   setCurrentPage,
+  forgetPasswordAccountFieldPlaceholder,
+  forgetPasswordHint,
+  forgetPasswordSuccessHint,
 }) => {
   const [isSuccess, setIsSuccess] = useState<boolean>(false);
 
@@ -69,6 +75,7 @@ const Forget: FC<ForgetProps> = ({
         onBack={() => {
           setCurrentPage(LoginPageEnum.LOGIN);
         }}
+        forgetPasswordSuccessHint={forgetPasswordSuccessHint}
       />
     );
   }
@@ -88,11 +95,9 @@ const Forget: FC<ForgetProps> = ({
           variant="h5"
           color="text-primary"
           align="center"
-          style={{ marginTop: -8 }}
+          style={{ marginTop: -8, whiteSpace: 'pre-line' }}
         >
-          請輸入註冊時使用的email帳號
-          <br />
-          密碼重置連結將發送至該信箱
+          {forgetPasswordHint}
         </Typography>
         <div className={classes.blocksWrapper}>
           <div className={classes.blockWrapper}>
@@ -100,7 +105,7 @@ const Forget: FC<ForgetProps> = ({
               registerName="account"
               label="帳號"
               size="large"
-              placeholder="輸入帳號 e.g. example@email.com"
+              placeholder={forgetPasswordAccountFieldPlaceholder}
               className={classes.inputWrapper}
               inputClassName={classes.input}
               required

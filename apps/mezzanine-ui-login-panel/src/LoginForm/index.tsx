@@ -91,6 +91,18 @@ export interface LoginFormProps {
    * 帳號欄位 placeholder
    */
   accountFieldPlaceholder?: string;
+  /**
+   * 忘記密碼帳號欄位 placeholder
+   */
+  forgetPasswordAccountFieldPlaceholder?: string;
+  /**
+   * 忘記密碼提示，預設值 `請輸入註冊時使用的email帳號 密碼重置連結將發送至該信箱`
+   */
+  forgetPasswordHint?: string;
+  /**
+   * 忘記密碼成功後提示，預設值 `請於1小時內點擊連結設定密碼。 若未收到email或遇連結失效請聯絡管理員。`
+   */
+  forgetPasswordSuccessHint?: string;
 }
 
 /**
@@ -112,6 +124,11 @@ export const LoginForm: FC<LoginFormProps> = ({
   customizedLoginPasswordHint,
   notShowForgotPassword = false,
   accountFieldPlaceholder = '請輸入帳號',
+  forgetPasswordAccountFieldPlaceholder = '輸入帳號 e.g. example@email.com',
+  forgetPasswordHint = `請輸入註冊時使用的email帳號
+密碼重置連結將發送至該信箱`,
+  forgetPasswordSuccessHint = `請於1小時內點擊連結設定密碼。
+若未收到email或遇連結失效請聯絡管理員。`,
 }) => {
   const [currentPage, setCurrentPage] = useState<LoginPageEnum>(
     LoginPageEnum.LOGIN,
@@ -145,6 +162,11 @@ export const LoginForm: FC<LoginFormProps> = ({
           logo={logo}
           onSendForgetAccount={onSendForgetAccount}
           setCurrentPage={setCurrentPage}
+          forgetPasswordAccountFieldPlaceholder={
+            forgetPasswordAccountFieldPlaceholder
+          }
+          forgetPasswordHint={forgetPasswordHint}
+          forgetPasswordSuccessHint={forgetPasswordSuccessHint}
         />
       );
 

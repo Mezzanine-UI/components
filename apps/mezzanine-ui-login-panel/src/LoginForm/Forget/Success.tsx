@@ -6,9 +6,14 @@ import classes from './index.module.scss';
 interface SuccessProps {
   account: string;
   onBack: VoidFunction;
+  forgetPasswordSuccessHint: string;
 }
 
-const Success: FC<SuccessProps> = ({ account, onBack }) => {
+const Success: FC<SuccessProps> = ({
+  account,
+  onBack,
+  forgetPasswordSuccessHint,
+}) => {
   return (
     <div className={cx(classes.root, classes.success)}>
       <Icon icon={CheckCircleFilledIcon} color="success" size={50} />
@@ -23,10 +28,9 @@ const Success: FC<SuccessProps> = ({ account, onBack }) => {
         color="text-secondary"
         component="p"
         align="center"
+        style={{ whiteSpace: 'pre-line' }}
       >
-        請於1小時內點擊連結設定密碼。
-        <br />
-        若未收到email或遇連結失效請聯絡管理員。
+        {forgetPasswordSuccessHint}
       </Typography>
       <Button
         type="button"
