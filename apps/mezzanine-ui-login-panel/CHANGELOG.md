@@ -1,3 +1,18 @@
+## 0.0.52 (2025-02-27)
+
+### 🚀 Features
+
+- **login-panel:** customize placeholder and hint for forget-password ([c07074c](https://github.com/Mezzanine-UI/components/commit/c07074c))
+- **login-panel:** customize account field placeholder in login form ([554b1b4](https://github.com/Mezzanine-UI/components/commit/554b1b4))
+
+### 🧱 Updated Dependencies
+
+- Updated @mezzanine-ui/react-hook-form-v2 to 0.0.52
+
+### ❤️ Thank You
+
+- TingTing
+
 ## 0.0.51 (2025-02-27)
 
 ### 🧱 Updated Dependencies

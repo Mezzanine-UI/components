@@ -1,3 +1,18 @@
+## 0.0.52 (2025-02-27)
+
+### 🚀 Features
+
+- **admin:** add back button in page wrapper ([1c58f34](https://github.com/Mezzanine-UI/components/commit/1c58f34))
+
+### 🧱 Updated Dependencies
+
+- Updated @mezzanine-ui/react-hook-form-v2 to 0.0.52
+- Updated @mezzanine-ui/login-panel to 0.0.52
+
+### ❤️ Thank You
+
+- TingTing
+
 ## 0.0.51 (2025-02-27)
 
 ### 🚀 Features
