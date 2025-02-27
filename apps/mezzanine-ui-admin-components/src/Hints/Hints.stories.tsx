@@ -12,9 +12,10 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     hints: ['第一行', '第二行', '第三行'],
+    gap: 4,
   },
   parameters: {
-    controls: { include: ['hints'] },
+    controls: { include: ['hints', 'gap'] },
   },
   render: function Render(args) {
     return <Hints {...args} />;

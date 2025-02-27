@@ -12,7 +12,7 @@ export interface InformationProps {
   /**
    * 資訊模式，icon、顏色會不同
    */
-  mode?: 'info' | 'success' | 'warning' | 'error';
+  severity?: 'info' | 'success' | 'warning' | 'error';
   /**
    * 文字
    */
@@ -27,12 +27,12 @@ export interface InformationProps {
  * 資訊文字
  */
 export const Information: FC<InformationProps> = ({
-  mode = 'info',
+  severity = 'info',
   text,
   alignStart = false,
 }) => {
   const iconComponent = useMemo(() => {
-    switch (mode) {
+    switch (severity) {
       case 'info':
         return <Icon icon={InfoCircleFilledIcon} size={16} color="primary" />;
 
@@ -50,10 +50,10 @@ export const Information: FC<InformationProps> = ({
       default:
         return null;
     }
-  }, [mode]);
+  }, [severity]);
 
   const textColor = useMemo((): TypographyColor => {
-    switch (mode) {
+    switch (severity) {
       case 'info':
         return 'text-secondary';
 
@@ -69,7 +69,7 @@ export const Information: FC<InformationProps> = ({
       default:
         return 'text-secondary';
     }
-  }, [mode]);
+  }, [severity]);
 
   return (
     <div

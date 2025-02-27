@@ -11,12 +11,12 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    mode: 'info',
+    severity: 'info',
     text: '範例文字',
     alignStart: false,
   },
   parameters: {
-    controls: { include: ['mode', 'text', 'alignStart'] },
+    controls: { include: ['severity', 'text', 'alignStart'] },
   },
   render: function Render(args) {
     return <Information {...args} />;
@@ -25,13 +25,13 @@ export const Default: Story = {
 
 export const MoreText: Story = {
   args: {
-    mode: 'info',
+    severity: 'info',
     text: `範例文字
 範例文字`,
     alignStart: true,
   },
   parameters: {
-    controls: { include: ['mode', 'text', 'alignStart'] },
+    controls: { include: ['severity', 'text', 'alignStart'] },
   },
   render: function Render(args) {
     return <Information {...args} />;
