@@ -62,6 +62,63 @@ export const Default: Story = {
   },
 };
 
+export const CustomizeWording: Story = {
+  args: {
+    logo: (
+      <div
+        style={{
+          width: 134,
+          height: 100,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          border: '1px solid #212121',
+        }}
+      >
+        Logo
+      </div>
+    ),
+    passwordLength: 10,
+    keepPasswordDaysLimit: 60,
+    generalLoginText: undefined,
+    onLogin: async ({ values }) => {
+      action('onLogin')(values);
+    },
+    onNeedChangePassword: async ({ values, account, oldPassword }) => {
+      action('onNeedChangePassword')({ values, account, oldPassword });
+      return true;
+    },
+    onSendForgetAccount: async ({ values }) => {
+      action('onSendForgetAccount')(values);
+      return true;
+    },
+    accountFieldPlaceholder: '請輸入手機',
+    forgetPasswordAccountFieldPlaceholder: '請輸入手機 e.g. 0912345678',
+    forgetPasswordHint: `請輸入註冊時使用的手機號碼
+密碼重置連結將發送至該手機`,
+    forgetPasswordSuccessHint: `請於1小時內點擊連結設定密碼。
+若未收到連結或遇連結失效請聯絡管理員。`,
+  },
+  parameters: {
+    controls: {
+      include: ['passwordLength', 'keepPasswordDaysLimit', 'generalLoginText'],
+    },
+  },
+  render: function Render(args) {
+    return (
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
+        <LoginForm {...args} />
+      </div>
+    );
+  },
+};
+
 export const HaveNoForgotPassword: Story = {
   args: {
     logo: (
