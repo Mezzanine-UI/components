@@ -16,3 +16,9 @@ export interface DialogConfigType
   disableActions?: boolean;
   resolve?: (value: boolean) => void;
 }
+
+export interface DialogHookValue {
+  openDialog: (config: DialogConfigType) => void | Promise<boolean>;
+  openCancelConfirmDialog: (onCancel: VoidFunction) => Promise<void>;
+  closeDialog: VoidFunction;
+}

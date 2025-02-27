@@ -165,7 +165,7 @@ export const FormPage: Story = {
 };
 
 const DialogModalSample = () => {
-  const { openDialog } = useDialog();
+  const { openDialog, openCancelConfirmDialog } = useDialog();
   const { openModal } = useModal();
 
   return (
@@ -199,6 +199,16 @@ const DialogModalSample = () => {
         }}
       >
         open dialog
+      </Button>
+      <Button
+        type="button"
+        size="large"
+        variant="outlined"
+        onClick={async () => {
+          await openCancelConfirmDialog(action('onCancel'));
+        }}
+      >
+        open cancel confirm dialog
       </Button>
       <Button
         type="button"

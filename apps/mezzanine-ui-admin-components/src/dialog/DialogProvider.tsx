@@ -66,7 +66,6 @@ const DialogProvider: FC<{ children?: ReactNode }> = ({ children }) => {
           {...rest}
           severity={severity}
           disableCloseOnBackdropClick
-          hideCloseIcon
           onClose={() => {
             handleResolveActions(false);
           }}

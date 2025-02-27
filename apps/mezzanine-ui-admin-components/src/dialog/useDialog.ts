@@ -1,12 +1,10 @@
 import { useContext } from 'react';
-import { DialogContext, DialogContextValues } from './DialogContext';
+import { DialogContext } from './DialogContext';
+import { DialogHookValue } from './typing';
 
-export const useDialog = (): DialogContextValues => {
-  const {
-    openDialog: configOpenDialog,
-    closeDialog,
-    resolve,
-  } = useContext(DialogContext);
+export const useDialog = (): DialogHookValue => {
+  const { openDialog: configOpenDialog, closeDialog } =
+    useContext(DialogContext);
 
   const openDialog = ({ ...options }) =>
     new Promise<boolean>((resolver) => {
@@ -16,9 +14,28 @@ export const useDialog = (): DialogContextValues => {
       });
     });
 
+  const openCancelConfirmDialog = async (onCancel: VoidFunction) => {
+    const isConfirm = await openDialog({
+      title: '確認取消',
+      children: '取消不會儲存內容，確定取消？',
+      cancelText: '取消',
+      cancelButtonProps: {
+        danger: false,
+      },
+      confirmText: '確認取消',
+      confirmButtonProps: {
+        danger: false,
+      },
+    });
+
+    if (isConfirm) {
+      onCancel();
+    }
+  };
+
   return {
     openDialog,
+    openCancelConfirmDialog,
     closeDialog,
-    resolve,
   };
 };
