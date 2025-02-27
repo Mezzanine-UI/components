@@ -20,6 +20,7 @@ interface GeneralLoginProps {
   logo?: ReactNode;
   generalLoginText: string;
   onLogin: ({ values }: { values: LoginFormValues }) => Promise<void>;
+  accountFieldPlaceholder: string;
   setCurrentPage: Dispatch<SetStateAction<LoginPageEnum>>;
   customizedLoginPasswordHint?: string[];
   notShowForgotPassword?: boolean;
@@ -29,6 +30,7 @@ const GeneralLogin: FC<GeneralLoginProps> = ({
   logo,
   generalLoginText,
   onLogin,
+  accountFieldPlaceholder,
   setCurrentPage,
   customizedLoginPasswordHint,
   notShowForgotPassword = false,
@@ -69,7 +71,7 @@ const GeneralLogin: FC<GeneralLoginProps> = ({
           registerName="account"
           label="帳號"
           size="large"
-          placeholder="請輸入帳號"
+          placeholder={accountFieldPlaceholder}
           className={classes.inputWrapper}
           inputClassName={classes.input}
           required

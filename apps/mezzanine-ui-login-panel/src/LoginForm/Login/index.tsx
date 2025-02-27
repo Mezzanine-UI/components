@@ -46,6 +46,7 @@ interface LoginProps {
   customizedRule?: RegExp;
   customizedLoginPasswordHint?: string[];
   notShowForgotPassword?: boolean;
+  accountFieldPlaceholder: string;
 }
 
 const Login: FC<LoginProps> = ({
@@ -63,6 +64,7 @@ const Login: FC<LoginProps> = ({
   customizedRule,
   customizedLoginPasswordHint,
   notShowForgotPassword = false,
+  accountFieldPlaceholder,
 }) => {
   const [needChangePasswordParams, setNeedChangePasswordParams] = useState<{
     account: string;
@@ -125,6 +127,7 @@ const Login: FC<LoginProps> = ({
       logo={logo}
       generalLoginText={generalLoginText}
       onLogin={onLogin}
+      accountFieldPlaceholder={accountFieldPlaceholder}
       setCurrentPage={setCurrentPage}
       customizedLoginPasswordHint={customizedLoginPasswordHint}
       notShowForgotPassword={notShowForgotPassword}

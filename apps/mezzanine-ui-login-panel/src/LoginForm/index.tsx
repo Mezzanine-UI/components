@@ -29,7 +29,7 @@ export interface LoginFormProps {
    */
   keepPasswordDaysLimit?: number;
   /**
-   * 登入顯示的字，預設 `登入`
+   * 登入顯示的字
    */
   generalLoginText?: string;
   /**
@@ -87,6 +87,10 @@ export interface LoginFormProps {
    * 是否顯示忘記密碼
    */
   notShowForgotPassword?: boolean;
+  /**
+   * 帳號欄位 placeholder
+   */
+  accountFieldPlaceholder?: string;
 }
 
 /**
@@ -107,6 +111,7 @@ export const LoginForm: FC<LoginFormProps> = ({
   customizedRule,
   customizedLoginPasswordHint,
   notShowForgotPassword = false,
+  accountFieldPlaceholder = '請輸入帳號',
 }) => {
   const [currentPage, setCurrentPage] = useState<LoginPageEnum>(
     LoginPageEnum.LOGIN,
@@ -122,6 +127,7 @@ export const LoginForm: FC<LoginFormProps> = ({
           keepPasswordDaysLimit={keepPasswordDaysLimit}
           generalLoginText={generalLoginText}
           onLogin={onLogin}
+          accountFieldPlaceholder={accountFieldPlaceholder}
           onNeedChangePassword={onNeedChangePassword}
           setCurrentPage={setCurrentPage}
           customizedActivateFields={customizedActivateFields}
