@@ -1,3 +1,18 @@
+## 0.0.54 (2025-02-27)
+
+### 🚀 Features
+
+- **admin-components:** rename information props and refactor gap of hints ([2f614e1](https://github.com/Mezzanine-UI/components/commit/2f614e1))
+
+### 🧱 Updated Dependencies
+
+- Updated @mezzanine-ui/react-hook-form-v2 to 0.0.54
+- Updated @mezzanine-ui/login-panel to 0.0.54
+
+### ❤️ Thank You
+
+- TingTing
+
 ## 0.0.53 (2025-02-27)
 
 ### 🚀 Features

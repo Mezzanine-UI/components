@@ -1,3 +1,17 @@
+## 0.0.54 (2025-02-27)
+
+### 🚀 Features
+
+- **login-panel:** password hint layout ([34a3cf6](https://github.com/Mezzanine-UI/components/commit/34a3cf6))
+
+### 🧱 Updated Dependencies
+
+- Updated @mezzanine-ui/react-hook-form-v2 to 0.0.54
+
+### ❤️ Thank You
+
+- TingTing
+
 ## 0.0.53 (2025-02-27)
 
 ### 🧱 Updated Dependencies
