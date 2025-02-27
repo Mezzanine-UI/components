@@ -15,6 +15,7 @@ export const Default: Story = {
   args: {
     title: '管理帳號',
     isFormPage: false,
+    onBack: action('onBack'),
     children: (
       <div
         style={{

@@ -1,6 +1,6 @@
 import { FC, ReactNode } from 'react';
 import { Typography, Button, Icon, cx } from '@mezzanine-ui/react';
-import { PlusIcon } from '@mezzanine-ui/icons';
+import { PlusIcon, ChevronLeftIcon } from '@mezzanine-ui/icons';
 import classes from './index.module.scss';
 
 export interface PageWrapperProps {
@@ -29,6 +29,14 @@ export interface PageWrapperProps {
    * 新增按鈕名稱
    */
   createText?: string;
+  /**
+   * 點擊返回按鈕時觸發
+   */
+  onBack?: VoidFunction;
+  /**
+   * 返回按鈕文字
+   */
+  backText?: string;
 }
 
 export const PageWrapper: FC<PageWrapperProps> = ({
@@ -39,6 +47,8 @@ export const PageWrapper: FC<PageWrapperProps> = ({
   onCreate,
   createButtonDisabled,
   createText,
+  onBack,
+  backText = '返回列表',
 }) => {
   return (
     <div
@@ -46,6 +56,18 @@ export const PageWrapper: FC<PageWrapperProps> = ({
         [classes.isFormPage]: isFormPage,
       })}
     >
+      {!!onBack && (
+        <Button
+          type="button"
+          variant="text"
+          size="large"
+          prefix={<Icon icon={ChevronLeftIcon} />}
+          className={classes.backButton}
+          onClick={onBack}
+        >
+          {backText}
+        </Button>
+      )}
       <div className={classes.titleWrapper}>
         <Typography variant="h1" color="text-primary">
           {title}
