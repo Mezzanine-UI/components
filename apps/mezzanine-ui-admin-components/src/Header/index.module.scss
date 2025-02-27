@@ -6,17 +6,13 @@
   left: 0;
   right: 0;
   z-index: 15;
+  background-color: palette.color(primary);
 
   .header {
     width: 100%;
     height: var(--header-height);
-    background-color: palette.color(primary);
-    padding: 0 24px;
+    background-color: inherit;
     max-height: unset;
-
-    .burgerBtn {
-      margin-right: 24px;
-    }
 
     .appBarSupport {
       .dropdownBtn {

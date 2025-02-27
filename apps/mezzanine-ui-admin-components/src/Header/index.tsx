@@ -31,6 +31,10 @@ import classes from './index.module.scss';
 
 export interface HeaderProps {
   /**
+   * host class
+   */
+  className?: string;
+  /**
    * header class
    */
   headerClassName?: string;
@@ -54,6 +58,18 @@ export interface HeaderProps {
    * 登出時觸發
    */
   onLogout: () => Promise<void>;
+  /**
+   * menu icon 與 logo 之間的距離
+   */
+  menuLogoSpacing?: number;
+  /**
+   * member icon 與箭頭之間的距離
+   */
+  memberIconsSpacing?: number;
+  /**
+   * header 左右 padding
+   */
+  horizontalPadding?: number;
   /**
    * 自定義元件，位在使用者資訊及按鈕元件之間
    */
@@ -96,12 +112,16 @@ export interface HeaderProps {
  * 後台 header 元件
  */
 export const Header: FC<HeaderProps> = ({
+  className,
   headerClassName,
   logo,
   name,
   role,
   account,
   onLogout,
+  menuLogoSpacing = 24,
+  memberIconsSpacing = 0,
+  horizontalPadding = 24,
   customizedComponent,
   changePasswordModalConfig,
   customizedButton,
@@ -116,12 +136,15 @@ export const Header: FC<HeaderProps> = ({
   }, []);
 
   return (
-    <div className={classes.host}>
-      <AppBar className={cx(classes.header, headerClassName)}>
+    <div className={cx(classes.host, className)}>
+      <AppBar
+        className={cx(classes.header, headerClassName)}
+        style={{ padding: `0 ${horizontalPadding}px` }}
+      >
         <IconButton
           type="button"
-          className={classes.burgerBtn}
           onClick={toggleSidebar}
+          style={{ marginRight: menuLogoSpacing }}
         >
           <Icon icon={MenuIcon} color={iconColor} />
         </IconButton>
@@ -233,7 +256,10 @@ export const Header: FC<HeaderProps> = ({
                   toggleOpen((s) => !s);
                 }}
               >
-                <div className={classes.iconsContainer}>
+                <div
+                  className={classes.iconsContainer}
+                  style={{ gap: memberIconsSpacing }}
+                >
                   <Icon size={24} icon={ProfileIcon} color={iconColor} />
                   <Icon
                     size={24}
