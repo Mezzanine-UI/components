@@ -1,3 +1,19 @@
+## 0.0.53 (2025-02-27)
+
+### 🚀 Features
+
+- **admin-components:** header props form AuthorizedAdminPageWrapper ([00f7758](https://github.com/Mezzanine-UI/components/commit/00f7758))
+- **admin-components:** header more props to set layout ([25c09e7](https://github.com/Mezzanine-UI/components/commit/25c09e7))
+
+### 🧱 Updated Dependencies
+
+- Updated @mezzanine-ui/react-hook-form-v2 to 0.0.53
+- Updated @mezzanine-ui/login-panel to 0.0.53
+
+### ❤️ Thank You
+
+- TingTing
+
 ## 0.0.52 (2025-02-27)
 
 ### 🚀 Features
