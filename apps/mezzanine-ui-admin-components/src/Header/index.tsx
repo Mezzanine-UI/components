@@ -5,6 +5,8 @@ import {
   RefObject,
   ReactNode,
   useCallback,
+  useMemo,
+  CSSProperties,
 } from 'react';
 import {
   AppBar,
@@ -135,16 +137,23 @@ export const Header: FC<HeaderProps> = ({
     toggleOpen(false);
   }, []);
 
+  const layoutStyleVar = useMemo(
+    () =>
+      ({
+        '--menu-logo-spacing': `${menuLogoSpacing}px`,
+        '--member-arrow-spacing': `${memberIconsSpacing}px`,
+        '--header-horizontal-padding': `${horizontalPadding}px`,
+      }) as CSSProperties,
+    [horizontalPadding, memberIconsSpacing, menuLogoSpacing],
+  );
+
   return (
-    <div className={cx(classes.host, className)}>
-      <AppBar
-        className={cx(classes.header, headerClassName)}
-        style={{ padding: `0 ${horizontalPadding}px` }}
-      >
+    <div className={cx(classes.host, className)} style={layoutStyleVar}>
+      <AppBar className={cx(classes.header, headerClassName)}>
         <IconButton
           type="button"
           onClick={toggleSidebar}
-          style={{ marginRight: menuLogoSpacing }}
+          className={classes.menuButton}
         >
           <Icon icon={MenuIcon} color={iconColor} />
         </IconButton>
@@ -256,10 +265,7 @@ export const Header: FC<HeaderProps> = ({
                   toggleOpen((s) => !s);
                 }}
               >
-                <div
-                  className={classes.iconsContainer}
-                  style={{ gap: memberIconsSpacing }}
-                >
+                <div className={classes.iconsContainer}>
                   <Icon size={24} icon={ProfileIcon} color={iconColor} />
                   <Icon
                     size={24}

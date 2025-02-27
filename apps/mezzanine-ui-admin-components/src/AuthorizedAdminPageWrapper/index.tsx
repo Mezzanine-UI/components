@@ -34,12 +34,16 @@ export const AuthorizedAdminPageWrapper: FC<
   headerHeight = 64,
   sidebarWidth = 256,
   // Header props
+  className,
   headerClassName,
   logo,
   name,
   role,
   account,
   onLogout,
+  menuLogoSpacing,
+  memberIconsSpacing,
+  horizontalPadding,
   customizedComponent,
   changePasswordModalConfig,
   customizedButton,
@@ -64,12 +68,16 @@ export const AuthorizedAdminPageWrapper: FC<
         <ModalProvider>
           <Main
             layoutStyleVar={layoutStyleVar}
+            className={className}
             headerClassName={headerClassName}
             logo={logo}
             name={name}
             role={role}
             account={account}
             onLogout={onLogout}
+            menuLogoSpacing={menuLogoSpacing}
+            memberIconsSpacing={memberIconsSpacing}
+            horizontalPadding={horizontalPadding}
             customizedComponent={customizedComponent}
             changePasswordModalConfig={changePasswordModalConfig}
             customizedButton={customizedButton}

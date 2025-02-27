@@ -12,12 +12,16 @@ const Main: FC<
   children,
   layoutStyleVar,
   // Header props
+  className,
   headerClassName,
   logo,
   name,
   role,
   account,
   onLogout,
+  menuLogoSpacing,
+  memberIconsSpacing,
+  horizontalPadding,
   customizedComponent,
   changePasswordModalConfig,
   customizedButton,
@@ -32,12 +36,16 @@ const Main: FC<
   return (
     <div style={layoutStyleVar} className={classes.host}>
       <Header
+        className={className}
         headerClassName={headerClassName}
         logo={logo}
         name={name}
         role={role}
         account={account}
         onLogout={onLogout}
+        menuLogoSpacing={menuLogoSpacing}
+        memberIconsSpacing={memberIconsSpacing}
+        horizontalPadding={horizontalPadding}
         customizedComponent={customizedComponent}
         changePasswordModalConfig={changePasswordModalConfig}
         customizedButton={customizedButton}

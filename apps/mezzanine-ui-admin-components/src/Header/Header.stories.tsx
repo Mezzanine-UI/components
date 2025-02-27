@@ -63,6 +63,61 @@ export const Default: Story = {
   },
 };
 
+export const CustomizedSpacing: Story = {
+  args: {
+    logo: (
+      <div
+        style={{
+          width: 184,
+          height: 32,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          border: '1px solid #212121',
+        }}
+      >
+        Logo
+      </div>
+    ),
+    name: 'Ting',
+    role: '管理員',
+    account: 'root@rytass.com',
+    onLogout: async () => {
+      action('onLogout')();
+    },
+    changePasswordModalConfig: {
+      passwordLength: 10,
+      generationLimit: undefined,
+      onChangePassword: async ({ values }) => {
+        action('onChangePassword')(values);
+        return true;
+      },
+      onBack: action('onBack'),
+    },
+    horizontalPadding: 40,
+    menuLogoSpacing: 16,
+    memberIconsSpacing: 8,
+  },
+  parameters: {
+    controls: {
+      include: ['horizontalPadding', 'menuLogoSpacing', 'memberIconsSpacing'],
+    },
+  },
+  render: function Render(args) {
+    const layoutStyleVar = {
+      '--header-height': '64px',
+    } as CSSProperties;
+
+    return (
+      <ModalProvider>
+        <div style={layoutStyleVar}>
+          <Header {...args} />
+        </div>
+      </ModalProvider>
+    );
+  },
+};
+
 export const CustomizedColor: Story = {
   args: {
     logo: (
