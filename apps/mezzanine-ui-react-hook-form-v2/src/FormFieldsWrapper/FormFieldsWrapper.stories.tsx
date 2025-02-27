@@ -111,6 +111,46 @@ export const WthFooter: Story = {
   },
 };
 
+export const CancelNotConfirm: Story = {
+  args: {
+    children: undefined,
+  },
+  parameters: {
+    controls: { include: [] },
+  },
+  render: function Render() {
+    const methods = useForm<DemoFormValues>({
+      defaultValues: {
+        input1: '111',
+        input2: '222',
+        input3: '333',
+      },
+    });
+
+    return (
+      <FormFieldsWrapper
+        methods={methods}
+        haveFooter
+        onSubmit={async (values) => {
+          action('onSubmit')(values);
+        }}
+        submitButtonText="送出文字"
+        onCancel={async (values) => {
+          action('onCancel')(values);
+        }}
+        cancelButtonText="取消文字"
+        cancelNeedConfirm={false}
+      >
+        <StoryWrapper>
+          <InputField label="input1" registerName="input1" required />
+          <InputField label="input2" registerName="input2" required />
+          <InputField label="input3" registerName="input3" required />
+        </StoryWrapper>
+      </FormFieldsWrapper>
+    );
+  },
+};
+
 export const WithAction: Story = {
   args: {
     children: undefined,

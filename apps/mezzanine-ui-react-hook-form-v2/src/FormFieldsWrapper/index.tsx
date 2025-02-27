@@ -47,6 +47,7 @@ export interface FormFieldsWrapperProps<T extends FieldValues = FieldValues>
   disableActionButton?: (values: T) => boolean;
   onClickAction?: (values: T) => Promise<void>;
   onCancel?: (values: T) => Promise<void>;
+  cancelNeedConfirm?: boolean;
 }
 
 export const FormFieldsWrapper = <T extends FieldValues>({
@@ -75,6 +76,7 @@ export const FormFieldsWrapper = <T extends FieldValues>({
   disableActionButton = () => false,
   onClickAction,
   onCancel,
+  cancelNeedConfirm = true,
   ...other
 }: FormFieldsWrapperProps<T>) => {
   const layoutStyleVar = useMemo(
@@ -120,6 +122,7 @@ export const FormFieldsWrapper = <T extends FieldValues>({
             onClickAction={onClickAction}
             onCancel={onCancel}
             submitting={submitting}
+            cancelNeedConfirm={cancelNeedConfirm}
             steps={steps}
             activeStep={activeStep}
             setActiveStep={setActiveStep}
