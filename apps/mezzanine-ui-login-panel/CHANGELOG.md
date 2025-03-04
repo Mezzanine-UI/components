@@ -1,3 +1,17 @@
+## 0.0.55 (2025-03-04)
+
+### 🚀 Features
+
+- **login-panel:** can customize account field lable in ChangePasswordModal ([ebdf289](https://github.com/Mezzanine-UI/components/commit/ebdf289))
+
+### 🧱 Updated Dependencies
+
+- Updated @mezzanine-ui/react-hook-form-v2 to 0.0.55
+
+### ❤️ Thank You
+
+- TingTing
+
 ## 0.0.54 (2025-02-27)
 
 ### 🚀 Features
