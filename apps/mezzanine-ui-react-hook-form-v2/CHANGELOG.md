@@ -1,3 +1,13 @@
+## 0.0.56 (2025-03-04)
+
+### 🚀 Features
+
+- **admin-components:** add accountLabel props in Header ([9118505](https://github.com/Mezzanine-UI/components/commit/9118505))
+
+### ❤️ Thank You
+
+- TingTing
+
 ## 0.0.55 (2025-03-04)
 
 This was a version bump only for @mezzanine-ui/react-hook-form-v2 to align it with other projects, there were no code changes.
