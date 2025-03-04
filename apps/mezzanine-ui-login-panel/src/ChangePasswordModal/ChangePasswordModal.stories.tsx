@@ -21,10 +21,11 @@ export const Default: Story = {
     account: 'admin@rytass.com',
     onCancel: action('onCancel'),
     onBack: action('onBack'),
+    accountLabel: '帳號',
   },
   parameters: {
     controls: {
-      include: ['passwordLength', 'generationLimit', 'account'],
+      include: ['passwordLength', 'generationLimit', 'account', 'accountLabel'],
     },
   },
   render: function Render(args) {

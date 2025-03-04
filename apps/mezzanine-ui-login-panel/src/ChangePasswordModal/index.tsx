@@ -48,6 +48,10 @@ export interface ChangePasswordModalProps {
    */
   onBack: VoidFunction;
   /**
+   * 帳號欄位的 label
+   */
+  accountLabel?: string;
+  /**
    * 自定義密碼提示
    */
   customizedHint?: string;
@@ -75,6 +79,7 @@ export const ChangePasswordModal: FC<ChangePasswordModalProps> = ({
   account,
   onCancel,
   onBack,
+  accountLabel = '帳號',
   customizedHint,
   customizedRule,
 }) => {
@@ -131,7 +136,7 @@ export const ChangePasswordModal: FC<ChangePasswordModalProps> = ({
         {account && (
           <>
             <Typography variant="h5" color="text-primary">
-              帳號
+              {accountLabel}
             </Typography>
             <Typography variant="h5" color="text-primary">
               {account}
