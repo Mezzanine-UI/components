@@ -4,7 +4,7 @@
   min-width: 160px;
 
   .dangerItem {
-    color: palette.color(error-dark);
+    color: palette.color(error);
 
     &:hover {
       background-color: palette.color(error-hover-bg);
