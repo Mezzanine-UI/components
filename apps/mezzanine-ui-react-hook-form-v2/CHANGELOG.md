@@ -1,3 +1,7 @@
+## 0.0.57 (2025-03-05)
+
+This was a version bump only for @mezzanine-ui/react-hook-form-v2 to align it with other projects, there were no code changes.
+
 ## 0.0.56 (2025-03-04)
 
 ### 🚀 Features
