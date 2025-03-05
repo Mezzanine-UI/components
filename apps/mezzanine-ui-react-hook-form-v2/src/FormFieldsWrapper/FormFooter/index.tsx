@@ -12,6 +12,7 @@ import { FieldValues, useWatch } from 'react-hook-form';
 import classes from './index.module.scss';
 
 export interface FormFooterProps<T extends FieldValues = FieldValues> {
+  footerClassName?: string;
   expanded?: boolean;
   cancelButtonText?: string;
   submitButtonText?: string;
@@ -40,6 +41,7 @@ export interface FormFooterProps<T extends FieldValues = FieldValues> {
 }
 
 const FormFooter = <T extends FieldValues>({
+  footerClassName,
   expanded,
   cancelButtonText = '取消',
   submitButtonText = '確認',
@@ -82,7 +84,7 @@ const FormFooter = <T extends FieldValues>({
   return (
     <>
       <div
-        className={cx(classes.host, {
+        className={cx(classes.host, footerClassName, {
           [classes.expanded]: expanded,
         })}
       >
