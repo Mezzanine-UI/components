@@ -1,3 +1,19 @@
+## 0.0.58 (2025-03-06)
+
+### 🚀 Features
+
+- **admin-components:** header layout ([5cdb7f9](https://github.com/Mezzanine-UI/components/commit/5cdb7f9))
+- **react-hook-form-v2:** add footerClassName to FormFieldsWrapper ([101ffbd](https://github.com/Mezzanine-UI/components/commit/101ffbd))
+
+### 🧱 Updated Dependencies
+
+- Updated @mezzanine-ui/react-hook-form-v2 to 0.0.58
+- Updated @mezzanine-ui/login-panel to 0.0.58
+
+### ❤️ Thank You
+
+- TingTing
+
 ## 0.0.57 (2025-03-05)
 
 ### 🧱 Updated Dependencies

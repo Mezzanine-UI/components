@@ -1,3 +1,13 @@
+## 0.0.58 (2025-03-06)
+
+### 🚀 Features
+
+- **react-hook-form-v2:** add footerClassName to FormFieldsWrapper ([101ffbd](https://github.com/Mezzanine-UI/components/commit/101ffbd))
+
+### ❤️ Thank You
+
+- TingTing
+
 ## 0.0.57 (2025-03-05)
 
 This was a version bump only for @mezzanine-ui/react-hook-form-v2 to align it with other projects, there were no code changes.
