@@ -151,7 +151,7 @@ export const CustomizedColor: Story = {
     },
     customizedSystemName: (
       <Typography variant="input3" color="text-primary">
-        廣告物管理系統
+        TingTing / 廣告物管理系統 - Rytass 部門
       </Typography>
     ),
     iconColor: 'action-active',
