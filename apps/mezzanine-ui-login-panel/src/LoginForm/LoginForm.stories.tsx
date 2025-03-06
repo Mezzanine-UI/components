@@ -37,8 +37,8 @@ export const Default: Story = {
       action('onNeedChangePassword')({ values, account, oldPassword });
       return true;
     },
-    onSendForgetAccount: async ({ values }) => {
-      action('onSendForgetAccount')(values);
+    onSendForgotPassword: async ({ values }) => {
+      action('onSendForgotPassword')(values);
       return true;
     },
   },
@@ -88,8 +88,8 @@ export const CustomizeWording: Story = {
       action('onNeedChangePassword')({ values, account, oldPassword });
       return true;
     },
-    onSendForgetAccount: async ({ values }) => {
-      action('onSendForgetAccount')(values);
+    onSendForgotPassword: async ({ values }) => {
+      action('onSendForgotPassword')(values);
       return true;
     },
     accountFieldPlaceholder: '請輸入手機',
@@ -197,8 +197,8 @@ export const NeedChangePasswordFirstActivate: Story = {
       action('onNeedChangePassword')({ values, account, oldPassword });
       return true;
     },
-    onSendForgetAccount: async ({ values }) => {
-      action('onSendForgetAccount')(values);
+    onSendForgotPassword: async ({ values }) => {
+      action('onSendForgotPassword')(values);
       return true;
     },
   },
@@ -252,8 +252,8 @@ export const NeedChangePasswordTooLong: Story = {
       action('onNeedChangePassword')({ values, account, oldPassword });
       return true;
     },
-    onSendForgetAccount: async ({ values }) => {
-      action('onSendForgetAccount')(values);
+    onSendForgotPassword: async ({ values }) => {
+      action('onSendForgotPassword')(values);
       return true;
     },
   },

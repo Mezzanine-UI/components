@@ -19,7 +19,7 @@ import classes from './index.module.scss';
 
 interface ForgetProps {
   logo?: ReactNode;
-  onSendForgetAccount?: ({
+  onSendForgotPassword?: ({
     values,
   }: {
     values: ForgetFormValues;
@@ -32,7 +32,7 @@ interface ForgetProps {
 
 const Forget: FC<ForgetProps> = ({
   logo,
-  onSendForgetAccount,
+  onSendForgotPassword,
   setCurrentPage,
   forgetPasswordAccountFieldPlaceholder,
   forgetPasswordHint,
@@ -55,8 +55,8 @@ const Forget: FC<ForgetProps> = ({
 
   const onSubmit = useCallback(
     async (values: ForgetFormValues) => {
-      if (onSendForgetAccount) {
-        const status = await onSendForgetAccount({
+      if (onSendForgotPassword) {
+        const status = await onSendForgotPassword({
           values,
         });
 
@@ -65,7 +65,7 @@ const Forget: FC<ForgetProps> = ({
         }
       }
     },
-    [onSendForgetAccount],
+    [onSendForgotPassword],
   );
 
   if (isSuccess) {

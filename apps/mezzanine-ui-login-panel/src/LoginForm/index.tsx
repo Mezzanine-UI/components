@@ -58,7 +58,7 @@ export interface LoginFormProps {
   /**
    * 寄忘記密碼信時觸發
    */
-  onSendForgetAccount?: ({
+  onSendForgotPassword?: ({
     values,
   }: {
     values: ForgetFormValues;
@@ -116,7 +116,7 @@ export const LoginForm: FC<LoginFormProps> = ({
   generalLoginText = '登入',
   onLogin,
   onNeedChangePassword,
-  onSendForgetAccount,
+  onSendForgotPassword,
   customizedActivateFields,
   customizedActivateSchema,
   customizedHint,
@@ -160,7 +160,7 @@ export const LoginForm: FC<LoginFormProps> = ({
       return (
         <Forget
           logo={logo}
-          onSendForgetAccount={onSendForgetAccount}
+          onSendForgotPassword={onSendForgotPassword}
           setCurrentPage={setCurrentPage}
           forgetPasswordAccountFieldPlaceholder={
             forgetPasswordAccountFieldPlaceholder
