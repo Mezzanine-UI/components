@@ -2,10 +2,10 @@ import { FC, ReactNode, useState } from 'react';
 import { InputFieldProps } from '@mezzanine-ui/react-hook-form-v2';
 import * as Yup from 'yup';
 import Login from './Login';
-import Forget from './Forget';
+import Forgot from './Forgot';
 import {
   LoginFormValues,
-  ForgetFormValues,
+  ForgotFormValues,
   NeedChangePasswordFormValues,
   LoginPageEnum,
   NeedChangePasswordMode,
@@ -61,7 +61,7 @@ export interface LoginFormProps {
   onSendForgotPassword?: ({
     values,
   }: {
-    values: ForgetFormValues;
+    values: ForgotFormValues;
   }) => Promise<boolean>;
   /**
    * 自定義啟用帳號時額外輸入欄位
@@ -94,15 +94,15 @@ export interface LoginFormProps {
   /**
    * 忘記密碼帳號欄位 placeholder
    */
-  forgetPasswordAccountFieldPlaceholder?: string;
+  forgotPasswordAccountFieldPlaceholder?: string;
   /**
    * 忘記密碼提示，預設值 `請輸入註冊時使用的email帳號 密碼重置連結將發送至該信箱`
    */
-  forgetPasswordHint?: string;
+  forgotPasswordHint?: string;
   /**
    * 忘記密碼成功後提示，預設值 `請於1小時內點擊連結設定密碼。 若未收到email或遇連結失效請聯絡管理員。`
    */
-  forgetPasswordSuccessHint?: string;
+  forgotPasswordSuccessHint?: string;
 }
 
 /**
@@ -124,10 +124,10 @@ export const LoginForm: FC<LoginFormProps> = ({
   customizedLoginPasswordHint,
   notShowForgotPassword = false,
   accountFieldPlaceholder = '請輸入帳號',
-  forgetPasswordAccountFieldPlaceholder = '輸入帳號 e.g. example@email.com',
-  forgetPasswordHint = `請輸入註冊時使用的email帳號
+  forgotPasswordAccountFieldPlaceholder = '輸入帳號 e.g. example@email.com',
+  forgotPasswordHint = `請輸入註冊時使用的email帳號
 密碼重置連結將發送至該信箱`,
-  forgetPasswordSuccessHint = `請於1小時內點擊連結設定密碼。
+  forgotPasswordSuccessHint = `請於1小時內點擊連結設定密碼。
 若未收到email或遇連結失效請聯絡管理員。`,
 }) => {
   const [currentPage, setCurrentPage] = useState<LoginPageEnum>(
@@ -156,17 +156,17 @@ export const LoginForm: FC<LoginFormProps> = ({
         />
       );
 
-    case LoginPageEnum.FORGET:
+    case LoginPageEnum.FORGOT:
       return (
-        <Forget
+        <Forgot
           logo={logo}
           onSendForgotPassword={onSendForgotPassword}
           setCurrentPage={setCurrentPage}
-          forgetPasswordAccountFieldPlaceholder={
-            forgetPasswordAccountFieldPlaceholder
+          forgotPasswordAccountFieldPlaceholder={
+            forgotPasswordAccountFieldPlaceholder
           }
-          forgetPasswordHint={forgetPasswordHint}
-          forgetPasswordSuccessHint={forgetPasswordSuccessHint}
+          forgotPasswordHint={forgotPasswordHint}
+          forgotPasswordSuccessHint={forgotPasswordSuccessHint}
         />
       );
 

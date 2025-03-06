@@ -102,7 +102,7 @@ const GeneralLogin: FC<GeneralLoginProps> = ({
               variant="text"
               size="large"
               onClick={() => {
-                setCurrentPage(LoginPageEnum.FORGET);
+                setCurrentPage(LoginPageEnum.FORGOT);
               }}
             >
               忘記密碼

@@ -1,4 +1,4 @@
-export interface ForgetFormValues {
+export interface ForgotFormValues {
   account: string;
 }
 
@@ -19,5 +19,5 @@ export enum NeedChangePasswordMode {
 
 export enum LoginPageEnum {
   LOGIN = 'LOGIN',
-  FORGET = 'FORGET',
+  FORGOT = 'FORGOT',
 }

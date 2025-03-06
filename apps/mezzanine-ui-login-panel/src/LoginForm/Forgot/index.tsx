@@ -13,34 +13,34 @@ import {
   InputField,
   FormFieldsWrapper,
 } from '@mezzanine-ui/react-hook-form-v2';
-import { ForgetFormValues, LoginPageEnum } from '../typing';
+import { ForgotFormValues, LoginPageEnum } from '../typing';
 import Success from './Success';
 import classes from './index.module.scss';
 
-interface ForgetProps {
+interface ForgotProps {
   logo?: ReactNode;
   onSendForgotPassword?: ({
     values,
   }: {
-    values: ForgetFormValues;
+    values: ForgotFormValues;
   }) => Promise<boolean>;
   setCurrentPage: Dispatch<SetStateAction<LoginPageEnum>>;
-  forgetPasswordAccountFieldPlaceholder: string;
-  forgetPasswordHint: string;
-  forgetPasswordSuccessHint: string;
+  forgotPasswordAccountFieldPlaceholder: string;
+  forgotPasswordHint: string;
+  forgotPasswordSuccessHint: string;
 }
 
-const Forget: FC<ForgetProps> = ({
+const Forgot: FC<ForgotProps> = ({
   logo,
   onSendForgotPassword,
   setCurrentPage,
-  forgetPasswordAccountFieldPlaceholder,
-  forgetPasswordHint,
-  forgetPasswordSuccessHint,
+  forgotPasswordAccountFieldPlaceholder,
+  forgotPasswordHint,
+  forgotPasswordSuccessHint,
 }) => {
   const [isSuccess, setIsSuccess] = useState<boolean>(false);
 
-  const methods = useForm<ForgetFormValues>({
+  const methods = useForm<ForgotFormValues>({
     defaultValues: {
       account: '',
     },
@@ -54,7 +54,7 @@ const Forget: FC<ForgetProps> = ({
   );
 
   const onSubmit = useCallback(
-    async (values: ForgetFormValues) => {
+    async (values: ForgotFormValues) => {
       if (onSendForgotPassword) {
         const status = await onSendForgotPassword({
           values,
@@ -75,7 +75,7 @@ const Forget: FC<ForgetProps> = ({
         onBack={() => {
           setCurrentPage(LoginPageEnum.LOGIN);
         }}
-        forgetPasswordSuccessHint={forgetPasswordSuccessHint}
+        forgotPasswordSuccessHint={forgotPasswordSuccessHint}
       />
     );
   }
@@ -97,7 +97,7 @@ const Forget: FC<ForgetProps> = ({
           align="center"
           style={{ marginTop: -8, whiteSpace: 'pre-line' }}
         >
-          {forgetPasswordHint}
+          {forgotPasswordHint}
         </Typography>
         <div className={classes.blocksWrapper}>
           <div className={classes.blockWrapper}>
@@ -105,7 +105,7 @@ const Forget: FC<ForgetProps> = ({
               registerName="account"
               label="帳號"
               size="large"
-              placeholder={forgetPasswordAccountFieldPlaceholder}
+              placeholder={forgotPasswordAccountFieldPlaceholder}
               className={classes.inputWrapper}
               inputClassName={classes.input}
               required
@@ -140,4 +140,4 @@ const Forget: FC<ForgetProps> = ({
   );
 };
 
-export default Forget;
+export default Forgot;

@@ -6,13 +6,13 @@ import classes from './index.module.scss';
 interface SuccessProps {
   account: string;
   onBack: VoidFunction;
-  forgetPasswordSuccessHint: string;
+  forgotPasswordSuccessHint: string;
 }
 
 const Success: FC<SuccessProps> = ({
   account,
   onBack,
-  forgetPasswordSuccessHint,
+  forgotPasswordSuccessHint,
 }) => {
   return (
     <div className={cx(classes.root, classes.success)}>
@@ -30,7 +30,7 @@ const Success: FC<SuccessProps> = ({
         align="center"
         style={{ whiteSpace: 'pre-line' }}
       >
-        {forgetPasswordSuccessHint}
+        {forgotPasswordSuccessHint}
       </Typography>
       <Button
         type="button"

@@ -93,10 +93,10 @@ export const CustomizeWording: Story = {
       return true;
     },
     accountFieldPlaceholder: '請輸入手機',
-    forgetPasswordAccountFieldPlaceholder: '請輸入手機 e.g. 0912345678',
-    forgetPasswordHint: `請輸入註冊時使用的手機號碼
+    forgotPasswordAccountFieldPlaceholder: '請輸入手機 e.g. 0912345678',
+    forgotPasswordHint: `請輸入註冊時使用的手機號碼
 密碼重置連結將發送至該手機`,
-    forgetPasswordSuccessHint: `請於1小時內點擊連結設定密碼。
+    forgotPasswordSuccessHint: `請於1小時內點擊連結設定密碼。
 若未收到連結或遇連結失效請聯絡管理員。`,
   },
   parameters: {
