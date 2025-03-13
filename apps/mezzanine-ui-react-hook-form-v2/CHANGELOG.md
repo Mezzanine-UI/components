@@ -1,3 +1,14 @@
+## 0.0.62 (2025-03-13)
+
+### 🚀 Features
+
+- **react-hook-form-v2:** number input field storybook ([5427ce5](https://github.com/Mezzanine-UI/components/commit/5427ce5))
+- **react-hook-form-v2:** number input field ([1a0c597](https://github.com/Mezzanine-UI/components/commit/1a0c597))
+
+### ❤️ Thank You
+
+- TingTing
+
 ## 0.0.61 (2025-03-13)
 
 This was a version bump only for @mezzanine-ui/react-hook-form-v2 to align it with other projects, there were no code changes.
