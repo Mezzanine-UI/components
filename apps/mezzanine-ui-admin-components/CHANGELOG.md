@@ -1,3 +1,18 @@
+## 0.0.64 (2025-03-13)
+
+### 🚀 Features
+
+- **admin-components:** can exchange position of tab and filters ([9b6ea48](https://github.com/Mezzanine-UI/components/commit/9b6ea48))
+
+### 🧱 Updated Dependencies
+
+- Updated @mezzanine-ui/react-hook-form-v2 to 0.0.64
+- Updated @mezzanine-ui/login-panel to 0.0.64
+
+### ❤️ Thank You
+
+- TingTing
+
 ## 0.0.63 (2025-03-13)
 
 ### 🧱 Updated Dependencies
