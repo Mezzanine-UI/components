@@ -50,33 +50,43 @@ export const NumberInputField: HookFormFieldComponent<
     [watchValue],
   );
 
+  const isMax = useMemo(
+    () => typeof maxValue === 'number' && numberValue >= maxValue,
+    [maxValue, numberValue],
+  );
+
+  const isMin = useMemo(
+    () => typeof minValue === 'number' && numberValue <= minValue,
+    [minValue, numberValue],
+  );
+
   const onPlus = useCallback(() => {
-    if (typeof maxValue === 'undefined' || maxValue > numberValue) {
+    if (!isMax) {
       setValue(registerName, numberValue + 1, {
         shouldDirty: true,
       });
     }
-  }, [maxValue, numberValue, registerName, setValue]);
+  }, [isMax, numberValue, registerName, setValue]);
 
   const onMinus = useCallback(() => {
-    if (typeof minValue === 'undefined' || minValue < numberValue) {
+    if (!isMin) {
       setValue(registerName, numberValue - 1, {
         shouldDirty: true,
       });
     }
-  }, [minValue, numberValue, registerName, setValue]);
+  }, [isMin, numberValue, registerName, setValue]);
 
   useEffect(() => {
-    if (typeof maxValue === 'number' && numberValue > maxValue) {
+    if (isMax) {
       setValue(registerName, maxValue, {
         shouldDirty: true,
       });
-    } else if (typeof minValue === 'number' && numberValue < minValue) {
+    } else if (isMin) {
       setValue(registerName, minValue, {
         shouldDirty: true,
       });
     }
-  }, [maxValue, minValue, numberValue, registerName, setValue]);
+  }, [isMax, isMin, maxValue, minValue, registerName, setValue]);
 
   return (
     <BaseField
@@ -98,6 +108,7 @@ export const NumberInputField: HookFormFieldComponent<
           size="large"
           color="secondary"
           onClick={onMinus}
+          disabled={isMin || disabled}
         >
           <Icon icon={MinusIcon} />
         </IconButton>
@@ -117,6 +128,7 @@ export const NumberInputField: HookFormFieldComponent<
           size="large"
           color="secondary"
           onClick={onPlus}
+          disabled={isMax || disabled}
         >
           <Icon icon={PlusIcon} />
         </IconButton>
