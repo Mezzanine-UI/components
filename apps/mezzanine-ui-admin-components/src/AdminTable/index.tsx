@@ -1,6 +1,6 @@
 import { Key, ReactNode, useMemo } from 'react';
 import { compact } from 'lodash';
-import { Table, Tabs, TabPane, Tab, EmptyProps } from '@mezzanine-ui/react';
+import { cx, Table, Tabs, TabPane, Tab, EmptyProps } from '@mezzanine-ui/react';
 import {
   TableColumn,
   TableDataSourceWithID,
@@ -69,6 +69,10 @@ export type AdminTableProps<T extends TableDataSourceWithID> = {
    */
   emptyProps?: EmptyProps;
   /**
+   * 是否交換 tab 跟 filters 位置，預設：`tab 上; filters 下`
+   */
+  exchangeTabAndFilters?: boolean;
+  /**
    * 自定義顯示 filters 元件
    */
   filtersComponent?: ReactNode;
@@ -104,6 +108,7 @@ export const AdminTable = <T extends TableDataSourceWithID>({
   bodyClassName,
   bodyRowClassName,
   emptyProps,
+  exchangeTabAndFilters = false,
   // filters
   filtersComponent,
   // tabs
@@ -132,24 +137,30 @@ export const AdminTable = <T extends TableDataSourceWithID>({
 
   return (
     <div className={classes.root}>
-      {tabs && tabs.length > 0 && (
-        <Tabs
-          activeKey={activeTabId}
-          tabBarClassName={classes.tabBar}
-          onChange={onTabChange}
-        >
-          {tabs.map((tab) => {
-            return (
-              <TabPane
-                key={tab.id}
-                className={classes.tabPane}
-                tab={<Tab>{tab.name}</Tab>}
-              />
-            );
-          })}
-        </Tabs>
-      )}
-      {filtersComponent}
+      <div
+        className={cx(classes.tabAndFiltersWrapper, {
+          [classes.exchangeTabAndFilters]: exchangeTabAndFilters,
+        })}
+      >
+        {tabs && tabs.length > 0 && (
+          <Tabs
+            activeKey={activeTabId}
+            tabBarClassName={classes.tabBar}
+            onChange={onTabChange}
+          >
+            {tabs.map((tab) => {
+              return (
+                <TabPane
+                  key={tab.id}
+                  className={classes.tabPane}
+                  tab={<Tab>{tab.name}</Tab>}
+                />
+              );
+            })}
+          </Tabs>
+        )}
+        {filtersComponent}
+      </div>
       <Table
         headerClassName={headerClassName}
         className={className}

@@ -3,6 +3,16 @@
   flex-direction: column;
   gap: 16px;
 
+  .tabAndFiltersWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    &.exchangeTabAndFilters {
+      flex-direction: column-reverse;
+    }
+  }
+
   .tabBar {
     margin-bottom: 8px;
   }

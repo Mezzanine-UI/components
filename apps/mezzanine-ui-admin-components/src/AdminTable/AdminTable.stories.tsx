@@ -173,6 +173,7 @@ export const WithBoth: Story = {
   args: {
     dataSource,
     columns,
+    exchangeTabAndFilters: false,
     filtersComponent: (
       <div
         style={{
@@ -205,7 +206,7 @@ export const WithBoth: Story = {
     ],
   },
   parameters: {
-    controls: { include: ['activeTabId'] },
+    controls: { include: ['exchangeTabAndFilters', 'activeTabId'] },
   },
   render: function Render(args) {
     return <AdminTable {...args} />;
