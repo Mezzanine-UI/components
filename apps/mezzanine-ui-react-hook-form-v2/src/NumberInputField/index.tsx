@@ -109,6 +109,7 @@ export const NumberInputField: HookFormFieldComponent<
           color="secondary"
           onClick={onMinus}
           disabled={isMin || disabled}
+          className={classes.actionButton}
         >
           <Icon icon={MinusIcon} />
         </IconButton>
@@ -129,6 +130,7 @@ export const NumberInputField: HookFormFieldComponent<
           color="secondary"
           onClick={onPlus}
           disabled={isMax || disabled}
+          className={classes.actionButton}
         >
           <Icon icon={PlusIcon} />
         </IconButton>

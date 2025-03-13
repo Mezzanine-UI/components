@@ -20,15 +20,22 @@
   }
 
   .counterWrapper {
+    --mzn-color-action-disabled-bg: #{palette.color(surface)};
+
     display: flex;
     align-items: center;
     justify-content: flex-start;
     gap: 16px;
+    background-color: palette.color(surface);
     border: 1px solid
       var(
         --mzn-form-field-severity-color,
         var(--mzn-text-field-status-color, palette.color(border))
       );
+
+    .actionButton {
+      --mzn-button-color: #{palette.color(action-inactive)};
+    }
 
     .counterInput {
       flex: 1;
