@@ -3,7 +3,7 @@
 .host {
   width: 100%;
   min-height: 1px;
-  background-color: palette.color(divider);
+  background-color: var(--divider-color);
   margin: 4px 0;
 
   &.isPure {
