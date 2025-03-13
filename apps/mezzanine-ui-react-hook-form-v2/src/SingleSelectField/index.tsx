@@ -107,7 +107,7 @@ export const SingleSelectField: HookFormFieldComponent<
   const onChange = (newValue: SelectValue) => {
     if (errors?.[registerName]) clearErrors(registerName);
 
-    setValue(registerName, newValue.id);
+    setValue(registerName, newValue.id, { shouldDirty: true });
     onChangeProp?.(newValue);
   };
 

@@ -114,6 +114,7 @@ export const MultiSelectField: HookFormFieldComponent<
       setValue(
         registerName,
         newValue.map((item) => item.id),
+        { shouldDirty: true },
       );
       onChangeProp?.(newValue);
     }
