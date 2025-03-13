@@ -1,0 +1,40 @@
+@use '@mezzanine-ui/system/palette';
+
+.host {
+  width: 100%;
+
+  &.specifiedWidth {
+    width: var(--width);
+  }
+
+  input[type='number'] {
+    appearance: textfield;
+    text-align: center;
+    padding: 0;
+
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+      appearance: none;
+      margin: 0;
+    }
+  }
+
+  .counterWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 16px;
+    border: 1px solid
+      var(
+        --mzn-form-field-severity-color,
+        var(--mzn-text-field-status-color, palette.color(border))
+      );
+
+    .counterInput {
+      flex: 1;
+      width: unset;
+      min-width: unset;
+      border: none;
+    }
+  }
+}
