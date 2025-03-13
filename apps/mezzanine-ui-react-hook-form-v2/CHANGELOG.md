@@ -1,3 +1,13 @@
+## 0.0.63 (2025-03-13)
+
+### 🩹 Fixes
+
+- **react-hook-form-v2:** color of number field ([a3789e7](https://github.com/Mezzanine-UI/components/commit/a3789e7))
+
+### ❤️ Thank You
+
+- TingTing
+
 ## 0.0.62 (2025-03-13)
 
 ### 🚀 Features
