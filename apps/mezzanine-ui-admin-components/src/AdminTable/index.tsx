@@ -137,30 +137,32 @@ export const AdminTable = <T extends TableDataSourceWithID>({
 
   return (
     <div className={classes.root}>
-      <div
-        className={cx(classes.tabAndFiltersWrapper, {
-          [classes.exchangeTabAndFilters]: exchangeTabAndFilters,
-        })}
-      >
-        {tabs && tabs.length > 0 && (
-          <Tabs
-            activeKey={activeTabId}
-            tabBarClassName={classes.tabBar}
-            onChange={onTabChange}
-          >
-            {tabs.map((tab) => {
-              return (
-                <TabPane
-                  key={tab.id}
-                  className={classes.tabPane}
-                  tab={<Tab>{tab.name}</Tab>}
-                />
-              );
-            })}
-          </Tabs>
-        )}
-        {filtersComponent}
-      </div>
+      {((tabs && tabs.length > 0) || !!filtersComponent) && (
+        <div
+          className={cx(classes.tabAndFiltersWrapper, {
+            [classes.exchangeTabAndFilters]: exchangeTabAndFilters,
+          })}
+        >
+          {tabs && tabs.length > 0 && (
+            <Tabs
+              activeKey={activeTabId}
+              tabBarClassName={classes.tabBar}
+              onChange={onTabChange}
+            >
+              {tabs.map((tab) => {
+                return (
+                  <TabPane
+                    key={tab.id}
+                    className={classes.tabPane}
+                    tab={<Tab>{tab.name}</Tab>}
+                  />
+                );
+              })}
+            </Tabs>
+          )}
+          {filtersComponent}
+        </div>
+      )}
       <Table
         headerClassName={headerClassName}
         className={className}
