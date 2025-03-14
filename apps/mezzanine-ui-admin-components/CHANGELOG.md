@@ -1,3 +1,18 @@
+## 0.0.65 (2025-03-14)
+
+### 🩹 Fixes
+
+- **admin-components:** AdminTable layout ([81c533a](https://github.com/Mezzanine-UI/components/commit/81c533a))
+
+### 🧱 Updated Dependencies
+
+- Updated @mezzanine-ui/react-hook-form-v2 to 0.0.65
+- Updated @mezzanine-ui/login-panel to 0.0.65
+
+### ❤️ Thank You
+
+- TingTing
+
 ## 0.0.64 (2025-03-13)
 
 ### 🚀 Features
