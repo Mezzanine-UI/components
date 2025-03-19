@@ -1,3 +1,18 @@
+## 0.0.66 (2025-03-19)
+
+### 🩹 Fixes
+
+- **admin-components:** divider in dropdown actions need key ([7544433](https://github.com/Mezzanine-UI/components/commit/7544433))
+
+### 🧱 Updated Dependencies
+
+- Updated @mezzanine-ui/react-hook-form-v2 to 0.0.66
+- Updated @mezzanine-ui/login-panel to 0.0.66
+
+### ❤️ Thank You
+
+- TingTing
+
 ## 0.0.65 (2025-03-14)
 
 ### 🩹 Fixes
