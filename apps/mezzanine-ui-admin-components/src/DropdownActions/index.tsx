@@ -10,6 +10,7 @@ import {
   cx,
 } from '@mezzanine-ui/react';
 import { Placement } from '@popperjs/core';
+import { Divider } from '../Divider';
 import classes from './index.module.scss';
 
 export type DropdownItemType = {
@@ -90,13 +91,12 @@ export const DropdownActions: FC<DropdownActionsProps> = ({
               }
 
               if (isDivider) {
-                return <div className={classes.divider} />;
+                return <Divider key={index} color="border" />;
               }
 
               return (
                 <MenuItem
                   {...rest}
-                  // eslint-disable-next-line react/no-array-index-key
                   key={index}
                   disabled={disabled}
                   className={cx({
