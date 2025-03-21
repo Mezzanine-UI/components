@@ -1,3 +1,18 @@
+## 0.0.67 (2025-03-21)
+
+### 🚀 Features
+
+- **admin-components:** add expandable and rowSelection features in AdminTable ([2931975](https://github.com/Mezzanine-UI/components/commit/2931975))
+
+### 🧱 Updated Dependencies
+
+- Updated @mezzanine-ui/react-hook-form-v2 to 0.0.67
+- Updated @mezzanine-ui/login-panel to 0.0.67
+
+### ❤️ Thank You
+
+- TingTing
+
 ## 0.0.66 (2025-03-19)
 
 ### 🩹 Fixes
