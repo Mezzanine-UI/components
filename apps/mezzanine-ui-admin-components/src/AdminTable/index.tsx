@@ -7,6 +7,8 @@ import {
   TablePagination,
   TableDraggable,
   TableScrolling,
+  TableExpandable,
+  TableRowSelection,
 } from '@mezzanine-ui/core/table';
 import { DropdownActions, DropdownItemsType } from '../DropdownActions';
 import classes from './index.module.scss';
@@ -40,6 +42,14 @@ export type AdminTableProps<T extends TableDataSourceWithID> = {
    * Table 拖拉功能設定
    */
   draggable?: TableDraggable;
+  /**
+   * Table expandable 功能設定
+   */
+  expandable?: TableExpandable<T>;
+  /**
+   * Table rowSelection 功能設定
+   */
+  rowSelection?: TableRowSelection;
   /**
    * Table Row 下拉選單設定
    */
@@ -101,6 +111,8 @@ export const AdminTable = <T extends TableDataSourceWithID>({
   loading,
   pagination,
   draggable,
+  expandable,
+  rowSelection,
   actions,
   actionsDisabled,
   headerClassName,
@@ -175,6 +187,8 @@ export const AdminTable = <T extends TableDataSourceWithID>({
         loading={loading}
         pagination={pagination}
         draggable={draggable}
+        expandable={expandable}
+        rowSelection={rowSelection}
         emptyProps={emptyProps}
       />
     </div>
