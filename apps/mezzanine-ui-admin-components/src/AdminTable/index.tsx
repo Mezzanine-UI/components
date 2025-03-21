@@ -9,6 +9,7 @@ import {
   TableScrolling,
   TableExpandable,
   TableRowSelection,
+  ExpandRowBySources,
 } from '@mezzanine-ui/core/table';
 import { DropdownActions, DropdownItemsType } from '../DropdownActions';
 import classes from './index.module.scss';
@@ -45,7 +46,9 @@ export type AdminTableProps<T extends TableDataSourceWithID> = {
   /**
    * Table expandable 功能設定
    */
-  expandable?: TableExpandable<T>;
+  expandable?: Omit<TableExpandable<T>, 'expandedRowRender'> & {
+    expandedRowRender(record: T): ReactNode | ExpandRowBySources;
+  };
   /**
    * Table rowSelection 功能設定
    */
