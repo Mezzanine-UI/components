@@ -1,3 +1,18 @@
+## 0.0.68 (2025-03-21)
+
+### 🩹 Fixes
+
+- **admin-components:** expandable typing ([040b806](https://github.com/Mezzanine-UI/components/commit/040b806))
+
+### 🧱 Updated Dependencies
+
+- Updated @mezzanine-ui/react-hook-form-v2 to 0.0.68
+- Updated @mezzanine-ui/login-panel to 0.0.68
+
+### ❤️ Thank You
+
+- TingTing
+
 ## 0.0.67 (2025-03-21)
 
 ### 🚀 Features
