@@ -67,3 +67,41 @@ export const Default: Story = {
     );
   },
 };
+
+export const HaveFilesLimit: Story = {
+  args: {
+    registerName: 'files',
+    label: '標籤',
+    width: 300,
+    limit: 5,
+    filesLimit: 1,
+    hints: ['檔案大小：100MB'],
+    accept: '.pdf, application/vnd.oasis.opendocument.text',
+    setFileUrl: (fileId) => `host/${fileId}`,
+    upload: async (file) => {
+      action('upload')(file);
+
+      return {
+        id: file.name,
+      };
+    },
+  },
+  parameters: {
+    controls: {
+      include: ['filesLimit'],
+    },
+  },
+  render: function Render(args) {
+    const methods = useForm<DemoFormValues>({
+      defaultValues: {
+        files: [],
+      },
+    });
+
+    return (
+      <FormFieldsWrapper methods={methods}>
+        <UploadFileField {...args} />
+      </FormFieldsWrapper>
+    );
+  },
+};

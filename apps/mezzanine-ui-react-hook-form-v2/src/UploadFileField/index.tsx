@@ -18,6 +18,7 @@ export type UploadFileFieldProps<T extends FieldValues = FieldValues> =
       multiple?: boolean;
       accept?: string;
       limit?: number;
+      filesLimit?: number;
       upload: (file: File) => Promise<{ id: string }>;
     }
   >;
@@ -39,6 +40,7 @@ export const UploadFileField: FC<UploadFileFieldProps> = ({
   horizontal,
   hints,
   limit = 5,
+  filesLimit,
   upload,
   disabled = false,
 }) => {
@@ -56,6 +58,11 @@ export const UploadFileField: FC<UploadFileFieldProps> = ({
   );
 
   const MAX_SIZE = useMemo(() => limit * 1024 * 1024, [limit]); // limit MB
+
+  const isOnFilesLimit = useMemo(
+    () => typeof filesLimit === 'number' && fields.length >= filesLimit,
+    [fields.length, filesLimit],
+  );
 
   const onUpload = useCallback(
     async (files: File[]) => {
@@ -141,7 +148,7 @@ export const UploadFileField: FC<UploadFileFieldProps> = ({
           accept={accept}
           onUpload={onUpload}
           loading={loading}
-          disabled={disabled}
+          disabled={disabled || isOnFilesLimit}
         >
           {buttonText}
         </UploadButton>
