@@ -1,3 +1,13 @@
+## 0.0.69 (2025-03-25)
+
+### 🚀 Features
+
+- **react-hook-form-v2:** give files amount limit props to UploadFileField ([bd74dac](https://github.com/Mezzanine-UI/components/commit/bd74dac))
+
+### ❤️ Thank You
+
+- TingTing
+
 ## 0.0.68 (2025-03-21)
 
 This was a version bump only for @mezzanine-ui/react-hook-form-v2 to align it with other projects, there were no code changes.
