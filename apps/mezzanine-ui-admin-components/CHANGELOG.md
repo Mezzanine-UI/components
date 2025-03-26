@@ -1,3 +1,18 @@
+## 0.0.70 (2025-03-26)
+
+### 🚀 Features
+
+- **admin-components:** add className props in PageWrapper ([97f1b6e](https://github.com/Mezzanine-UI/components/commit/97f1b6e))
+
+### 🧱 Updated Dependencies
+
+- Updated @mezzanine-ui/react-hook-form-v2 to 0.0.70
+- Updated @mezzanine-ui/login-panel to 0.0.70
+
+### ❤️ Thank You
+
+- TingTing
+
 ## 0.0.69 (2025-03-25)
 
 ### 🧱 Updated Dependencies
