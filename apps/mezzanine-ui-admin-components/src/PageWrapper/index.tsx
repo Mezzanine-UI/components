@@ -6,6 +6,10 @@ import classes from './index.module.scss';
 export interface PageWrapperProps {
   children?: ReactNode;
   /**
+   * host class
+   */
+  className?: string;
+  /**
    * 大標題
    */
   title?: string;
@@ -41,6 +45,7 @@ export interface PageWrapperProps {
 
 export const PageWrapper: FC<PageWrapperProps> = ({
   children,
+  className,
   title,
   isFormPage = false,
   customizeActionComponent,
@@ -52,7 +57,7 @@ export const PageWrapper: FC<PageWrapperProps> = ({
 }) => {
   return (
     <div
-      className={cx(classes.root, {
+      className={cx(classes.root, className, {
         [classes.isFormPage]: isFormPage,
       })}
     >
