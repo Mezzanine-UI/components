@@ -1,3 +1,13 @@
+## 0.0.74 (2025-03-28)
+
+### 🚀 Features
+
+- **react-hook-form-v2:** layout of UploadFilesField ([50dbdc0](https://github.com/Mezzanine-UI/components/commit/50dbdc0))
+
+### ❤️ Thank You
+
+- TingTing
+
 ## 0.0.73 (2025-03-28)
 
 ### 🚀 Features
