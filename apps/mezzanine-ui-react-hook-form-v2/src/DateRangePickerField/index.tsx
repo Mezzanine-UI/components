@@ -85,10 +85,13 @@ export const DateRangePickerField: HookFormFieldComponent<
       if (valuesAreMaxRange) {
         setValue(
           registerName,
-          [
-            dayjs(newDate?.[0]).startOf('day').toISOString(),
-            dayjs(newDate?.[1]).endOf('day').toISOString(),
-          ],
+          (newDate ?? []).map((date, index) => {
+            if (index === 0) {
+              return dayjs(date).startOf('day').toISOString();
+            }
+
+            return dayjs(date).endOf('day').toISOString();
+          }),
           { shouldDirty: true },
         );
       } else {
