@@ -3,6 +3,7 @@ import { get } from 'lodash';
 import { UploadButton, Message, UploadResult, cx } from '@mezzanine-ui/react';
 import { FieldValues, useFieldArray, useFormContext } from 'react-hook-form';
 import { BaseField } from '../BaseField';
+import Hints from '../BaseField/Hints';
 import { UploadFilesFieldValues } from './typing';
 import classes from './index.module.scss';
 import { HookFormFieldProps } from '../typing';
@@ -119,7 +120,6 @@ export const UploadFilesField: FC<UploadFilesFieldProps> = ({
       width={width}
       errorMsgRender={errorMsgRender}
       horizontal={horizontal}
-      hints={hints}
     >
       <div
         className={cx(classes.fieldWrapper, {
@@ -148,20 +148,23 @@ export const UploadFilesField: FC<UploadFilesFieldProps> = ({
             })}
           </div>
         )}
-        <UploadButton
-          type="button"
-          size="large"
-          variant="outlined"
-          className={classes.uploadButton}
-          multiple={multiple}
-          danger={!!isError}
-          accept={accept}
-          onUpload={onUpload}
-          loading={loading}
-          disabled={disabled || isOnFilesLimit}
-        >
-          {buttonText}
-        </UploadButton>
+        <div>
+          <UploadButton
+            type="button"
+            size="large"
+            variant="outlined"
+            className={classes.uploadButton}
+            multiple={multiple}
+            danger={!!isError}
+            accept={accept}
+            onUpload={onUpload}
+            loading={loading}
+            disabled={disabled || isOnFilesLimit}
+          >
+            {buttonText}
+          </UploadButton>
+          {hints && hints.length > 0 && <Hints hints={hints} />}
+        </div>
       </div>
     </BaseField>
   );

@@ -43,20 +43,6 @@
       :first-child[class^='mzn-text-field'] {
         min-width: unset;
       }
-
-      .hintsWrapper {
-        display: flex;
-        flex-direction: column;
-        gap: 4px;
-        margin-top: 4px;
-
-        .hintWrapper {
-          display: flex;
-          align-items: center;
-          justify-content: flex-start;
-          gap: 4px;
-        }
-      }
     }
 
     &.horizontal {
@@ -74,5 +60,19 @@
         width: unset;
       }
     }
+  }
+}
+
+.hintsWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 4px;
+
+  .hintWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 4px;
   }
 }
