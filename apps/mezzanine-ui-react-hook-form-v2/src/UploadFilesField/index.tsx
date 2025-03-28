@@ -20,6 +20,7 @@ export type UploadFilesFieldProps<T extends FieldValues = FieldValues> =
       limit?: number;
       filesLimit?: number;
       upload: (file: File) => Promise<{ id: string }>;
+      reverseButtonAndFiles?: boolean;
     }
   >;
 
@@ -42,6 +43,7 @@ export const UploadFilesField: FC<UploadFilesFieldProps> = ({
   limit = 5,
   filesLimit,
   upload,
+  reverseButtonAndFiles = false,
   disabled = false,
 }) => {
   const [loading, setLoading] = useState<boolean>(false);
@@ -119,25 +121,33 @@ export const UploadFilesField: FC<UploadFilesFieldProps> = ({
       horizontal={horizontal}
       hints={hints}
     >
-      <div className={classes.fieldWrapper}>
-        {fields.map((f, index) => {
-          const field = f as Record<'id', string> & UploadFilesFieldValues;
-
-          return (
-            <UploadResult
-              key={field.id}
-              status="done"
-              size="large"
-              name={field.fileName}
-              onDownload={() => {
-                window.open(setFileUrl(field.fileId), '_blank');
-              }}
-              onDelete={() => {
-                remove(index);
-              }}
-            />
-          );
+      <div
+        className={cx(classes.fieldWrapper, {
+          [classes.reverseButtonAndFiles]: reverseButtonAndFiles,
         })}
+      >
+        {fields.length > 0 && (
+          <div className={classes.filesWrapper}>
+            {fields.map((f, index) => {
+              const field = f as Record<'id', string> & UploadFilesFieldValues;
+
+              return (
+                <UploadResult
+                  key={field.id}
+                  status="done"
+                  size="large"
+                  name={field.fileName}
+                  onDownload={() => {
+                    window.open(setFileUrl(field.fileId), '_blank');
+                  }}
+                  onDelete={() => {
+                    remove(index);
+                  }}
+                />
+              );
+            })}
+          </div>
+        )}
         <UploadButton
           type="button"
           size="large"

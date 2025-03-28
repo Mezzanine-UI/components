@@ -105,3 +105,45 @@ export const HaveFilesLimit: Story = {
     );
   },
 };
+
+export const ReverseLayout: Story = {
+  args: {
+    registerName: 'files',
+    label: '標籤',
+    width: 300,
+    limit: 5,
+    hints: ['提示1', '提示2'],
+    accept: '.pdf, application/vnd.oasis.opendocument.text',
+    multiple: true,
+    disabled: false,
+    required: true,
+    horizontal: false,
+    reverseButtonAndFiles: true,
+    setFileUrl: (fileId) => `host/${fileId}`,
+    upload: async (file) => {
+      action('upload')(file);
+
+      return {
+        id: file.name,
+      };
+    },
+  },
+  parameters: {
+    controls: {
+      include: ['reverseButtonAndFiles'],
+    },
+  },
+  render: function Render(args) {
+    const methods = useForm<DemoFormValues>({
+      defaultValues: {
+        files: [],
+      },
+    });
+
+    return (
+      <FormFieldsWrapper methods={methods}>
+        <UploadFilesField {...args} />
+      </FormFieldsWrapper>
+    );
+  },
+};
