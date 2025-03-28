@@ -3,11 +3,11 @@ import { get } from 'lodash';
 import { UploadButton, Message, UploadResult, cx } from '@mezzanine-ui/react';
 import { FieldValues, useFieldArray, useFormContext } from 'react-hook-form';
 import { BaseField } from '../BaseField';
-import { UploadFileFieldValues } from './typing';
+import { UploadFilesFieldValues } from './typing';
 import classes from './index.module.scss';
 import { HookFormFieldProps } from '../typing';
 
-export type UploadFileFieldProps<T extends FieldValues = FieldValues> =
+export type UploadFilesFieldProps<T extends FieldValues = FieldValues> =
   HookFormFieldProps<
     T,
     object,
@@ -23,7 +23,7 @@ export type UploadFileFieldProps<T extends FieldValues = FieldValues> =
     }
   >;
 
-export const UploadFileField: FC<UploadFileFieldProps> = ({
+export const UploadFilesField: FC<UploadFilesFieldProps> = ({
   registerName,
   accept,
   buttonText = '新增檔案',
@@ -89,7 +89,7 @@ export const UploadFileField: FC<UploadFileFieldProps> = ({
           setLoading(true);
           const { id } = await upload(f);
 
-          const fileFormValue: UploadFileFieldValues = {
+          const fileFormValue: UploadFilesFieldValues = {
             fileId: id,
             fileName: f.name,
           };
@@ -121,7 +121,7 @@ export const UploadFileField: FC<UploadFileFieldProps> = ({
     >
       <div className={classes.fieldWrapper}>
         {fields.map((f, index) => {
-          const field = f as Record<'id', string> & UploadFileFieldValues;
+          const field = f as Record<'id', string> & UploadFilesFieldValues;
 
           return (
             <UploadResult

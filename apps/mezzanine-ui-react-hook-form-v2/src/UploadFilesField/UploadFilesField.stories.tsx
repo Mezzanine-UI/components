@@ -2,19 +2,19 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { useForm } from 'react-hook-form';
 import { action } from '@storybook/addon-actions';
 import { FormFieldsWrapper } from '../FormFieldsWrapper';
-import { UploadFileField } from './index';
-import { UploadFileFieldValues } from './typing';
+import { UploadFilesField } from './index';
+import { UploadFilesFieldValues } from './typing';
 
 const meta = {
-  component: UploadFileField,
-} satisfies Meta<typeof UploadFileField>;
+  component: UploadFilesField,
+} satisfies Meta<typeof UploadFilesField>;
 
 export default meta;
 
 type Story = StoryObj<typeof meta>;
 
 interface DemoFormValues {
-  files: UploadFileFieldValues[];
+  files: UploadFilesFieldValues[];
 }
 
 export const Default: Story = {
@@ -62,7 +62,7 @@ export const Default: Story = {
 
     return (
       <FormFieldsWrapper methods={methods}>
-        <UploadFileField {...args} />
+        <UploadFilesField {...args} />
       </FormFieldsWrapper>
     );
   },
@@ -100,7 +100,7 @@ export const HaveFilesLimit: Story = {
 
     return (
       <FormFieldsWrapper methods={methods}>
-        <UploadFileField {...args} />
+        <UploadFilesField {...args} />
       </FormFieldsWrapper>
     );
   },
