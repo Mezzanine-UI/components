@@ -1,4 +1,5 @@
-import { useMemo } from 'react';
+import { useMemo, useCallback } from 'react';
+import dayjs from 'dayjs';
 import {
   FieldValues,
   useFormContext,
@@ -16,6 +17,7 @@ export type DateRangePickerFieldProps = HookFormFieldProps<
   DateRangePickerProps,
   {
     width?: number;
+    valuesAreMaxRange?: boolean;
   }
 >;
 
@@ -33,6 +35,7 @@ export const DateRangePickerField: HookFormFieldComponent<
   isDateDisabled,
   label,
   width,
+  valuesAreMaxRange = true,
   mode,
   onCalendarToggle,
   readOnly,
@@ -77,9 +80,23 @@ export const DateRangePickerField: HookFormFieldComponent<
     ...registration,
   };
 
-  const onChange = (newDate?: RangePickerValue) => {
-    setValue(registerName, newDate, { shouldDirty: true });
-  };
+  const onChange = useCallback(
+    (newDate?: RangePickerValue) => {
+      if (valuesAreMaxRange) {
+        setValue(
+          registerName,
+          [
+            dayjs(newDate?.[0]).startOf('day').toISOString(),
+            dayjs(newDate?.[1]).endOf('day').toISOString(),
+          ],
+          { shouldDirty: true },
+        );
+      } else {
+        setValue(registerName, newDate, { shouldDirty: true });
+      }
+    },
+    [registerName, setValue, valuesAreMaxRange],
+  );
 
   return (
     <BaseField
