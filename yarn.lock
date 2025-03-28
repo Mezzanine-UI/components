@@ -2727,9 +2727,9 @@ __metadata:
     "@hookform/resolvers": "npm:^3.10.0"
     "@mezzanine-ui/core": "npm:^0.15.3"
     "@mezzanine-ui/icons": "npm:^0.15.3"
-    "@mezzanine-ui/login-panel": "npm:0.0.69"
+    "@mezzanine-ui/login-panel": "npm:0.0.71"
     "@mezzanine-ui/react": "npm:^0.15.3"
-    "@mezzanine-ui/react-hook-form-v2": "npm:^0.0.69"
+    "@mezzanine-ui/react-hook-form-v2": "npm:^0.0.71"
     "@mezzanine-ui/system": "npm:^0.15.3"
     "@nx/eslint": "npm:20.3.3"
     "@nx/eslint-plugin": "npm:20.3.3"
@@ -2825,13 +2825,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mezzanine-ui/login-panel@npm:0.0.69":
-  version: 0.0.69
-  resolution: "@mezzanine-ui/login-panel@npm:0.0.69"
+"@mezzanine-ui/login-panel@npm:0.0.71":
+  version: 0.0.71
+  resolution: "@mezzanine-ui/login-panel@npm:0.0.71"
   dependencies:
     "@hookform/error-message": "npm:^2.0.1"
     "@hookform/resolvers": "npm:^3.9.1"
-    "@mezzanine-ui/react-hook-form-v2": "npm:^0.0.69"
+    "@mezzanine-ui/react-hook-form-v2": "npm:^0.0.71"
     yup: "npm:^1.6.1"
   peerDependencies:
     "@mezzanine-ui/core": ^0.15.2
@@ -2842,13 +2842,13 @@ __metadata:
     react: "*"
     react-dom: "*"
     react-hook-form: ^7
-  checksum: 10c0/082ed7b6ec17f67241f4c0375764a6bad203ac42ab174e2b809707b3ef363c582fee157442f2a4ba0ade9a4bae7b90afd6e3bd3f7e94ae6fc454106c48c8b14a
+  checksum: 10c0/3714f1d1ec5f8c636cac1c14d6b393810dd3da51357806aa72f80362b403c9c5aec6abf46ea2c554f04bb2b16ab26ce3c8cace709afa0252127ef2034ea8b2bd
   languageName: node
   linkType: hard
 
-"@mezzanine-ui/react-hook-form-v2@npm:^0.0.69":
-  version: 0.0.69
-  resolution: "@mezzanine-ui/react-hook-form-v2@npm:0.0.69"
+"@mezzanine-ui/react-hook-form-v2@npm:^0.0.71":
+  version: 0.0.71
+  resolution: "@mezzanine-ui/react-hook-form-v2@npm:0.0.71"
   dependencies:
     "@hookform/error-message": "npm:^2.0.1"
   peerDependencies:
@@ -2856,11 +2856,12 @@ __metadata:
     "@mezzanine-ui/icons": ^0.15.2
     "@mezzanine-ui/react": ^0.15.2
     "@mezzanine-ui/system": ^0.15.2
+    dayjs: ^1.11.13
     lodash: ^4.17.21
     react: ^18.3.1
     react-dom: ^18.3.1
     react-hook-form: ^7.52.2
-  checksum: 10c0/33ac11b6b171d531668376e4bbf43eb6a9ef0c9970147af1fb9262d798cbd11c8d78881360d90e370f075e07ad05776038a2dcee47bc604b248b2d5f2bbe436a
+  checksum: 10c0/83f058262b93f59f474a8d127fcdd2cc5a2d3a591f180d80ee5c39588027a9863511a95b5f0afc0b247e00a0fe9633517862055e585801deb5f46b4d4cd3f441
   languageName: node
   linkType: hard
 

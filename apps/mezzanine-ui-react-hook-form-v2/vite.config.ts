@@ -37,6 +37,7 @@ export default defineConfig({
         'react/jsx-runtime',
         'react-hook-form',
         'lodash',
+        'dayjs',
         'yup',
         '@hookform/error-message',
         '@hookform/resolvers',
