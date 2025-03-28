@@ -1,3 +1,13 @@
+## 0.0.71 (2025-03-28)
+
+### 🚀 Features
+
+- **admin:** set date range picker values max range ([841d25a](https://github.com/Mezzanine-UI/components/commit/841d25a))
+
+### ❤️ Thank You
+
+- TingTing
+
 ## 0.0.70 (2025-03-26)
 
 This was a version bump only for @mezzanine-ui/react-hook-form-v2 to align it with other projects, there were no code changes.
