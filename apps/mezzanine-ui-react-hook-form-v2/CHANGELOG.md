@@ -1,3 +1,14 @@
+## 0.0.73 (2025-03-28)
+
+### 🚀 Features
+
+- **react-hook-form-v2:** layout of UploadFilesField ([d126fbb](https://github.com/Mezzanine-UI/components/commit/d126fbb))
+- **react-hook-form-v2:** rename UploadFileField -> UploadFilesField ([ca3dbb1](https://github.com/Mezzanine-UI/components/commit/ca3dbb1))
+
+### ❤️ Thank You
+
+- TingTing
+
 ## 0.0.72 (2025-03-28)
 
 ### 🩹 Fixes
