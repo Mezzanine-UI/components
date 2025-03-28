@@ -1,3 +1,13 @@
+## 0.0.72 (2025-03-28)
+
+### 🩹 Fixes
+
+- **react-hook-form-v2:** date range picker behavior ([5156460](https://github.com/Mezzanine-UI/components/commit/5156460))
+
+### ❤️ Thank You
+
+- TingTing
+
 ## 0.0.71 (2025-03-28)
 
 ### 🚀 Features
