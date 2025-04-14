@@ -89,25 +89,30 @@ export interface LoginFormProps {
   notShowForgotPassword?: boolean;
   loginTitle?: string;
   accountFieldLabel?: string;
-  passwordFieldLabel?: string;
-  passwordFieldPlaceholder?: string;
-  forgotPasswordButtonText?: string;
   /**
    * 帳號欄位 placeholder
    */
   accountFieldPlaceholder?: string;
+  passwordFieldLabel?: string;
+  passwordFieldPlaceholder?: string;
+  forgotPasswordButtonText?: string;
+  forgotPasswordTitle?: string;
+  forgotPasswordAccountFieldLabel?: string;
   /**
    * 忘記密碼帳號欄位 placeholder
    */
   forgotPasswordAccountFieldPlaceholder?: string;
+  forgotPasswordSendText?: string;
   /**
    * 忘記密碼提示，預設值 `請輸入註冊時使用的email帳號 密碼重置連結將發送至該信箱`
    */
   forgotPasswordHint?: string;
+  forgotPasswordSuccessTitle?: string;
   /**
    * 忘記密碼成功後提示，預設值 `請於1小時內點擊連結設定密碼。 若未收到email或遇連結失效請聯絡管理員。`
    */
   forgotPasswordSuccessHint?: string;
+  backToLoginText?: string;
 }
 
 /**
@@ -134,11 +139,16 @@ export const LoginForm: FC<LoginFormProps> = ({
   passwordFieldLabel = '密碼',
   passwordFieldPlaceholder = '請輸入密碼',
   forgotPasswordButtonText = '忘記密碼',
+  forgotPasswordTitle = '重新設定密碼',
+  forgotPasswordAccountFieldLabel = '帳號',
   forgotPasswordAccountFieldPlaceholder = '輸入帳號 e.g. example@email.com',
+  forgotPasswordSendText = '送出',
   forgotPasswordHint = `請輸入註冊時使用的email帳號
 密碼重置連結將發送至該信箱`,
+  forgotPasswordSuccessTitle = '密碼重置連結已發送至',
   forgotPasswordSuccessHint = `請於1小時內點擊連結設定密碼。
 若未收到email或遇連結失效請聯絡管理員。`,
+  backToLoginText = '返回登入頁面',
 }) => {
   const [currentPage, setCurrentPage] = useState<LoginPageEnum>(
     LoginPageEnum.LOGIN,
@@ -175,13 +185,18 @@ export const LoginForm: FC<LoginFormProps> = ({
       return (
         <Forgot
           logo={logo}
+          title={forgotPasswordTitle}
           onSendForgotPassword={onSendForgotPassword}
           setCurrentPage={setCurrentPage}
+          forgotPasswordAccountFieldLabel={forgotPasswordAccountFieldLabel}
           forgotPasswordAccountFieldPlaceholder={
             forgotPasswordAccountFieldPlaceholder
           }
+          forgotPasswordSendText={forgotPasswordSendText}
           forgotPasswordHint={forgotPasswordHint}
+          forgotPasswordSuccessTitle={forgotPasswordSuccessTitle}
           forgotPasswordSuccessHint={forgotPasswordSuccessHint}
+          backToLoginText={backToLoginText}
         />
       );
 

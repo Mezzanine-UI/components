@@ -19,24 +19,34 @@ import classes from './index.module.scss';
 
 interface ForgotProps {
   logo?: ReactNode;
+  title: string;
   onSendForgotPassword?: ({
     values,
   }: {
     values: ForgotFormValues;
   }) => Promise<boolean>;
   setCurrentPage: Dispatch<SetStateAction<LoginPageEnum>>;
+  forgotPasswordAccountFieldLabel: string;
   forgotPasswordAccountFieldPlaceholder: string;
+  forgotPasswordSendText: string;
   forgotPasswordHint: string;
+  forgotPasswordSuccessTitle: string;
   forgotPasswordSuccessHint: string;
+  backToLoginText: string;
 }
 
 const Forgot: FC<ForgotProps> = ({
   logo,
+  title,
   onSendForgotPassword,
   setCurrentPage,
+  forgotPasswordAccountFieldLabel,
   forgotPasswordAccountFieldPlaceholder,
+  forgotPasswordSendText,
   forgotPasswordHint,
+  forgotPasswordSuccessTitle,
   forgotPasswordSuccessHint,
+  backToLoginText,
 }) => {
   const [isSuccess, setIsSuccess] = useState<boolean>(false);
 
@@ -75,7 +85,9 @@ const Forgot: FC<ForgotProps> = ({
         onBack={() => {
           setCurrentPage(LoginPageEnum.LOGIN);
         }}
+        forgotPasswordSuccessTitle={forgotPasswordSuccessTitle}
         forgotPasswordSuccessHint={forgotPasswordSuccessHint}
+        backToLoginText={backToLoginText}
       />
     );
   }
@@ -89,13 +101,13 @@ const Forgot: FC<ForgotProps> = ({
       >
         {logo && <div className={classes.logoWrapper}>{logo}</div>}
         <Typography variant="h2" color="text-primary" align="center">
-          重新設定密碼
+          {title}
         </Typography>
         <Typography
           variant="h5"
           color="text-primary"
           align="center"
-          style={{ marginTop: -8, whiteSpace: 'pre-line' }}
+          style={{ marginTop: -8, whiteSpace: 'pre-wrap' }}
         >
           {forgotPasswordHint}
         </Typography>
@@ -103,7 +115,7 @@ const Forgot: FC<ForgotProps> = ({
           <div className={classes.blockWrapper}>
             <InputField
               registerName="account"
-              label="帳號"
+              label={forgotPasswordAccountFieldLabel}
               size="large"
               placeholder={forgotPasswordAccountFieldPlaceholder}
               className={classes.inputWrapper}
@@ -120,7 +132,7 @@ const Forgot: FC<ForgotProps> = ({
               loading={submitting}
               disabled={!values.account || submitting}
             >
-              送出
+              {forgotPasswordSendText}
             </Button>
             <Button
               type="button"
@@ -131,7 +143,7 @@ const Forgot: FC<ForgotProps> = ({
                 setCurrentPage(LoginPageEnum.LOGIN);
               }}
             >
-              返回登入頁面
+              {backToLoginText}
             </Button>
           </div>
         </div>

@@ -6,19 +6,23 @@ import classes from './index.module.scss';
 interface SuccessProps {
   account: string;
   onBack: VoidFunction;
+  forgotPasswordSuccessTitle: string;
   forgotPasswordSuccessHint: string;
+  backToLoginText: string;
 }
 
 const Success: FC<SuccessProps> = ({
   account,
   onBack,
+  forgotPasswordSuccessTitle,
   forgotPasswordSuccessHint,
+  backToLoginText,
 }) => {
   return (
     <div className={cx(classes.root, classes.success)}>
       <Icon icon={CheckCircleFilledIcon} color="success" size={50} />
       <Typography variant="h2" color="text-primary">
-        密碼重置連結已發送至
+        {forgotPasswordSuccessTitle}
       </Typography>
       <Typography variant="h5" color="text-primary">
         {account}
@@ -28,7 +32,7 @@ const Success: FC<SuccessProps> = ({
         color="text-secondary"
         component="p"
         align="center"
-        style={{ whiteSpace: 'pre-line' }}
+        style={{ whiteSpace: 'pre-wrap' }}
       >
         {forgotPasswordSuccessHint}
       </Typography>
@@ -39,7 +43,7 @@ const Success: FC<SuccessProps> = ({
         className={classes.backButton}
         onClick={onBack}
       >
-        返回登入頁面
+        {backToLoginText}
       </Button>
     </div>
   );
