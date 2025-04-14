@@ -127,6 +127,8 @@ export interface LoginFormProps {
   needChangeCancelText?: string;
   needChangeSuccessText?: string;
   backToLoginText?: string;
+  requiredErrorMessage?: string;
+  passwordErrorMessage?: string;
 }
 
 /**
@@ -176,6 +178,8 @@ export const LoginForm: FC<LoginFormProps> = ({
   needChangeSuccessText = `密碼設置完成！
 請使用新密碼登入`,
   backToLoginText = '返回登入頁面',
+  requiredErrorMessage = '必填欄位不可空白',
+  passwordErrorMessage = '密碼不一致',
 }) => {
   const [currentPage, setCurrentPage] = useState<LoginPageEnum>(
     LoginPageEnum.LOGIN,
@@ -223,6 +227,8 @@ export const LoginForm: FC<LoginFormProps> = ({
           needChangeCancelText={needChangeCancelText}
           needChangeSuccessText={needChangeSuccessText}
           backToLoginText={backToLoginText}
+          requiredErrorMessage={requiredErrorMessage}
+          passwordErrorMessage={passwordErrorMessage}
         />
       );
 

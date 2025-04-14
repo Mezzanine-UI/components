@@ -68,6 +68,8 @@ export interface ActivateFormProps {
    * 自定義密碼規則
    */
   customizedRule?: RegExp;
+  requiredErrorMessage?: string;
+  passwordErrorMessage?: string;
 }
 
 /**
@@ -93,6 +95,8 @@ export const ActivateForm: FC<ActivateFormProps> = ({
 請使用新密碼登入`,
   customizedHint,
   customizedRule,
+  requiredErrorMessage = '必填欄位不可空白',
+  passwordErrorMessage = '密碼不一致',
 }) => {
   const [isSuccess, setIsSuccess] = useState<boolean>(false);
   const ruleRegExp = useMemo(() => {
@@ -104,10 +108,10 @@ export const ActivateForm: FC<ActivateFormProps> = ({
 
   const formSchema: Yup.ObjectSchema<ActivateFormValues> = useMemo(() => {
     const baseSchema = Yup.object({
-      password: Yup.string().required('必填欄位不可空白'),
+      password: Yup.string().required(requiredErrorMessage),
       confirmPassword: Yup.string()
-        .required('密碼不一致')
-        .oneOf([Yup.ref('password')], '密碼不一致'),
+        .required(passwordErrorMessage)
+        .oneOf([Yup.ref('password')], passwordErrorMessage),
     });
 
     if (customizedSchema) {
@@ -115,7 +119,7 @@ export const ActivateForm: FC<ActivateFormProps> = ({
     }
 
     return baseSchema;
-  }, [customizedSchema]);
+  }, [customizedSchema, passwordErrorMessage, requiredErrorMessage]);
 
   const methods = useForm<ActivateFormValues>({
     resolver: yupResolver(formSchema),

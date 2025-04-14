@@ -52,6 +52,8 @@ interface NeedChangeProps {
   customizedActivateSchema?: Yup.ObjectSchema<object>;
   customizedHint?: string;
   customizedRule?: RegExp;
+  requiredErrorMessage: string;
+  passwordErrorMessage: string;
 }
 
 const NeedChange: FC<NeedChangeProps> = ({
@@ -80,6 +82,8 @@ const NeedChange: FC<NeedChangeProps> = ({
   customizedActivateSchema,
   customizedHint,
   customizedRule,
+  requiredErrorMessage,
+  passwordErrorMessage,
 }) => {
   const [isSuccess, setIsSuccess] = useState<boolean>(false);
   const ruleRegExp = useMemo(() => {
@@ -92,10 +96,10 @@ const NeedChange: FC<NeedChangeProps> = ({
   const formSchema: Yup.ObjectSchema<NeedChangePasswordFormValues> =
     useMemo(() => {
       const baseSchema = Yup.object({
-        password: Yup.string().required('必填欄位不可空白'),
+        password: Yup.string().required(requiredErrorMessage),
         confirmPassword: Yup.string()
-          .required('密碼不一致')
-          .oneOf([Yup.ref('password')], '密碼不一致'),
+          .required(passwordErrorMessage)
+          .oneOf([Yup.ref('password')], passwordErrorMessage),
       });
 
       if (customizedActivateSchema && mode === NeedChangePasswordMode.FIRST) {
@@ -103,7 +107,12 @@ const NeedChange: FC<NeedChangeProps> = ({
       }
 
       return baseSchema;
-    }, [customizedActivateSchema, mode]);
+    }, [
+      customizedActivateSchema,
+      mode,
+      passwordErrorMessage,
+      requiredErrorMessage,
+    ]);
 
   const methods = useForm<NeedChangePasswordFormValues>({
     resolver: yupResolver(formSchema),

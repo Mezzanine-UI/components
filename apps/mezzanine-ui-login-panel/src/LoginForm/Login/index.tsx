@@ -45,6 +45,8 @@ interface LoginProps {
   customizedActivateSchema?: Yup.ObjectSchema<object>;
   customizedHint?: string;
   customizedRule?: RegExp;
+  requiredErrorMessage: string;
+  passwordErrorMessage: string;
   customizedLoginPasswordHint?: string[];
   notShowForgotPassword?: boolean;
   loginTitle: string;
@@ -80,6 +82,8 @@ const Login: FC<LoginProps> = ({
   customizedActivateSchema,
   customizedHint,
   customizedRule,
+  requiredErrorMessage,
+  passwordErrorMessage,
   customizedLoginPasswordHint,
   notShowForgotPassword = false,
   loginTitle,
@@ -166,6 +170,8 @@ const Login: FC<LoginProps> = ({
         customizedActivateSchema={customizedActivateSchema}
         customizedHint={customizedHint}
         customizedRule={customizedRule}
+        requiredErrorMessage={requiredErrorMessage}
+        passwordErrorMessage={passwordErrorMessage}
       />
     );
   }

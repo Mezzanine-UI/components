@@ -69,15 +69,9 @@ export interface ChangePasswordFormProps {
    * 自定義密碼規則
    */
   customizedRule?: RegExp;
+  requiredErrorMessage?: string;
+  passwordErrorMessage?: string;
 }
-
-const formSchema: Yup.ObjectSchema<ChangePasswordFormValues> = Yup.object({
-  originPassword: Yup.string().required('必填欄位不可空白'),
-  password: Yup.string().required('必填欄位不可空白'),
-  confirmPassword: Yup.string()
-    .required('密碼不一致')
-    .oneOf([Yup.ref('password')], '密碼不一致'),
-});
 
 /**
  * 後台更換密碼 UI 元件，可搭配 modal
@@ -105,6 +99,8 @@ export const ChangePasswordForm: FC<ChangePasswordFormProps> = ({
 請使用新密碼登入`,
   customizedHint,
   customizedRule,
+  requiredErrorMessage = '必填欄位不可空白',
+  passwordErrorMessage = '密碼不一致',
 }) => {
   const [isSuccess, setIsSuccess] = useState<boolean>(false);
   const ruleRegExp = useMemo(() => {
@@ -113,6 +109,18 @@ export const ChangePasswordForm: FC<ChangePasswordFormProps> = ({
     }
     return passwordLength ? generatePasswordRegRxp(passwordLength) : null;
   }, [passwordLength, customizedRule]);
+
+  const formSchema: Yup.ObjectSchema<ChangePasswordFormValues> = useMemo(
+    () =>
+      Yup.object({
+        originPassword: Yup.string().required(requiredErrorMessage),
+        password: Yup.string().required(requiredErrorMessage),
+        confirmPassword: Yup.string()
+          .required(passwordErrorMessage)
+          .oneOf([Yup.ref('password')], passwordErrorMessage),
+      }),
+    [passwordErrorMessage, requiredErrorMessage],
+  );
 
   const methods = useForm<ChangePasswordFormValues>({
     resolver: yupResolver(formSchema),
