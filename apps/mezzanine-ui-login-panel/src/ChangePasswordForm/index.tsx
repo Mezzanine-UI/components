@@ -18,6 +18,7 @@ export interface ChangePasswordFormProps {
    * 放置 logo
    */
   logo?: ReactNode;
+  title?: string;
   /**
    * 密碼至少需要的長度
    */
@@ -46,6 +47,16 @@ export interface ChangePasswordFormProps {
    * 成功後返回
    */
   onBack: VoidFunction;
+  originPasswordFieldLabel?: string;
+  originPasswordFieldPlaceholder?: string;
+  passwordFieldLabel?: string;
+  passwordFieldPlaceholder?: string;
+  confirmPasswordFieldLabel?: string;
+  confirmPasswordFieldPlaceholder?: string;
+  submitText?: string;
+  cancelText?: string;
+  backText?: string;
+  successText?: string;
   /**
    * 自定義密碼提示
    */
@@ -69,12 +80,24 @@ const formSchema: Yup.ObjectSchema<ChangePasswordFormValues> = Yup.object({
  */
 export const ChangePasswordForm: FC<ChangePasswordFormProps> = ({
   logo,
+  title = '更改密碼',
   passwordLength,
   generationLimit,
   onChangePassword,
   account,
   onCancel,
   onBack,
+  originPasswordFieldLabel = '原密碼',
+  originPasswordFieldPlaceholder = '請輸入密碼',
+  passwordFieldLabel = '設定密碼',
+  passwordFieldPlaceholder = '請輸入密碼',
+  confirmPasswordFieldLabel = '再次輸入密碼',
+  confirmPasswordFieldPlaceholder = '請再次輸入密碼',
+  submitText = '確認',
+  cancelText = '取消',
+  backText = '返回登入頁面',
+  successText = `密碼更新完成！
+請使用新密碼登入`,
   customizedHint,
   customizedRule,
 }) => {
@@ -117,7 +140,9 @@ export const ChangePasswordForm: FC<ChangePasswordFormProps> = ({
   );
 
   if (isSuccess) {
-    return <Success onBack={onBack} />;
+    return (
+      <Success onBack={onBack} successText={successText} backText={backText} />
+    );
   }
 
   return (
@@ -125,7 +150,7 @@ export const ChangePasswordForm: FC<ChangePasswordFormProps> = ({
       <div className={classes.logoWrapper}>
         {logo}
         <Typography variant="h2" color="text-primary" align="center">
-          更改密碼
+          {title}
         </Typography>
         {!!account && (
           <Typography
@@ -145,9 +170,9 @@ export const ChangePasswordForm: FC<ChangePasswordFormProps> = ({
       >
         <PasswordField
           registerName="originPassword"
-          label="原密碼"
+          label={originPasswordFieldLabel}
           size="large"
-          placeholder="請輸入密碼"
+          placeholder={originPasswordFieldPlaceholder}
           className={classes.inputWrapper}
           inputClassName={classes.input}
           required
@@ -156,9 +181,9 @@ export const ChangePasswordForm: FC<ChangePasswordFormProps> = ({
         <div className={classes.inputFieldWithHint}>
           <PasswordField
             registerName="password"
-            label="設定密碼"
+            label={passwordFieldLabel}
             size="large"
-            placeholder="請輸入密碼"
+            placeholder={passwordFieldPlaceholder}
             className={classes.inputWrapper}
             inputClassName={classes.input}
             required
@@ -174,9 +199,9 @@ export const ChangePasswordForm: FC<ChangePasswordFormProps> = ({
         </div>
         <PasswordField
           registerName="confirmPassword"
-          label="再次輸入密碼"
+          label={confirmPasswordFieldLabel}
           size="large"
-          placeholder="請再次輸入密碼"
+          placeholder={confirmPasswordFieldPlaceholder}
           className={classes.inputWrapper}
           inputClassName={classes.input}
           required
@@ -194,10 +219,10 @@ export const ChangePasswordForm: FC<ChangePasswordFormProps> = ({
               ) || submitting
             }
           >
-            確認
+            {submitText}
           </Button>
           <Button type="button" variant="text" size="large" onClick={onCancel}>
-            取消
+            {cancelText}
           </Button>
         </div>
       </FormFieldsWrapper>

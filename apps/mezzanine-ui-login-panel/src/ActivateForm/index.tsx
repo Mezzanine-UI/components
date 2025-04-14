@@ -89,7 +89,7 @@ export const ActivateForm: FC<ActivateFormProps> = ({
   confirmPasswordFieldPlaceholder = '請再次輸入密碼',
   submitText = '確認',
   backText = '返回登入頁面',
-  successText = ` 密碼設置完成！
+  successText = `密碼設置完成！
 請使用新密碼登入`,
   customizedHint,
   customizedRule,

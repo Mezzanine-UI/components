@@ -5,9 +5,11 @@ import classes from './index.module.scss';
 
 interface SuccessProps {
   onBack: VoidFunction;
+  successText: string;
+  backText: string;
 }
 
-const Success: FC<SuccessProps> = ({ onBack }) => {
+const Success: FC<SuccessProps> = ({ onBack, successText, backText }) => {
   return (
     <div className={classes.successRoot}>
       <div className={classes.logoWrapper}>
@@ -15,9 +17,7 @@ const Success: FC<SuccessProps> = ({ onBack }) => {
       </div>
       <div className={classes.contentWrapper}>
         <Typography variant="h2" color="text-primary" align="center">
-          密碼更新完成！
-          <br />
-          請使用新密碼登入
+          {successText}
         </Typography>
         <Button
           type="button"
@@ -26,7 +26,7 @@ const Success: FC<SuccessProps> = ({ onBack }) => {
           className={classes.button}
           onClick={onBack}
         >
-          返回登入頁面
+          {backText}
         </Button>
       </div>
     </div>
