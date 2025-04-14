@@ -25,6 +25,10 @@ export interface LoginFormProps {
    */
   generationLimit?: number;
   /**
+   * 自定義密碼代數提示
+   */
+  generationLimitHint?: (generationLimit: number) => string;
+  /**
    * `number` 天後需要變更密碼
    */
   keepPasswordDaysLimit?: number;
@@ -132,6 +136,7 @@ export const LoginForm: FC<LoginFormProps> = ({
   logo,
   passwordLength,
   generationLimit,
+  generationLimitHint,
   keepPasswordDaysLimit = 60,
   generalLoginText = '登入',
   onLogin,
@@ -183,6 +188,7 @@ export const LoginForm: FC<LoginFormProps> = ({
           logo={logo}
           passwordLength={passwordLength}
           generationLimit={generationLimit}
+          generationLimitHint={generationLimitHint}
           keepPasswordDaysLimit={keepPasswordDaysLimit}
           generalLoginText={generalLoginText}
           onLogin={onLogin}

@@ -29,6 +29,10 @@ export interface ChangePasswordModalProps {
    */
   generationLimit?: number;
   /**
+   * 自定義密碼代數提示
+   */
+  generationLimitHint?: (generationLimit: number) => string;
+  /**
    * 送出時觸發，return true 代表更新成功
    */
   onChangePassword: ({
@@ -88,6 +92,7 @@ export const ChangePasswordModal: FC<ChangePasswordModalProps> = ({
   title = '更改密碼',
   passwordLength,
   generationLimit,
+  generationLimitHint,
   onChangePassword,
   account,
   onCancel,
@@ -200,6 +205,7 @@ export const ChangePasswordModal: FC<ChangePasswordModalProps> = ({
               passwordValue={values.password}
               passwordLength={passwordLength}
               generationLimit={generationLimit}
+              generationLimitHint={generationLimitHint}
               customizedHint={customizedHint}
               customizedRule={customizedRule}
             />

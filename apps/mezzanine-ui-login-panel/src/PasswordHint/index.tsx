@@ -22,6 +22,10 @@ export interface PasswordHintProps {
    */
   generationLimit?: number;
   /**
+   * 自定義密碼代數提示
+   */
+  generationLimitHint?: (generationLimit: number) => string;
+  /**
    * 自定義密碼提示
    */
   customizedHint?: string;
@@ -38,6 +42,8 @@ export const PasswordHint: FC<PasswordHintProps> = ({
   passwordValue,
   passwordLength,
   generationLimit,
+  generationLimitHint = (generationLimit) =>
+    `不得使用前${generationLimit}次使用過的密碼`,
   customizedHint,
   customizedRule,
 }) => {
@@ -94,7 +100,7 @@ export const PasswordHint: FC<PasswordHintProps> = ({
         <div className={classes.hintWrapper}>
           <Icon icon={InfoCircleFilledIcon} size={16} color="primary" />
           <Typography variant="caption" color="text-secondary">
-            {`不得使用前${generationLimit}次使用過的密碼`}
+            {generationLimitHint(generationLimit)}
           </Typography>
         </div>
       )}

@@ -23,6 +23,7 @@ interface NeedChangeProps {
   logo?: ReactNode;
   passwordLength?: number;
   generationLimit?: number;
+  generationLimitHint?: (generationLimit: number) => string;
   keepPasswordDaysLimit: number;
   onNeedChangePassword?: ({
     values,
@@ -58,6 +59,7 @@ const NeedChange: FC<NeedChangeProps> = ({
   logo,
   passwordLength,
   generationLimit,
+  generationLimitHint,
   keepPasswordDaysLimit,
   onNeedChangePassword,
   account,
@@ -200,6 +202,7 @@ const NeedChange: FC<NeedChangeProps> = ({
                 ? generationLimit
                 : undefined
             }
+            generationLimitHint={generationLimitHint}
             customizedHint={customizedHint}
             customizedRule={customizedRule}
           />

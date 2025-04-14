@@ -21,6 +21,7 @@ interface LoginProps {
   logo?: ReactNode;
   passwordLength?: number;
   generationLimit?: number;
+  generationLimitHint?: (generationLimit: number) => string;
   keepPasswordDaysLimit: number;
   generalLoginText: string;
   onLogin: ({
@@ -69,6 +70,7 @@ const Login: FC<LoginProps> = ({
   logo,
   passwordLength,
   generationLimit,
+  generationLimitHint,
   keepPasswordDaysLimit,
   generalLoginText,
   onLogin: onLoginProps,
@@ -135,6 +137,7 @@ const Login: FC<LoginProps> = ({
         logo={logo}
         passwordLength={passwordLength}
         generationLimit={generationLimit}
+        generationLimitHint={generationLimitHint}
         keepPasswordDaysLimit={keepPasswordDaysLimit}
         onNeedChangePassword={onNeedChangePassword}
         account={needChangePasswordParams.account}

@@ -28,6 +28,10 @@ export interface ResetPasswordFormProps {
    */
   generationLimit?: number;
   /**
+   * 自定義密碼代數提示
+   */
+  generationLimitHint?: (generationLimit: number) => string;
+  /**
    * 送出時觸發，return true 代表更新成功
    */
   onChangePassword: ({
@@ -75,6 +79,7 @@ export const ResetPasswordForm: FC<ResetPasswordFormProps> = ({
   title = '密碼重置',
   passwordLength,
   generationLimit,
+  generationLimitHint,
   onChangePassword,
   account,
   onBack,
@@ -170,6 +175,7 @@ export const ResetPasswordForm: FC<ResetPasswordFormProps> = ({
             passwordValue={values.password}
             passwordLength={passwordLength}
             generationLimit={generationLimit}
+            generationLimitHint={generationLimitHint}
             customizedHint={customizedHint}
             customizedRule={customizedRule}
           />
