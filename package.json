@@ -89,5 +89,5 @@
   "resolutions": {
     "eslint": "^8"
   },
-  "packageManager": "yarn@4.4.0"
+  "packageManager": "yarn@4.7.0"
 }
