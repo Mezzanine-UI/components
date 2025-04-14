@@ -44,6 +44,8 @@ export const AuthorizedAdminPageWrapper: FC<
   menuLogoSpacing,
   memberIconsSpacing,
   horizontalPadding,
+  changePasswordText,
+  logoutText,
   customizedComponent,
   changePasswordModalConfig,
   customizedButton,
@@ -78,6 +80,8 @@ export const AuthorizedAdminPageWrapper: FC<
             menuLogoSpacing={menuLogoSpacing}
             memberIconsSpacing={memberIconsSpacing}
             horizontalPadding={horizontalPadding}
+            changePasswordText={changePasswordText}
+            logoutText={logoutText}
             customizedComponent={customizedComponent}
             changePasswordModalConfig={changePasswordModalConfig}
             customizedButton={customizedButton}

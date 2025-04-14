@@ -76,6 +76,8 @@ export interface HeaderProps {
    * 自定義元件，位在使用者資訊及按鈕元件之間
    */
   customizedComponent?: (closeMenu: VoidFunction) => ReactNode;
+  changePasswordText?: string;
+  logoutText?: string;
   /**
    * passwordLength: 密碼至少需要的長度;
    * generationLimit: 密碼不可與前 `number` 代重複;
@@ -86,8 +88,10 @@ export interface HeaderProps {
    * customizedRule: 自定義密碼規則;
    */
   changePasswordModalConfig?: {
+    title?: string;
     passwordLength?: number;
     generationLimit?: number;
+    generationLimitHint?: (generationLimit: number) => string;
     onChangePassword: ({
       values,
     }: {
@@ -95,6 +99,17 @@ export interface HeaderProps {
     }) => Promise<boolean>;
     onBack: VoidFunction;
     accountLabel?: string;
+    passwordSectionTitle?: string;
+    originPasswordFieldLabel?: string;
+    originPasswordFieldPlaceholder?: string;
+    passwordFieldLabel?: string;
+    passwordFieldPlaceholder?: string;
+    confirmPasswordFieldLabel?: string;
+    confirmPasswordFieldPlaceholder?: string;
+    submitText?: string;
+    cancelText?: string;
+    backText?: string;
+    successText?: string;
     customizedHint?: string;
     customizedRule?: RegExp;
   };
@@ -126,6 +141,8 @@ export const Header: FC<HeaderProps> = ({
   menuLogoSpacing = 24,
   memberIconsSpacing = 0,
   horizontalPadding = 24,
+  changePasswordText = '更改密碼',
+  logoutText = '登出',
   customizedComponent,
   changePasswordModalConfig,
   customizedButton,
@@ -199,33 +216,15 @@ export const Header: FC<HeaderProps> = ({
                                 disableCloseOnBackdropClick: true,
                                 children: (
                                   <ChangePasswordModal
-                                    passwordLength={
-                                      changePasswordModalConfig.passwordLength
-                                    }
-                                    generationLimit={
-                                      changePasswordModalConfig.generationLimit
-                                    }
-                                    onChangePassword={
-                                      changePasswordModalConfig.onChangePassword
-                                    }
-                                    onBack={changePasswordModalConfig.onBack}
-                                    accountLabel={
-                                      changePasswordModalConfig.accountLabel
-                                    }
+                                    {...changePasswordModalConfig}
                                     account={account}
                                     onCancel={closeModal}
-                                    customizedHint={
-                                      changePasswordModalConfig.customizedHint
-                                    }
-                                    customizedRule={
-                                      changePasswordModalConfig.customizedRule
-                                    }
                                   />
                                 ),
                               });
                             }}
                           >
-                            更改密碼
+                            {changePasswordText}
                           </Button>
                         </div>
                       )}
@@ -247,7 +246,7 @@ export const Header: FC<HeaderProps> = ({
                     await onLogout();
                   }}
                 >
-                  登出
+                  {logoutText}
                 </Button>
               </Menu>
             }
