@@ -1,3 +1,24 @@
+## 0.0.75 (2025-04-14)
+
+### 🚀 Features
+
+- **login-panel:** PasswordHint wording props ([15fac79](https://github.com/Mezzanine-UI/components/commit/15fac79))
+- **login-panel:** NeedChangeForm wording props ([78d31a8](https://github.com/Mezzanine-UI/components/commit/78d31a8))
+- **login-panel:** ForgotForm wording props ([6f4f67d](https://github.com/Mezzanine-UI/components/commit/6f4f67d))
+- **login-panel:** LoginForm wording props ([a4b9c29](https://github.com/Mezzanine-UI/components/commit/a4b9c29))
+- **login-panel:** ResetPasswordForm wording props ([e02cca6](https://github.com/Mezzanine-UI/components/commit/e02cca6))
+- **login-panel:** ChangePasswordModal wording props ([a0a14a9](https://github.com/Mezzanine-UI/components/commit/a0a14a9))
+- **login-panel:** ChangePasswordForm wording props ([f98db17](https://github.com/Mezzanine-UI/components/commit/f98db17))
+- **login-panel:** ActivateForm wording props ([e16cf22](https://github.com/Mezzanine-UI/components/commit/e16cf22))
+
+### 🧱 Updated Dependencies
+
+- Updated @mezzanine-ui/react-hook-form-v2 to 0.0.75
+
+### ❤️ Thank You
+
+- TingTing
+
 ## 0.0.74 (2025-03-28)
 
 ### 🧱 Updated Dependencies

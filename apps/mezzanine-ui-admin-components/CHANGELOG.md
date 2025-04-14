@@ -1,3 +1,18 @@
+## 0.0.75 (2025-04-14)
+
+### 🚀 Features
+
+- **login-panel:** ForgotForm wording props ([6f4f67d](https://github.com/Mezzanine-UI/components/commit/6f4f67d))
+
+### 🧱 Updated Dependencies
+
+- Updated @mezzanine-ui/react-hook-form-v2 to 0.0.75
+- Updated @mezzanine-ui/login-panel to 0.0.75
+
+### ❤️ Thank You
+
+- TingTing
+
 ## 0.0.74 (2025-03-28)
 
 ### 🧱 Updated Dependencies
