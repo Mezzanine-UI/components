@@ -20,6 +20,7 @@ export interface ActivateFormProps {
    * 放置 logo
    */
   logo?: ReactNode;
+  title?: string;
   /**
    * 密碼至少需要的長度
    */
@@ -52,6 +53,13 @@ export interface ActivateFormProps {
    * 是否在表單上顯示返回按鈕
    */
   showBackButtonInPanel?: boolean;
+  passwordFieldLabel?: string;
+  passwordFieldPlaceholder?: string;
+  confirmPasswordFieldLabel?: string;
+  confirmPasswordFieldPlaceholder?: string;
+  submitText?: string;
+  backText?: string;
+  successText?: string;
   /**
    * 自定義密碼提示
    */
@@ -67,6 +75,7 @@ export interface ActivateFormProps {
  */
 export const ActivateForm: FC<ActivateFormProps> = ({
   logo,
+  title = '歡迎啟用帳號 請設定密碼',
   passwordLength,
   onChangePassword,
   account,
@@ -74,6 +83,14 @@ export const ActivateForm: FC<ActivateFormProps> = ({
   customizedFields,
   customizedSchema,
   showBackButtonInPanel = false,
+  passwordFieldLabel = '設定密碼',
+  passwordFieldPlaceholder = '請輸入密碼',
+  confirmPasswordFieldLabel = '再次輸入密碼',
+  confirmPasswordFieldPlaceholder = '請再次輸入密碼',
+  submitText = '確認',
+  backText = '返回登入頁面',
+  successText = ` 密碼設置完成！
+請使用新密碼登入`,
   customizedHint,
   customizedRule,
 }) => {
@@ -130,7 +147,9 @@ export const ActivateForm: FC<ActivateFormProps> = ({
   );
 
   if (isSuccess) {
-    return <Success onBack={onBack} />;
+    return (
+      <Success onBack={onBack} successText={successText} backText={backText} />
+    );
   }
 
   return (
@@ -138,7 +157,7 @@ export const ActivateForm: FC<ActivateFormProps> = ({
       <div className={classes.logoWrapper}>
         {logo}
         <Typography variant="h2" color="text-primary" align="center">
-          歡迎啟用帳號 請設定密碼
+          {title}
         </Typography>
         {!!account && (
           <Typography
@@ -163,9 +182,9 @@ export const ActivateForm: FC<ActivateFormProps> = ({
         <div className={classes.inputFieldWithHint}>
           <PasswordField
             registerName="password"
-            label="設定密碼"
+            label={passwordFieldLabel}
             size="large"
-            placeholder="請輸入密碼"
+            placeholder={passwordFieldPlaceholder}
             className={classes.inputWrapper}
             inputClassName={classes.input}
             required
@@ -180,9 +199,9 @@ export const ActivateForm: FC<ActivateFormProps> = ({
         </div>
         <PasswordField
           registerName="confirmPassword"
-          label="再次輸入密碼"
+          label={confirmPasswordFieldLabel}
           size="large"
-          placeholder="請再次輸入密碼"
+          placeholder={confirmPasswordFieldPlaceholder}
           className={classes.inputWrapper}
           inputClassName={classes.input}
           required
@@ -200,7 +219,7 @@ export const ActivateForm: FC<ActivateFormProps> = ({
               ) || submitting
             }
           >
-            確認
+            {submitText}
           </Button>
           {showBackButtonInPanel && (
             <Button
@@ -210,7 +229,7 @@ export const ActivateForm: FC<ActivateFormProps> = ({
               className={classes.button}
               onClick={onBack}
             >
-              返回登入頁面
+              {backText}
             </Button>
           )}
         </div>
