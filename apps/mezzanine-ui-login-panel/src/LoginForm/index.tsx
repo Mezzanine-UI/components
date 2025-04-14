@@ -112,6 +112,16 @@ export interface LoginFormProps {
    * 忘記密碼成功後提示，預設值 `請於1小時內點擊連結設定密碼。 若未收到email或遇連結失效請聯絡管理員。`
    */
   forgotPasswordSuccessHint?: string;
+  activateTitle?: string;
+  tooLongTitle?: string;
+  tooLoginWarning?: (keepPasswordDaysLimit: number) => string;
+  needChangePasswordFieldLabel?: string;
+  needChangePasswordFieldPlaceholder?: string;
+  needChangeConfirmPasswordFieldLabel?: string;
+  needChangeConfirmPasswordFieldPlaceholder?: string;
+  needChangeSubmitText?: string;
+  needChangeCancelText?: string;
+  needChangeSuccessText?: string;
   backToLoginText?: string;
 }
 
@@ -148,6 +158,18 @@ export const LoginForm: FC<LoginFormProps> = ({
   forgotPasswordSuccessTitle = '密碼重置連結已發送至',
   forgotPasswordSuccessHint = `請於1小時內點擊連結設定密碼。
 若未收到email或遇連結失效請聯絡管理員。`,
+  activateTitle = '歡迎啟用帳號 請設定密碼',
+  tooLongTitle = '為了您的帳戶安全，請立即更新',
+  tooLoginWarning = (keepPasswordDaysLimit) =>
+    `您的密碼已超過 ${keepPasswordDaysLimit} 天未更新`,
+  needChangePasswordFieldLabel = '設定密碼',
+  needChangePasswordFieldPlaceholder = '請輸入密碼',
+  needChangeConfirmPasswordFieldLabel = '再次輸入密碼',
+  needChangeConfirmPasswordFieldPlaceholder = '請再次輸入密碼',
+  needChangeSubmitText = '確認',
+  needChangeCancelText = '取消',
+  needChangeSuccessText = `密碼設置完成！
+請使用新密碼登入`,
   backToLoginText = '返回登入頁面',
 }) => {
   const [currentPage, setCurrentPage] = useState<LoginPageEnum>(
@@ -178,6 +200,23 @@ export const LoginForm: FC<LoginFormProps> = ({
           customizedLoginPasswordHint={customizedLoginPasswordHint}
           notShowForgotPassword={notShowForgotPassword}
           forgotPasswordButtonText={forgotPasswordButtonText}
+          activateTitle={activateTitle}
+          tooLongTitle={tooLongTitle}
+          tooLoginWarning={tooLoginWarning}
+          needChangePasswordFieldLabel={needChangePasswordFieldLabel}
+          needChangePasswordFieldPlaceholder={
+            needChangePasswordFieldPlaceholder
+          }
+          needChangeConfirmPasswordFieldLabel={
+            needChangeConfirmPasswordFieldLabel
+          }
+          needChangeConfirmPasswordFieldPlaceholder={
+            needChangeConfirmPasswordFieldPlaceholder
+          }
+          needChangeSubmitText={needChangeSubmitText}
+          needChangeCancelText={needChangeCancelText}
+          needChangeSuccessText={needChangeSuccessText}
+          backToLoginText={backToLoginText}
         />
       );
 

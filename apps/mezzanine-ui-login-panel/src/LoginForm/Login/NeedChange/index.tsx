@@ -36,6 +36,17 @@ interface NeedChangeProps {
   account: string;
   oldPassword: string;
   onBack: VoidFunction;
+  activateTitle: string;
+  tooLongTitle: string;
+  tooLoginWarning: (keepPasswordDaysLimit: number) => string;
+  passwordFieldLabel: string;
+  passwordFieldPlaceholder: string;
+  confirmPasswordFieldLabel: string;
+  confirmPasswordFieldPlaceholder: string;
+  submitText: string;
+  cancelText: string;
+  backToLoginText: string;
+  successText: string;
   customizedActivateFields?: InputFieldProps[];
   customizedActivateSchema?: Yup.ObjectSchema<object>;
   customizedHint?: string;
@@ -52,6 +63,17 @@ const NeedChange: FC<NeedChangeProps> = ({
   account,
   oldPassword,
   onBack,
+  activateTitle,
+  tooLongTitle,
+  tooLoginWarning,
+  passwordFieldLabel,
+  passwordFieldPlaceholder,
+  confirmPasswordFieldLabel,
+  confirmPasswordFieldPlaceholder,
+  submitText,
+  cancelText,
+  backToLoginText,
+  successText,
   customizedActivateFields,
   customizedActivateSchema,
   customizedHint,
@@ -115,7 +137,13 @@ const NeedChange: FC<NeedChangeProps> = ({
   );
 
   if (isSuccess) {
-    return <Success onBack={onBack} />;
+    return (
+      <Success
+        onBack={onBack}
+        successText={successText}
+        backText={backToLoginText}
+      />
+    );
   }
 
   return (
@@ -124,14 +152,14 @@ const NeedChange: FC<NeedChangeProps> = ({
         {logo}
         {mode === NeedChangePasswordMode.FIRST && (
           <Typography variant="h2" color="text-primary" align="center">
-            歡迎啟用帳號 請設定密碼
+            {activateTitle}
           </Typography>
         )}
         {mode === NeedChangePasswordMode.TOO_LONG && (
           <Typography variant="h2" color="text-primary" align="center">
-            {`您的密碼已超過 ${keepPasswordDaysLimit} 天未更新`}
+            {tooLoginWarning(keepPasswordDaysLimit)}
             <br />
-            為了您的帳戶安全，請立即更新
+            {tooLongTitle}
           </Typography>
         )}
         <Typography
@@ -156,9 +184,9 @@ const NeedChange: FC<NeedChangeProps> = ({
         <div className={classes.inputFieldWithHint}>
           <PasswordField
             registerName="password"
-            label="設定密碼"
+            label={passwordFieldLabel}
             size="large"
-            placeholder="請輸入密碼"
+            placeholder={passwordFieldPlaceholder}
             className={classes.inputWrapper}
             inputClassName={classes.input}
             required
@@ -178,9 +206,9 @@ const NeedChange: FC<NeedChangeProps> = ({
         </div>
         <PasswordField
           registerName="confirmPassword"
-          label="再次輸入密碼"
+          label={confirmPasswordFieldLabel}
           size="large"
-          placeholder="請再次輸入密碼"
+          placeholder={confirmPasswordFieldPlaceholder}
           className={classes.inputWrapper}
           inputClassName={classes.input}
           required
@@ -198,11 +226,11 @@ const NeedChange: FC<NeedChangeProps> = ({
               ) || submitting
             }
           >
-            確認
+            {submitText}
           </Button>
           {mode === NeedChangePasswordMode.TOO_LONG && (
             <Button type="button" variant="text" size="large" onClick={onBack}>
-              取消
+              {cancelText}
             </Button>
           )}
         </div>

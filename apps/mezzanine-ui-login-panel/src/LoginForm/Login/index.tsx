@@ -52,6 +52,17 @@ interface LoginProps {
   passwordFieldLabel: string;
   passwordFieldPlaceholder: string;
   forgotPasswordButtonText: string;
+  activateTitle: string;
+  tooLongTitle: string;
+  tooLoginWarning: (keepPasswordDaysLimit: number) => string;
+  needChangePasswordFieldLabel: string;
+  needChangePasswordFieldPlaceholder: string;
+  needChangeConfirmPasswordFieldLabel: string;
+  needChangeConfirmPasswordFieldPlaceholder: string;
+  needChangeSubmitText: string;
+  needChangeCancelText: string;
+  needChangeSuccessText: string;
+  backToLoginText: string;
 }
 
 const Login: FC<LoginProps> = ({
@@ -75,6 +86,17 @@ const Login: FC<LoginProps> = ({
   passwordFieldLabel,
   passwordFieldPlaceholder,
   forgotPasswordButtonText,
+  activateTitle,
+  tooLongTitle,
+  tooLoginWarning,
+  needChangePasswordFieldLabel,
+  needChangePasswordFieldPlaceholder,
+  needChangeConfirmPasswordFieldLabel,
+  needChangeConfirmPasswordFieldPlaceholder,
+  needChangeSubmitText,
+  needChangeCancelText,
+  needChangeSuccessText,
+  backToLoginText,
 }) => {
   const [needChangePasswordParams, setNeedChangePasswordParams] = useState<{
     account: string;
@@ -124,6 +146,19 @@ const Login: FC<LoginProps> = ({
             mode: null,
           });
         }}
+        activateTitle={activateTitle}
+        tooLongTitle={tooLongTitle}
+        tooLoginWarning={tooLoginWarning}
+        passwordFieldLabel={needChangePasswordFieldLabel}
+        passwordFieldPlaceholder={needChangePasswordFieldPlaceholder}
+        confirmPasswordFieldLabel={needChangeConfirmPasswordFieldLabel}
+        confirmPasswordFieldPlaceholder={
+          needChangeConfirmPasswordFieldPlaceholder
+        }
+        submitText={needChangeSubmitText}
+        cancelText={needChangeCancelText}
+        successText={needChangeSuccessText}
+        backToLoginText={backToLoginText}
         customizedActivateFields={customizedActivateFields}
         customizedActivateSchema={customizedActivateSchema}
         customizedHint={customizedHint}
