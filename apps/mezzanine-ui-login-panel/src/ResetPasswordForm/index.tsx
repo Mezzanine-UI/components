@@ -18,6 +18,7 @@ export interface ResetPasswordFormProps {
    * 放置 logo
    */
   logo?: ReactNode;
+  title?: string;
   /**
    * 密碼至少需要的長度
    */
@@ -42,6 +43,13 @@ export interface ResetPasswordFormProps {
    * 成功後返回
    */
   onBack: VoidFunction;
+  passwordFieldLabel?: string;
+  passwordFieldPlaceholder?: string;
+  confirmPasswordFieldLabel?: string;
+  confirmPasswordFieldPlaceholder?: string;
+  submitText?: string;
+  backText?: string;
+  successText?: string;
   /**
    * 自定義密碼提示
    */
@@ -64,11 +72,20 @@ const formSchema: Yup.ObjectSchema<ResetPasswordFormValues> = Yup.object({
  */
 export const ResetPasswordForm: FC<ResetPasswordFormProps> = ({
   logo,
+  title = '密碼重置',
   passwordLength,
   generationLimit,
   onChangePassword,
   account,
   onBack,
+  passwordFieldLabel = '設定密碼',
+  passwordFieldPlaceholder = '請輸入密碼',
+  confirmPasswordFieldLabel = '再次輸入密碼',
+  confirmPasswordFieldPlaceholder = '請再次輸入密碼',
+  submitText = '確認',
+  backText = '返回登入頁面',
+  successText = `密碼設置完成！
+請使用新密碼登入`,
   customizedHint,
   customizedRule,
 }) => {
@@ -110,7 +127,9 @@ export const ResetPasswordForm: FC<ResetPasswordFormProps> = ({
   );
 
   if (isSuccess) {
-    return <Success onBack={onBack} />;
+    return (
+      <Success onBack={onBack} successText={successText} backText={backText} />
+    );
   }
 
   return (
@@ -118,7 +137,7 @@ export const ResetPasswordForm: FC<ResetPasswordFormProps> = ({
       <div className={classes.logoWrapper}>
         {logo}
         <Typography variant="h2" color="text-primary" align="center">
-          密碼重置
+          {title}
         </Typography>
         {!!account && (
           <Typography
@@ -139,9 +158,9 @@ export const ResetPasswordForm: FC<ResetPasswordFormProps> = ({
         <div className={classes.inputFieldWithHint}>
           <PasswordField
             registerName="password"
-            label="設定密碼"
+            label={passwordFieldLabel}
             size="large"
-            placeholder="請輸入密碼"
+            placeholder={passwordFieldPlaceholder}
             className={classes.inputWrapper}
             inputClassName={classes.input}
             required
@@ -157,9 +176,9 @@ export const ResetPasswordForm: FC<ResetPasswordFormProps> = ({
         </div>
         <PasswordField
           registerName="confirmPassword"
-          label="再次輸入密碼"
+          label={confirmPasswordFieldLabel}
           size="large"
-          placeholder="請再次輸入密碼"
+          placeholder={confirmPasswordFieldPlaceholder}
           className={classes.inputWrapper}
           inputClassName={classes.input}
           required
@@ -177,10 +196,10 @@ export const ResetPasswordForm: FC<ResetPasswordFormProps> = ({
               ) || submitting
             }
           >
-            確認
+            {submitText}
           </Button>
           <Button type="button" variant="text" size="large" onClick={onBack}>
-            返回登入頁面
+            {backText}
           </Button>
         </div>
       </FormFieldsWrapper>
