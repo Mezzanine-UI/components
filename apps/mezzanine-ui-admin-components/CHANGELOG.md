@@ -1,3 +1,18 @@
+## 0.0.76 (2025-04-14)
+
+### 🚀 Features
+
+- **admin-components:** Header wording props ([ff234bd](https://github.com/Mezzanine-UI/components/commit/ff234bd))
+
+### 🧱 Updated Dependencies
+
+- Updated @mezzanine-ui/react-hook-form-v2 to 0.0.76
+- Updated @mezzanine-ui/login-panel to 0.0.76
+
+### ❤️ Thank You
+
+- TingTing
+
 ## 0.0.75 (2025-04-14)
 
 ### 🚀 Features

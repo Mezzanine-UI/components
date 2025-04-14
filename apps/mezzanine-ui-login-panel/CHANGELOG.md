@@ -1,3 +1,17 @@
+## 0.0.76 (2025-04-14)
+
+### 🚀 Features
+
+- **login-panel:** error message props ([e744069](https://github.com/Mezzanine-UI/components/commit/e744069))
+
+### 🧱 Updated Dependencies
+
+- Updated @mezzanine-ui/react-hook-form-v2 to 0.0.76
+
+### ❤️ Thank You
+
+- TingTing
+
 ## 0.0.75 (2025-04-14)
 
 ### 🚀 Features
