@@ -25,6 +25,7 @@ export * from './SliderField';
 export * from './StaticField';
 export * from './TabInputField';
 export * from './TextAreaField';
+export * from './TimePickerField';
 export * from './UploadFilesField';
 export * from './UploadFilesField/typing';
 export * from './UploadImageField';
