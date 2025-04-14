@@ -1,3 +1,18 @@
+## 0.0.77 (2025-04-14)
+
+### 🚀 Features
+
+- **admin-components:** add error message props in Header ([bebe095](https://github.com/Mezzanine-UI/components/commit/bebe095))
+
+### 🧱 Updated Dependencies
+
+- Updated @mezzanine-ui/react-hook-form-v2 to 0.0.77
+- Updated @mezzanine-ui/login-panel to 0.0.77
+
+### ❤️ Thank You
+
+- TingTing
+
 ## 0.0.76 (2025-04-14)
 
 ### 🚀 Features
