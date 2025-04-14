@@ -19,6 +19,7 @@ import Success from './Success';
 import classes from './index.module.scss';
 
 export interface ChangePasswordModalProps {
+  title?: string;
   /**
    * 密碼至少需要的長度
    */
@@ -51,6 +52,17 @@ export interface ChangePasswordModalProps {
    * 帳號欄位的 label
    */
   accountLabel?: string;
+  passwordSectionTitle?: string;
+  originPasswordFieldLabel?: string;
+  originPasswordFieldPlaceholder?: string;
+  passwordFieldLabel?: string;
+  passwordFieldPlaceholder?: string;
+  confirmPasswordFieldLabel?: string;
+  confirmPasswordFieldPlaceholder?: string;
+  submitText?: string;
+  cancelText?: string;
+  backText?: string;
+  successText?: string;
   /**
    * 自定義密碼提示
    */
@@ -73,6 +85,7 @@ const formSchema: Yup.ObjectSchema<ChangePasswordModalValues> = Yup.object({
  * 後台更換密碼 UI 元件，必須搭配 modal
  */
 export const ChangePasswordModal: FC<ChangePasswordModalProps> = ({
+  title = '更改密碼',
   passwordLength,
   generationLimit,
   onChangePassword,
@@ -80,6 +93,18 @@ export const ChangePasswordModal: FC<ChangePasswordModalProps> = ({
   onCancel,
   onBack,
   accountLabel = '帳號',
+  passwordSectionTitle = '密碼',
+  originPasswordFieldLabel = '原密碼',
+  originPasswordFieldPlaceholder = '請輸入密碼',
+  passwordFieldLabel = '設定密碼',
+  passwordFieldPlaceholder = '請輸入密碼',
+  confirmPasswordFieldLabel = '再次輸入密碼',
+  confirmPasswordFieldPlaceholder = '請再次輸入密碼',
+  submitText = '確認',
+  cancelText = '取消',
+  backText = '返回登入頁面',
+  successText = `密碼更新完成！
+請使用新密碼登入`,
   customizedHint,
   customizedRule,
 }) => {
@@ -122,7 +147,9 @@ export const ChangePasswordModal: FC<ChangePasswordModalProps> = ({
   );
 
   if (isSuccess) {
-    return <Success onBack={onBack} />;
+    return (
+      <Success onBack={onBack} successText={successText} backText={backText} />
+    );
   }
 
   return (
@@ -131,7 +158,7 @@ export const ChangePasswordModal: FC<ChangePasswordModalProps> = ({
       onSubmit={onSubmit}
       className={classes.root}
     >
-      <ModalHeader>更改密碼</ModalHeader>
+      <ModalHeader>{title}</ModalHeader>
       <ModalBody className={classes.modalBody}>
         {account && (
           <>
@@ -145,14 +172,14 @@ export const ChangePasswordModal: FC<ChangePasswordModalProps> = ({
           </>
         )}
         <Typography variant="h5" color="text-primary">
-          密碼
+          {passwordSectionTitle}
         </Typography>
         <div className={classes.formWrapper}>
           <PasswordField
             registerName="originPassword"
-            label="原密碼"
+            label={originPasswordFieldLabel}
             size="large"
-            placeholder="請輸入密碼"
+            placeholder={originPasswordFieldPlaceholder}
             className={classes.inputWrapper}
             inputClassName={classes.input}
             required
@@ -161,9 +188,9 @@ export const ChangePasswordModal: FC<ChangePasswordModalProps> = ({
           <div className={classes.inputFieldWithHint}>
             <PasswordField
               registerName="password"
-              label="設定密碼"
+              label={passwordFieldLabel}
               size="large"
-              placeholder="請輸入密碼"
+              placeholder={passwordFieldPlaceholder}
               className={classes.inputWrapper}
               inputClassName={classes.input}
               required
@@ -179,9 +206,9 @@ export const ChangePasswordModal: FC<ChangePasswordModalProps> = ({
           </div>
           <PasswordField
             registerName="confirmPassword"
-            label="再次輸入密碼"
+            label={confirmPasswordFieldLabel}
             size="large"
-            placeholder="請再次輸入密碼"
+            placeholder={confirmPasswordFieldPlaceholder}
             className={classes.inputWrapper}
             inputClassName={classes.input}
             required
@@ -189,8 +216,8 @@ export const ChangePasswordModal: FC<ChangePasswordModalProps> = ({
         </div>
       </ModalBody>
       <ModalActions
-        cancelText="取消"
-        confirmText="確認"
+        cancelText={cancelText}
+        confirmText={submitText}
         cancelButtonProps={{
           type: 'button',
           size: 'large',
