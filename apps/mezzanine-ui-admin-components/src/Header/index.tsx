@@ -112,6 +112,8 @@ export interface HeaderProps {
     successText?: string;
     customizedHint?: string;
     customizedRule?: RegExp;
+    requiredErrorMessage?: string;
+    passwordErrorMessage?: string;
   };
   /**
    * 自定義按鈕元件
