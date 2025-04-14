@@ -87,6 +87,11 @@ export interface LoginFormProps {
    * 是否顯示忘記密碼
    */
   notShowForgotPassword?: boolean;
+  loginTitle?: string;
+  accountFieldLabel?: string;
+  passwordFieldLabel?: string;
+  passwordFieldPlaceholder?: string;
+  forgotPasswordButtonText?: string;
   /**
    * 帳號欄位 placeholder
    */
@@ -123,7 +128,12 @@ export const LoginForm: FC<LoginFormProps> = ({
   customizedRule,
   customizedLoginPasswordHint,
   notShowForgotPassword = false,
+  loginTitle = '帳號登入',
+  accountFieldLabel = '帳號',
   accountFieldPlaceholder = '請輸入帳號',
+  passwordFieldLabel = '密碼',
+  passwordFieldPlaceholder = '請輸入密碼',
+  forgotPasswordButtonText = '忘記密碼',
   forgotPasswordAccountFieldPlaceholder = '輸入帳號 e.g. example@email.com',
   forgotPasswordHint = `請輸入註冊時使用的email帳號
 密碼重置連結將發送至該信箱`,
@@ -144,7 +154,11 @@ export const LoginForm: FC<LoginFormProps> = ({
           keepPasswordDaysLimit={keepPasswordDaysLimit}
           generalLoginText={generalLoginText}
           onLogin={onLogin}
+          loginTitle={loginTitle}
+          accountFieldLabel={accountFieldLabel}
           accountFieldPlaceholder={accountFieldPlaceholder}
+          passwordFieldLabel={passwordFieldLabel}
+          passwordFieldPlaceholder={passwordFieldPlaceholder}
           onNeedChangePassword={onNeedChangePassword}
           setCurrentPage={setCurrentPage}
           customizedActivateFields={customizedActivateFields}
@@ -153,6 +167,7 @@ export const LoginForm: FC<LoginFormProps> = ({
           customizedRule={customizedRule}
           customizedLoginPasswordHint={customizedLoginPasswordHint}
           notShowForgotPassword={notShowForgotPassword}
+          forgotPasswordButtonText={forgotPasswordButtonText}
         />
       );
 

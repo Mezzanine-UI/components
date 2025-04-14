@@ -18,22 +18,32 @@ import classes from './index.module.scss';
 
 interface GeneralLoginProps {
   logo?: ReactNode;
+  loginTitle: string;
   generalLoginText: string;
   onLogin: ({ values }: { values: LoginFormValues }) => Promise<void>;
+  accountFieldLabel: string;
   accountFieldPlaceholder: string;
+  passwordFieldLabel: string;
+  passwordFieldPlaceholder: string;
   setCurrentPage: Dispatch<SetStateAction<LoginPageEnum>>;
   customizedLoginPasswordHint?: string[];
   notShowForgotPassword?: boolean;
+  forgotPasswordButtonText: string;
 }
 
 const GeneralLogin: FC<GeneralLoginProps> = ({
   logo,
+  loginTitle,
   generalLoginText,
   onLogin,
+  accountFieldLabel,
   accountFieldPlaceholder,
+  passwordFieldLabel,
+  passwordFieldPlaceholder,
   setCurrentPage,
   customizedLoginPasswordHint,
   notShowForgotPassword = false,
+  forgotPasswordButtonText,
 }) => {
   const methods = useForm<LoginFormValues>({
     defaultValues: {
@@ -65,11 +75,11 @@ const GeneralLogin: FC<GeneralLoginProps> = ({
       >
         {logo && <div className={classes.logoWrapper}>{logo}</div>}
         <Typography variant="h2" color="text-primary" align="center">
-          帳號登入
+          {loginTitle}
         </Typography>
         <InputField
           registerName="account"
-          label="帳號"
+          label={accountFieldLabel}
           size="large"
           placeholder={accountFieldPlaceholder}
           className={classes.inputWrapper}
@@ -78,9 +88,9 @@ const GeneralLogin: FC<GeneralLoginProps> = ({
         />
         <PasswordField
           registerName="password"
-          label="密碼"
+          label={passwordFieldLabel}
           size="large"
-          placeholder="請輸入密碼"
+          placeholder={passwordFieldPlaceholder}
           className={classes.inputWrapper}
           inputClassName={classes.input}
           hints={customizedLoginPasswordHint}
@@ -105,7 +115,7 @@ const GeneralLogin: FC<GeneralLoginProps> = ({
                 setCurrentPage(LoginPageEnum.FORGOT);
               }}
             >
-              忘記密碼
+              {forgotPasswordButtonText}
             </Button>
           )}
         </div>
