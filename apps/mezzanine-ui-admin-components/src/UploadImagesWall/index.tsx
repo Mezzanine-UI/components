@@ -185,7 +185,7 @@ export const UploadImagesWall: FC<UploadImagesWallProps> = ({
           <div className={classes.imagesSection}>
             <div className={classes.wallImagesWrapper}>
               {imagesWallValue.map((i) => (
-                <div className={classes.wallImageItem}>
+                <div key={i.fileId} className={classes.wallImageItem}>
                   <img
                     src={setFileUrl(i.fileId)}
                     alt=""
