@@ -101,6 +101,10 @@ export type AdminTableProps<T extends TableDataSourceWithID> = {
    * 切換 tab 時觸發
    */
   onTabChange?: (tabId: Key) => void;
+  /**
+   * 自定義 loading 提示文字
+   */
+  loadingTip?: string;
 };
 
 /**
@@ -130,6 +134,7 @@ export const AdminTable = <T extends TableDataSourceWithID>({
   tabs,
   activeTabId,
   onTabChange,
+  loadingTip,
 }: AdminTableProps<T>): JSX.Element => {
   const columns = useMemo(
     (): TableColumn<T>[] =>
@@ -188,6 +193,7 @@ export const AdminTable = <T extends TableDataSourceWithID>({
         scroll={scroll}
         scrollContainerClassName={scrollContainerClassName}
         loading={loading}
+        loadingTip={loadingTip}
         pagination={pagination}
         draggable={draggable}
         expandable={expandable}

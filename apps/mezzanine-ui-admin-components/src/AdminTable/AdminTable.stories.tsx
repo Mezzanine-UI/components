@@ -271,3 +271,53 @@ export const CustomizedEmpty: Story = {
     return <AdminTable {...args} />;
   },
 };
+
+export const AdminTableEN: Story = {
+  args: {
+    ...Default.args,
+    loadingTip: 'Loading...',
+    columns: [
+      {
+        title: 'Name',
+        dataIndex: 'name',
+      },
+      {
+        title: 'Account',
+        dataIndex: 'account',
+      },
+      {
+        title: 'Phone',
+        dataIndex: 'phone',
+      },
+    ],
+    actions: (source) => [
+      {
+        text: 'Edit',
+        onClick: () => {
+          action('Edit')(source);
+        },
+      },
+      {
+        text: 'Delete',
+        danger: true,
+        onClick: () => {
+          action('Delete')(source);
+        },
+      },
+    ],
+    emptyProps: {
+      children: 'No data found',
+    },
+    pagination: {
+      current: 1,
+      total: dataSource.length,
+      onChange: action('onChange'),
+      options: {
+        pageSize: 4,
+        renderPaginationSummary: (start, end) =>
+          `Showing ${start} to ${end} of ${dataSource.length} entries`,
+      },
+    },
+  },
+  render: Default.render,
+};
