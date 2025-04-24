@@ -8,6 +8,12 @@ import { UploadFilesFieldValues } from './typing';
 import classes from './index.module.scss';
 import { HookFormFieldProps } from '../typing';
 
+const DEFAULT_MESSAGES = {
+  FILE_SIZE_EXCEEDED: (file: File, limit: number) =>
+    `${file.name} 上傳失敗 (檔案大小超過 ${limit} MB)`,
+  FILE_FORMAT_INVALID: (file: File) => `${file.name} 上傳失敗（檔案格式錯誤）`,
+};
+
 export type UploadFilesFieldProps<T extends FieldValues = FieldValues> =
   HookFormFieldProps<
     T,
@@ -22,6 +28,10 @@ export type UploadFilesFieldProps<T extends FieldValues = FieldValues> =
       filesLimit?: number;
       upload: (file: File) => Promise<{ id: string }>;
       reverseButtonAndFiles?: boolean;
+      messages?: {
+        uploadFileExceededLimit?: (file: File, limit: number) => string;
+        uploadFileFormatFailed?: (file: File) => string;
+      };
     }
   >;
 
@@ -46,6 +56,12 @@ export const UploadFilesField: FC<UploadFilesFieldProps> = ({
   upload,
   reverseButtonAndFiles = false,
   disabled = false,
+  messages = {
+    uploadFileExceededLimit: (file, limit) =>
+      DEFAULT_MESSAGES.FILE_SIZE_EXCEEDED(file, limit),
+    uploadFileFormatFailed: (file) =>
+      DEFAULT_MESSAGES.FILE_FORMAT_INVALID(file),
+  },
 }) => {
   const [loading, setLoading] = useState<boolean>(false);
   const {
@@ -76,9 +92,12 @@ export const UploadFilesField: FC<UploadFilesFieldProps> = ({
             () =>
               new Promise((resolve) => {
                 setTimeout(() => {
-                  Message.error(
-                    `${f.name} 上傳失敗 (檔案大小超過 ${limit} MB)`,
-                  );
+                  const uploadFileExceededLimitMessage =
+                    messages?.uploadFileExceededLimit
+                      ? messages.uploadFileExceededLimit(f, limit)
+                      : DEFAULT_MESSAGES.FILE_SIZE_EXCEEDED(f, limit);
+
+                  Message.error(uploadFileExceededLimitMessage);
                   resolve();
                 }, 10);
               }),
@@ -100,11 +119,15 @@ export const UploadFilesField: FC<UploadFilesFieldProps> = ({
           append(fileFormValue);
           setLoading(false);
         } catch (error) {
-          Message.error(`${f.name} 上傳失敗（檔案格式錯誤）`);
+          const uploadFileFailedMessage = messages?.uploadFileFormatFailed
+            ? messages.uploadFileFormatFailed(f)
+            : DEFAULT_MESSAGES.FILE_FORMAT_INVALID(f);
+
+          Message.error(uploadFileFailedMessage);
         }
       });
     },
-    [MAX_SIZE, limit, upload, append],
+    [MAX_SIZE, limit, upload, append, messages],
   );
 
   return (
