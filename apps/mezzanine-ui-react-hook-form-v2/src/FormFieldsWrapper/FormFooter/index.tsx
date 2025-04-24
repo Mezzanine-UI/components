@@ -11,6 +11,13 @@ import {
 import { FieldValues, useWatch } from 'react-hook-form';
 import classes from './index.module.scss';
 
+const defaultModelText = {
+  headerText: '確認取消',
+  bodyText: '取消不會儲存內容，確定取消？',
+  confirmText: '確認取消',
+  cancelText: '取消',
+};
+
 export interface FormFooterProps<T extends FieldValues = FieldValues> {
   footerClassName?: string;
   expanded?: boolean;
@@ -38,6 +45,14 @@ export interface FormFooterProps<T extends FieldValues = FieldValues> {
     values: T;
     activeStep: number;
   }) => boolean;
+  previousStepButtonText?: string;
+  nextStepButtonText?: string;
+  modelText?: {
+    headerText?: string;
+    bodyText?: string;
+    confirmText?: string;
+    cancelText?: string;
+  };
 }
 
 const FormFooter = <T extends FieldValues>({
@@ -61,6 +76,9 @@ const FormFooter = <T extends FieldValues>({
   activeStep,
   setActiveStep,
   disableNextButton,
+  previousStepButtonText = '上一步',
+  nextStepButtonText = '下一步',
+  modelText = defaultModelText,
 }: FormFooterProps<T>) => {
   const [acting, setActing] = useState<boolean>(false);
   const [cancelConfirmModalOpened, setCancelConfirmModalOpened] =
@@ -117,7 +135,7 @@ const FormFooter = <T extends FieldValues>({
                 setActiveStep?.((activeStep ?? 0) - 1);
               }}
             >
-              上一步
+              {previousStepButtonText}
             </Button>
           ) : (
             cancelButtonText &&
@@ -154,7 +172,7 @@ const FormFooter = <T extends FieldValues>({
                 setActiveStep?.((activeStep ?? 0) + 1);
               }}
             >
-              下一步
+              {nextStepButtonText}
             </Button>
           ) : (
             <Button
@@ -180,11 +198,11 @@ const FormFooter = <T extends FieldValues>({
         }}
         open={cancelConfirmModalOpened}
       >
-        <ModalHeader showSeverityIcon>確認取消</ModalHeader>
-        <ModalBody>取消不會儲存內容，確定取消？</ModalBody>
+        <ModalHeader showSeverityIcon>{modelText.headerText}</ModalHeader>
+        <ModalBody>{modelText.bodyText}</ModalBody>
         <ModalActions
-          cancelText="取消"
-          confirmText="確認取消"
+          cancelText={modelText.cancelText}
+          confirmText={modelText.confirmText}
           cancelButtonProps={{
             type: 'button',
             size: 'large',
