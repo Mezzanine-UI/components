@@ -35,7 +35,13 @@ export interface BaseFieldProps {
   width?: number;
   errorMsgRender?: ErrorMessageFn;
   horizontal?: boolean;
-  hints?: string[] | { severity: Severity | 'info'; text: string }[];
+  hints?:
+    | string[]
+    | {
+        severity: Severity | 'info';
+        text: string;
+        iconAlignment?: 'top' | 'bottom' | 'center';
+      }[];
 }
 
 export const BaseField: FC<BaseFieldProps> = ({
