@@ -15,6 +15,13 @@ import { BaseField } from '../BaseField';
 import { HookFormFieldComponent, HookFormFieldProps } from '../typing';
 import classes from './index.module.scss';
 
+const DEFAULT_MESSAGES = {
+  UPLOAD_FILE_EXCEEDED_LIMIT: (file: File, limit: number) =>
+    `${file.name} 上傳失敗 (檔案大小超過 ${limit} MB)`,
+  UPLOAD_FAILED: '上傳失敗',
+  UPLOAD_SUCCESS: '成功新增圖片',
+};
+
 export type UploadImageFieldProps<T extends FieldValues = FieldValues> =
   HookFormFieldProps<
     T,
@@ -27,6 +34,14 @@ export type UploadImageFieldProps<T extends FieldValues = FieldValues> =
       objectFit?: 'contain' | 'cover';
       limit?: number;
       upload: (file: File) => Promise<{ id: string }>;
+      defaultUploadLabel?: string;
+      defaultUploadingLabel?: string;
+      defaultUploadErrorLabel?: string;
+      messages?: {
+        uploadFileExceededLimit?: (file: File, limit: number) => string;
+        uploadFileFailed?: string;
+        uploadSuccess?: string;
+      };
     }
   >;
 
@@ -54,6 +69,15 @@ export const UploadImageField: HookFormFieldComponent<
   upload,
   horizontal,
   hints,
+  defaultUploadLabel,
+  defaultUploadingLabel,
+  defaultUploadErrorLabel,
+  messages = {
+    uploadFileExceededLimit: (file, limit) =>
+      DEFAULT_MESSAGES.UPLOAD_FILE_EXCEEDED_LIMIT(file, limit),
+    uploadFileFailed: DEFAULT_MESSAGES.UPLOAD_FAILED,
+    uploadSuccess: DEFAULT_MESSAGES.UPLOAD_SUCCESS,
+  },
 }) => {
   const styleVar = {
     '--object-fit': objectFit,
@@ -79,8 +103,12 @@ export const UploadImageField: HookFormFieldComponent<
   const onUpload = useCallback(
     async (file: File) => {
       if (file.size > MAX_SIZE) {
-        Message.error(`${file.name} 上傳失敗 (檔案大小超過 ${limit} MB)`);
-        throw new Error(`${file.name} 上傳失敗 (檔案大小超過 ${limit} MB)`);
+        const uploadFileExceededLimitMessage = messages?.uploadFileExceededLimit
+          ? messages.uploadFileExceededLimit(file, limit)
+          : DEFAULT_MESSAGES.UPLOAD_FILE_EXCEEDED_LIMIT(file, limit);
+
+        Message.error(uploadFileExceededLimitMessage);
+        throw new Error(uploadFileExceededLimitMessage);
       }
 
       return upload(file)
@@ -89,12 +117,24 @@ export const UploadImageField: HookFormFieldComponent<
           return setFileUrl(d.id);
         })
         .catch(() => {
-          Message.error('上傳失敗');
-          throw new Error('上傳失敗');
+          const errorMessage = messages?.uploadFileFailed
+            ? messages.uploadFileFailed
+            : DEFAULT_MESSAGES.UPLOAD_FAILED;
+
+          Message.error(errorMessage);
+          throw new Error(errorMessage);
         });
     },
-    [MAX_SIZE, upload, limit, setValue, registerName, setFileUrl],
+    [MAX_SIZE, upload, limit, setValue, registerName, setFileUrl, messages],
   );
+
+  const onUploadSuccess = useCallback(() => {
+    const uploadSuccessMessage = messages?.uploadSuccess
+      ? messages.uploadSuccess
+      : DEFAULT_MESSAGES.UPLOAD_SUCCESS;
+
+    Message.success(uploadSuccessMessage);
+  }, [messages]);
 
   return (
     <BaseField
@@ -116,9 +156,10 @@ export const UploadImageField: HookFormFieldComponent<
         accept={accept}
         onUpload={onUpload}
         onDelete={onClear}
-        onUploadSuccess={() => {
-          Message.success('成功新增圖片');
-        }}
+        onUploadSuccess={onUploadSuccess}
+        defaultUploadLabel={defaultUploadLabel}
+        defaultUploadingLabel={defaultUploadingLabel}
+        defaultUploadErrorLabel={defaultUploadErrorLabel}
         style={{
           width,
           height,
