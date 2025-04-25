@@ -60,3 +60,44 @@ export const Default: Story = {
     );
   },
 };
+
+export const CustomTexts: Story = {
+  args: {
+    ...Default.args,
+    hints: ['File format: JPG or PNG only', 'File size: cannot exceed 20 MB'],
+    texts: {
+      fileExceededLimit: (file: File, limit: number) =>
+        `${file.name} upload failed (file size exceeds ${limit} MB)`,
+      fileUploadFailed: (file: File) =>
+        `${file.name} upload failed (invalid file format)`,
+      maxImageLengthNotice: (maxLength: number) =>
+        `Maximum ${maxLength} images`,
+      deleteWallDialogTitle: 'Confirm to delete this image wall?',
+      deleteWallDialogChildren:
+        'The image wall will be removed, and all image content within it will also be deleted. This action cannot be undone.',
+      deleteWallDialogCancelText: 'Cancel',
+      deleteWallDialogConfirmText: 'Delete image wall',
+      deleteWallActionText: 'Delete image wall',
+      editWallActionText: 'Edit image wall',
+      createWallActionText: 'Create image wall',
+    },
+    modalTexts: {
+      editModalHeaderText: 'Edit image wall',
+      editModalConfirmText: 'Confirm edit',
+      createModalHeaderText: 'Create image wall',
+      createModalConfirmText: 'Confirm create',
+      emptyGalleryText: 'No images yet',
+      modalActionCancelText: 'Cancel',
+      modalActionUploadText: 'Add image',
+      currentImageLength: (currentSize: number, maxLength: number) =>
+        `Uploaded images: ${currentSize}/${maxLength}`,
+      fileExceededLimit: (file: File, limit: number) =>
+        `${file.name} upload failed (file size exceeds ${limit} MB)`,
+      fileUploadFailed: (file: File) =>
+        `${file.name} upload failed (invalid file format)`,
+      uploadedImagesText: (currentIndex: number, maxLength: number) =>
+        `${currentIndex}/${maxLength}`,
+    },
+  },
+  render: Default.render,
+};
