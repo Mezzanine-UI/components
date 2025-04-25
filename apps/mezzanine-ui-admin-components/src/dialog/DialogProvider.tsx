@@ -28,6 +28,7 @@ const DialogProvider: FC<{ children?: ReactNode }> = ({ children }) => {
     cancelText = '取消',
     confirmButtonProps,
     confirmText = '確認',
+    size = 'small',
     ...rest
   } = dialogConfig;
 
@@ -70,7 +71,7 @@ const DialogProvider: FC<{ children?: ReactNode }> = ({ children }) => {
             handleResolveActions(false);
           }}
           open={open}
-          size="small"
+          size={size}
           className={cx(classes.host, className)}
         >
           <ModalHeader showSeverityIcon titleLarge={titleLarge}>
