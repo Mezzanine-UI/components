@@ -64,6 +64,7 @@ export const Default: Story = {
 export const CustomTexts: Story = {
   args: {
     ...Default.args,
+    showMaxImageLengthNotice: false,
     hints: ['File format: JPG or PNG only', 'File size: cannot exceed 20 MB'],
     texts: {
       fileExceededLimit: (file: File, limit: number) =>
@@ -86,7 +87,7 @@ export const CustomTexts: Story = {
       editModalConfirmText: 'Confirm edit',
       createModalHeaderText: 'Create image wall',
       createModalConfirmText: 'Confirm create',
-      emptyGalleryText: 'No images yet',
+      emptyGalleryText: 'Not images yet',
       modalActionCancelText: 'Cancel',
       modalActionUploadText: 'Add image',
       currentImageLength: (currentSize: number, maxLength: number) =>

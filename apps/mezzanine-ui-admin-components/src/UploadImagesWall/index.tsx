@@ -48,6 +48,10 @@ export interface UploadImagesWallProps {
    */
   objectFit?: 'contain' | 'cover';
   /**
+   * 是否顯示圖片上限的文字
+   */
+  showMaxImageLengthNotice?: boolean;
+  /**
    * 文字設定
    * * fileExceededLimit: 檔案大小超過限制時的文字
    * * fileUploadFailed: 檔案上傳失敗時的文字
@@ -131,6 +135,7 @@ export const UploadImagesWall: FC<UploadImagesWallProps> = ({
   setFileUrl,
   objectFit = 'cover',
   texts = {},
+  showMaxImageLengthNotice = true,
   modalTexts = {},
 }) => {
   const [loading, setLoading] = useState<boolean>(false);
@@ -257,13 +262,15 @@ export const UploadImagesWall: FC<UploadImagesWallProps> = ({
   return (
     <>
       <div className={classes.root}>
-        <Typography
-          variant="h6"
-          color="text-secondary"
-          className={classes.limitHint}
-        >
-          {mergedTextsContent.maxImageLengthNotice(maxLength)}
-        </Typography>
+        {showMaxImageLengthNotice && (
+          <Typography
+            variant="h6"
+            color="text-secondary"
+            className={classes.limitHint}
+          >
+            {mergedTextsContent.maxImageLengthNotice(maxLength)}
+          </Typography>
+        )}
         {fields.length > 0 ? (
           <div className={classes.imagesSection}>
             <div className={classes.wallImagesWrapper}>
