@@ -88,3 +88,23 @@ export const Default: Story = {
     );
   },
 };
+
+export const ENLanguageImageField: Story = {
+  args: {
+    ...Default.args,
+    limit: 1,
+    label: 'Label',
+    hints: ['Hint 1', 'Hint 2'],
+    messages: {
+      uploadFileExceededLimit: (file, limit) =>
+        `file "${file.name}" is too large, please upload a file smaller than ${limit}MB.`,
+      uploadFileFailed:
+        'Sorry, upload failed, please try again or contact the administrator.',
+      uploadSuccess: 'Great! Image upload successfully.',
+    },
+    defaultUploadLabel: 'Upload Image',
+    defaultUploadingLabel: 'Uploading...',
+    defaultUploadErrorLabel: 'Upload Error',
+  },
+  render: Default.render,
+};

@@ -147,3 +147,19 @@ export const ReverseLayout: Story = {
     );
   },
 };
+
+export const ENLanguageUploadFilesField: Story = {
+  args: {
+    ...Default.args,
+    hints: ['Hits 1', 'Hits 2'],
+    label: 'Label',
+    buttonText: 'Add File',
+    messages: {
+      uploadFileExceededLimit: (file, limit) =>
+        `file "${file.name}" is too large, please upload a file smaller than ${limit}MB.`,
+      uploadFileFormatFailed: (file) =>
+        `file "${file.name}" is not a valid file format, please upload a valid file.`,
+    },
+  },
+  render: Default.render,
+};
