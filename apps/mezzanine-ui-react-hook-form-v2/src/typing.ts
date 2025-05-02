@@ -7,6 +7,7 @@ import {
   UseFormRegister,
   MultipleFieldErrors,
 } from 'react-hook-form';
+import { Severity } from '@mezzanine-ui/system/severity';
 
 export type ErrorMessageFn = (data: {
   message: string;
@@ -30,7 +31,13 @@ export interface FieldProps<Type extends FieldValues>
   fullWidth?: boolean;
   errorMsgRender?: ErrorMessageFn;
   horizontal?: boolean;
-  hints?: string[];
+  hints?:
+    | string[]
+    | {
+        severity?: Severity | 'info';
+        text: string;
+        iconAlignment?: 'top' | 'bottom' | 'center';
+      }[];
 }
 
 export interface RegisteredFieldProps<Type extends FieldValues>

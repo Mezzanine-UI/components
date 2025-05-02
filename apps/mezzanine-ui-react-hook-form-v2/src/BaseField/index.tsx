@@ -38,7 +38,7 @@ export interface BaseFieldProps {
   hints?:
     | string[]
     | {
-        severity: Severity | 'info';
+        severity?: Severity | 'info';
         text: string;
         iconAlignment?: 'top' | 'bottom' | 'center';
       }[];

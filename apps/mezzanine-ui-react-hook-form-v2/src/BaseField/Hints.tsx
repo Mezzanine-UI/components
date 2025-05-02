@@ -14,7 +14,7 @@ interface HintsProps {
   hints:
     | string[]
     | {
-        severity: Severity | 'info';
+        severity?: Severity | 'info';
         text: string;
         iconAlignment?: 'top' | 'bottom' | 'center';
       }[];
@@ -62,6 +62,7 @@ const Hints: FC<HintsProps> = ({ hints }) => {
 
         const alignment = hint.iconAlignment || 'top';
         const alignmentClass = classes[alignment];
+        const severity = hint.severity || 'info';
 
         return (
           <div
@@ -69,11 +70,11 @@ const Hints: FC<HintsProps> = ({ hints }) => {
             className={cx(classes.hintWrapper, alignmentClass)}
           >
             <Icon
-              icon={hintIcons[hint.severity]}
+              icon={hintIcons[severity]}
               size={16}
-              color={hintIconColors[hint.severity]}
+              color={hintIconColors[severity]}
             />
-            <Typography variant="caption" color={hintTextColors[hint.severity]}>
+            <Typography variant="caption" color={hintTextColors[severity]}>
               {hint.text}
             </Typography>
           </div>
