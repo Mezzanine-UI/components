@@ -34,9 +34,6 @@ export type UploadImageFieldProps<T extends FieldValues = FieldValues> =
       objectFit?: 'contain' | 'cover';
       limit?: number;
       upload: (file: File) => Promise<{ id: string }>;
-      defaultUploadLabel?: string;
-      defaultUploadingLabel?: string;
-      defaultUploadErrorLabel?: string;
       messages?: {
         uploadFileExceededLimit?: (file: File, limit: number) => string;
         uploadFileFailed?: string;
