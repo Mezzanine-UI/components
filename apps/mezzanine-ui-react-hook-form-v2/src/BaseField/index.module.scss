@@ -71,8 +71,19 @@
 
   .hintWrapper {
     display: flex;
-    align-items: center;
     justify-content: flex-start;
     gap: 4px;
+
+    &.top {
+      align-items: start;
+    }
+
+    &.bottom {
+      align-items: end;
+    }
+
+    &.center {
+      align-items: center;
+    }
   }
 }

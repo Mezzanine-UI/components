@@ -6,11 +6,18 @@ import {
   ExclamationCircleFilledIcon,
   TimesCircleFilledIcon,
 } from '@mezzanine-ui/icons';
+import { cx } from '@mezzanine-ui/react';
 import { Severity } from '@mezzanine-ui/system/severity';
 import classes from './index.module.scss';
 
 interface HintsProps {
-  hints: string[] | { severity: Severity | 'info'; text: string }[];
+  hints:
+    | string[]
+    | {
+        severity: Severity | 'info';
+        text: string;
+        iconAlignment?: 'top' | 'bottom' | 'center';
+      }[];
 }
 
 const hintIcons = {
@@ -53,8 +60,14 @@ const Hints: FC<HintsProps> = ({ hints }) => {
           );
         }
 
+        const alignment = hint.iconAlignment || 'top';
+        const alignmentClass = classes[alignment];
+
         return (
-          <div key={hint.text} className={classes.hintWrapper}>
+          <div
+            key={hint.text}
+            className={cx(classes.hintWrapper, alignmentClass)}
+          >
             <Icon
               icon={hintIcons[hint.severity]}
               size={16}
