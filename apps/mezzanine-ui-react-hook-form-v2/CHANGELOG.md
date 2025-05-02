@@ -1,3 +1,18 @@
+## 0.0.78 (2025-05-02)
+
+### 🚀 Features
+
+- **react-hook-form-v2:** can not remove upload result when disabled ([07ba3a7](https://github.com/Mezzanine-UI/components/commit/07ba3a7))
+- **react-hook-form-v2:** enhance form component props and configuration ([7403232](https://github.com/Mezzanine-UI/components/commit/7403232))
+- **react-hook-form-v2:** add custom message on the UploadFilesField ([90d23bb](https://github.com/Mezzanine-UI/components/commit/90d23bb))
+- **react-hook-form-v2:** add custom message setting on the UploadImageField ([0368459](https://github.com/Mezzanine-UI/components/commit/0368459))
+- **react-hook-form-v2:** update the basefield hints alignment ([f9306f6](https://github.com/Mezzanine-UI/components/commit/f9306f6))
+
+### ❤️ Thank You
+
+- akai.chang
+- TingTing
+
 ## 0.0.77 (2025-04-14)
 
 This was a version bump only for @mezzanine-ui/react-hook-form-v2 to align it with other projects, there were no code changes.

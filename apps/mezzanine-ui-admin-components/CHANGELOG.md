@@ -1,3 +1,26 @@
+## 0.0.78 (2025-05-02)
+
+### 🚀 Features
+
+- **ui-admin-comopnent:** add showMaxImageLengthNotice prop to control max length notice visibility ([bb04d35](https://github.com/Mezzanine-UI/components/commit/bb04d35))
+- **ui-admin-component:** add UploadImagesWall component translate contents ([069b5a5](https://github.com/Mezzanine-UI/components/commit/069b5a5))
+- **ui-admin-components:** add admin table loading text ([811a452](https://github.com/Mezzanine-UI/components/commit/811a452))
+
+### 🩹 Fixes
+
+- **ui-admin-component:** set the dialog provider size settings ([9f41473](https://github.com/Mezzanine-UI/components/commit/9f41473))
+- **admin-components:** add missed mapping key ([8c76fc6](https://github.com/Mezzanine-UI/components/commit/8c76fc6))
+
+### 🧱 Updated Dependencies
+
+- Updated @mezzanine-ui/react-hook-form-v2 to 0.0.78
+- Updated @mezzanine-ui/login-panel to 0.0.78
+
+### ❤️ Thank You
+
+- akai.chang
+- TingTing
+
 ## 0.0.77 (2025-04-14)
 
 ### 🚀 Features
