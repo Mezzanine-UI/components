@@ -358,3 +358,129 @@ export const WithStep: Story = {
     );
   },
 };
+
+const modelTextEN = {
+  headerText: 'Cancel',
+  bodyText: 'Are you sure you want to cancel?',
+  confirmText: 'Confirm',
+  cancelText: 'Cancel',
+};
+
+const ENSteps = [
+  {
+    id: 'STEP1',
+    name: 'Step 1',
+  },
+  {
+    id: 'STEP2',
+    name: 'Step 2',
+  },
+  {
+    id: 'STEP3',
+    name: 'Step 3',
+  },
+];
+
+export const WithENContent: Story = {
+  args: {
+    children: undefined,
+  },
+  parameters: {
+    controls: { include: [] },
+  },
+  render: function Render() {
+    const methods = useForm<DemoFormValues>({
+      defaultValues: {
+        input1: '',
+        input2: '',
+        input3: '',
+      },
+    });
+
+    const [activeStep, setActiveStep] = useState<number>(0);
+
+    const fieldComponent = useMemo(() => {
+      switch (activeStep) {
+        case 0:
+          return (
+            <InputField
+              key={activeStep}
+              label="input1"
+              registerName="input1"
+              required
+              placeholder="Input 1"
+            />
+          );
+
+        case 1:
+          return (
+            <InputField
+              key={activeStep}
+              label="input2"
+              registerName="input2"
+              required
+              placeholder="Input 2"
+            />
+          );
+
+        case 2:
+          return (
+            <InputField
+              key={activeStep}
+              label="input3"
+              registerName="input3"
+              required
+              placeholder="Input 3"
+            />
+          );
+
+        default:
+          return null;
+      }
+    }, [activeStep]);
+
+    return (
+      <FormFieldsWrapper
+        methods={methods}
+        haveFooter
+        onSubmit={async (values) => {
+          action('onSubmit')(values);
+        }}
+        submitButtonText="Submit"
+        disableSubmitButton={(values) =>
+          !values.input1 || !values.input2 || !values.input3
+        }
+        onCancel={async (values) => {
+          action('onCancel')(values);
+        }}
+        cancelButtonText="Cancel"
+        onClickAction={async (values) => {
+          action('onClickAction')(values);
+        }}
+        actionButtonText="Left Text"
+        steps={ENSteps}
+        activeStep={activeStep}
+        setActiveStep={(s) => {
+          setActiveStep(s);
+        }}
+        previousStepButtonText="Previous"
+        nextStepButtonText="Next"
+        disableNextButton={({ values, activeStep }) => {
+          switch (activeStep) {
+            case 0:
+              return !values.input1;
+
+            case 1:
+              return !values.input2;
+
+            default:
+              return false;
+          }
+        }}
+        modelText={modelTextEN}
+      >
+        <StoryWrapper>{fieldComponent}</StoryWrapper>
+      </FormFieldsWrapper>
+    );
+  },
+};
