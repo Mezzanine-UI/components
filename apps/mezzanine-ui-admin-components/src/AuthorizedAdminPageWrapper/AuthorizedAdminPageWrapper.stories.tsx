@@ -231,6 +231,31 @@ const DialogModalSample = () => {
       >
         open modal
       </Button>
+      <Button
+        type="button"
+        size="large"
+        variant="outlined"
+        onClick={async () => {
+          const isConfirm = await openDialog({
+            size: 'extraLarge',
+            severity: 'error',
+            title: '確認刪除？',
+            children: `內容將一併刪除，此動作無法復原。
+確定要刪除嗎？`,
+            cancelText: '取消',
+            cancelButtonProps: {
+              danger: false,
+            },
+            confirmText: '刪除',
+          });
+
+          if (isConfirm) {
+            action('onConfirm')();
+          }
+        }}
+      >
+        open dialog with extra large size
+      </Button>
     </div>
   );
 };
