@@ -53,25 +53,12 @@ export const InputField: HookFormFieldComponent<InputFieldProps> = ({
   onChange: onChangeProp,
   ...prop
 }) => {
-  const {
-    control: contextControl,
-    register: contextRegister,
-    setValue,
-    trigger,
-  } = useFormContext();
+  const { control: contextControl, setValue, trigger } = useFormContext();
 
   const watchValue = useWatch({
     control: control || contextControl,
     name: registerName,
     defaultValue,
-  });
-
-  const registration = (register || contextRegister)(registerName, {
-    maxLength,
-    max,
-    pattern,
-    min,
-    minLength,
   });
 
   const onChange: ChangeEventHandler<HTMLInputElement> = (e) => {
@@ -135,7 +122,6 @@ export const InputField: HookFormFieldComponent<InputFieldProps> = ({
           maxLength,
           minLength,
           type,
-          ...registration,
           ...prop,
         }}
       />

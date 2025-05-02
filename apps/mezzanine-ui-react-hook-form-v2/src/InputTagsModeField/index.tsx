@@ -73,11 +73,7 @@ export const InputTagsModeField: HookFormFieldComponent<
   hints,
   ...props
 }) => {
-  const {
-    control: contextControl,
-    register: contextRegister,
-    setValue,
-  } = useFormContext();
+  const { control: contextControl, setValue } = useFormContext();
 
   const watchValue = useWatch({
     control: control || contextControl,
@@ -85,12 +81,6 @@ export const InputTagsModeField: HookFormFieldComponent<
   });
 
   const { errors } = useFormState({ control: control || contextControl });
-
-  const registration = (register || contextRegister)(registerName, {
-    maxLength,
-    min,
-    minLength,
-  });
 
   const onTagsChange = useCallback((newTags: TagsType) => {
     setValue(registerName, newTags, {
@@ -141,7 +131,6 @@ export const InputTagsModeField: HookFormFieldComponent<
           maxLength,
           minLength,
           type: 'text',
-          ...registration,
         }}
       />
     </BaseField>

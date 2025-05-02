@@ -46,12 +46,7 @@ export const TextAreaField: HookFormFieldComponent<TextAreaFieldProps> = ({
   hints,
   ...props
 }) => {
-  const {
-    control: contextControl,
-    register: contextRegister,
-    setValue,
-    trigger,
-  } = useFormContext();
+  const { control: contextControl, setValue, trigger } = useFormContext();
 
   const watchValue = useWatch({
     control: control || contextControl,
@@ -60,11 +55,6 @@ export const TextAreaField: HookFormFieldComponent<TextAreaFieldProps> = ({
   });
 
   const { errors } = useFormState({ control: control || contextControl });
-
-  const registration = (register || contextRegister)(registerName, {
-    maxLength,
-    minLength,
-  });
 
   const onChange: React.ChangeEventHandler<HTMLTextAreaElement> = (e) => {
     onChangeProp?.(e);
@@ -108,7 +98,6 @@ export const TextAreaField: HookFormFieldComponent<TextAreaFieldProps> = ({
           autoComplete,
           id: registerName,
           name: registerName,
-          onBlur: registration.onBlur,
         }}
         className={cx(classes.input, inputClassName)}
         onChange={onChange}
