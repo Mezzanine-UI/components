@@ -164,7 +164,9 @@ export const UploadFilesField: FC<UploadFilesFieldProps> = ({
                     window.open(setFileUrl(field.fileId), '_blank');
                   }}
                   onDelete={() => {
-                    remove(index);
+                    if (!disabled) {
+                      remove(index);
+                    }
                   }}
                 />
               );
