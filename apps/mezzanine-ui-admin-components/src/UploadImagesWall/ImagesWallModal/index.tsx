@@ -17,17 +17,18 @@ interface ImagesWallModalProps {
   onConfirm: (values: UploadImagesWallFormValues[]) => void;
   upload: (file: File) => Promise<{ id: string }>;
   objectFit: 'cover' | 'contain';
-  fileExceededLimit?: (file: File, limit: number) => string;
-  fileUploadFailed?: (file: File) => string;
-  uploadedImagesText?: (currentIndex: number, maxLength: number) => string;
-  currentImageLength?: (currentSize: number, maxLength: number) => string;
-  editModalHeaderText?: string;
-  createModalHeaderText?: string;
-  editModalConfirmText?: string;
-  createModalConfirmText?: string;
-  emptyGalleryText?: string;
-  modalActionCancelText?: string;
-  modalActionUploadText?: string;
+  modalTexts?: {
+    fileExceededLimit?: (file: File, limit: number) => string;
+    fileUploadFailed?: (file: File) => string;
+    currentImageLength?: (currentSize: number, maxLength: number) => string;
+    editModalHeaderText?: string;
+    createModalHeaderText?: string;
+    editModalConfirmText?: string;
+    createModalConfirmText?: string;
+    emptyGalleryText?: string;
+    modalActionCancelText?: string;
+    modalActionUploadText?: string;
+  };
 }
 
 const ImagesWallModal: FC<ImagesWallModalProps> = ({
@@ -41,17 +42,7 @@ const ImagesWallModal: FC<ImagesWallModalProps> = ({
   onConfirm,
   upload,
   objectFit,
-  fileExceededLimit,
-  fileUploadFailed,
-  uploadedImagesText,
-  emptyGalleryText,
-  modalActionCancelText,
-  modalActionUploadText,
-  currentImageLength,
-  editModalHeaderText,
-  createModalHeaderText,
-  editModalConfirmText,
-  createModalConfirmText,
+  modalTexts,
 }) => {
   const methods = useForm<ImagesWallModalFormValues>();
 
@@ -73,19 +64,7 @@ const ImagesWallModal: FC<ImagesWallModalProps> = ({
           onConfirm={onConfirm}
           upload={upload}
           objectFit={objectFit}
-          texts={{
-            fileExceededLimit,
-            fileUploadFailed,
-            uploadedImagesText,
-            currentImageLength,
-            emptyGalleryText,
-            modalActionCancelText,
-            modalActionUploadText,
-            editModalHeaderText,
-            createModalHeaderText,
-            editModalConfirmText,
-            createModalConfirmText,
-          }}
+          texts={modalTexts}
         />
       </FormFieldsWrapper>
     </Modal>

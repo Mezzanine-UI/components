@@ -96,8 +96,6 @@ export const CustomTexts: Story = {
         `${file.name} upload failed (file size exceeds ${limit} MB)`,
       fileUploadFailed: (file: File) =>
         `${file.name} upload failed (invalid file format)`,
-      uploadedImagesText: (currentIndex: number, maxLength: number) =>
-        `${currentIndex}/${maxLength}`,
     },
   },
   render: Default.render,

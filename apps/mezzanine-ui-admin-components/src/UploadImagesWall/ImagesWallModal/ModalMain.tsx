@@ -30,7 +30,6 @@ interface ModalMainProps {
   texts?: {
     fileExceededLimit?: (file: File, limit: number) => string;
     fileUploadFailed?: (file: File) => string;
-    uploadedImagesText?: (currentIndex: number, maxLength: number) => string;
     currentImageLength?: (currentSize: number, maxLength: number) => string;
     editModalHeaderText?: string;
     createModalHeaderText?: string;
@@ -46,13 +45,11 @@ export const defaultTexts = {
   fileExceededLimit: (file: File, limit: number) =>
     `${file.name} 上傳失敗 (檔案大小超過 ${limit} MB)`,
   fileUploadFailed: (file: File) => `${file.name} 上傳失敗（檔案格式錯誤）`,
-  uploadedImagesText: (currentIndex: number, maxLength: number) =>
-    `${currentIndex}/${maxLength}`,
   currentImageLength: (currentSize: number, maxLength: number) =>
     `已上傳圖片：${currentSize}/${maxLength}`,
   editModalHeaderText: '編輯圖輯',
-  editModalConfirmText: '確認編輯',
   createModalHeaderText: '創建圖輯',
+  editModalConfirmText: '確認編輯',
   createModalConfirmText: '確認創建',
   emptyGalleryText: '目前尚無資料',
   modalActionCancelText: '取消',
@@ -99,9 +96,10 @@ const ModalMain: FC<ModalMainProps> = ({
             () =>
               new Promise((resolve) => {
                 setTimeout(() => {
-                  const errorMessage =
-                    mergedTextsContent.fileExceededLimit?.(f, limit) ||
-                    defaultTexts.fileExceededLimit(f, limit);
+                  const errorMessage = mergedTextsContent.fileExceededLimit(
+                    f,
+                    limit,
+                  );
 
                   Message.error(errorMessage);
                   resolve();
@@ -126,9 +124,8 @@ const ModalMain: FC<ModalMainProps> = ({
           setLoading(false);
           // eslint-disable-next-line @typescript-eslint/no-unused-vars
         } catch (error) {
-          const errorMessage =
-            mergedTextsContent.fileUploadFailed?.(f) ||
-            defaultTexts.fileUploadFailed(f);
+          const errorMessage = mergedTextsContent.fileUploadFailed(f);
+
           Message.error(errorMessage);
         }
       });

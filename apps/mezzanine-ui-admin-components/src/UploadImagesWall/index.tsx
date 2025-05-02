@@ -80,7 +80,6 @@ export interface UploadImagesWallProps {
    * 圖輯彈窗文字設定
    * * fileExceededLimit: 檔案大小超過限制時的文字
    * * fileUploadFailed: 檔案上傳失敗時的文字
-   * * uploadedImagesText: 目前上傳圖片數量文字
    * * currentImageLength: 目前圖片數量文字
    * * editModalHeaderText: 編輯圖輯彈窗標題
    * * createModalHeaderText: 創建圖輯彈窗標題
@@ -93,7 +92,6 @@ export interface UploadImagesWallProps {
   modalTexts?: {
     fileExceededLimit?: (file: File, limit: number) => string;
     fileUploadFailed?: (file: File) => string;
-    uploadedImagesText?: (currentIndex: number, maxLength: number) => string;
     currentImageLength?: (currentSize: number, maxLength: number) => string;
     editModalHeaderText?: string;
     createModalHeaderText?: string;
@@ -110,8 +108,6 @@ const defaultTexts = {
     `${file.name} 上傳失敗 (檔案大小超過 ${limit} MB)`,
   fileUploadFailed: (file: File) => `${file.name} 上傳失敗（檔案格式錯誤）`,
   maxImageLengthNotice: (maxLength: number) => `圖片上限 ${maxLength} 張`,
-  currentImageLength: (currentSize: number, maxLength: number) =>
-    `已上傳圖片：${currentSize}/${maxLength}`,
   deleteWallDialogTitle: '確認刪除此圖輯？',
   deleteWallDialogChildren:
     '圖輯將被移除，圖輯中的所有影像內容也將一併刪除，此動作無法復原。',
@@ -338,7 +334,7 @@ export const UploadImagesWall: FC<UploadImagesWallProps> = ({
         upload={upload}
         objectFit={objectFit}
         actionStatus={modalState.actionStatus}
-        {...modalTexts}
+        modalTexts={modalTexts}
       />
     </>
   );
