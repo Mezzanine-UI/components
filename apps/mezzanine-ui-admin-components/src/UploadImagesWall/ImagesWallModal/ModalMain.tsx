@@ -18,7 +18,6 @@ import { ImagesWallModalFormValues } from './typing';
 import classes from './index.module.scss';
 
 interface ModalMainProps {
-  actionText: string;
   temporaryImages: UploadImagesWallFormValues[];
   limit: number;
   maxLength: number;
@@ -27,10 +26,40 @@ interface ModalMainProps {
   onConfirm: (values: UploadImagesWallFormValues[]) => void;
   upload: (file: File) => Promise<{ id: string }>;
   objectFit: 'cover' | 'contain';
+  actionStatus: 'edit' | 'create' | '';
+  texts?: {
+    fileExceededLimit?: (file: File, limit: number) => string;
+    fileUploadFailed?: (file: File) => string;
+    uploadedImagesText?: (currentIndex: number, maxLength: number) => string;
+    currentImageLength?: (currentSize: number, maxLength: number) => string;
+    editModalHeaderText?: string;
+    createModalHeaderText?: string;
+    editModalConfirmText?: string;
+    createModalConfirmText?: string;
+    emptyGalleryText?: string;
+    modalActionCancelText?: string;
+    modalActionUploadText?: string;
+  };
 }
 
+export const defaultTexts = {
+  fileExceededLimit: (file: File, limit: number) =>
+    `${file.name} 上傳失敗 (檔案大小超過 ${limit} MB)`,
+  fileUploadFailed: (file: File) => `${file.name} 上傳失敗（檔案格式錯誤）`,
+  uploadedImagesText: (currentIndex: number, maxLength: number) =>
+    `${currentIndex}/${maxLength}`,
+  currentImageLength: (currentSize: number, maxLength: number) =>
+    `已上傳圖片：${currentSize}/${maxLength}`,
+  editModalHeaderText: '編輯圖輯',
+  editModalConfirmText: '確認編輯',
+  createModalHeaderText: '創建圖輯',
+  createModalConfirmText: '確認創建',
+  emptyGalleryText: '目前尚無資料',
+  modalActionCancelText: '取消',
+  modalActionUploadText: '新增圖片',
+};
+
 const ModalMain: FC<ModalMainProps> = ({
-  actionText,
   temporaryImages,
   limit,
   maxLength,
@@ -39,6 +68,8 @@ const ModalMain: FC<ModalMainProps> = ({
   onConfirm,
   upload,
   objectFit,
+  actionStatus,
+  texts = {},
 }) => {
   const [loading, setLoading] = useState<boolean>(false);
   const { handleSubmit } = useFormContext<ImagesWallModalFormValues>();
@@ -51,6 +82,14 @@ const ModalMain: FC<ModalMainProps> = ({
 
   const MAX_SIZE = useMemo(() => limit * 1024 * 1024, [limit]); // limit MB
 
+  const mergedTextsContent = useMemo(
+    () => ({
+      ...defaultTexts,
+      ...texts,
+    }),
+    [texts],
+  );
+
   const onUpload = useCallback(
     async (files: File[]) => {
       await files
@@ -60,9 +99,11 @@ const ModalMain: FC<ModalMainProps> = ({
             () =>
               new Promise((resolve) => {
                 setTimeout(() => {
-                  Message.error(
-                    `${f.name} 上傳失敗 (檔案大小超過 ${limit} MB)`,
-                  );
+                  const errorMessage =
+                    mergedTextsContent.fileExceededLimit?.(f, limit) ||
+                    defaultTexts.fileExceededLimit(f, limit);
+
+                  Message.error(errorMessage);
                   resolve();
                 }, 10);
               }),
@@ -85,11 +126,36 @@ const ModalMain: FC<ModalMainProps> = ({
           setLoading(false);
           // eslint-disable-next-line @typescript-eslint/no-unused-vars
         } catch (error) {
-          Message.error(`${f.name} 上傳失敗（檔案格式錯誤）`);
+          const errorMessage =
+            mergedTextsContent.fileUploadFailed?.(f) ||
+            defaultTexts.fileUploadFailed(f);
+          Message.error(errorMessage);
         }
       });
     },
-    [MAX_SIZE, limit, upload, append],
+    [MAX_SIZE, limit, upload, append, mergedTextsContent],
+  );
+
+  const getModalText = useCallback(
+    (type: 'header' | 'confirm') => {
+      if (actionStatus === 'edit') {
+        return type === 'header'
+          ? mergedTextsContent.editModalHeaderText
+          : mergedTextsContent.editModalConfirmText;
+      }
+      return type === 'header'
+        ? mergedTextsContent.createModalHeaderText
+        : mergedTextsContent.createModalConfirmText;
+    },
+    [actionStatus, mergedTextsContent],
+  );
+
+  const modalTexts = useMemo(
+    () => ({
+      header: getModalText('header'),
+      confirm: getModalText('confirm'),
+    }),
+    [getModalText],
   );
 
   useEffect(() => {
@@ -98,11 +164,11 @@ const ModalMain: FC<ModalMainProps> = ({
 
   return (
     <>
-      <ModalHeader>{`${actionText}圖輯`}</ModalHeader>
+      <ModalHeader>{modalTexts.header}</ModalHeader>
       <DndProvider backend={HTML5Backend}>
         <ModalBody className={classes.modalBody}>
           <Typography variant="h6" color="text-secondary">
-            {`已上傳圖片：${fields.length}/${maxLength}`}
+            {mergedTextsContent.currentImageLength(fields.length, maxLength)}
           </Typography>
           {fields.length > 0 ? (
             <div className={classes.wallWrapper}>
@@ -124,15 +190,15 @@ const ModalMain: FC<ModalMainProps> = ({
             <div className={classes.placeholder}>
               <Icon icon={FolderOpenIcon} size={48} color="action-inactive" />
               <Typography variant="h3" color="text-secondary">
-                目前尚無資料
+                {mergedTextsContent.emptyGalleryText}
               </Typography>
             </div>
           )}
         </ModalBody>
       </DndProvider>
       <ModalActions
-        cancelText="取消"
-        confirmText={`確認${actionText}`}
+        cancelText={mergedTextsContent.modalActionCancelText}
+        confirmText={modalTexts.confirm}
         cancelButtonProps={{
           type: 'button',
           size: 'large',
@@ -159,7 +225,7 @@ const ModalMain: FC<ModalMainProps> = ({
           disabled={fields.length >= maxLength}
           onUpload={onUpload}
         >
-          新增圖片
+          {mergedTextsContent.modalActionUploadText}
         </UploadButton>
       </ModalActions>
     </>

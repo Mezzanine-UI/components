@@ -8,7 +8,7 @@ import { ImagesWallModalFormValues } from './typing';
 
 interface ImagesWallModalProps {
   open: boolean;
-  actionText: string;
+  actionStatus: 'edit' | 'create' | '';
   temporaryImages: UploadImagesWallFormValues[];
   limit: number;
   maxLength: number;
@@ -17,11 +17,22 @@ interface ImagesWallModalProps {
   onConfirm: (values: UploadImagesWallFormValues[]) => void;
   upload: (file: File) => Promise<{ id: string }>;
   objectFit: 'cover' | 'contain';
+  fileExceededLimit?: (file: File, limit: number) => string;
+  fileUploadFailed?: (file: File) => string;
+  uploadedImagesText?: (currentIndex: number, maxLength: number) => string;
+  currentImageLength?: (currentSize: number, maxLength: number) => string;
+  editModalHeaderText?: string;
+  createModalHeaderText?: string;
+  editModalConfirmText?: string;
+  createModalConfirmText?: string;
+  emptyGalleryText?: string;
+  modalActionCancelText?: string;
+  modalActionUploadText?: string;
 }
 
 const ImagesWallModal: FC<ImagesWallModalProps> = ({
   open,
-  actionText,
+  actionStatus,
   temporaryImages,
   limit,
   maxLength,
@@ -30,6 +41,17 @@ const ImagesWallModal: FC<ImagesWallModalProps> = ({
   onConfirm,
   upload,
   objectFit,
+  fileExceededLimit,
+  fileUploadFailed,
+  uploadedImagesText,
+  emptyGalleryText,
+  modalActionCancelText,
+  modalActionUploadText,
+  currentImageLength,
+  editModalHeaderText,
+  createModalHeaderText,
+  editModalConfirmText,
+  createModalConfirmText,
 }) => {
   const methods = useForm<ImagesWallModalFormValues>();
 
@@ -42,7 +64,7 @@ const ImagesWallModal: FC<ImagesWallModalProps> = ({
     >
       <FormFieldsWrapper methods={methods}>
         <ModalMain
-          actionText={actionText}
+          actionStatus={actionStatus}
           temporaryImages={temporaryImages}
           limit={limit}
           maxLength={maxLength}
@@ -51,6 +73,19 @@ const ImagesWallModal: FC<ImagesWallModalProps> = ({
           onConfirm={onConfirm}
           upload={upload}
           objectFit={objectFit}
+          texts={{
+            fileExceededLimit,
+            fileUploadFailed,
+            uploadedImagesText,
+            currentImageLength,
+            emptyGalleryText,
+            modalActionCancelText,
+            modalActionUploadText,
+            editModalHeaderText,
+            createModalHeaderText,
+            editModalConfirmText,
+            createModalConfirmText,
+          }}
         />
       </FormFieldsWrapper>
     </Modal>

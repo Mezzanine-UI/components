@@ -47,7 +47,80 @@ export interface UploadImagesWallProps {
    * 圖片 object-fit
    */
   objectFit?: 'contain' | 'cover';
+  /**
+   * 是否顯示圖片上限的文字
+   */
+  showMaxImageLengthNotice?: boolean;
+  /**
+   * 文字設定
+   * * fileExceededLimit: 檔案大小超過限制時的文字
+   * * fileUploadFailed: 檔案上傳失敗時的文字
+   * * maxImageLengthNotice: 圖片上限文字
+   * * deleteWallDialogTitle: 刪除圖輯彈窗標題
+   * * deleteWallDialogChildren: 刪除圖輯彈窗內容
+   * * deleteWallDialogCancelText: 刪除圖輯彈窗取消按鈕文字
+   * * deleteWallDialogConfirmText: 刪除圖輯彈窗確認按鈕文字
+   * * deleteWallActionText: 刪除圖輯按鈕文字
+   * * editWallActionText: 編輯圖輯按鈕文字
+   * * createWallActionText: 創建圖輯按鈕文字
+   */
+  texts?: {
+    fileExceededLimit?: (file: File, limit: number) => string;
+    fileUploadFailed?: (file: File) => string;
+    maxImageLengthNotice?: (maxLength: number) => string;
+    deleteWallDialogTitle?: string;
+    deleteWallDialogChildren?: string;
+    deleteWallDialogCancelText?: string;
+    deleteWallDialogConfirmText?: string;
+    deleteWallActionText?: string;
+    editWallActionText?: string;
+    createWallActionText?: string;
+  };
+  /**
+   * 圖輯彈窗文字設定
+   * * fileExceededLimit: 檔案大小超過限制時的文字
+   * * fileUploadFailed: 檔案上傳失敗時的文字
+   * * uploadedImagesText: 目前上傳圖片數量文字
+   * * currentImageLength: 目前圖片數量文字
+   * * editModalHeaderText: 編輯圖輯彈窗標題
+   * * createModalHeaderText: 創建圖輯彈窗標題
+   * * editModalConfirmText: 編輯圖輯彈窗確認按鈕文字
+   * * createModalConfirmText: 創建圖輯彈窗確認按鈕文字
+   * * emptyGalleryText: 目前尚無資料文字
+   * * modalActionCancelText: 取消按鈕文字
+   * * modalActionUploadText: 新增圖片按鈕文字
+   */
+  modalTexts?: {
+    fileExceededLimit?: (file: File, limit: number) => string;
+    fileUploadFailed?: (file: File) => string;
+    uploadedImagesText?: (currentIndex: number, maxLength: number) => string;
+    currentImageLength?: (currentSize: number, maxLength: number) => string;
+    editModalHeaderText?: string;
+    createModalHeaderText?: string;
+    editModalConfirmText?: string;
+    createModalConfirmText?: string;
+    emptyGalleryText?: string;
+    modalActionCancelText?: string;
+    modalActionUploadText?: string;
+  };
 }
+
+const defaultTexts = {
+  fileExceededLimit: (file: File, limit: number) =>
+    `${file.name} 上傳失敗 (檔案大小超過 ${limit} MB)`,
+  fileUploadFailed: (file: File) => `${file.name} 上傳失敗（檔案格式錯誤）`,
+  maxImageLengthNotice: (maxLength: number) => `圖片上限 ${maxLength} 張`,
+  currentImageLength: (currentSize: number, maxLength: number) =>
+    `已上傳圖片：${currentSize}/${maxLength}`,
+  deleteWallDialogTitle: '確認刪除此圖輯？',
+  deleteWallDialogChildren:
+    '圖輯將被移除，圖輯中的所有影像內容也將一併刪除，此動作無法復原。',
+  deleteWallDialogCancelText: '取消',
+  deleteWallDialogConfirmText: '刪除圖輯',
+  deleteWallActionText: '刪除圖輯',
+  editWallActionText: '編輯圖輯',
+  createWallActionText: '創建圖輯',
+};
 
 /**
  * 後台圖輯上傳器
@@ -61,16 +134,19 @@ export const UploadImagesWall: FC<UploadImagesWallProps> = ({
   upload,
   setFileUrl,
   objectFit = 'cover',
+  texts = {},
+  showMaxImageLengthNotice = true,
+  modalTexts = {},
 }) => {
   const [loading, setLoading] = useState<boolean>(false);
   const { openDialog } = useDialog();
 
   const [modalState, setModalState] = useState<{
     open: boolean;
-    actionText: string;
+    actionStatus: 'edit' | 'create' | '';
   }>({
     open: false,
-    actionText: '',
+    actionStatus: '',
   });
 
   const { fields, replace } = useFieldArray({
@@ -91,6 +167,14 @@ export const UploadImagesWall: FC<UploadImagesWallProps> = ({
 
   const MAX_SIZE = useMemo(() => limit * 1024 * 1024, [limit]); // limit MB
 
+  const mergedTextsContent = useMemo(
+    () => ({
+      ...defaultTexts,
+      ...texts,
+    }),
+    [texts],
+  );
+
   const onUpload = useCallback(
     async (files: File[]) => {
       await files
@@ -100,9 +184,12 @@ export const UploadImagesWall: FC<UploadImagesWallProps> = ({
             () =>
               new Promise((resolve) => {
                 setTimeout(() => {
-                  Message.error(
-                    `${f.name} 上傳失敗 (檔案大小超過 ${limit} MB)`,
+                  const errorMessage = mergedTextsContent.fileExceededLimit(
+                    f,
+                    limit,
                   );
+
+                  Message.error(errorMessage);
                   resolve();
                 }, 10);
               }),
@@ -125,48 +212,49 @@ export const UploadImagesWall: FC<UploadImagesWallProps> = ({
           setLoading(false);
           // eslint-disable-next-line @typescript-eslint/no-unused-vars
         } catch (error) {
-          Message.error(`${f.name} 上傳失敗（檔案格式錯誤）`);
+          const errorMessage = mergedTextsContent.fileUploadFailed(f);
+
+          Message.error(errorMessage);
         }
       });
 
       setModalState({
         open: true,
-        actionText: '創建',
+        actionStatus: 'create',
       });
     },
-    [MAX_SIZE, limit, upload],
+    [MAX_SIZE, limit, upload, mergedTextsContent],
   );
 
   const onClose = useCallback(() => {
     setTemporaryImages([]);
     setModalState({
       open: false,
-      actionText: '',
+      actionStatus: '',
     });
   }, []);
 
   const onDeleteWall = useCallback(async () => {
     const isConfirm = await openDialog({
       severity: 'error',
-      title: '確認刪除此圖輯？',
-      children:
-        '圖輯將被移除，圖輯中的所有影像內容也將一併刪除，此動作無法復原。',
-      cancelText: '取消',
+      title: mergedTextsContent.deleteWallDialogTitle,
+      children: mergedTextsContent.deleteWallDialogChildren,
+      cancelText: mergedTextsContent.deleteWallDialogCancelText,
       cancelButtonProps: {
         danger: false,
       },
-      confirmText: '刪除圖輯',
+      confirmText: mergedTextsContent.deleteWallDialogConfirmText,
     });
 
     if (isConfirm) {
       replace([]);
     }
-  }, [openDialog, replace]);
+  }, [openDialog, replace, mergedTextsContent]);
 
   const onEditWall = useCallback(() => {
     setModalState({
       open: true,
-      actionText: '編輯',
+      actionStatus: 'edit',
     });
     setTemporaryImages(imagesWallValue);
   }, [imagesWallValue]);
@@ -174,13 +262,15 @@ export const UploadImagesWall: FC<UploadImagesWallProps> = ({
   return (
     <>
       <div className={classes.root}>
-        <Typography
-          variant="h6"
-          color="text-secondary"
-          className={classes.limitHint}
-        >
-          {`圖片上限 ${maxLength} 張`}
-        </Typography>
+        {showMaxImageLengthNotice && (
+          <Typography
+            variant="h6"
+            color="text-secondary"
+            className={classes.limitHint}
+          >
+            {mergedTextsContent.maxImageLengthNotice(maxLength)}
+          </Typography>
+        )}
         {fields.length > 0 ? (
           <div className={classes.imagesSection}>
             <div className={classes.wallImagesWrapper}>
@@ -203,7 +293,7 @@ export const UploadImagesWall: FC<UploadImagesWallProps> = ({
                 size="large"
                 onClick={onDeleteWall}
               >
-                刪除圖輯
+                {mergedTextsContent.deleteWallActionText}
               </Button>
               <Button
                 type="button"
@@ -212,7 +302,7 @@ export const UploadImagesWall: FC<UploadImagesWallProps> = ({
                 prefix={<Icon icon={EditIcon} />}
                 onClick={onEditWall}
               >
-                編輯圖輯
+                {mergedTextsContent.editWallActionText}
               </Button>
             </div>
           </div>
@@ -228,7 +318,7 @@ export const UploadImagesWall: FC<UploadImagesWallProps> = ({
               loading={loading}
               disabled={disabled}
             >
-              創建圖輯
+              {mergedTextsContent.createWallActionText}
             </UploadButton>
             {hints && hints.length > 0 && <Hints hints={hints} />}
           </>
@@ -236,7 +326,6 @@ export const UploadImagesWall: FC<UploadImagesWallProps> = ({
       </div>
       <ImagesWallModal
         open={modalState.open}
-        actionText={modalState.actionText}
         temporaryImages={temporaryImages}
         limit={limit}
         maxLength={maxLength}
@@ -248,6 +337,8 @@ export const UploadImagesWall: FC<UploadImagesWallProps> = ({
         }}
         upload={upload}
         objectFit={objectFit}
+        actionStatus={modalState.actionStatus}
+        {...modalTexts}
       />
     </>
   );
