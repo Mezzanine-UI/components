@@ -10,6 +10,16 @@ export type OpenDialogFunctionType = (
   config: DialogConfigType,
 ) => Promise<boolean>;
 
+export interface CancelConfirmDialogConfig {
+  severity?: SeverityWithInfo;
+  size?: ModalSize;
+  title?: string;
+  children?: string;
+  confirmText?: string;
+  cancelText?: string;
+  isConfirmDanger?: boolean;
+}
+
 export interface DialogConfigType
   extends ModalProps,
     ModalHeaderProps,
@@ -21,16 +31,9 @@ export interface DialogConfigType
 
 export interface DialogHookValue {
   openDialog: (config: DialogConfigType) => void | Promise<boolean>;
-  openCancelConfirmDialog: (onCancel: VoidFunction) => Promise<void>;
+  openCancelConfirmDialog: (
+    onCancel: VoidFunction,
+    config?: CancelConfirmDialogConfig,
+  ) => Promise<void>;
   closeDialog: VoidFunction;
-}
-
-export interface CancelConfirmDialogConfig {
-  severity?: SeverityWithInfo;
-  size?: ModalSize;
-  title?: string;
-  children?: string;
-  confirmText?: string;
-  cancelText?: string;
-  isConfirmDanger?: boolean;
 }

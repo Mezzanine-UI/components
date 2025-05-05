@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { DialogContext } from './DialogContext';
-import { DialogHookValue } from './typing';
+import { DialogHookValue, CancelConfirmDialogConfig } from './typing';
 
 export const useDialog = (): DialogHookValue => {
   const { openDialog: configOpenDialog, closeDialog } =
@@ -14,17 +14,22 @@ export const useDialog = (): DialogHookValue => {
       });
     });
 
-  const openCancelConfirmDialog = async (onCancel: VoidFunction) => {
+  const openCancelConfirmDialog = async (
+    onCancel: VoidFunction,
+    config?: CancelConfirmDialogConfig,
+  ) => {
     const isConfirm = await openDialog({
-      title: '確認取消',
-      children: '取消不會儲存內容，確定取消？',
-      cancelText: '取消',
+      severity: config?.severity ?? 'warning',
+      size: config?.size ?? 'small',
+      title: config?.title ?? '確認取消',
+      children: config?.children ?? '取消不會儲存內容，確定取消？',
+      cancelText: config?.cancelText ?? '取消',
       cancelButtonProps: {
         danger: false,
       },
-      confirmText: '確認取消',
+      confirmText: config?.confirmText ?? '確認取消',
       confirmButtonProps: {
-        danger: false,
+        danger: config?.isConfirmDanger ?? false,
       },
     });
 
