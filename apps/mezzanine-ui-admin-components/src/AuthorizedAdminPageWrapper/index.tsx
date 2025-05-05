@@ -19,6 +19,10 @@ interface AuthorizedAdminPageWrapperBaseProps {
    * sidebar 寬度
    */
   sidebarWidth?: number;
+  /**
+   * sidebar 預設是否展開
+   */
+  defaultSidebarExpanded?: boolean;
 }
 
 export type AuthorizedAdminPageWrapperProps =
@@ -33,6 +37,7 @@ export const AuthorizedAdminPageWrapper: FC<
   children,
   headerHeight = 64,
   sidebarWidth = 256,
+  defaultSidebarExpanded = true,
   // Header props
   className,
   headerClassName,
@@ -65,7 +70,10 @@ export const AuthorizedAdminPageWrapper: FC<
   );
 
   return (
-    <LayoutProvider sidebarWidth={sidebarWidth}>
+    <LayoutProvider
+      sidebarWidth={sidebarWidth}
+      defaultSidebarExpanded={defaultSidebarExpanded}
+    >
       <DialogProvider>
         <ModalProvider>
           <Main

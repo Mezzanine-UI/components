@@ -19,11 +19,14 @@ export const LayoutContext = createContext<LayoutContextValues>(
   LayoutContextDefaultValues,
 );
 
-const LayoutProvider: FC<{ sidebarWidth: number; children?: ReactNode }> = ({
-  sidebarWidth,
-  children,
-}) => {
-  const [sidebarExpanded, setExpanded] = useState<boolean>(true);
+const LayoutProvider: FC<{
+  sidebarWidth: number;
+  defaultSidebarExpanded?: boolean;
+  children?: ReactNode;
+}> = ({ sidebarWidth, defaultSidebarExpanded = true, children }) => {
+  const [sidebarExpanded, setExpanded] = useState<boolean>(
+    defaultSidebarExpanded,
+  );
 
   const toggleSidebar = useCallback(() => {
     setExpanded((s) => !s);
