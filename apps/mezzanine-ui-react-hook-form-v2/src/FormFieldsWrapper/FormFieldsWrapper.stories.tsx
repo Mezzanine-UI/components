@@ -477,6 +477,7 @@ export const WithENContent: Story = {
           bodyText: 'Are you sure you want to cancel?',
           confirmText: 'Confirm',
           cancelText: 'Cancel',
+          isConfirmDanger: true,
         }}
       >
         <StoryWrapper>{fieldComponent}</StoryWrapper>

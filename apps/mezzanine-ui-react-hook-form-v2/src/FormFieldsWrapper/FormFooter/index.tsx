@@ -20,6 +20,7 @@ const defaultModelConfig: {
   bodyText: string;
   confirmText: string;
   cancelText: string;
+  isConfirmDanger: boolean;
 } = {
   severity: 'warning',
   size: 'small',
@@ -27,6 +28,7 @@ const defaultModelConfig: {
   bodyText: '取消不會儲存內容，確定取消？',
   confirmText: '確認取消',
   cancelText: '取消',
+  isConfirmDanger: false,
 };
 
 export interface FormFooterProps<T extends FieldValues = FieldValues> {
@@ -65,6 +67,7 @@ export interface FormFooterProps<T extends FieldValues = FieldValues> {
     bodyText?: string;
     confirmText?: string;
     cancelText?: string;
+    isConfirmDanger?: boolean;
   };
 }
 
@@ -232,7 +235,9 @@ const FormFooter = <T extends FieldValues>({
             type: 'button',
             size: 'large',
             variant: 'contained',
-            danger: false,
+            danger:
+              modelConfig?.isConfirmDanger ??
+              defaultModelConfig.isConfirmDanger,
           }}
           onCancel={() => {
             setCancelConfirmModalOpened(false);

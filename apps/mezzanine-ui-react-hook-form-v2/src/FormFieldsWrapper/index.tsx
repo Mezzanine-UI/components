@@ -59,6 +59,7 @@ export interface FormFieldsWrapperProps<T extends FieldValues = FieldValues>
     bodyText?: string;
     confirmText?: string;
     cancelText?: string;
+    isConfirmDanger?: boolean;
   };
 }
 
