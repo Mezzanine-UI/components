@@ -359,13 +359,6 @@ export const WithStep: Story = {
   },
 };
 
-const modelTextEN = {
-  headerText: 'Cancel',
-  bodyText: 'Are you sure you want to cancel?',
-  confirmText: 'Confirm',
-  cancelText: 'Cancel',
-};
-
 const ENSteps = [
   {
     id: 'STEP1',
@@ -477,7 +470,14 @@ export const WithENContent: Story = {
               return false;
           }
         }}
-        modelText={modelTextEN}
+        modelConfig={{
+          severity: 'error',
+          size: 'medium',
+          headerText: 'Cancel',
+          bodyText: 'Are you sure you want to cancel?',
+          confirmText: 'Confirm',
+          cancelText: 'Cancel',
+        }}
       >
         <StoryWrapper>{fieldComponent}</StoryWrapper>
       </FormFieldsWrapper>

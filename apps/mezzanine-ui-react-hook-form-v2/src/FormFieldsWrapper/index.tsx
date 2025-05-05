@@ -5,7 +5,8 @@ import {
   SubmitHandler,
   UseFormReturn,
 } from 'react-hook-form';
-import { ButtonProps, Stepper, Step } from '@mezzanine-ui/react';
+import { ButtonProps, Stepper, Step, ModalSize } from '@mezzanine-ui/react';
+import { SeverityWithInfo } from '@mezzanine-ui/system/severity';
 import FormFooter from './FormFooter';
 import classes from './index.module.scss';
 
@@ -51,7 +52,9 @@ export interface FormFieldsWrapperProps<T extends FieldValues = FieldValues>
   cancelNeedConfirm?: boolean;
   previousStepButtonText?: string;
   nextStepButtonText?: string;
-  modelText?: {
+  modelConfig?: {
+    severity?: SeverityWithInfo;
+    size?: ModalSize;
     headerText?: string;
     bodyText?: string;
     confirmText?: string;
@@ -89,7 +92,7 @@ export const FormFieldsWrapper = <T extends FieldValues>({
   cancelNeedConfirm = true,
   previousStepButtonText,
   nextStepButtonText,
-  modelText,
+  modelConfig,
   ...other
 }: FormFieldsWrapperProps<T>) => {
   const layoutStyleVar = useMemo(
@@ -143,7 +146,7 @@ export const FormFieldsWrapper = <T extends FieldValues>({
             disableNextButton={disableNextButton}
             previousStepButtonText={previousStepButtonText}
             nextStepButtonText={nextStepButtonText}
-            modelText={modelText}
+            modelConfig={modelConfig}
           />
         )}
       </form>

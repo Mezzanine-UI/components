@@ -6,12 +6,23 @@ import {
   ModalHeader,
   ModalBody,
   ModalActions,
+  ModalSize,
   cx,
 } from '@mezzanine-ui/react';
+import { SeverityWithInfo } from '@mezzanine-ui/system/severity';
 import { FieldValues, useWatch } from 'react-hook-form';
 import classes from './index.module.scss';
 
-const defaultModelText = {
+const defaultModelConfig: {
+  severity: SeverityWithInfo;
+  size: ModalSize;
+  headerText: string;
+  bodyText: string;
+  confirmText: string;
+  cancelText: string;
+} = {
+  severity: 'warning',
+  size: 'small',
   headerText: '確認取消',
   bodyText: '取消不會儲存內容，確定取消？',
   confirmText: '確認取消',
@@ -47,7 +58,9 @@ export interface FormFooterProps<T extends FieldValues = FieldValues> {
   }) => boolean;
   previousStepButtonText?: string;
   nextStepButtonText?: string;
-  modelText?: {
+  modelConfig?: {
+    severity?: SeverityWithInfo;
+    size?: ModalSize;
     headerText?: string;
     bodyText?: string;
     confirmText?: string;
@@ -78,7 +91,7 @@ const FormFooter = <T extends FieldValues>({
   disableNextButton,
   previousStepButtonText = '上一步',
   nextStepButtonText = '下一步',
-  modelText = defaultModelText,
+  modelConfig,
 }: FormFooterProps<T>) => {
   const [acting, setActing] = useState<boolean>(false);
   const [cancelConfirmModalOpened, setCancelConfirmModalOpened] =
@@ -190,19 +203,25 @@ const FormFooter = <T extends FieldValues>({
         </div>
       </div>
       <Modal
-        severity="warning"
-        size="small"
+        severity={modelConfig?.severity ?? defaultModelConfig.severity}
+        size={modelConfig?.size ?? defaultModelConfig.size}
         disableCloseOnBackdropClick
         onClose={() => {
           setCancelConfirmModalOpened(false);
         }}
         open={cancelConfirmModalOpened}
       >
-        <ModalHeader showSeverityIcon>{modelText.headerText}</ModalHeader>
-        <ModalBody>{modelText.bodyText}</ModalBody>
+        <ModalHeader showSeverityIcon>
+          {modelConfig?.headerText ?? defaultModelConfig.headerText}
+        </ModalHeader>
+        <ModalBody>
+          {modelConfig?.bodyText ?? defaultModelConfig.bodyText}
+        </ModalBody>
         <ModalActions
-          cancelText={modelText.cancelText}
-          confirmText={modelText.confirmText}
+          cancelText={modelConfig?.cancelText ?? defaultModelConfig.cancelText}
+          confirmText={
+            modelConfig?.confirmText ?? defaultModelConfig.confirmText
+          }
           cancelButtonProps={{
             type: 'button',
             size: 'large',
