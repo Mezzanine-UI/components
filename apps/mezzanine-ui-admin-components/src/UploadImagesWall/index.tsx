@@ -289,6 +289,7 @@ export const UploadImagesWall: FC<UploadImagesWallProps> = ({
                 variant="outlined"
                 danger
                 size="large"
+                disabled={disabled}
                 onClick={onDeleteWall}
               >
                 {mergedTextsContent.deleteWallActionText}
@@ -297,6 +298,7 @@ export const UploadImagesWall: FC<UploadImagesWallProps> = ({
                 type="button"
                 variant="contained"
                 size="large"
+                disabled={disabled}
                 prefix={<Icon icon={EditIcon} />}
                 onClick={onEditWall}
               >

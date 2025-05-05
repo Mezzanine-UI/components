@@ -41,11 +41,12 @@ export const Default: Story = {
         id: baseURL,
       };
     },
+    disabled: false,
     objectFit: 'cover',
   },
   parameters: {
     controls: {
-      include: ['limit', 'maxLength', 'hints', 'objectFit'],
+      include: ['limit', 'maxLength', 'hints', 'objectFit', 'disabled'],
     },
   },
   render: function Render(args) {
