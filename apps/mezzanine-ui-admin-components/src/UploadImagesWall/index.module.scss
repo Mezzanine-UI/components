@@ -5,22 +5,18 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  gap: 8px;
-
-  .limitHint {
-    margin-bottom: 16px;
-  }
+  gap: 16px;
 
   .imagesSection {
     align-self: stretch;
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 16px;
 
     .wallImagesWrapper {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
-      gap: 24px;
+      gap: 16px;
 
       .wallImageItem {
         position: relative;

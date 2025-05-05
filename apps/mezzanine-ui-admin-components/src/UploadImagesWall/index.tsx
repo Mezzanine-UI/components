@@ -11,6 +11,7 @@ import { useFieldArray, useWatch } from 'react-hook-form';
 import { useDialog } from '../dialog/useDialog';
 import { Hints } from '../Hints';
 import ImagesWallModal from './ImagesWallModal';
+import { Divider } from '../Divider';
 import { UploadImagesWallFormValues } from './typing';
 import classes from './index.module.scss';
 
@@ -281,6 +282,7 @@ export const UploadImagesWall: FC<UploadImagesWallProps> = ({
                 </div>
               ))}
             </div>
+            <Divider color="border" />
             <div className={classes.actionsWrapper}>
               <Button
                 type="button"
@@ -303,22 +305,20 @@ export const UploadImagesWall: FC<UploadImagesWallProps> = ({
             </div>
           </div>
         ) : (
-          <>
-            <UploadButton
-              type="button"
-              size="large"
-              variant="outlined"
-              multiple
-              accept=".jpg, .png"
-              onUpload={onUpload}
-              loading={loading}
-              disabled={disabled}
-            >
-              {mergedTextsContent.createWallActionText}
-            </UploadButton>
-            {hints && hints.length > 0 && <Hints hints={hints} />}
-          </>
+          <UploadButton
+            type="button"
+            size="large"
+            variant="outlined"
+            multiple
+            accept=".jpg, .png"
+            onUpload={onUpload}
+            loading={loading}
+            disabled={disabled}
+          >
+            {mergedTextsContent.createWallActionText}
+          </UploadButton>
         )}
+        {hints && hints.length > 0 && <Hints hints={hints} />}
       </div>
       <ImagesWallModal
         open={modalState.open}
