@@ -1,3 +1,19 @@
+## 0.0.80 (2025-05-05)
+
+### 🚀 Features
+
+- **admin-components:** disabled behavior of UploadImagesWall ([8b15bbd](https://github.com/Mezzanine-UI/components/commit/8b15bbd))
+- **admin-components:** set defaultSidebarExpanded ([80aa6e5](https://github.com/Mezzanine-UI/components/commit/80aa6e5))
+
+### 🧱 Updated Dependencies
+
+- Updated @mezzanine-ui/react-hook-form-v2 to 0.0.80
+- Updated @mezzanine-ui/login-panel to 0.0.80
+
+### ❤️ Thank You
+
+- TingTing
+
 ## 0.0.79 (2025-05-05)
 
 ### 🧱 Updated Dependencies

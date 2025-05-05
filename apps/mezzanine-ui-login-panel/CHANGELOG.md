@@ -1,3 +1,17 @@
+## 0.0.80 (2025-05-05)
+
+### 🚀 Features
+
+- **login-panel:** password error case ([9241123](https://github.com/Mezzanine-UI/components/commit/9241123))
+
+### 🧱 Updated Dependencies
+
+- Updated @mezzanine-ui/react-hook-form-v2 to 0.0.80
+
+### ❤️ Thank You
+
+- TingTing
+
 ## 0.0.79 (2025-05-05)
 
 ### 🧱 Updated Dependencies
