@@ -86,6 +86,8 @@ const NeedChange: FC<NeedChangeProps> = ({
   passwordErrorMessage,
 }) => {
   const [isSuccess, setIsSuccess] = useState<boolean>(false);
+  const [isPasswordError, setIsPasswordError] = useState<boolean>(false);
+
   const ruleRegExp = useMemo(() => {
     if (customizedRule) {
       return customizedRule;
@@ -141,6 +143,8 @@ const NeedChange: FC<NeedChangeProps> = ({
 
         if (status) {
           setIsSuccess(true);
+        } else {
+          setIsPasswordError(true);
         }
       }
     },
@@ -212,6 +216,7 @@ const NeedChange: FC<NeedChangeProps> = ({
                 : undefined
             }
             generationLimitHint={generationLimitHint}
+            isGenerationLimitError={isPasswordError}
             customizedHint={customizedHint}
             customizedRule={customizedRule}
           />

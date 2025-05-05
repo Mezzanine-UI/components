@@ -103,6 +103,8 @@ export const ChangePasswordForm: FC<ChangePasswordFormProps> = ({
   passwordErrorMessage = '密碼不一致',
 }) => {
   const [isSuccess, setIsSuccess] = useState<boolean>(false);
+  const [isPasswordError, setIsPasswordError] = useState<boolean>(false);
+
   const ruleRegExp = useMemo(() => {
     if (customizedRule) {
       return customizedRule;
@@ -147,6 +149,8 @@ export const ChangePasswordForm: FC<ChangePasswordFormProps> = ({
 
       if (status) {
         setIsSuccess(true);
+      } else {
+        setIsPasswordError(true);
       }
     },
     [onChangePassword],
@@ -207,6 +211,7 @@ export const ChangePasswordForm: FC<ChangePasswordFormProps> = ({
             passwordLength={passwordLength}
             generationLimit={generationLimit}
             generationLimitHint={generationLimitHint}
+            isGenerationLimitError={isPasswordError}
             customizedHint={customizedHint}
             customizedRule={customizedRule}
           />
