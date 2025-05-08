@@ -1,3 +1,18 @@
+## 0.0.81 (2025-05-08)
+
+### 🚀 Features
+
+- **admin-components:** add fetchMore in AdminTable ([68dbf8b](https://github.com/Mezzanine-UI/components/commit/68dbf8b))
+
+### 🧱 Updated Dependencies
+
+- Updated @mezzanine-ui/react-hook-form-v2 to 0.0.81
+- Updated @mezzanine-ui/login-panel to 0.0.81
+
+### ❤️ Thank You
+
+- TingTing
+
 ## 0.0.80 (2025-05-05)
 
 ### 🚀 Features
