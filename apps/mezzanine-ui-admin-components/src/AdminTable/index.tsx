@@ -5,6 +5,7 @@ import {
   TableColumn,
   TableDataSourceWithID,
   TablePagination,
+  TableFetchMore,
   TableDraggable,
   TableScrolling,
   TableExpandable,
@@ -35,6 +36,10 @@ export type AdminTableProps<T extends TableDataSourceWithID> = {
    * 若為 true，則顯示讀取狀態畫面
    */
   loading?: boolean;
+  /**
+   * Table fetchMore 分頁設定
+   */
+  fetchMore?: TableFetchMore;
   /**
    * Table 分頁設定
    */
@@ -116,6 +121,7 @@ export const AdminTable = <T extends TableDataSourceWithID>({
   scroll,
   scrollContainerClassName,
   loading,
+  fetchMore,
   pagination,
   draggable,
   expandable,
@@ -155,6 +161,41 @@ export const AdminTable = <T extends TableDataSourceWithID>({
     [columnsProps, actions, actionsDisabled],
   );
 
+  const baseTableProps = useMemo(
+    () => ({
+      headerClassName,
+      className,
+      bodyClassName,
+      bodyRowClassName,
+      columns,
+      dataSource,
+      scroll,
+      scrollContainerClassName,
+      loading,
+      loadingTip,
+      draggable,
+      expandable,
+      rowSelection,
+      emptyProps,
+    }),
+    [
+      bodyClassName,
+      bodyRowClassName,
+      className,
+      columns,
+      dataSource,
+      draggable,
+      emptyProps,
+      expandable,
+      headerClassName,
+      loading,
+      loadingTip,
+      rowSelection,
+      scroll,
+      scrollContainerClassName,
+    ],
+  );
+
   return (
     <div className={classes.root}>
       {((tabs && tabs.length > 0) || !!filtersComponent) && (
@@ -184,21 +225,8 @@ export const AdminTable = <T extends TableDataSourceWithID>({
         </div>
       )}
       <Table
-        headerClassName={headerClassName}
-        className={className}
-        bodyClassName={bodyClassName}
-        bodyRowClassName={bodyRowClassName}
-        columns={columns}
-        dataSource={dataSource}
-        scroll={scroll}
-        scrollContainerClassName={scrollContainerClassName}
-        loading={loading}
-        loadingTip={loadingTip}
-        pagination={pagination}
-        draggable={draggable}
-        expandable={expandable}
-        rowSelection={rowSelection}
-        emptyProps={emptyProps}
+        {...baseTableProps}
+        {...(fetchMore ? { fetchMore } : { pagination })}
       />
     </div>
   );
