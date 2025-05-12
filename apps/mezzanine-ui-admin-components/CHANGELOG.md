@@ -1,3 +1,18 @@
+## 0.0.83 (2025-05-12)
+
+### 🚀 Features
+
+- **admin-components:** click menu item and close self menu popup ([d3c2937](https://github.com/Mezzanine-UI/components/commit/d3c2937))
+
+### 🧱 Updated Dependencies
+
+- Updated @mezzanine-ui/react-hook-form-v2 to 0.0.83
+- Updated @mezzanine-ui/login-panel to 0.0.83
+
+### ❤️ Thank You
+
+- TingTing
+
 ## 0.0.82 (2025-05-12)
 
 ### 🚀 Features
