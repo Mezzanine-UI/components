@@ -1,3 +1,18 @@
+## 0.0.82 (2025-05-12)
+
+### 🚀 Features
+
+- control self-menu from layout context ([cf35d87](https://github.com/Mezzanine-UI/components/commit/cf35d87))
+
+### 🧱 Updated Dependencies
+
+- Updated @mezzanine-ui/react-hook-form-v2 to 0.0.82
+- Updated @mezzanine-ui/login-panel to 0.0.82
+
+### ❤️ Thank You
+
+- TingTing
+
 ## 0.0.81 (2025-05-08)
 
 ### 🚀 Features
