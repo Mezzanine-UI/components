@@ -24,10 +24,12 @@ export interface SidebarProps {
  * 後台側邊路徑選單
  */
 export const Sidebar: FC<SidebarProps> = ({ navigationChildren, onPush }) => {
-  const { sidebarExpanded } = useLayout();
+  const { sidebarExpanded, setSelfMenuStatus } = useLayout();
 
   const handleClickNavigation = (key: Key | null | undefined) => {
     const path = key as string;
+
+    setSelfMenuStatus(false);
 
     onPush(path);
   };
