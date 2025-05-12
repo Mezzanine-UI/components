@@ -1,6 +1,5 @@
 import {
   FC,
-  useState,
   MouseEvent,
   RefObject,
   ReactNode,
@@ -152,11 +151,11 @@ export const Header: FC<HeaderProps> = ({
   iconColor = 'surface',
 }) => {
   const { openModal, closeModal } = useModal();
-  const { toggleSidebar } = useLayout();
-  const [open, toggleOpen] = useState<boolean>(false);
+  const { toggleSidebar, selfMenuOpened, toggleSelfMenu, setSelfMenuStatus } =
+    useLayout();
   const closeMenu = useCallback(() => {
-    toggleOpen(false);
-  }, []);
+    setSelfMenuStatus(false);
+  }, [setSelfMenuStatus]);
 
   const layoutStyleVar = useMemo(
     () =>
@@ -254,7 +253,7 @@ export const Header: FC<HeaderProps> = ({
             }
             onClose={closeMenu}
             popperProps={{
-              open,
+              open: selfMenuOpened,
               disablePortal: true,
               options: {
                 placement: 'bottom-end',
@@ -268,7 +267,7 @@ export const Header: FC<HeaderProps> = ({
                 className={classes.dropdownBtn}
                 onClick={(event: MouseEvent<HTMLButtonElement>) => {
                   event.stopPropagation();
-                  toggleOpen((s) => !s);
+                  toggleSelfMenu();
                 }}
               >
                 <div className={classes.iconsContainer}>
@@ -278,7 +277,7 @@ export const Header: FC<HeaderProps> = ({
                     icon={ChevronDownIcon}
                     color={iconColor}
                     className={cx(classes.dropdownIcon, {
-                      [classes.open]: open,
+                      [classes.open]: selfMenuOpened,
                     })}
                   />
                 </div>

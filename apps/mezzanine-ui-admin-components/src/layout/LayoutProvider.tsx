@@ -6,6 +6,9 @@ export interface LayoutContextValues {
   sidebarExpanded: boolean;
   toggleSidebar: () => void;
   setSidebarStatus: (status: boolean) => void;
+  selfMenuOpened: boolean;
+  toggleSelfMenu: () => void;
+  setSelfMenuStatus: (status: boolean) => void;
 }
 
 const LayoutContextDefaultValues: LayoutContextValues = {
@@ -13,6 +16,9 @@ const LayoutContextDefaultValues: LayoutContextValues = {
   sidebarExpanded: true,
   toggleSidebar: () => {},
   setSidebarStatus: () => {},
+  selfMenuOpened: false,
+  toggleSelfMenu: () => {},
+  setSelfMenuStatus: () => {},
 };
 
 export const LayoutContext = createContext<LayoutContextValues>(
@@ -24,15 +30,23 @@ const LayoutProvider: FC<{
   defaultSidebarExpanded?: boolean;
   children?: ReactNode;
 }> = ({ sidebarWidth, defaultSidebarExpanded = true, children }) => {
-  const [sidebarExpanded, setExpanded] = useState<boolean>(
+  const [sidebarExpanded, setSidebarExpanded] = useState<boolean>(
     defaultSidebarExpanded,
   );
+  const [selfMenuOpened, setSelfMenuOpened] = useState<boolean>(false);
 
   const toggleSidebar = useCallback(() => {
-    setExpanded((s) => !s);
+    setSidebarExpanded((s) => !s);
   }, []);
   const setSidebarStatus = useCallback((status: boolean) => {
-    setExpanded(status);
+    setSidebarExpanded(status);
+  }, []);
+
+  const toggleSelfMenu = useCallback(() => {
+    setSelfMenuOpened((s) => !s);
+  }, []);
+  const setSelfMenuStatus = useCallback((status: boolean) => {
+    setSelfMenuOpened(status);
   }, []);
 
   return (
@@ -42,6 +56,9 @@ const LayoutProvider: FC<{
         sidebarExpanded,
         toggleSidebar,
         setSidebarStatus,
+        selfMenuOpened,
+        toggleSelfMenu,
+        setSelfMenuStatus,
       }}
     >
       {children}
