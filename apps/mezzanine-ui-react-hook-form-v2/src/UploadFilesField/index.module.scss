@@ -5,6 +5,10 @@
     width: var(--width);
   }
 
+  input {
+    opacity: 0;
+  }
+
   .fieldWrapper {
     display: flex;
     flex-direction: column;
