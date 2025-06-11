@@ -1,3 +1,13 @@
+## 0.0.84 (2025-06-11)
+
+### 🩹 Fixes
+
+- **react-hook-form-v2:** hide input html tag in Upload components ([df00392](https://github.com/Mezzanine-UI/components/commit/df00392))
+
+### ❤️ Thank You
+
+- TingTing
+
 ## 0.0.83 (2025-05-12)
 
 This was a version bump only for @mezzanine-ui/react-hook-form-v2 to align it with other projects, there were no code changes.
