@@ -67,7 +67,7 @@ export const AutoCompleteSingleField: HookFormFieldComponent<
     if (newValue) {
       setValue(registerName, newValue.id, { shouldDirty: true });
     } else {
-      setValue(registerName, null);
+      setValue(registerName, null, { shouldDirty: true });
     }
     onChangeProp?.(newValue);
   };

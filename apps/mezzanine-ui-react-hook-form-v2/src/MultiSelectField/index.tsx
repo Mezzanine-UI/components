@@ -81,7 +81,7 @@ export const MultiSelectField: HookFormFieldComponent<
 
   const onClear = () => {
     resetField(registerName);
-    setValue(registerName, []);
+    setValue(registerName, [], { shouldDirty: true });
   };
 
   const onMenuScroll = useCallback(

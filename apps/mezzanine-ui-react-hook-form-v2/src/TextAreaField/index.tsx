@@ -65,7 +65,7 @@ export const TextAreaField: HookFormFieldComponent<TextAreaFieldProps> = ({
       // eslint-disable-next-line no-underscore-dangle
       if (contextControl._options.mode === 'onChange') trigger(registerName);
     } else {
-      setValue(registerName, '');
+      setValue(registerName, '', { shouldDirty: true });
     }
   };
 
