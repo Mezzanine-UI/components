@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { useForm } from 'react-hook-form';
 import { SelectValue } from '@mezzanine-ui/react';
 import { FormFieldsWrapper } from '../FormFieldsWrapper';
+import { FormFieldsDebug } from '../FormFieldsDebug';
 import { SingleTreeSelectField } from './index';
 
 const meta = {
@@ -129,6 +130,7 @@ export const Default: Story = {
 
     return (
       <FormFieldsWrapper methods={methods}>
+        <FormFieldsDebug />
         <SingleTreeSelectField {...args} />
       </FormFieldsWrapper>
     );

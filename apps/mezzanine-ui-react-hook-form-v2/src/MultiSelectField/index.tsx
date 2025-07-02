@@ -1,4 +1,5 @@
 import { useMemo, useCallback, useState, useEffect } from 'react';
+import { compact } from 'lodash';
 import { Select, SelectValue, Option, cx } from '@mezzanine-ui/react';
 import { SelectMultipleProps } from '@mezzanine-ui/react/Select/Select';
 import { FieldValues, useFormContext, useWatch } from 'react-hook-form';
@@ -77,7 +78,19 @@ export const MultiSelectField: HookFormFieldComponent<
 
   const watchValueInOptions = useMemo(() => {
     if (valueIsStringArray) {
-      return currentOptions?.filter((o) => watchValue?.includes(o.id)) ?? [];
+      return (
+        compact(
+          watchValue.map((id: string) => {
+            const target = currentOptions.find((op) => op.id === id);
+
+            if (target) {
+              return target;
+            }
+
+            return null;
+          }),
+        ) ?? []
+      );
     }
 
     return watchValue ?? [];
