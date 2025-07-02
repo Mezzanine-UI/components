@@ -14,6 +14,7 @@ export type AutoCompleteSingleFieldProps = HookFormFieldProps<
     defaultValue?: SelectValue;
     debounceMs?: number;
     width?: number;
+    valueIsString?: boolean;
     onInput?: FormEventHandler<HTMLInputElement>;
     onChange?: (newOption: SelectValue) => void;
   }
@@ -39,6 +40,7 @@ export const AutoCompleteSingleField: HookFormFieldComponent<
   className,
   value,
   width,
+  valueIsString = true,
   disabledErrMsg,
   errorMsgRender,
   onChange: onChangeProp,
@@ -49,26 +51,34 @@ export const AutoCompleteSingleField: HookFormFieldComponent<
   const {
     clearErrors,
     formState: { errors },
+    resetField,
     setValue,
   } = useFormContext();
 
   const watchValue = useWatch({ name: registerName, defaultValue });
 
-  const watchValueInOptions = useMemo(
-    () => options?.find((o) => o.id === watchValue) ?? null,
-    [options, watchValue],
-  );
+  const watchValueInOptions = useMemo(() => {
+    if (valueIsString) {
+      return options?.find((o) => o.id === watchValue) ?? null;
+    }
+
+    return watchValue ?? null;
+  }, [options, watchValue, valueIsString]);
+
+  const onClear = () => {
+    resetField(registerName);
+    const clearValue = valueIsString ? '' : null;
+    setValue(registerName, clearValue, { shouldDirty: true });
+  };
 
   const onChange = (newValue: SelectValue) => {
     if (errors?.[registerName]) {
       clearErrors(registerName);
     }
 
-    if (newValue) {
-      setValue(registerName, newValue.id, { shouldDirty: true });
-    } else {
-      setValue(registerName, null, { shouldDirty: true });
-    }
+    const value = valueIsString ? (newValue?.id ?? '') : newValue;
+
+    setValue(registerName, value, { shouldDirty: true });
     onChangeProp?.(newValue);
   };
 
@@ -96,6 +106,7 @@ export const AutoCompleteSingleField: HookFormFieldComponent<
         size={size}
         fullWidth={width ? false : fullWidth}
         onChange={onChange}
+        onClear={onClear}
         inputProps={{ onInput }}
         placeholder={placeholder}
         defaultValue={defaultValue}

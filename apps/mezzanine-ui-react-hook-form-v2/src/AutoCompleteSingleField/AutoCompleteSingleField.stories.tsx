@@ -1,7 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { useForm } from 'react-hook-form';
+import { SelectValue } from '@mezzanine-ui/react';
 import { FormFieldsWrapper } from '../FormFieldsWrapper';
+import { FormFieldsDebug } from '../FormFieldsDebug';
 import { AutoCompleteSingleField } from './index';
 
 const meta = {
@@ -78,6 +80,79 @@ export const Default: Story = {
 
     return (
       <FormFieldsWrapper methods={methods}>
+        <FormFieldsDebug />
+        <AutoCompleteSingleField {...args} />
+      </FormFieldsWrapper>
+    );
+  },
+};
+
+export const ValueIsOption: Story = {
+  args: {
+    registerName: 'inputName',
+    placeholder: '請選擇',
+    options: [
+      {
+        id: 'option1',
+        name: '選項1',
+      },
+      {
+        id: 'option2',
+        name: '選項2',
+      },
+      {
+        id: 'option3',
+        name: '選項3',
+      },
+    ],
+    label: '標籤',
+    width: 360,
+    valueIsString: false,
+    menuMaxHeight: 186,
+    remark: 'remark',
+    size: 'large',
+    hints: ['提示1', '提示2'],
+    onInput: action('onInput'),
+    disabled: false,
+    required: false,
+    horizontal: false,
+  },
+  argTypes: {
+    size: {
+      control: {
+        type: 'radio',
+      },
+      options: ['large', 'medium', 'small'],
+    },
+  },
+  parameters: {
+    controls: {
+      include: [
+        'placeholder',
+        'label',
+        'width',
+        'menuMaxHeight',
+        'remark',
+        'size',
+        'hints',
+        'disabled',
+        'required',
+        'horizontal',
+      ],
+    },
+  },
+  render: function Render(args) {
+    const methods = useForm<{
+      inputName: SelectValue | null;
+    }>({
+      defaultValues: {
+        inputName: null,
+      },
+    });
+
+    return (
+      <FormFieldsWrapper methods={methods}>
+        <FormFieldsDebug />
         <AutoCompleteSingleField {...args} />
       </FormFieldsWrapper>
     );

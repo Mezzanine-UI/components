@@ -1,4 +1,5 @@
 import { useMemo } from 'react';
+import { compact } from 'lodash';
 import { AutoComplete, cx, SelectValue } from '@mezzanine-ui/react';
 import { AutoCompleteSingleProps } from '@mezzanine-ui/react/Select/AutoComplete';
 import { FormEventHandler } from 'react';
@@ -14,6 +15,7 @@ export type AutoCompleteMultiFieldProps = HookFormFieldProps<
     defaultValue?: SelectValue[];
     debounceMs?: number;
     width?: number;
+    valueIsStringArray?: boolean;
     onInput?: FormEventHandler<HTMLInputElement>;
     onChange?: (newOption: SelectValue[]) => void;
     maxLength?: number;
@@ -42,6 +44,7 @@ export const AutoCompleteMultiField: HookFormFieldComponent<
   className,
   value,
   width,
+  valueIsStringArray = true,
   disabledErrMsg,
   errorMsgRender,
   onChange: onChangeProp,
@@ -53,15 +56,36 @@ export const AutoCompleteMultiField: HookFormFieldComponent<
   const {
     clearErrors,
     formState: { errors },
+    resetField,
     setValue,
   } = useFormContext();
 
   const watchValue = useWatch({ name: registerName, defaultValue });
 
-  const watchValueInOptions = useMemo(
-    () => options?.filter((o) => watchValue?.includes(o.id)) ?? undefined,
-    [options, watchValue],
-  );
+  const watchValueInOptions = useMemo(() => {
+    if (valueIsStringArray) {
+      return (
+        compact(
+          watchValue.map((id: string) => {
+            const target = options.find((op) => op.id === id);
+
+            if (target) {
+              return target;
+            }
+
+            return null;
+          }),
+        ) ?? []
+      );
+    }
+
+    return watchValue ?? [];
+  }, [options, watchValue, valueIsStringArray]);
+
+  const onClear = () => {
+    resetField(registerName);
+    setValue(registerName, [], { shouldDirty: true });
+  };
 
   const onChange = (newValue: SelectValue[]) => {
     if (errors?.[registerName]) {
@@ -69,11 +93,11 @@ export const AutoCompleteMultiField: HookFormFieldComponent<
     }
 
     if (!(maxLength && maxLength > 0 && newValue.length > maxLength)) {
-      setValue(
-        registerName,
-        newValue.map((item) => item.id),
-        { shouldDirty: true },
-      );
+      const value = valueIsStringArray
+        ? newValue.map((item) => item.id)
+        : newValue;
+
+      setValue(registerName, value, { shouldDirty: true });
       onChangeProp?.(newValue);
     }
   };
@@ -103,6 +127,7 @@ export const AutoCompleteMultiField: HookFormFieldComponent<
         size={size}
         fullWidth={width ? false : fullWidth}
         onChange={onChange}
+        onClear={onClear}
         onInsert={onInsert}
         inputProps={{ onInput }}
         placeholder={placeholder}
