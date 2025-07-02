@@ -79,7 +79,9 @@ export const BaseField: FC<BaseFieldProps> = ({
 
   return (
     <FormField
-      className={cx(classes.host, width && classes.specifiedWidth, className)}
+      className={cx(classes.host, className, 'mzn-rhf-base-field', {
+        [classes.specifiedWidth]: !!width,
+      })}
       style={baseFieldStyleVar}
       disabled={disabled}
       severity={isError ? 'error' : undefined}
@@ -92,7 +94,12 @@ export const BaseField: FC<BaseFieldProps> = ({
         {!!label && (
           <div className={classes.labelWrapper}>
             <FormLabel
-              className={cx(classes.label, classes.basicLabel, labelClassName)}
+              className={cx(
+                classes.label,
+                classes.basicLabel,
+                labelClassName,
+                'mzn-rhf-base-field__label',
+              )}
               htmlFor={name}
               remark={remark}
               remarkIcon={remarkIcon}
@@ -110,7 +117,14 @@ export const BaseField: FC<BaseFieldProps> = ({
             </FormLabel>
           </div>
         )}
-        <div className={cx(classes.field, fieldClassName)} style={styleVar}>
+        <div
+          className={cx(
+            classes.field,
+            fieldClassName,
+            'mzn-rhf-base-field__field',
+          )}
+          style={styleVar}
+        >
           {children}
           {hints.length > 0 && <Hints hints={hints} />}
         </div>

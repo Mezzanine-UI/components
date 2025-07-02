@@ -1,6 +1,6 @@
 import { Key } from 'react';
 import { FieldValues, useFormContext, useWatch } from 'react-hook-form';
-import { SelectProps, Tab, TabPane, Tabs } from '@mezzanine-ui/react';
+import { SelectProps, Tab, TabPane, Tabs, cx } from '@mezzanine-ui/react';
 import {
   HookFormFieldComponent,
   HookFormFieldProps,
@@ -39,14 +39,18 @@ export const TabInputField: HookFormFieldComponent<TabInputFieldProps> = ({
   return (
     <Tabs
       activeKey={watchValue}
-      className={className}
+      className={cx(className, 'mzn-rhf-tab-input-field')}
       onChange={onChange}
       style={style}
     >
       {options?.map((option) => (
         <TabPane
           key={option.id}
-          tab={<Tab className={classes.tab}>{option?.name}</Tab>}
+          tab={
+            <Tab className={cx(classes.tab, 'mzn-rhf-tab-input-field__tab')}>
+              {option?.name}
+            </Tab>
+          }
         />
       ))}
     </Tabs>

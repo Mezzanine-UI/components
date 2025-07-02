@@ -8,7 +8,7 @@ const HookformContextConsumer: FC = () => {
   const watchAllFields = useWatch();
 
   return (
-    <pre className={classes.code}>
+    <pre className={cx(classes.code, 'mzn-rhf-form-fields-debug__code')}>
       {JSON.stringify(watchAllFields, null, 2)}
     </pre>
   );
@@ -28,17 +28,22 @@ export const FormFieldsDebug: FC<FormFieldsDebugProps> = ({
   const [show, setShow] = useState(true);
 
   return mode === 'dev' && !unMount ? (
-    <div className={cx(classes.host, hovered && classes.hostHovered)}>
+    <div
+      className={cx(classes.host, 'mzn-rhf-form-fields-debug', {
+        [classes.hostHovered]: hovered,
+        'mzn-rhf-form-fields-debug--hovered': hovered,
+      })}
+    >
       <div
         aria-hidden
         role="button"
-        className={classes.close}
+        className={cx(classes.close, 'mzn-rhf-form-fields-debug__close')}
         onClick={() => setMount(true)}
       >
         <Icon icon={TimesIcon} />
       </div>
       <div
-        className={classes.title}
+        className={cx(classes.title, 'mzn-rhf-form-fields-debug__title')}
         onMouseOver={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
         onFocus={() => {

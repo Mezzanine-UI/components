@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { EyeIcon, EyeSlashIcon } from '@mezzanine-ui/icons';
-import { Icon, Typography } from '@mezzanine-ui/react';
+import { Icon, Typography, cx } from '@mezzanine-ui/react';
 import { InputField, InputFieldProps } from '../InputField';
 import { HookFormFieldComponent, HookFormFieldProps } from '../typing';
 import { FieldValues } from 'react-hook-form';
@@ -33,7 +33,7 @@ export const PasswordField: HookFormFieldComponent<PassWordFieldProps> = ({
   const renderSuffix = (
     <Icon
       onClick={() => setPasswordMasking((prev) => !prev)}
-      className={classes.icon}
+      className={cx(classes.icon, 'mzn-rhf-password-field__icon')}
       icon={passwordMasking ? EyeSlashIcon : EyeIcon}
     />
   );

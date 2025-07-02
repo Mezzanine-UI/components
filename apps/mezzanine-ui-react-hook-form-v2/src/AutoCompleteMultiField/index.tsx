@@ -91,7 +91,7 @@ export const AutoCompleteMultiField: HookFormFieldComponent<
       errorMsgRender={errorMsgRender}
       horizontal={horizontal}
       hints={hints}
-      className={cx(classes.host, className)}
+      className={cx(classes.host, className, 'mzn-rhf-auto-complete')}
     >
       <AutoComplete
         {...props}

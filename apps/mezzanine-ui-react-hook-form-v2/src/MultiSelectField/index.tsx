@@ -128,7 +128,12 @@ export const MultiSelectField: HookFormFieldComponent<
       label={label}
       remark={remark}
       required={required}
-      className={cx(classes.host, width && classes.specifiedWidth, className)}
+      className={cx(
+        classes.host,
+        width && classes.specifiedWidth,
+        className,
+        'mzn-rhf-select-field',
+      )}
       width={width}
       disabledErrMsg={disabledErrMsg}
       errorMsgRender={errorMsgRender}

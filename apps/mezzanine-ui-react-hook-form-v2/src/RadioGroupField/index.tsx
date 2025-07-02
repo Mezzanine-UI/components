@@ -55,7 +55,11 @@ export const RadioGroupField: HookFormFieldComponent<RadioGroupFieldProps> = ({
         disabled={disabled}
         onChange={onChange}
         orientation={orientation}
-        className={cx(classes.radioGroup, groupClassName)}
+        className={cx(
+          classes.radioGroup,
+          groupClassName,
+          'mzn-rhf-radio-group',
+        )}
         size={size}
         value={watchValue}
       >

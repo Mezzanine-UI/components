@@ -88,7 +88,10 @@ export const InputField: HookFormFieldComponent<InputFieldProps> = ({
 
   return (
     <BaseField
-      className={cx(classes.host, width && classes.specifiedWidth, className)}
+      className={cx(classes.host, className, 'mzn-rhf-input-field', {
+        [classes.specifiedWidth]: !!width,
+        'mzn-rhf-input-field--width': !!width,
+      })}
       name={registerName}
       disabledErrMsg={disabledErrMsg}
       style={style}

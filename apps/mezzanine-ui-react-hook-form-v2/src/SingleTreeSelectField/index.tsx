@@ -77,7 +77,12 @@ export const SingleTreeSelectField: HookFormFieldComponent<
       label={label}
       remark={remark}
       required={required}
-      className={cx(classes.host, width && classes.specifiedWidth, className)}
+      className={cx(
+        classes.host,
+        width && classes.specifiedWidth,
+        className,
+        'mzn-rhf-tree-select-field',
+      )}
       width={width}
       fullWidth={fullWidth}
       errors={errors}

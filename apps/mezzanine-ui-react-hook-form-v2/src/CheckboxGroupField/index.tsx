@@ -88,7 +88,7 @@ export const CheckboxGroupField: HookFormFieldComponent<
         orientation={orientation}
         options={options}
         defaultValue={defaultValue}
-        className={cx(classes.host, fieldClassName)}
+        className={cx(classes.host, fieldClassName, 'mzn-rhf-checkbox-group')}
         value={watchValue}
         onChange={onChange}
       />

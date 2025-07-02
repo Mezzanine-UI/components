@@ -135,7 +135,7 @@ export const UploadImageField: HookFormFieldComponent<
 
   return (
     <BaseField
-      className={cx(classes.host, className)}
+      className={cx(classes.host, className, 'mzn-rhf-upload-image-field')}
       fieldClassName={fieldClassName}
       name={registerName}
       disabledErrMsg={disabledErrMsg}
