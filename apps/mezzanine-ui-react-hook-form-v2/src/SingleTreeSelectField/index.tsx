@@ -100,6 +100,11 @@ export const SingleTreeSelectField: HookFormFieldComponent<
         onChange={onChange}
         options={options}
         value={filedValue}
+        menuProps={{
+          style: {
+            minWidth: width,
+          },
+        }}
       />
     </BaseField>
   );
