@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { SelectValue } from '@mezzanine-ui/react';
 import { FormFieldsWrapper } from '../FormFieldsWrapper';
+import { FormFieldsDebug } from '../FormFieldsDebug';
 import { SingleSelectField } from './index';
 
 const meta = {
@@ -88,6 +89,88 @@ export const Default: Story = {
 
     return (
       <FormFieldsWrapper methods={methods}>
+        <FormFieldsDebug />
+        <SingleSelectField {...args} />
+      </FormFieldsWrapper>
+    );
+  },
+};
+
+export const ValueIsOption: Story = {
+  args: {
+    registerName: 'inputName',
+    placeholder: '請選擇',
+    options: [
+      {
+        id: 'option1',
+        name: '選項1',
+      },
+      {
+        id: 'option2',
+        name: '選項2',
+      },
+      {
+        id: 'option3',
+        name: '選項3',
+      },
+    ],
+    label: '標籤',
+    width: 360,
+    valueIsString: false,
+    menuMaxHeight: 186,
+    remark: 'remark',
+    size: 'large',
+    menuSize: 'large',
+    hints: ['提示1', '提示2'],
+    disabled: false,
+    clearable: true,
+    required: false,
+    horizontal: false,
+  },
+  argTypes: {
+    size: {
+      control: {
+        type: 'radio',
+      },
+      options: ['large', 'medium', 'small'],
+    },
+    menuSize: {
+      control: {
+        type: 'radio',
+      },
+      options: ['large', 'medium', 'small'],
+    },
+  },
+  parameters: {
+    controls: {
+      include: [
+        'placeholder',
+        'label',
+        'width',
+        'menuMaxHeight',
+        'remark',
+        'size',
+        'menuSize',
+        'hints',
+        'disabled',
+        'clearable',
+        'required',
+        'horizontal',
+      ],
+    },
+  },
+  render: function Render(args) {
+    const methods = useForm<{
+      inputName: SelectValue | null;
+    }>({
+      defaultValues: {
+        inputName: null,
+      },
+    });
+
+    return (
+      <FormFieldsWrapper methods={methods}>
+        <FormFieldsDebug />
         <SingleSelectField {...args} />
       </FormFieldsWrapper>
     );

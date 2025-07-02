@@ -11,6 +11,7 @@ export type MultiSelectFieldProps = HookFormFieldProps<
   Omit<SelectMultipleProps, 'defaultValue' | 'mode'>,
   {
     width?: number;
+    valueIsStringArray?: boolean;
     options: SelectValue[];
     defaultValue?: string;
     horizontal?: boolean;
@@ -27,6 +28,7 @@ export const MultiSelectField: HookFormFieldComponent<
   defaultValue,
   disabled,
   width,
+  valueIsStringArray = true,
   inputMode,
   itemScope = false,
   label,
@@ -73,11 +75,13 @@ export const MultiSelectField: HookFormFieldComponent<
     defaultValue,
   });
 
-  const watchValueInOptions = useMemo(
-    () =>
-      currentOptions?.filter((o) => watchValue?.includes(o.id)) ?? undefined,
-    [currentOptions, watchValue],
-  );
+  const watchValueInOptions = useMemo(() => {
+    if (valueIsStringArray) {
+      return currentOptions?.filter((o) => watchValue?.includes(o.id)) ?? [];
+    }
+
+    return watchValue ?? [];
+  }, [currentOptions, watchValue, valueIsStringArray]);
 
   const onClear = () => {
     resetField(registerName);
@@ -111,11 +115,11 @@ export const MultiSelectField: HookFormFieldComponent<
     if (errors?.[registerName]) clearErrors(registerName);
 
     if (!(maxLength && maxLength > 0 && newValue.length > maxLength)) {
-      setValue(
-        registerName,
-        newValue.map((item) => item.id),
-        { shouldDirty: true },
-      );
+      const value = valueIsStringArray
+        ? newValue.map((item) => item.id)
+        : newValue;
+
+      setValue(registerName, value, { shouldDirty: true });
       onChangeProp?.(newValue);
     }
   };

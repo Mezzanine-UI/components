@@ -11,6 +11,7 @@ export type SingleSelectFieldProps = HookFormFieldProps<
   Omit<SelectSingleProps, 'defaultValue' | 'mode'>,
   {
     width?: number;
+    valueIsString?: boolean;
     options: SelectValue[];
     defaultValue?: string;
     horizontal?: boolean;
@@ -26,6 +27,7 @@ export const SingleSelectField: HookFormFieldComponent<
   defaultValue,
   disabled,
   width,
+  valueIsString = true,
   inputMode,
   itemScope = false,
   label,
@@ -71,14 +73,18 @@ export const SingleSelectField: HookFormFieldComponent<
     defaultValue,
   });
 
-  const watchValueInOptions = useMemo(
-    () => currentOptions?.find((o) => o.id === watchValue) ?? null,
-    [currentOptions, watchValue],
-  );
+  const watchValueInOptions = useMemo(() => {
+    if (valueIsString) {
+      return currentOptions?.find((o) => o.id === watchValue) ?? null;
+    }
+
+    return watchValue ?? null;
+  }, [currentOptions, watchValue, valueIsString]);
 
   const onClear = () => {
     resetField(registerName);
-    setValue(registerName, '', { shouldDirty: true });
+    const clearValue = valueIsString ? '' : null;
+    setValue(registerName, clearValue, { shouldDirty: true });
   };
 
   const onMenuScroll = useCallback(
@@ -107,7 +113,9 @@ export const SingleSelectField: HookFormFieldComponent<
   const onChange = (newValue: SelectValue) => {
     if (errors?.[registerName]) clearErrors(registerName);
 
-    setValue(registerName, newValue.id, { shouldDirty: true });
+    const value = valueIsString ? newValue.id : newValue;
+
+    setValue(registerName, value, { shouldDirty: true });
     onChangeProp?.(newValue);
   };
 
