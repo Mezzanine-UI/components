@@ -30,7 +30,7 @@ ENV NX_DAEMON false
 
 RUN npx nx run-many -t build-storybook --verbose
 
-FROM nginx:stable-alpine
+FROM nginx:1.30.7-alpine
 
 ARG TARGET
 
